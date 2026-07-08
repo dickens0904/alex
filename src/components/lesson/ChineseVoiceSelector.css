@@ -1,0 +1,289 @@
+/* 中文声音选择器样式 */
+
+.chinese-voice-selector {
+  position: relative;
+  display: inline-block;
+}
+
+/* 触发按钮 */
+.voice-trigger-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(255, 107, 107, 0.3);
+}
+
+.voice-trigger-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.voice-trigger-btn.active {
+  background: linear-gradient(135deg, #ee5a5a 0%, #d94f4f 100%);
+}
+
+.voice-icon {
+  font-size: 16px;
+}
+
+.voice-name {
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.voice-region {
+  font-size: 14px;
+}
+
+.voice-dropdown-arrow {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* 下拉面板 */
+.voice-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 320px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+  overflow: hidden;
+  animation: slideDown 0.2s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 地区切换标签 */
+.region-tabs {
+  display: flex;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  padding: 8px;
+  gap: 8px;
+}
+
+.region-tab {
+  flex: 1;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.region-tab:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.region-tab.active {
+  background: white;
+  color: #ff6b6b;
+}
+
+/* 性别切换标签 */
+.gender-tabs {
+  display: flex;
+  padding: 8px 8px 0;
+  gap: 8px;
+}
+
+.gender-tab {
+  flex: 1;
+  padding: 10px;
+  background: #f5f5f5;
+  color: #666;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.gender-tab:hover {
+  background: #eee;
+}
+
+.gender-tab.active {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  color: white;
+}
+
+/* 搜索框 */
+.search-box {
+  padding: 12px;
+}
+
+.search-input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #ff6b6b;
+}
+
+.search-input::placeholder {
+  color: #aaa;
+}
+
+/* 声音列表 */
+.voice-list {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0 8px 8px;
+}
+
+.voice-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.voice-list::-webkit-scrollbar-track {
+  background: #f5f5f5;
+  border-radius: 3px;
+}
+
+.voice-list::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+.voice-list::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
+}
+
+/* 声音项 */
+.voice-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: #f8f8f8;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.voice-item:hover {
+  background: #fff0f0;
+  transform: translateX(4px);
+}
+
+.voice-item.selected {
+  background: linear-gradient(135deg, #fff0f0 0%, #ffe0e0 100%);
+  border: 2px solid #ff6b6b;
+}
+
+.voice-item-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.voice-item-name {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.voice-item-desc {
+  display: block;
+  font-size: 12px;
+  color: #888;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.voice-item-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.voice-tag {
+  padding: 2px 8px;
+  background: #ff6b6b;
+  color: white;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* 试听按钮 */
+.voice-preview-btn {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.voice-preview-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.voice-preview-btn.playing {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  animation: pulseScale 1s ease-in-out infinite;
+}
+
+@keyframes pulseScale {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* 无声音提示 */
+.no-voices {
+  text-align: center;
+  padding: 20px;
+  color: #999;
+  font-size: 14px;
+}

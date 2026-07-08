@@ -1,0 +1,30 @@
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+    - id: trailing-whitespace
+    - id: end-of-file-fixer
+    - id: check-yaml
+    - id: check-json
+    - id: check-added-large-files
+    - id: detect-private-key
+
+- repo: https://github.com/prettier/prettier
+  rev: 3.0.0
+  hooks:
+    - id: prettier
+      args: [--write, --print-width=120]
+      files: \.(js|ts|jsx|tsx|css|less|scss|json|md)$
+
+- repo: https://github.com/eslint/eslint
+  rev: v8.47.0
+  hooks:
+    - id: eslint
+      args: [--fix, --ext=.js,.ts,.jsx,.tsx]
+      pass_filenames: true
+
+- repo: https://github.com/lyndseybrowning/dependency-check
+  rev: v1.0.5
+  hooks:
+    - id: dependency-check
+      args: [--skip-dev]

@@ -1,0 +1,267 @@
+
+============================================================
+  1. 编译产物检查
+============================================================
+  [PASS] bundle.js - 1274 KB
+  [PASS] styles.css - 101 KB
+
+============================================================
+  2. 页面模块检查
+============================================================
+  [PASS] 首页 - 文件存在
+  [PASS] 首页.getStreakData - 已集成
+  [PASS] 首页.getStreakLevel - 已集成
+  [PASS] 首页.achievements - 已集成
+  [PASS] 首页.navigate - 已集成
+  [PASS] 首页.logger - 已集成日志
+  [PASS] 课程列表 - 文件存在
+  [PASS] 课程列表.getLessonSummaries - 已集成
+  [PASS] 课程列表.navigate - 已集成
+  [PASS] 课程列表.electronAPI - 已集成
+  [PASS] 课程列表.logger - 已集成日志
+  [PASS] 课程详情 - 文件存在
+  [PASS] 课程详情.PracticeEngine - 已集成
+  [PASS] 课程详情.ShootingGame - 已集成
+  [PASS] 课程详情.MemoryCardGame - 已集成
+  [PASS] 课程详情.AirplaneGame - 已集成
+  [PASS] 课程详情.Confetti - 已集成
+  [PASS] 课程详情.checkAchievements - 已集成
+  [PASS] 课程详情.recordStudy - 已集成
+  [PASS] 课程详情.logger - 已集成日志
+  [PASS] 学习进度 - 文件存在
+  [PASS] 学习进度.getUserStats - 已集成
+  [PASS] 学习进度.getAllProgress - 已集成
+  [PASS] 学习进度.totalLessons - 已集成
+  [PASS] 学习进度.logger - 已集成日志
+
+============================================================
+  3. 游戏组件检查
+============================================================
+  [PASS] 射击游戏 - 组件文件存在
+  [PASS] 射击游戏.CSS - 9099 字符
+  [PASS] 射击游戏.speakWord - 已实现
+  [PASS] 射击游戏.playCorrectSound - 已实现
+  [PASS] 射击游戏.playWrongSound - 已实现
+  [PASS] 射击游戏.playStreakSound - 已实现
+  [PASS] 射击游戏.onFinish - 已实现
+  [PASS] 射击游戏.logger - 已实现
+  [PASS] 射击游戏[TARGET] - 存在
+  [PASS] 射击游戏[bullets] - 存在
+  [PASS] 射击游戏[CANNON] - 存在
+  [PASS] 射击游戏[ROUND_TIME] - 存在
+  [PASS] 射击游戏[streak] - 存在
+  [PASS] 射击游戏[explosion] - 存在
+  [PASS] 射击游戏.接口 - Props接口完整
+  [PASS] 记忆翻牌 - 组件文件存在
+  [PASS] 记忆翻牌.CSS - 6629 字符
+  [PASS] 记忆翻牌.playCorrectSound - 已实现
+  [PASS] 记忆翻牌.playWrongSound - 已实现
+  [PASS] 记忆翻牌.playStreakSound - 已实现
+  [PASS] 记忆翻牌.onFinish - 已实现
+  [PASS] 记忆翻牌.logger - 已实现
+  [PASS] 记忆翻牌.shuffleArray - 已实现
+  [PASS] 记忆翻牌[Card] - 存在
+  [PASS] 记忆翻牌[pairId] - 存在
+  [PASS] 记忆翻牌[isFlipped] - 存在
+  [PASS] 记忆翻牌[isMatched] - 存在
+  [PASS] 记忆翻牌[MAX_PAIRS] - 存在
+  [PASS] 记忆翻牌[streak] - 存在
+  [PASS] 记忆翻牌.接口 - Props接口完整
+  [PASS] 飞机大战 - 组件文件存在
+  [PASS] 飞机大战.CSS - 11371 字符
+  [PASS] 飞机大战.playCorrectSound - 已实现
+  [PASS] 飞机大战.playWrongSound - 已实现
+  [PASS] 飞机大战.playStreakSound - 已实现
+  [PASS] 飞机大战.onFinish - 已实现
+  [PASS] 飞机大战.logger - 已实现
+  [PASS] 飞机大战.requestAnimationFrame - 已实现
+  [PASS] 飞机大战[Enemy] - 存在
+  [PASS] 飞机大战[Bullet] - 存在
+  [PASS] 飞机大战[PLAYER_SPEED] - 存在
+  [PASS] 飞机大战[ENEMY_BASE_SPEED] - 存在
+  [PASS] 飞机大战[lives] - 存在
+  [PASS] 飞机大战[streak] - 存在
+  [PASS] 飞机大战[spawnEnemies] - 存在
+  [PASS] 飞机大战.接口 - Props接口完整
+
+============================================================
+  4. 服务模块检查
+============================================================
+  [PASS] TTS语音 - 文件存在
+  [PASS] TTS语音.speakWord - 已导出/定义
+  [PASS] TTS语音.speakSentence - 已导出/定义
+  [PASS] TTS语音.preloadVoices - 已导出/定义
+  [PASS] TTS语音.VOICE_PRESETS - 已导出/定义
+  [PASS] TTS语音.isEdgeTTSAvailable - 已导出/定义
+  [PASS] 音效系统 - 文件存在
+  [PASS] 音效系统.playCorrectSound - 已导出/定义
+  [PASS] 音效系统.playWrongSound - 已导出/定义
+  [PASS] 音效系统.playStreakSound - 已导出/定义
+  [PASS] 音效系统.playAchievementSound - 已导出/定义
+  [PASS] 音效系统.AudioContext - 已导出/定义
+  [PASS] 成就系统 - 文件存在
+  [PASS] 成就系统.ALL_ACHIEVEMENTS - 已导出/定义
+  [PASS] 成就系统.checkAchievements - 已导出/定义
+  [PASS] 成就系统.getUnlockedAchievements - 已导出/定义
+  [PASS] 成就系统.spelling_master - 已导出/定义
+  [PASS] 成就系统.streak_30_days - 已导出/定义
+  [PASS] 连续学习 - 文件存在
+  [PASS] 连续学习.getStreakData - 已导出/定义
+  [PASS] 连续学习.recordStudy - 已导出/定义
+  [PASS] 连续学习.getStreakLevel - 已导出/定义
+  [PASS] 连续学习.hasStudiedToday - 已导出/定义
+  [PASS] 连续学习.currentStreak - 已导出/定义
+  [PASS] 护眼系统 - 文件存在
+  [PASS] 护眼系统.EyeProtectionSettings - 已导出/定义
+  [PASS] 护眼系统.checkNeedBreak - 已导出/定义
+  [PASS] 护眼系统.recordBreak - 已导出/定义
+  [PASS] 护眼系统.applyBlueLightFilter - 已导出/定义
+  [PASS] 课程服务 - 文件存在
+  [PASS] 课程服务.getLessonById - 已导出/定义
+  [PASS] 课程服务.getLessonSummaries - 已导出/定义
+  [PASS] 课程服务.getAllLessons - 已导出/定义
+  [PASS] 课程服务.getTotalLessonCount - 已导出/定义
+  [PASS] 语音识别 - 文件存在
+  [PASS] 语音识别.evaluateSpeech - 已导出/定义
+
+============================================================
+  5. 工具与组件检查
+============================================================
+  [PASS] 纸屑动画 - 文件存在
+  [PASS] 纸屑动画.active - 已实现
+  [PASS] 纸屑动画.duration - 已实现
+  [PASS] 纸屑动画.Confetti - 已实现
+  [PASS] 护眼弹窗 - 文件存在
+  [PASS] 护眼弹窗.EyeProtection - 已实现
+  [PASS] 护眼弹窗.20-20-20 - 已实现
+  [PASS] 护眼弹窗.blueLight - 已实现
+  [PASS] 护眼弹窗.countdown - 已实现
+  [PASS] 错误边界 - 文件存在
+  [PASS] 错误边界.componentDidCatch - 已实现
+  [PASS] 错误边界.ErrorBoundary - 已实现
+  [PASS] 日志查看器 - 文件存在
+  [PASS] 日志查看器.LogViewer - 已实现
+  [PASS] 日志查看器.logger - 已实现
+  [PASS] 日志查看器.getLogs - 已实现
+  [PASS] 词汇卡片 - 文件存在
+  [PASS] 词汇卡片.Vocabulary - 已实现
+  [PASS] 词汇卡片.speak - 已实现
+  [PASS] 课文显示 - 文件存在
+  [PASS] 课文显示.TextDisplay - 已实现
+  [PASS] 课文显示.paragraphs - 已实现
+  [PASS] 语法卡片增强 - 文件存在
+  [PASS] 语法卡片增强.GrammarCard - 已实现
+  [PASS] 语法卡片增强.exercise - 已实现
+  [PASS] 语法卡片增强.streak - 已实现
+  [PASS] 语法卡片增强.playCorrectSound - 已实现
+  [PASS] 练习菜单 - 文件存在
+  [PASS] 练习菜单.PracticeMenu - 已实现
+  [PASS] 练习菜单.listening - 已实现
+  [PASS] 练习菜单.speaking - 已实现
+  [PASS] 练习菜单.spelling - 已实现
+  [PASS] 练习引擎 - 文件存在
+  [PASS] 练习引擎.PracticeEngine - 已实现
+  [PASS] 练习引擎.PracticeFinishData - 已实现
+  [PASS] 练习引擎.maxStreak - 已实现
+  [PASS] 练习引擎.correctCount - 已实现
+  [PASS] 练习引擎.playCorrectSound - 已实现
+  [PASS] 练习结果 - 文件存在
+  [PASS] 练习结果.PracticeResult - 已实现
+  [PASS] 练习结果.score - 已实现
+  [PASS] 练习结果.totalScore - 已实现
+  [PASS] 练习结果.Confetti - 已实现
+  [PASS] 日志工具 - 文件存在
+  [PASS] 日志工具.Logger - 已实现
+  [PASS] 日志工具.logger - 已实现
+  [PASS] 日志工具.info - 已实现
+  [PASS] 日志工具.warn - 已实现
+  [PASS] 日志工具.error - 已实现
+  [PASS] 日志工具.success - 已实现
+  [PASS] 日志工具.getLogs - 已实现
+  [PASS] 日志工具.dump - 已实现
+
+============================================================
+  6. 数据文件检查
+============================================================
+  [PASS] 完整课程数据 - 436.1 KB
+  [PASS] 语法数据 - 188.1 KB
+  [PASS] 增强语法数据 - 326.1 KB
+  [PASS] 生成练习题 - 314.1 KB
+  [PASS] 增强语法内容 - 30.7 KB
+  [PASS] 补充语法练习 - 22.6 KB
+  [PASS] 语法增强批次1 - 33.6 KB
+  [PASS] 语法增强批次2 - 34.4 KB
+  [PASS] 语法增强批次3 - 36.4 KB
+  [PASS] 语法增强批次4 - 35.8 KB
+  [PASS] 说话人性别数据 - 10.3 KB
+  [PASS] 课程类型定义 - 2.1 KB
+  [PASS] 全局类型声明 - 1.8 KB
+
+============================================================
+  7. App.tsx 入口检查
+============================================================
+  [PASS] App.路由配置 - 已集成
+  [PASS] App.首页路由 - 已集成
+  [PASS] App.课程列表路由 - 已集成
+  [PASS] App.课程详情路由 - 已集成
+  [PASS] App.进度路由 - 已集成
+  [PASS] App.日志查看器 - 已集成
+  [PASS] App.护眼提醒 - 已集成
+  [PASS] App.错误边界 - 已集成
+  [PASS] App.语音预加载 - 已集成
+  [PASS] App.日志系统 - 已集成
+
+============================================================
+  8. CSS 样式文件检查
+============================================================
+  [PASS] styles/index.css - 3.3 KB
+  [PASS] pages/Home/Home.css - 4.4 KB
+  [PASS] pages/LessonList/LessonList.css - 3.4 KB
+  [PASS] pages/LessonDetail/LessonDetail.css - 27.0 KB
+  [PASS] pages/Progress/Progress.css - 4.7 KB
+  [PASS] components/ShootingGame.css - 8.9 KB
+  [PASS] components/MemoryCardGame.css - 6.5 KB
+  [PASS] components/AirplaneGame.css - 11.1 KB
+  [PASS] components/EyeProtectionModal.css - 6.9 KB
+  [PASS] components/Confetti.css - 0.5 KB
+  [PASS] components/lesson/GrammarCard.css - 18.0 KB
+
+============================================================
+  9. 日志集成覆盖率
+============================================================
+  [PASS] 已集成日志的模块 - 17 个
+  [WARN] 未集成日志 - components\Confetti.tsx, components\ErrorBoundary.tsx, components\lesson\ChineseVoiceSelector.tsx, components\lesson\TextDisplay.tsx, components\lesson\VocabularyCard.tsx, components\lesson\VoiceSelector.tsx, components\lesson\WordVoiceSelector.tsx, components\practice\PracticeMenu.tsx, services\eyeProtection.ts, services\lesson.ts, services\soundEffects.ts, services\speechRecognition.ts
+
+============================================================
+  10. LessonDetail 游戏集成检查
+============================================================
+  [PASS] LessonDetail.射击游戏 - 已集成
+  [PASS] LessonDetail.记忆翻牌 - 已集成
+  [PASS] LessonDetail.飞机大战 - 已集成
+  [PASS] LessonDetail.游戏切换状态 - 已集成
+  [PASS] LessonDetail.游戏完成处理 - 已集成
+  [PASS] LessonDetail.当前游戏状态 - 已集成
+  [PASS] LessonDetail.学习天数记录 - 已集成
+  [PASS] LessonDetail.成就检查 - 已集成
+  [PASS] LessonDetail.成就音效 - 已集成
+  [PASS] LessonDetail.纸屑庆祝 - 已集成
+
+============================================================
+  11. 源码完整性统计
+============================================================
+  [PASS] 源码总行数 - 38,527
+  [PASS] 源码总大小 - 1798 KB
+  [PASS] 源码文件数 - 43 个 TS/TSX 文件
+
+============================================================
+  验证结果汇总
+============================================================
+  [PASS] 通过: 209
+  [FAIL] 失败: 0
+  [WARN] 警告: 1
+  通过率: 100.0%
+
+============================================================
+  所有验证通过！
+============================================================
+

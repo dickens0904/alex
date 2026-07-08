@@ -1,0 +1,14 @@
+{
+  "bg_path": "I:\\新概念英语练习王\\src\\assets\\images\\lessons\\lesson-1-bg.png",
+  "output_path": "I:\\新概念英语练习王\\src\\assets\\images\\lessons\\lesson-1.jpg",
+  "title": "Lesson 1: Excuse me!",
+  "english_lines": [
+    "A: Excuse me!",
+    "B: Yes?",
+    "A: Is this your handbag?",
+    "B: Pardon?",
+    "A: Is this your handbag?",
+    "B: Yes, it is.",
+    "B: Thank you very much."
+  ]
+}

@@ -1,0 +1,748 @@
+/* ===== 飞机大战游戏样式 ===== */
+
+.airplane-game-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  height: 100%;
+  user-select: none;
+}
+
+/* ---- 顶部栏 ---- */
+.game-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px;
+  background: linear-gradient(135deg, #2d3561, #1e2243);
+  border-radius: 12px;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.game-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.game-subtitle {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.game-round {
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffd93d;
+}
+
+.game-score-display {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffd93d;
+}
+
+.back-btn {
+  padding: 6px 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  background: transparent;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* ---- 准备界面 ---- */
+
+.game-ready,
+.game-finished {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 12px;
+  text-align: center;
+  padding: 40px;
+}
+
+.ready-icon {
+  font-size: 80px;
+  animation: airplaneFloat 2s ease-in-out infinite;
+}
+
+@keyframes airplaneFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+.game-ready h2,
+.game-finished h2 {
+  font-size: 28px;
+  margin: 0;
+  color: #2d3561;
+}
+
+.game-ready p {
+  font-size: 15px;
+  color: #666;
+  margin: 0;
+}
+
+.ready-hint {
+  color: #e17055 !important;
+  font-weight: 600;
+}
+
+.start-btn {
+  padding: 14px 40px;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #0984e3, #74b9ff);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+  box-shadow: 0 4px 15px rgba(9, 132, 227, 0.4);
+}
+
+.start-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(9, 132, 227, 0.6);
+}
+
+/* ---- 单词提示区 ---- */
+
+.word-prompt {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  flex-wrap: wrap;
+}
+
+.prompt-label {
+  font-size: 14px;
+  color: #888;
+}
+
+.prompt-word {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2d3561;
+  letter-spacing: 1px;
+}
+
+.prompt-phonetic {
+  font-size: 14px;
+  color: #aaa;
+}
+
+.lives-display {
+  margin-left: auto;
+  font-size: 20px;
+  letter-spacing: 4px;
+}
+
+/* ---- 游戏区域 ---- */
+
+.game-area {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(180deg, #0c1445 0%, #1a237e 40%, #283593 100%);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 8px;
+  cursor: none;
+}
+
+/* ---- 星星 ---- */
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--duration) ease-in-out infinite;
+  animation-delay: var(--delay);
+  opacity: 0.6;
+}
+
+.star.large {
+  width: 3px;
+  height: 3px;
+  opacity: 0.8;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ---- 玩家飞机 ---- */
+
+.player-plane {
+  position: absolute;
+  bottom: 20px;
+  z-index: 15;
+  transition: left 0.05s linear;
+  pointer-events: none;
+}
+
+/* CSS 绘制的蓝色战斗机 */
+.plane-body {
+  width: 0;
+  height: 0;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-bottom: 40px solid #0984e3;
+  position: relative;
+}
+
+.plane-body::before {
+  content: '';
+  position: absolute;
+  top: 18px;
+  left: -32px;
+  width: 64px;
+  height: 10px;
+  background: linear-gradient(180deg, #74b9ff, #0984e3);
+  border-radius: 4px;
+}
+
+.plane-body::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: -10px;
+  width: 20px;
+  height: 8px;
+  background: linear-gradient(180deg, #74b9ff, #0984e3);
+  border-radius: 2px;
+  transform: rotate(45deg);
+  box-shadow: 8px -16px 0 0 #74b9ff;
+}
+
+/* 驾驶舱 */
+.plane-cockpit {
+  position: absolute;
+  top: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 10px;
+  background: radial-gradient(circle, #dfe6e9, #74b9ff);
+  border-radius: 50% 50% 40% 40%;
+}
+
+/* 引擎光效 */
+.plane-engine {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 14px;
+  background: linear-gradient(180deg, #ffd93d, #e17055, transparent);
+  border-radius: 0 0 50% 50%;
+  animation: engineFlicker 0.15s ease infinite;
+}
+
+@keyframes engineFlicker {
+  0% {
+    opacity: 1;
+    height: 14px;
+  }
+  50% {
+    opacity: 0.7;
+    height: 18px;
+  }
+  100% {
+    opacity: 1;
+    height: 14px;
+  }
+}
+
+/* ---- 敌机 ---- */
+
+.enemy {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.enemy.exploding {
+  animation: enemyExplode 0.5s ease forwards;
+}
+
+@keyframes enemyExplode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  30% {
+    transform: scale(1.4);
+  }
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+/* CSS 绘制的红色敌机 (倒三角，向下飞) */
+.enemy-plane {
+  width: 0;
+  height: 0;
+  border-left: 14px solid transparent;
+  border-right: 14px solid transparent;
+  border-top: 36px solid #e17055;
+  position: relative;
+}
+
+.enemy-plane::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -28px;
+  width: 56px;
+  height: 8px;
+  background: linear-gradient(180deg, #e17055, #d63031);
+  border-radius: 4px;
+}
+
+.enemy-plane::after {
+  content: '';
+  position: absolute;
+  top: -34px;
+  left: -8px;
+  width: 16px;
+  height: 6px;
+  background: linear-gradient(180deg, #e17055, #d63031);
+  border-radius: 2px;
+}
+
+/* 敌机驾驶舱 */
+.enemy-cockpit {
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 9px;
+  background: radial-gradient(circle, #fab1a0, #e17055);
+  border-radius: 50% 50% 40% 40%;
+}
+
+/* 敌机下方中文标签 */
+.enemy-label {
+  margin-top: 6px;
+  padding: 3px 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+/* ---- 子弹 ---- */
+
+.bullet {
+  position: absolute;
+  width: 4px;
+  height: 12px;
+  background: linear-gradient(180deg, #ffd93d, #fdcb6e);
+  border-radius: 2px;
+  box-shadow:
+    0 0 6px #ffd93d,
+    0 0 12px rgba(255, 217, 61, 0.4);
+  z-index: 20;
+  pointer-events: none;
+}
+
+/* ---- 爆炸特效 ---- */
+
+.explosion {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  z-index: 30;
+  pointer-events: none;
+}
+
+.explosion-ring {
+  position: absolute;
+  inset: 0;
+  border: 3px solid #ffd93d;
+  border-radius: 50%;
+  animation: ringExpand 0.5s ease-out forwards;
+}
+
+@keyframes ringExpand {
+  0% {
+    transform: scale(0.3);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+.explosion-particles {
+  position: absolute;
+  inset: 0;
+}
+
+.ap-particle {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: particleFly 0.5s ease-out forwards;
+}
+
+.ap-0 {
+  background: #e17055;
+  --px: -25px;
+  --py: -25px;
+}
+.ap-1 {
+  background: #ffd93d;
+  --px: 25px;
+  --py: -20px;
+}
+.ap-2 {
+  background: #fdcb6e;
+  --px: -20px;
+  --py: 20px;
+}
+.ap-3 {
+  background: #ff7675;
+  --px: 25px;
+  --py: 25px;
+}
+.ap-4 {
+  background: #fab1a0;
+  --px: 0px;
+  --py: -30px;
+}
+.ap-5 {
+  background: #e17055;
+  --px: -30px;
+  --py: 0px;
+}
+.ap-6 {
+  background: #ffd93d;
+  --px: 30px;
+  --py: 0px;
+}
+.ap-7 {
+  background: #fdcb6e;
+  --px: 0px;
+  --py: 30px;
+}
+
+@keyframes particleFly {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + var(--px)), calc(-50% + var(--py))) scale(0);
+    opacity: 0;
+  }
+}
+
+/* ---- 正确答案闪光 ---- */
+
+.correct-flash {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 184, 148, 0.15);
+  z-index: 5;
+  animation: flashPulse 0.3s ease;
+  pointer-events: none;
+}
+
+@keyframes flashPulse {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ---- 失去生命提示 ---- */
+
+.life-lost-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.life-lost-card {
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px 36px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.life-lost-card .round-result-icon {
+  font-size: 48px;
+  margin-bottom: 8px;
+}
+
+.life-lost-card p {
+  font-size: 16px;
+  color: #555;
+  margin: 4px 0;
+}
+
+.round-answer {
+  font-size: 22px;
+  font-weight: 700;
+  color: #2d3561;
+}
+
+.next-round-btn {
+  margin-top: 16px;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #0984e3, #74b9ff);
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.next-round-btn:hover {
+  transform: scale(1.05);
+}
+
+/* ---- 反馈 ---- */
+
+.game-feedback {
+  text-align: center;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 10px;
+  margin-top: 8px;
+  animation: feedbackPop 0.3s ease;
+}
+
+.game-feedback.correct {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  color: #155724;
+}
+
+.game-feedback.wrong {
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  color: #721c24;
+}
+
+.streak-fire {
+  color: #e17055;
+  animation: streakPulse 0.5s ease infinite;
+}
+
+@keyframes streakPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes feedbackPop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ---- 结算界面 ---- */
+
+.game-finished {
+  background: linear-gradient(180deg, #0c1445, #1a237e);
+  border-radius: 12px;
+  min-height: 400px;
+}
+
+.game-finished h2 {
+  color: #fff !important;
+}
+
+.result-stars {
+  font-size: 48px;
+  animation: starPop 0.8s ease;
+}
+
+@keyframes starPop {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.result-score {
+  font-size: 48px;
+  font-weight: 800;
+  color: #ffd93d;
+}
+
+.result-detail {
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.result-percent {
+  font-size: 20px;
+  color: #74b9ff;
+}
+
+.result-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.back-game-btn {
+  padding: 14px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50px;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.back-game-btn:hover {
+  border-color: #74b9ff;
+  color: #74b9ff;
+}
+
+/* ---- 底部进度 ---- */
+
+.game-bottom-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  gap: 8px;
+}
+
+.round-progress {
+  display: flex;
+  gap: 6px;
+}
+
+.round-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ddd;
+  transition: background 0.3s;
+}
+
+.round-dot.done {
+  background: #00b894;
+}
+
+.round-dot.current {
+  background: #0984e3;
+  animation: dotPulse 1s ease infinite;
+}
+
+@keyframes dotPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.3);
+  }
+}
+
+.round-dot.wrong-dot {
+  background: #e17055;
+}

@@ -1,0 +1,10 @@
+node_modules
+dist
+build
+coverage
+release
+*.min.js
+test-app.js
+test-tts-real.js
+test-deep.js
+scripts

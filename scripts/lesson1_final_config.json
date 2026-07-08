@@ -1,0 +1,14 @@
+{
+  "bg_path": "I:\\新概念英语练习王\\src\\assets\\images\\lessons\\test-lesson1-v3.png",
+  "output_path": "I:\\新概念英语练习王\\src\\assets\\images\\lessons\\lesson-1-final.jpg",
+  "title": "Lesson 1: Excuse me!",
+  "panels": [
+    {"speaker": "A", "text": "Excuse me!"},
+    {"speaker": "B", "text": "Yes?"},
+    {"speaker": "A", "text": "Is this your handbag?"},
+    {"speaker": "B", "text": "Pardon?"},
+    {"speaker": "A", "text": "Is this your handbag?"},
+    {"speaker": "B", "text": "Yes, it is."},
+    {"speaker": "B", "text": "Thank you very much."}
+  ]
+}

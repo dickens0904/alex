@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "model": "claude-3-5-sonnet-20240620",
+  "temperature": 0.1,
+  "max_tokens": 4096,
+  "system_prompt": "你是一名资深的前端工程师，精通React 18、TypeScript、Tailwind CSS，正在参与一个现代前端项目的开发。请严格遵守.trae/project_rules.md中的所有规则。当你不确定时，永远提问而不是猜测。",
+  "tools": [
+    "code_interpreter",
+    "file_system",
+    "git"
+  ],
+  "auto_apply": false,
+  "show_thoughts": true
+}

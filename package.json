@@ -1,0 +1,107 @@
+{
+  "name": "new-concept-english-practice",
+  "version": "1.0.0",
+  "description": "新概念英语第一册学习程序 - 为8岁儿童设计的英语练习应用",
+  "main": "dist/electron/electron/main.js",
+  "author": "Your Name",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:renderer\" \"npm run dev:electron\"",
+    "dev:renderer": "webpack serve --config webpack.renderer.config.js --mode development",
+    "dev:electron": "set \"NODE_ENV=development\" && wait-on http://localhost:3000 && tsc -p tsconfig.electron.json && electron .",
+    "build": "npm run build:renderer && npm run build:electron",
+    "build:renderer": "set \"NODE_ENV=production\" && webpack --config webpack.renderer.config.js --mode production && node scripts/copy-assets.js",
+    "build:electron": "tsc -p tsconfig.electron.json",
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "lint": "eslint src/**/*.{ts,tsx} electron/**/*.ts",
+    "lint:fix": "eslint src/**/*.{ts,tsx} electron/**/*.ts --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"electron/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,css}\" \"electron/**/*.ts\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "audit": "npm audit --production"
+  },
+  "dependencies": {
+    "better-sqlite3": "^9.2.2",
+    "msedge-tts": "^2.0.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.8",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.10.4",
+    "@types/react": "^18.2.43",
+    "@types/react-dom": "^18.2.17",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "concurrently": "^8.2.2",
+    "css-loader": "^6.8.1",
+    "electron": "^28.3.3",
+    "electron-builder": "^24.9.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "html-webpack-plugin": "^5.5.3",
+    "jest": "^30.4.2",
+    "mini-css-extract-plugin": "^2.7.6",
+    "prettier": "^3.1.1",
+    "puppeteer-core": "^25.2.1",
+    "style-loader": "^3.3.3",
+    "terser-webpack-plugin": "^5.3.9",
+    "ts-jest": "^29.4.11",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "wait-on": "^7.2.0",
+    "webpack": "^5.89.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  },
+  "build": {
+    "appId": "com.english.practice",
+    "productName": "新概念英语练习王",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "resources/**/*",
+      "node_modules/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "resources/images/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "installerIcon": "resources/images/icon.ico",
+      "uninstallerIcon": "resources/images/icon.ico",
+      "installerHeaderIcon": "resources/images/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "新概念英语练习王"
+    }
+  }
+}

@@ -1,0 +1,1671 @@
+.lesson-detail-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* 头部 */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.back-btn {
+  padding: 10px 20px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.back-btn:hover {
+  background: var(--primary-light);
+  color: white;
+}
+
+.page-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.lesson-badge {
+  padding: 8px 16px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.voice-selector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.voice-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.voice-select {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: white;
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.voice-select:hover {
+  border-color: var(--primary-color);
+}
+
+.voice-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+.tts-badge {
+  padding: 3px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.tts-badge.edge {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.tts-badge.web {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.rate-selector {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rate-label {
+  font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.rate-select {
+  padding: 6px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: white;
+  font-size: 14px;
+  color: var(--text-primary);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.rate-select:hover {
+  border-color: var(--primary-color);
+}
+
+.rate-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px var(--primary-light);
+}
+
+/* 语法重点 */
+.grammar-focus-section {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 40px;
+  background: white;
+  border-bottom: 2px solid var(--bg-tertiary);
+}
+
+.grammar-icon {
+  font-size: 32px;
+}
+
+.grammar-text {
+  font-size: 18px;
+}
+
+.grammar-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.grammar-content {
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* 标签页 */
+.tabs {
+  display: flex;
+  gap: 0;
+  padding: 0 40px;
+  background: white;
+  border-bottom: 2px solid var(--bg-tertiary);
+}
+
+.tab {
+  flex: 1;
+  padding: 16px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 18px;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.tab:hover {
+  color: var(--primary-color);
+  background: var(--bg-tertiary);
+}
+
+.tab.active {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+  background: var(--bg-tertiary);
+}
+
+/* 内容区域 */
+.content-area {
+  flex: 1;
+  overflow-y: auto;
+  padding: 40px;
+}
+
+/* 单词学习 */
+.vocabulary-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.vocabulary-card {
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-normal);
+}
+
+.vocabulary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.vocab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.vocab-word {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.speak-word-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-light);
+  color: var(--primary-color);
+  border-radius: 50%;
+  font-size: 20px;
+  transition: all var(--transition-fast);
+}
+
+.speak-word-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.vocab-phonetic {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.vocab-meaning {
+  font-size: 20px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.vocab-examples {
+  margin-bottom: 16px;
+}
+
+.example-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-sm);
+  margin-bottom: 8px;
+}
+
+.example-text {
+  font-size: 14px;
+  color: var(--text-secondary);
+  flex: 1;
+  margin-right: 12px;
+}
+
+.speak-sentence-btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-light);
+  color: var(--secondary-color);
+  border-radius: 50%;
+  font-size: 16px;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.speak-sentence-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+/* 课文学习 */
+.text-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.text-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.text-illustration {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 24px auto;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  background: var(--bg-tertiary);
+}
+
+.text-illustration img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.text-content {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  margin-bottom: 24px;
+}
+
+.paragraph {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.paragraph:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.paragraph-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.paragraph-voice-selector {
+  margin-top: 6px;
+  margin-left: 32px;
+}
+
+.speaker {
+  font-weight: bold;
+  color: var(--secondary-color);
+  font-size: 20px;
+}
+
+.english {
+  font-size: 20px;
+  color: var(--text-primary);
+  margin-left: 8px;
+}
+
+.translation {
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--text-secondary);
+  padding-left: 32px;
+}
+
+.speak-all-btn {
+  width: 100%;
+  padding: 16px;
+  background: var(--secondary-color);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: 18px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.speak-all-btn:hover {
+  background: var(--secondary-dark);
+}
+
+/* 练习 */
+.practice-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.practice-card {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.practice-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.practice-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.practice-card h3 {
+  font-size: 24px;
+  color: var(--primary-color);
+  margin-bottom: 16px;
+}
+
+.practice-card p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+}
+
+.practice-count {
+  font-size: 14px;
+  color: var(--text-tertiary);
+  background: var(--bg-tertiary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.start-practice-btn {
+  padding: 12px 24px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.start-practice-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* 练习容器 */
+.exercise-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 40px;
+}
+
+.exercise-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.back-btn.small {
+  padding: 8px 16px;
+  font-size: 14px;
+}
+
+.exercise-progress {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.exercise-score {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.exercise-type {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.exercise-content {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.question {
+  font-size: 20px;
+  color: var(--text-primary);
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.listen-btn {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  background: var(--secondary-color);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  transition: all var(--transition-fast);
+}
+
+.listen-btn:hover {
+  background: var(--secondary-dark);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.option-btn {
+  padding: 16px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  text-align: left;
+  transition: all var(--transition-fast);
+}
+
+.option-btn:hover:not(:disabled) {
+  background: var(--primary-light);
+  color: white;
+}
+
+.option-btn.selected {
+  background: var(--primary-color);
+  color: white;
+}
+
+.option-btn.correct {
+  background: var(--success-color);
+  color: white;
+}
+
+.option-btn.wrong {
+  background: var(--danger-color);
+  color: white;
+}
+
+.instruction {
+  font-size: 18px;
+  color: var(--text-secondary);
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.sentence-to-speak {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 24px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+}
+
+.recording-section {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.record-btn {
+  padding: 24px 48px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: 20px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.record-btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.record-btn.recording {
+  background: var(--danger-color);
+  animation: pulseRecord 1s infinite;
+}
+
+@keyframes pulseRecord {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.recording-tip {
+  margin-top: 16px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.spelling-input {
+  width: 100%;
+  padding: 16px;
+  font-size: 24px;
+  text-align: center;
+  border: 2px solid var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  margin-bottom: 24px;
+  outline: none;
+}
+
+.spelling-input:focus {
+  border-color: var(--primary-color);
+}
+
+.spelling-input:disabled {
+  background: var(--bg-tertiary);
+}
+
+.hint {
+  font-size: 16px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.result {
+  padding: 16px;
+  border-radius: var(--radius-md);
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.result.correct {
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--success-color);
+}
+
+.result.wrong {
+  background: rgba(244, 67, 54, 0.1);
+  color: var(--danger-color);
+}
+
+.result .encouragement-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ff6b6b;
+  margin-top: 8px;
+  animation: encourage-bounce 0.6s ease;
+}
+
+.result .streak-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #ff6b6b, #ff9f43);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 10px;
+  animation: streak-pulse 0.5s ease infinite alternate;
+}
+
+@keyframes encourage-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes streak-pulse {
+  from {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.4);
+  }
+  to {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px 4px rgba(255, 107, 107, 0.2);
+  }
+}
+
+.submit-btn,
+.next-btn {
+  width: 100%;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  font-size: 18px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.submit-btn {
+  background: var(--primary-color);
+  color: white;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: var(--primary-dark);
+}
+
+.submit-btn:disabled {
+  background: var(--bg-tertiary);
+  color: var(--text-tertiary);
+}
+
+.next-btn {
+  background: var(--secondary-color);
+  color: white;
+}
+
+.next-btn:hover {
+  background: var(--secondary-dark);
+}
+
+.speaking-result {
+  margin-bottom: 24px;
+}
+
+.speaking-score {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* 练习结果 */
+.practice-result {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+.result-emoji {
+  font-size: 100px;
+  margin-bottom: 16px;
+}
+
+.result-emoji.bounce {
+  animation: result-bounce 1.5s ease infinite;
+}
+
+@keyframes result-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.result-title {
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.result-stars {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.star {
+  font-size: 48px;
+  transition: all 0.3s ease;
+}
+
+.star-hidden {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.star-visible {
+  opacity: 1;
+  transform: scale(1);
+  animation: star-pop 0.5s ease;
+}
+
+@keyframes star-pop {
+  0% {
+    transform: scale(0) rotate(-180deg);
+  }
+  60% {
+    transform: scale(1.3) rotate(10deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.result-icon {
+  font-size: 120px;
+  margin-bottom: 24px;
+}
+
+.practice-result h2 {
+  font-size: 36px;
+  color: white;
+  margin-bottom: 24px;
+}
+
+.result-score {
+  font-size: 48px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: white;
+}
+
+.score-value {
+  font-size: 72px;
+  color: white;
+}
+
+.score-divider {
+  margin: 0 8px;
+  opacity: 0.7;
+}
+
+.score-total {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 36px;
+}
+
+.result-message {
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+.result-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.retry-btn,
+.back-btn {
+  padding: 16px 32px;
+  border: none;
+  border-radius: 16px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.retry-btn {
+  background: white;
+  color: #667eea;
+}
+
+.back-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.retry-btn:hover,
+.back-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.back-to-menu-btn {
+  padding: 16px 48px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: 20px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.back-to-menu-btn:hover {
+  background: var(--primary-dark);
+}
+
+/* 加载状态 */
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 24px;
+  color: var(--text-secondary);
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .header {
+    padding: 16px 20px;
+  }
+
+  .page-title {
+    font-size: 24px;
+  }
+
+  .tabs {
+    padding: 0 20px;
+  }
+
+  .tab {
+    font-size: 16px;
+    padding: 12px;
+  }
+
+  .content-area {
+    padding: 20px;
+  }
+
+  .vocabulary-section {
+    grid-template-columns: 1fr;
+  }
+
+  .practice-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== 新增样式：新题型支持 ===== */
+
+.exercise-type-label {
+  font-size: 24px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 32px;
+}
+
+/* 口语练习 - 翻译文本 */
+.sentence-translation {
+  font-size: 18px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 12px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+/* 拼写练习 - 提示信息区 */
+.spelling-hints {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+}
+
+.spelling-hints .hint {
+  font-size: 18px;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.spelling-hints .hint:last-child {
+  margin-bottom: 0;
+}
+
+.spelling-hints .hint.example {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
+/* 填空练习 - 句子和翻译 */
+.fill-sentence {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 12px;
+  padding: 24px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  letter-spacing: 1px;
+}
+
+.fill-translation {
+  font-size: 16px;
+  color: var(--text-secondary);
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+/* 阅读理解 - 课文区域 */
+.reading-passage {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  margin-bottom: 24px;
+  border-left: 4px solid var(--secondary-color);
+}
+
+.passage-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--secondary-color);
+  margin-bottom: 8px;
+}
+
+.passage-text {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  white-space: pre-wrap;
+}
+
+/* 练习卡片 - 禁用状态 */
+.practice-card.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.practice-card.disabled:hover {
+  transform: none;
+  box-shadow: var(--shadow-md);
+}
+
+/* 练习结果 - 操作按钮组 */
+.result-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.retry-btn {
+  padding: 16px 48px;
+  background: var(--secondary-color);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: 20px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.retry-btn:hover {
+  background: var(--secondary-dark);
+}
+
+/* 小型发音按钮 */
+.speak-sentence-btn.small {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 6px;
+  font-size: 14px;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+/* ===== 成就弹窗 ===== */
+.achievement-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.achievement-popup-content {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  animation: slideInUp 0.4s ease;
+}
+
+.achievement-popup-title {
+  font-size: 28px;
+  color: var(--primary-color);
+  margin-bottom: 24px;
+}
+
+.achievement-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  padding: 16px;
+  background: linear-gradient(135deg, #fff8e1, #ffecb3);
+  border-radius: 12px;
+}
+
+.badge-icon {
+  font-size: 48px;
+}
+
+.badge-name {
+  font-size: 20px;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.badge-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.achievement-popup-close {
+  margin-top: 16px;
+  padding: 14px 40px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: 18px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.achievement-popup-close:hover {
+  background: var(--primary-dark);
+}
+
+/* ===== 语法学习组件 ===== */
+.grammar-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+}
+
+.grammar-header {
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+  color: white;
+  padding: 24px 32px;
+}
+
+.grammar-header h3 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.grammar-section {
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--bg-tertiary);
+}
+
+.grammar-section:last-of-type {
+  border-bottom: none;
+}
+
+.grammar-section h4 {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--primary-light);
+}
+
+.explanation {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.rules-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rules-list li {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  padding: 12px 16px;
+  margin: 8px 0;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary-color);
+}
+
+.examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.example-item {
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.example-english {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.speak-example-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--secondary-light);
+  color: var(--secondary-color);
+  border-radius: 50%;
+  font-size: 14px;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.speak-example-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.example-chinese {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.tips-section {
+  background: #fff8e1;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.tips-list li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #8d6e00;
+  padding: 10px 16px;
+  margin: 8px 0;
+  background: #fffde7;
+  border-radius: var(--radius-md);
+  border-left: 4px solid #ffd600;
+}
+
+.tips-list li::before {
+  content: '💡 ';
+}
+
+.exercise-toggle {
+  padding: 24px 32px;
+  text-align: center;
+}
+
+.practice-btn {
+  padding: 14px 40px;
+  background: var(--accent-color);
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: 18px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.practice-btn:hover {
+  background: #e65100;
+  transform: translateY(-2px);
+}
+
+.grammar-exercises {
+  padding: 24px 32px;
+  background: var(--bg-tertiary);
+  border-top: 2px solid var(--primary-light);
+}
+
+.exercise-progress {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.exercise-question {
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  margin-bottom: 20px;
+}
+
+.exercise-question p {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+.exercise-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.option-btn {
+  padding: 16px 20px;
+  background: white;
+  border: 2px solid var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  text-align: left;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+.option-btn:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  background: var(--primary-light);
+  color: white;
+}
+
+.option-btn.correct {
+  border-color: #4caf50;
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.option-btn.wrong {
+  border-color: #f44336;
+  background: #ffebee;
+  color: #c62828;
+}
+
+.exercise-result {
+  background: white;
+  padding: 24px;
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.result-correct {
+  font-size: 20px;
+  font-weight: bold;
+  color: #4caf50;
+  margin: 0 0 12px 0;
+}
+
+.result-wrong {
+  font-size: 20px;
+  font-weight: bold;
+  color: #f44336;
+  margin: 0 0 12px 0;
+}
+
+.result-explanation {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 20px 0;
+}
+
+.next-btn {
+  padding: 12px 32px;
+  background: var(--primary-color);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.next-btn:hover {
+  background: var(--primary-dark);
+}
+
+.final-score p {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin: 0 0 16px 0;
+}
+
+.reset-btn {
+  padding: 12px 32px;
+  background: var(--accent-color);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.reset-btn:hover {
+  background: #e65100;
+}
+
+/* 语法学习区域 */
+.grammar-learning-section {
+  padding: 24px;
+}
+
+.no-grammar {
+  text-align: center;
+  padding: 60px 24px;
+  background: white;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.no-grammar p {
+  font-size: 16px;
+  color: var(--text-secondary);
+  margin: 0 0 12px 0;
+}
+
+.grammar-summary {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--primary-color);
+  padding: 16px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+}
+
+/* ===== 声音选择器组件 ===== */
+
+.voice-selector-inline {
+  position: relative;
+  display: inline-block;
+}
+
+/* 触发按钮 */
+.voice-trigger-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  background: var(--bg-tertiary);
+  border-radius: 20px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.voice-trigger-btn:hover,
+.voice-trigger-btn.active {
+  background: var(--secondary-light);
+  color: white;
+}
+
+.voice-gender-icon {
+  font-size: 14px;
+  line-height: 1;
+}
+
+.voice-name-short {
+  font-weight: 600;
+  max-width: 60px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.voice-dropdown-arrow {
+  font-size: 8px;
+  opacity: 0.6;
+}
+
+/* 下拉面板 */
+.voice-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  z-index: 100;
+  width: 300px;
+  background: white;
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: voiceDropdownIn 0.2s ease;
+}
+
+@keyframes voiceDropdownIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 性别切换标签 */
+.voice-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--bg-tertiary);
+}
+
+.voice-tab {
+  flex: 1;
+  padding: 10px 12px;
+  background: transparent;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  border-bottom: 3px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.voice-tab:hover {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.voice-tab.active {
+  color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+  background: white;
+}
+
+/* 声音列表 */
+.voice-list {
+  max-height: 240px;
+  overflow-y: auto;
+  padding: 6px;
+}
+
+.voice-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.voice-item:hover {
+  background: var(--bg-tertiary);
+}
+
+.voice-item.selected {
+  background: rgba(74, 144, 226, 0.1);
+  border-left: 3px solid var(--secondary-color);
+}
+
+.voice-item-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.voice-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.voice-item-accent {
+  font-size: 11px;
+  color: var(--text-light);
+  background: var(--bg-tertiary);
+  padding: 1px 6px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.voice-item-desc {
+  font-size: 11px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.voice-item.selected .voice-item-name {
+  color: var(--secondary-color);
+}
+
+/* 试听按钮 */
+.voice-preview-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-tertiary);
+  border-radius: 50%;
+  font-size: 12px;
+  color: var(--secondary-color);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.voice-preview-btn:hover {
+  background: var(--secondary-color);
+  color: white;
+  transform: scale(1.1);
+}
+
+.voice-preview-btn.playing {
+  background: var(--secondary-color);
+  color: white;
+  animation: pulse 1s infinite;
+}

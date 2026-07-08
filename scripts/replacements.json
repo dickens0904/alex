@@ -1,0 +1,4798 @@
+{
+  "3": [
+    {
+      "speaker": "",
+      "content": "My coat and my umbrella please."
+    },
+    {
+      "speaker": "",
+      "content": "Here is my ticket."
+    },
+    {
+      "speaker": "",
+      "content": "Thank you, sir."
+    },
+    {
+      "speaker": "",
+      "content": "Number five."
+    },
+    {
+      "speaker": "",
+      "content": "Here's your umbrella and your coat."
+    },
+    {
+      "speaker": "",
+      "content": "This is not my umbrella."
+    },
+    {
+      "speaker": "",
+      "content": "Sorry, sir."
+    },
+    {
+      "speaker": "",
+      "content": "Is this your umbrella?"
+    },
+    {
+      "speaker": "",
+      "content": "No, it isn't."
+    },
+    {
+      "speaker": "",
+      "content": "Is this it?"
+    },
+    {
+      "speaker": "",
+      "content": "Yes, it is."
+    },
+    {
+      "speaker": "",
+      "content": "Thank you very much."
+    }
+  ],
+  "5": [
+    {
+      "speaker": "MR. BLAKE",
+      "content": "Good morning."
+    },
+    {
+      "speaker": "STUDENTS",
+      "content": "Good morning, Mr."
+    },
+    {
+      "speaker": "STUDENTS",
+      "content": "Blake."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "This is Miss Sophie Dupont."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "Sophie is a new student."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "She is French."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "Sophie, this is Hans."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "He is German."
+    },
+    {
+      "speaker": "HANS",
+      "content": "Nice to meet you."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "And this is Naoko."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "She's Japanese."
+    },
+    {
+      "speaker": "NAOKO",
+      "content": "Nice to meet you."
+    },
+    {
+      "speaker": "MR.BLAKE",
+      "content": "And this is Chang-woo."
+    },
+    {
+      "speaker": "MR.BLAKE",
+      "content": "He's Korean."
+    },
+    {
+      "speaker": "MR.BLAKE",
+      "content": "CHANG-WOO : Nice to meet you."
+    },
+    {
+      "speaker": "MR.BLAKE",
+      "content": "And this is Luming."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "He's Chinese."
+    },
+    {
+      "speaker": "LUMING",
+      "content": "Nice to meet you."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "And this is Xiaohui."
+    },
+    {
+      "speaker": "MR. BLAKE",
+      "content": "She's Chinese, too."
+    },
+    {
+      "speaker": "XIAOHUI",
+      "content": "Nice to meet you."
+    }
+  ],
+  "6": [
+    {
+      "speaker": "",
+      "content": "It's a Volvo."
+    },
+    {
+      "speaker": "",
+      "content": "(Swedish) It's a Peugeot."
+    },
+    {
+      "speaker": "",
+      "content": "(French) It's a Mercedes."
+    },
+    {
+      "speaker": "",
+      "content": "(German) It's a Toyota."
+    },
+    {
+      "speaker": "",
+      "content": "(Japanese) It's a Daewoo."
+    },
+    {
+      "speaker": "",
+      "content": "(Korean) It's a Mini."
+    },
+    {
+      "speaker": "",
+      "content": "(English) It's a Ford."
+    },
+    {
+      "speaker": "",
+      "content": "(American) It's a Fiat."
+    },
+    {
+      "speaker": "",
+      "content": "(Italian)"
+    }
+  ],
+  "7": [
+    {
+      "speaker": "ROBERT",
+      "content": "I am a new student."
+    },
+    {
+      "speaker": "ROBERT",
+      "content": "My name's Robert."
+    },
+    {
+      "speaker": "SOPHIE",
+      "content": "Nice to meet you."
+    },
+    {
+      "speaker": "SOPHIE",
+      "content": "My name's Sophie."
+    },
+    {
+      "speaker": "ROBERT",
+      "content": "Are you French?"
+    },
+    {
+      "speaker": "SOPHIE",
+      "content": "Yes, I am."
+    },
+    {
+      "speaker": "SOPHIE",
+      "content": "Are you French, too?"
+    },
+    {
+      "speaker": "ROBERT",
+      "content": "No, I am not."
+    },
+    {
+      "speaker": "SOPHIE",
+      "content": "What nationality are you?"
+    },
+    {
+      "speaker": "ROBERT",
+      "content": "I'm Italian."
+    },
+    {
+      "speaker": "ROBERT",
+      "content": "Are you a teacher?"
+    },
+    {
+      "speaker": "SOPHIE",
+      "content": "No, I'm not."
+    },
+    {
+      "speaker": "ROBERT",
+      "content": "What's your job?"
+    },
+    {
+      "speaker": "SOPHIE",
+      "content": "I'm a keyboard operator."
+    },
+    {
+      "speaker": "SOPHIE",
+      "content": "What's your job?"
+    },
+    {
+      "speaker": "ROBERT",
+      "content": "I'm an engineer."
+    }
+  ],
+  "8": [
+    {
+      "speaker": "",
+      "content": "I'm a policeman."
+    },
+    {
+      "speaker": "",
+      "content": "I'm a policewoman."
+    },
+    {
+      "speaker": "",
+      "content": "I'm a taxi driver."
+    },
+    {
+      "speaker": "",
+      "content": "I'm an air hostess."
+    },
+    {
+      "speaker": "",
+      "content": "I'm a postman."
+    },
+    {
+      "speaker": "",
+      "content": "I'm a nurse."
+    },
+    {
+      "speaker": "",
+      "content": "I'm a mechanic."
+    },
+    {
+      "speaker": "",
+      "content": "I'm a hairdresser."
+    },
+    {
+      "speaker": "",
+      "content": "I'm a housewife I'm a milkman."
+    }
+  ],
+  "9": [
+    {
+      "speaker": "STEVEN",
+      "content": "Hello, Helen."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "Hi, Steven."
+    },
+    {
+      "speaker": "STEVEN",
+      "content": "How are you today?"
+    },
+    {
+      "speaker": "HELEN",
+      "content": "I'm very well, thank you."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "And you?"
+    },
+    {
+      "speaker": "STEVEN",
+      "content": "I'm fine, thanks."
+    },
+    {
+      "speaker": "STEVEN",
+      "content": "How is Tony?"
+    },
+    {
+      "speaker": "HELEN",
+      "content": "He's fine, thanks."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "How's Emma?"
+    },
+    {
+      "speaker": "STEVEN",
+      "content": "She's very well, too, Helen."
+    },
+    {
+      "speaker": "STEVEN",
+      "content": "Goodbye, Helen."
+    },
+    {
+      "speaker": "STEVEN",
+      "content": "Nice to see you."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "Nice to see you, too, Steven."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "Goodbye."
+    }
+  ],
+  "10": [
+    {
+      "speaker": "",
+      "content": "that man!"
+    },
+    {
+      "speaker": "",
+      "content": "that woman!"
+    },
+    {
+      "speaker": "",
+      "content": "that policeman!"
+    },
+    {
+      "speaker": "",
+      "content": "that policewoman!"
+    },
+    {
+      "speaker": "",
+      "content": "(fat) (thin) (tall) (short) Steven!"
+    },
+    {
+      "speaker": "",
+      "content": "that nurse!"
+    },
+    {
+      "speaker": "",
+      "content": "that mechanic!"
+    },
+    {
+      "speaker": "",
+      "content": "Emma!"
+    },
+    {
+      "speaker": "",
+      "content": "(hot) (dirty) (clean) (cold) that milkman!"
+    },
+    {
+      "speaker": "",
+      "content": "that air hostess!"
+    },
+    {
+      "speaker": "",
+      "content": "that hairdresser!"
+    },
+    {
+      "speaker": "",
+      "content": "that housewife!"
+    },
+    {
+      "speaker": "",
+      "content": "(busy) (old) (young) (lazy)"
+    }
+  ],
+  "11": [
+    {
+      "speaker": "TEACHER",
+      "content": "Whose shirt is that?"
+    },
+    {
+      "speaker": "TEACHER",
+      "content": "Is this your shirt, Dave?"
+    },
+    {
+      "speaker": "DAVE",
+      "content": "No, sir."
+    },
+    {
+      "speaker": "DAVE",
+      "content": "It's not my shirt."
+    },
+    {
+      "speaker": "DAVE",
+      "content": "This is my shirt."
+    },
+    {
+      "speaker": "DAVE",
+      "content": "My shirt's blue."
+    },
+    {
+      "speaker": "TEACHER",
+      "content": "Is this shirt Tim's?"
+    },
+    {
+      "speaker": "DAVE",
+      "content": "Perhaps it is, sir."
+    },
+    {
+      "speaker": "DAVE",
+      "content": "Tim's shirt's white."
+    },
+    {
+      "speaker": "TEACHER",
+      "content": "Tim!"
+    },
+    {
+      "speaker": "TIM",
+      "content": "Yes, sir?"
+    },
+    {
+      "speaker": "TEACHER",
+      "content": "Is this your shirt?"
+    },
+    {
+      "speaker": "TIM",
+      "content": "Yes, sir."
+    },
+    {
+      "speaker": "TEACHER",
+      "content": "Here you are."
+    },
+    {
+      "speaker": "TEACHER",
+      "content": "Catch!"
+    },
+    {
+      "speaker": "TIM",
+      "content": "Thank you, sir."
+    }
+  ],
+  "12": [
+    {
+      "speaker": "",
+      "content": "handbag car coat It's Paul's."
+    },
+    {
+      "speaker": "",
+      "content": "It's Stella's."
+    },
+    {
+      "speaker": "",
+      "content": "It's Sophie's."
+    },
+    {
+      "speaker": "",
+      "content": "umbrella pen dress It's my son's."
+    },
+    {
+      "speaker": "",
+      "content": "It's Steven's."
+    },
+    {
+      "speaker": "",
+      "content": "It's my daughter's."
+    },
+    {
+      "speaker": "",
+      "content": "skirt suit blouse It's my mother's."
+    },
+    {
+      "speaker": "",
+      "content": "It's my father's."
+    },
+    {
+      "speaker": "",
+      "content": "It's my sister's."
+    },
+    {
+      "speaker": "",
+      "content": "tie It's my brother's."
+    }
+  ],
+  "13": [
+    {
+      "speaker": "ANNA",
+      "content": "It's green."
+    },
+    {
+      "speaker": "ANNA",
+      "content": "Come upstairs and see it."
+    },
+    {
+      "speaker": "LOUISE",
+      "content": "Thank you."
+    },
+    {
+      "speaker": "ANNA",
+      "content": "Look!"
+    },
+    {
+      "speaker": "ANNA",
+      "content": "Here it is!"
+    },
+    {
+      "speaker": "LOUISE",
+      "content": "That's a nice dress."
+    },
+    {
+      "speaker": "LOUISE",
+      "content": "It's very smart."
+    },
+    {
+      "speaker": "ANNA",
+      "content": "My hat's new, too."
+    },
+    {
+      "speaker": "LOUISE",
+      "content": "What colour is it?"
+    },
+    {
+      "speaker": "ANNA",
+      "content": "It's the same colour."
+    },
+    {
+      "speaker": "ANNA",
+      "content": "It's green, too."
+    },
+    {
+      "speaker": "LOUISE",
+      "content": "That is a lovely hat!"
+    }
+  ],
+  "14": [
+    {
+      "speaker": "",
+      "content": "black umbrella car blue white shirt coat grey brown carpet case pa tie blouse yellow orange dog hat grey and black brown and white"
+    }
+  ],
+  "15": [
+    {
+      "speaker": "GIRLS",
+      "content": "No, we are not."
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "We are Danish."
+    },
+    {
+      "speaker": "CUSTOMS OFFICER",
+      "content": "Are your friends Danish, too?"
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "No, they aren't."
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "They are Norwegian."
+    },
+    {
+      "speaker": "CUSTOMS OFFICER",
+      "content": "Your passports, please."
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "Here they are."
+    },
+    {
+      "speaker": "CUSTOMS OFFICER",
+      "content": "Are these your cases?"
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "No, they aren't."
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "Our cases are brown."
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "Here they are."
+    },
+    {
+      "speaker": "CUSTOMS OFFICER",
+      "content": "Are you tourists?"
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "Yes, we are."
+    },
+    {
+      "speaker": "CUSTOMS OFFICER",
+      "content": "Are your friends tourists too?"
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "Yes, they are."
+    },
+    {
+      "speaker": "CUSTOMS OFFICER",
+      "content": "That's fine."
+    },
+    {
+      "speaker": "GIRLS",
+      "content": "Thank you very much."
+    }
+  ],
+  "16": [
+    {
+      "speaker": "",
+      "content": "Russian?"
+    },
+    {
+      "speaker": "",
+      "content": "English?"
+    },
+    {
+      "speaker": "",
+      "content": "American?"
+    },
+    {
+      "speaker": "",
+      "content": "Dutch?"
+    },
+    {
+      "speaker": "",
+      "content": "Are these your ...?"
+    },
+    {
+      "speaker": "",
+      "content": "What colour are your ...?"
+    }
+  ],
+  "17": [
+    {
+      "speaker": "MR. JACKSON",
+      "content": "Come and meet our employees, Mr."
+    },
+    {
+      "speaker": "MR. JACKSON",
+      "content": "Richards."
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "Thank you, Mr."
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "Jackson."
+    },
+    {
+      "speaker": "MR. JACKSON",
+      "content": "This is Nicola Grey, and this is Claire Taylor."
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "How do you do?"
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "Those women are very hard-working."
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "What are their jobs?"
+    },
+    {
+      "speaker": "MR. JACKSON",
+      "content": "They're keyboard operators."
+    },
+    {
+      "speaker": "MR. JACKSON",
+      "content": "This is Michael Baker, and this is Jeremy Short"
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "How do you do?"
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "They aren't very busy!"
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "What are their jobs?"
+    },
+    {
+      "speaker": "MR. JACKSON",
+      "content": "They're sales reps."
+    },
+    {
+      "speaker": "MR. JACKSON",
+      "content": "They're very lazy."
+    },
+    {
+      "speaker": "MR. RICHARDS",
+      "content": "Who is this young man?"
+    },
+    {
+      "speaker": "MR. JACKSON",
+      "content": "This is Jim."
+    },
+    {
+      "speaker": "MR. JACKSON",
+      "content": "He's our office assistant."
+    }
+  ],
+  "19": [
+    {
+      "speaker": "GIRL",
+      "content": "We're tired ."
+    },
+    {
+      "speaker": "BOY",
+      "content": "."
+    },
+    {
+      "speaker": "BOY",
+      "content": "and thirsty, Mum."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Sit down here."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Are you all right now?"
+    },
+    {
+      "speaker": "BOY",
+      "content": "No, we aren't."
+    },
+    {
+      "speaker": "BOY",
+      "content": "Look!"
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "ICECREAMN There's an ice cream man."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Two ice creams please."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Here you are, children."
+    },
+    {
+      "speaker": "CHILDREN",
+      "content": "Thanks, Mum."
+    },
+    {
+      "speaker": "CHILDREN",
+      "content": "These ice creams are nice."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Are you all right now?"
+    },
+    {
+      "speaker": "CHILDREN",
+      "content": "Yes, we are, thank you!"
+    }
+  ],
+  "21": [
+    {
+      "speaker": "",
+      "content": "Which book does the man want?"
+    },
+    {
+      "speaker": "MAN",
+      "content": "Give me a book please, Jane."
+    },
+    {
+      "speaker": "WOMAN",
+      "content": "Whichbook?"
+    },
+    {
+      "speaker": "WOMAN",
+      "content": "This one?"
+    },
+    {
+      "speaker": "MAN",
+      "content": "No, not that one."
+    },
+    {
+      "speaker": "MAN",
+      "content": "The red one."
+    },
+    {
+      "speaker": "WOMAN",
+      "content": "This one?"
+    },
+    {
+      "speaker": "MAN",
+      "content": "Yes, please."
+    },
+    {
+      "speaker": "WOMAN",
+      "content": "Here you are."
+    },
+    {
+      "speaker": "MAN",
+      "content": "Thank you."
+    }
+  ],
+  "23": [
+    {
+      "speaker": "",
+      "content": "Which glasses does the man want?"
+    },
+    {
+      "speaker": "MAN",
+      "content": "Give me some glasses please, Jane."
+    },
+    {
+      "speaker": "WOMAN",
+      "content": "Which glasses?"
+    },
+    {
+      "speaker": "WOMAN",
+      "content": "These glasses?"
+    },
+    {
+      "speaker": "MAN",
+      "content": "No, not those."
+    },
+    {
+      "speaker": "MAN",
+      "content": "The ones on the shelf."
+    },
+    {
+      "speaker": "WOMAN",
+      "content": "These?"
+    },
+    {
+      "speaker": "MAN",
+      "content": "Yes, please."
+    },
+    {
+      "speaker": "WOMAN",
+      "content": "Here you are."
+    },
+    {
+      "speaker": "MAN",
+      "content": "Thanks."
+    }
+  ],
+  "25": [
+    {
+      "speaker": "",
+      "content": "Mrs."
+    },
+    {
+      "speaker": "",
+      "content": "Smith's kitchen is small."
+    },
+    {
+      "speaker": "",
+      "content": "There is a refrigerator in the kitchen."
+    },
+    {
+      "speaker": "",
+      "content": "The refrigerator is white."
+    },
+    {
+      "speaker": "",
+      "content": "It is on the right."
+    },
+    {
+      "speaker": "",
+      "content": "There is an electric cooker in the kitchen."
+    },
+    {
+      "speaker": "",
+      "content": "The cooker is biue."
+    },
+    {
+      "speaker": "",
+      "content": "It is on the left."
+    },
+    {
+      "speaker": "",
+      "content": "There is a table in the middle of the room."
+    },
+    {
+      "speaker": "",
+      "content": "There is a boitle on the table."
+    },
+    {
+      "speaker": "",
+      "content": "The bottle is empty."
+    },
+    {
+      "speaker": "",
+      "content": "There is a cup on the table, too."
+    },
+    {
+      "speaker": "",
+      "content": "The cup is clean."
+    }
+  ],
+  "26": [
+    {
+      "speaker": "",
+      "content": "3,000 4,000 There is a cup on the table."
+    },
+    {
+      "speaker": "",
+      "content": "There is a box on the floor."
+    },
+    {
+      "speaker": "",
+      "content": "The cup is clean."
+    },
+    {
+      "speaker": "",
+      "content": "The box is large."
+    },
+    {
+      "speaker": "",
+      "content": "5,000 6,000 There is a glass in the cupboard."
+    },
+    {
+      "speaker": "",
+      "content": "There is a knife on the plate."
+    },
+    {
+      "speaker": "",
+      "content": "The glass is empty."
+    },
+    {
+      "speaker": "",
+      "content": "The knife is sharp."
+    },
+    {
+      "speaker": "",
+      "content": "7,000 8,000 There is a fork on the tin."
+    },
+    {
+      "speaker": "",
+      "content": "There is a bottle in the refrigerator."
+    },
+    {
+      "speaker": "",
+      "content": "The fork is dirty."
+    },
+    {
+      "speaker": "",
+      "content": "The bottle is full."
+    },
+    {
+      "speaker": "",
+      "content": "9,000 10,000 There is a pencil on the desk."
+    },
+    {
+      "speaker": "",
+      "content": "There is a spoon in the cup."
+    },
+    {
+      "speaker": "",
+      "content": "The pencil is blunt."
+    },
+    {
+      "speaker": "",
+      "content": "The spoon is small."
+    }
+  ],
+  "27": [
+    {
+      "speaker": "",
+      "content": "Mrs."
+    },
+    {
+      "speaker": "",
+      "content": "Smith's living room is large."
+    },
+    {
+      "speaker": "",
+      "content": "There is a television in the room."
+    },
+    {
+      "speaker": "",
+      "content": "The television is near the window."
+    },
+    {
+      "speaker": "",
+      "content": "There are some magazines on the television."
+    },
+    {
+      "speaker": "",
+      "content": "There is a table in the room."
+    },
+    {
+      "speaker": "",
+      "content": "There are some newspapers on the tabile."
+    },
+    {
+      "speaker": "",
+      "content": "There are some armchairs in the room."
+    },
+    {
+      "speaker": "",
+      "content": "The armchairs are near the table."
+    },
+    {
+      "speaker": "",
+      "content": "There is a stereo in the room."
+    },
+    {
+      "speaker": "",
+      "content": "The stereo is near the door."
+    },
+    {
+      "speaker": "",
+      "content": "There are some books on the stereo."
+    },
+    {
+      "speaker": "",
+      "content": "There are some pictures in the room."
+    },
+    {
+      "speaker": "",
+      "content": "The pictures are on the wall."
+    }
+  ],
+  "28": [
+    {
+      "speaker": "",
+      "content": "1,120 2.230 There are some cigarettes There are some plates on the cooker."
+    },
+    {
+      "speaker": "",
+      "content": "on the dressing table."
+    },
+    {
+      "speaker": "",
+      "content": "They are clean."
+    },
+    {
+      "speaker": "",
+      "content": "They are near that box."
+    },
+    {
+      "speaker": "",
+      "content": "3,340 4,450 There are some trousers on the bed."
+    },
+    {
+      "speaker": "",
+      "content": "There are some bottles in the refrigerator."
+    },
+    {
+      "speaker": "",
+      "content": "They are near that shirt."
+    },
+    {
+      "speaker": "",
+      "content": "They are empty."
+    },
+    {
+      "speaker": "",
+      "content": "5,560 6,670 There are some shoes on the floor."
+    },
+    {
+      "speaker": "",
+      "content": "There are some knives on the table."
+    },
+    {
+      "speaker": "",
+      "content": "They're near the bed."
+    },
+    {
+      "speaker": "",
+      "content": "They're in that box."
+    },
+    {
+      "speaker": "",
+      "content": "7,780 8,890 There are some forks on the shelf."
+    },
+    {
+      "speaker": "",
+      "content": "There are some bottles on the cupboard."
+    },
+    {
+      "speaker": "",
+      "content": "They're near those spoons."
+    },
+    {
+      "speaker": "",
+      "content": "They're near those tins."
+    },
+    {
+      "speaker": "",
+      "content": "9.999 10,001 There are some tickets on the shelf."
+    },
+    {
+      "speaker": "",
+      "content": "There are some glasses on the television."
+    },
+    {
+      "speaker": "",
+      "content": "They're in that handbag."
+    },
+    {
+      "speaker": "",
+      "content": "They're near those bottles."
+    }
+  ],
+  "29": [
+    {
+      "speaker": "MRS. JONES",
+      "content": "Come in, Amy."
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "Shut the door, please."
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "This bedroom's very untidy."
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "AmY : What must I do, Mrs."
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "Jones?"
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "Open the window and air the room."
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "Then put these clothes in the wardrobe."
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "Then make the bed."
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "Dust the dressing table"
+    },
+    {
+      "speaker": "MRS. JONES",
+      "content": "Then sweep the floor."
+    }
+  ],
+  "30": [
+    {
+      "speaker": "",
+      "content": "Open Shut your Put on Take off your Turn on the Turn off Sweep the Clean the Dust the Empty the Read this Sharpen these"
+    }
+  ],
+  "31": [
+    {
+      "speaker": "JACK",
+      "content": "She's in the garden, Jean."
+    },
+    {
+      "speaker": "JEAN",
+      "content": "What's she doing?"
+    },
+    {
+      "speaker": "JACK",
+      "content": "She's sitting under the tree."
+    },
+    {
+      "speaker": "JEAN",
+      "content": "Is Tim in the garden, too?"
+    },
+    {
+      "speaker": "JACK",
+      "content": "Yes, he is."
+    },
+    {
+      "speaker": "JACK",
+      "content": "He's climbing the tree."
+    },
+    {
+      "speaker": "JEAN",
+      "content": "I beg your pardon?"
+    },
+    {
+      "speaker": "JEAN",
+      "content": "Who's climbing the tree?"
+    },
+    {
+      "speaker": "JACK",
+      "content": "Tim is."
+    },
+    {
+      "speaker": "JEAN",
+      "content": "What about the dog?"
+    },
+    {
+      "speaker": "JACK",
+      "content": "The dog's in the garden, too."
+    },
+    {
+      "speaker": "JACK",
+      "content": "It's running across the grass It's running after a cat."
+    }
+  ],
+  "32": [
+    {
+      "speaker": "",
+      "content": "30,000 20,000 40,000 She is emptying Nicola is typing Mr."
+    },
+    {
+      "speaker": "",
+      "content": "Richards is opening a letter."
+    },
+    {
+      "speaker": "",
+      "content": "a basket."
+    },
+    {
+      "speaker": "",
+      "content": "the window."
+    },
+    {
+      "speaker": "",
+      "content": "60,000 50,000 70,000 Sally is shutting My mother is making It is eating the door."
+    },
+    {
+      "speaker": "",
+      "content": "the bed."
+    },
+    {
+      "speaker": "",
+      "content": "a bone."
+    },
+    {
+      "speaker": "",
+      "content": "90,000 80,000 100,000 Jack is reading My sister is looking He is cleaning a magazine at a picture."
+    },
+    {
+      "speaker": "",
+      "content": "his teeth."
+    },
+    {
+      "speaker": "",
+      "content": "300,000 200,000 400,000 Emma is cooking She is dusting The cat is drinking a meal."
+    },
+    {
+      "speaker": "",
+      "content": "the dressing table."
+    },
+    {
+      "speaker": "",
+      "content": "its milk."
+    },
+    {
+      "speaker": "",
+      "content": "600,000 500,000 700.000 Tim is sharpening a pencil."
+    },
+    {
+      "speaker": "",
+      "content": "Amy is sweeping the floor."
+    },
+    {
+      "speaker": "",
+      "content": "He is turning on the light."
+    },
+    {
+      "speaker": "",
+      "content": "900,000 800,000 1,000,000 The boy is putting The girl is turning Mrs."
+    },
+    {
+      "speaker": "",
+      "content": "Jones is taking off the tap."
+    },
+    {
+      "speaker": "",
+      "content": "on his shirt."
+    },
+    {
+      "speaker": "",
+      "content": "off her coat."
+    }
+  ],
+  "33": [
+    {
+      "speaker": "",
+      "content": "It is a fine day today."
+    },
+    {
+      "speaker": "",
+      "content": "There are some clouds in the sky, but the sun is shining."
+    },
+    {
+      "speaker": "",
+      "content": "Mr."
+    },
+    {
+      "speaker": "",
+      "content": "Jones is with his family."
+    },
+    {
+      "speaker": "",
+      "content": "They are walking over the bridge."
+    },
+    {
+      "speaker": "",
+      "content": "There are some boats on the river."
+    },
+    {
+      "speaker": "",
+      "content": "Mr.Jones and his wife are looking at them."
+    },
+    {
+      "speaker": "",
+      "content": "Sally is looking at a big ship The ship is going under the bridge."
+    },
+    {
+      "speaker": "",
+      "content": "Timis lookingatanaeroplane The aeroplane is flying over the river."
+    }
+  ],
+  "34": [
+    {
+      "speaker": "",
+      "content": "331.342 220,231 442.453 cooking shaving sleer 664.675 553.564 775.786 eating typing 997.998 886,897 1,000.001 doing washing flying 1,500,000 1.100.000 2.000.000 STOP walking waiting"
+    }
+  ],
+  "35": [
+    {
+      "speaker": "",
+      "content": "This is a photograph of our village."
+    },
+    {
+      "speaker": "",
+      "content": "Our village is in a valley."
+    },
+    {
+      "speaker": "",
+      "content": "It is between two hills."
+    },
+    {
+      "speaker": "",
+      "content": "The village is on a river."
+    },
+    {
+      "speaker": "",
+      "content": "Here is another photograph of the village."
+    },
+    {
+      "speaker": "",
+      "content": "My wife and I are walking along the banks of the river."
+    },
+    {
+      "speaker": "",
+      "content": "We are on the left."
+    },
+    {
+      "speaker": "",
+      "content": "There is a boy in the water."
+    },
+    {
+      "speaker": "",
+      "content": "He is swimming across the river."
+    },
+    {
+      "speaker": "",
+      "content": "Here is another photograph."
+    },
+    {
+      "speaker": "",
+      "content": "This is the school building."
+    },
+    {
+      "speaker": "",
+      "content": "It is beside a park."
+    },
+    {
+      "speaker": "",
+      "content": "The park is on the right."
+    },
+    {
+      "speaker": "",
+      "content": "Some children are coming out of the building."
+    },
+    {
+      "speaker": "",
+      "content": "Some of them are going into the park."
+    }
+  ],
+  "38": [
+    {
+      "speaker": "",
+      "content": "one two I am going to shave."
+    },
+    {
+      "speaker": "",
+      "content": "Now I am shaving."
+    },
+    {
+      "speaker": "",
+      "content": "three four I'm going to wait for a bus."
+    },
+    {
+      "speaker": "",
+      "content": "Now I'm waiting for a bus."
+    },
+    {
+      "speaker": "",
+      "content": "five six We're going to do our homework."
+    },
+    {
+      "speaker": "",
+      "content": "Now we're doing our homework."
+    },
+    {
+      "speaker": "",
+      "content": "seven eight I'm going to paint this bookcase."
+    },
+    {
+      "speaker": "",
+      "content": "Now I'm painting this bookcase."
+    },
+    {
+      "speaker": "",
+      "content": "nine ten We're going to listen to the stereo."
+    },
+    {
+      "speaker": "",
+      "content": "Now we're listening tothe stereo."
+    },
+    {
+      "speaker": "",
+      "content": "eleven twelve I'm going to wash the dishes."
+    },
+    {
+      "speaker": "",
+      "content": "Now I'm washing the dishes."
+    }
+  ],
+  "40": [
+    {
+      "speaker": "",
+      "content": "fifteen fourteen thirteen sixteen take it ."
+    },
+    {
+      "speaker": "",
+      "content": "turn it ."
+    },
+    {
+      "speaker": "",
+      "content": "."
+    },
+    {
+      "speaker": "",
+      "content": "put it ."
+    },
+    {
+      "speaker": "",
+      "content": "turn it ."
+    },
+    {
+      "speaker": "",
+      "content": "What are you going to do with that/those...？ 你准备把那个／那 I'm going to give/show/send/take.．我准备给／展示／送／拿.."
+    },
+    {
+      "speaker": "",
+      "content": "eighteen nineteen seventeen twenty to my father to my grandmother to my daughter to my mother fifty forty thirty sixty to my wife .to my grandfather to the children to my sister"
+    }
+  ],
+  "43": [
+    {
+      "speaker": "SAM",
+      "content": "Yes, of course I can, Penny."
+    },
+    {
+      "speaker": "SAM",
+      "content": "Is there any water in this kettle?"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "Yes, there is."
+    },
+    {
+      "speaker": "SAM",
+      "content": "Where's the tea?"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "It's over there, behind the teapot."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "Can you see it?"
+    },
+    {
+      "speaker": "SAM",
+      "content": "I can see the teapot, but I can't see the tea."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "There it is!"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "It's in front of you!"
+    },
+    {
+      "speaker": "SAM",
+      "content": "Ah yes, I can see it now."
+    },
+    {
+      "speaker": "SAM",
+      "content": "Where are the cups?"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "There are some in the cupboard."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "Can you find them?"
+    },
+    {
+      "speaker": "SAM",
+      "content": "Yes."
+    },
+    {
+      "speaker": "SAM",
+      "content": "Here they are."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "Hurry up, Sam!"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "The kettle's boiling!"
+    }
+  ],
+  "45": [
+    {
+      "speaker": "BOB",
+      "content": "Yes, sir?"
+    },
+    {
+      "speaker": "THE BOSS",
+      "content": "Where's Pamela?"
+    },
+    {
+      "speaker": "BOB",
+      "content": "She's next door."
+    },
+    {
+      "speaker": "BOB",
+      "content": "She's in her office, sir."
+    },
+    {
+      "speaker": "THE BOSS",
+      "content": "Can she type this letter for me?"
+    },
+    {
+      "speaker": "THE BOSS",
+      "content": "Ask her please."
+    },
+    {
+      "speaker": "BOB",
+      "content": "Yes, sir."
+    },
+    {
+      "speaker": "BOB",
+      "content": "Can you type this letter for the boss please, Pamela?"
+    },
+    {
+      "speaker": "PAMELA",
+      "content": "Yes, of course I can."
+    },
+    {
+      "speaker": "BOB",
+      "content": "Here you are."
+    },
+    {
+      "speaker": "PAMELA",
+      "content": "Thank you, Bob."
+    },
+    {
+      "speaker": "PAMELA",
+      "content": "Bob!"
+    },
+    {
+      "speaker": "BOB",
+      "content": "Yes?"
+    },
+    {
+      "speaker": "BOB",
+      "content": "What's the matter?"
+    },
+    {
+      "speaker": "PAMELA",
+      "content": "I can't type this letter."
+    },
+    {
+      "speaker": "PAMELA",
+      "content": "I can't read it!"
+    },
+    {
+      "speaker": "PAMELA",
+      "content": "The boss's handwriting is terrible!"
+    }
+  ],
+  "49": [
+    {
+      "speaker": "BUTCHER",
+      "content": "Do you want any meat today, Mrs."
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "Bird?"
+    },
+    {
+      "speaker": "MRS. BIRD",
+      "content": "Yes, please."
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "Do you want beef or lamb?"
+    },
+    {
+      "speaker": "MRS. BIRD",
+      "content": "Beef, please."
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "This lamb's very good."
+    },
+    {
+      "speaker": "MRS. BIRD",
+      "content": "I like lamb, but my husband doesn't."
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "What about some steak?"
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "This is a nice piece."
+    },
+    {
+      "speaker": "MRS.BIRD",
+      "content": "Give me that piece,please."
+    },
+    {
+      "speaker": "MRS. BIRD",
+      "content": "And a pound of mince, too."
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "Do you want a chicken, Mrs."
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "Bird?"
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "They're very nice."
+    },
+    {
+      "speaker": "MRS. BIRD",
+      "content": "No, thank you."
+    },
+    {
+      "speaker": "MRS. BIRD",
+      "content": "My husband likes steak, but he doesn't like chicken."
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "To tell you the truth, Mrs."
+    },
+    {
+      "speaker": "BUTCHER",
+      "content": "Bird, I don't like chicken either!"
+    }
+  ],
+  "51": [
+    {
+      "speaker": "DIMITRI",
+      "content": "I come from Greece"
+    },
+    {
+      "speaker": "HANS",
+      "content": "What's the climate like in your country?"
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "It's very pleasant."
+    },
+    {
+      "speaker": "HANS",
+      "content": "What's the weather like in spring?"
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "It's often windy in March."
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "It's always warm in April and May, but it rains sometimes."
+    },
+    {
+      "speaker": "HANS",
+      "content": "What's it like in summer?"
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "It's always hot in June, July and August."
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "The sun shines every day."
+    },
+    {
+      "speaker": "HANS",
+      "content": "Is it cold or warm in autumn?"
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "It's always warm in September and October."
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "It'soften coldinNovember and it rains sometimes."
+    },
+    {
+      "speaker": "HANS",
+      "content": "Is it very cold in winter?"
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "It's often cold in December, January and February."
+    },
+    {
+      "speaker": "DIMITRI",
+      "content": "It snows sometimes."
+    }
+  ],
+  "53": [
+    {
+      "speaker": "JIM",
+      "content": "I come from England."
+    },
+    {
+      "speaker": "HANS",
+      "content": "What's the climate like in your country?"
+    },
+    {
+      "speaker": "JIM",
+      "content": "It's mild, but it's not always pleasant."
+    },
+    {
+      "speaker": "JIM",
+      "content": "The weather's often cold in the North and windy in the East."
+    },
+    {
+      "speaker": "JIM",
+      "content": "It's often wet in the West and sometimes warm in the South."
+    },
+    {
+      "speaker": "HANS",
+      "content": "Which seasons do you like best?"
+    },
+    {
+      "speaker": "JIM",
+      "content": "I like spring and summer."
+    },
+    {
+      "speaker": "JIM",
+      "content": "The days are long and the nights are short."
+    },
+    {
+      "speaker": "JIM",
+      "content": "The sun rises early and sets late."
+    },
+    {
+      "speaker": "JIM",
+      "content": "I don't like autumn and winter."
+    },
+    {
+      "speaker": "JIM",
+      "content": "The days are short and the nights are long."
+    },
+    {
+      "speaker": "JIM",
+      "content": "The sun rises late and sets early."
+    },
+    {
+      "speaker": "JIM",
+      "content": "Our climate is not very good, but it's certainly interesting."
+    },
+    {
+      "speaker": "JIM",
+      "content": "It's our favourite subject of conversation."
+    }
+  ],
+  "55": [
+    {
+      "speaker": "",
+      "content": "The Sawyers live at 87 King Street."
+    },
+    {
+      "speaker": "",
+      "content": "In the morning, Mr."
+    },
+    {
+      "speaker": "",
+      "content": "Sawyer goes to work and the children go to school."
+    },
+    {
+      "speaker": "",
+      "content": "Their father takes them to school every day."
+    },
+    {
+      "speaker": "",
+      "content": "Mrs."
+    },
+    {
+      "speaker": "",
+      "content": "Sawyer stays at home every day."
+    },
+    {
+      "speaker": "",
+      "content": "."
+    },
+    {
+      "speaker": "",
+      "content": "She does the housework."
+    },
+    {
+      "speaker": "",
+      "content": "She always eats her lunch at noon."
+    },
+    {
+      "speaker": "",
+      "content": "In the afternoon, she usually sees her friends."
+    },
+    {
+      "speaker": "",
+      "content": "They often drink tea together."
+    },
+    {
+      "speaker": "",
+      "content": "In the evening, the children come home from school."
+    },
+    {
+      "speaker": "",
+      "content": "They arrive home early."
+    },
+    {
+      "speaker": "",
+      "content": "Mr."
+    },
+    {
+      "speaker": "",
+      "content": "Sawyer comes home from work."
+    },
+    {
+      "speaker": "",
+      "content": "He arrives home late."
+    },
+    {
+      "speaker": "",
+      "content": "At night, the children always do their homework."
+    },
+    {
+      "speaker": "",
+      "content": "Then they go to bed."
+    },
+    {
+      "speaker": "",
+      "content": "Mr."
+    },
+    {
+      "speaker": "",
+      "content": "Sawyer usually reads his newspaper, but sometimes he and his wife watch television."
+    }
+  ],
+  "59": [
+    {
+      "speaker": "",
+      "content": "LAdY : I want some envelopes, please."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "Do you want the large size or the small size?"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "LAdY : The large size, please."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "LAdY : Do you have any writing paper?"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "WRITIN PADS"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "Yes, we do."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "I don't have any small pads."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "RITING PADS I only have large ones."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "Do you want a pad?"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "LAdY : Yes, please."
+    },
+    {
+      "speaker": "LADY",
+      "content": "And I want some glue."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "A bottle of glue."
+    },
+    {
+      "speaker": "LADY",
+      "content": "And I want a large box of chalk, too."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "I only have small boxes."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "Do you want one?"
+    },
+    {
+      "speaker": "LADY",
+      "content": "No, thank you."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "Is that all?"
+    },
+    {
+      "speaker": "LADY",
+      "content": "That's all."
+    },
+    {
+      "speaker": "LADY",
+      "content": "thank you."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "What else do you want?"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "LadY : I want my change."
+    }
+  ],
+  "61": [
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "He's in bed."
+    },
+    {
+      "speaker": "MR. WILLIAMS",
+      "content": "What's the matter with him?"
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "He feels ill."
+    },
+    {
+      "speaker": "MR. WILLIAMS",
+      "content": "He looks ill."
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "We must call the doctor."
+    },
+    {
+      "speaker": "MR. WILLIAMS",
+      "content": "Yes, we must."
+    },
+    {
+      "speaker": "MR. WILLIAMS",
+      "content": "Can you remember the doctor's telephone number?"
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "Yes."
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "It's 09754."
+    },
+    {
+      "speaker": "DOCTOR",
+      "content": "Open your mouth, Jimmy."
+    },
+    {
+      "speaker": "DOCTOR",
+      "content": "Show me your tongue."
+    },
+    {
+      "speaker": "DOCTOR",
+      "content": "Say, 'Ah'."
+    },
+    {
+      "speaker": "MR. WILLIAMS",
+      "content": "What's the matter with him, doctor?"
+    },
+    {
+      "speaker": "DOCTOR",
+      "content": "He has a bad cold, Mr."
+    },
+    {
+      "speaker": "DOCTOR",
+      "content": "Williams, so he must stay in bed for a week."
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "That's good news for Jimmy."
+    },
+    {
+      "speaker": "DOCTOR",
+      "content": "Good news?"
+    },
+    {
+      "speaker": "DOCTOR",
+      "content": "Why?"
+    },
+    {
+      "speaker": "MR. WILLIAMS",
+      "content": "Because he doesn't like school!"
+    }
+  ],
+  "65": [
+    {
+      "speaker": "JILL",
+      "content": "I'm going to meet some friends, Dad."
+    },
+    {
+      "speaker": "FATHER",
+      "content": "You mustn't come home late."
+    },
+    {
+      "speaker": "FATHER",
+      "content": "You must be home at half past ten."
+    },
+    {
+      "speaker": "JILL",
+      "content": "I can't get home so early, Dad!"
+    },
+    {
+      "speaker": "JILL",
+      "content": "Can I have the key to the front door, please?"
+    },
+    {
+      "speaker": "FATHER",
+      "content": "No, you can't."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Jill's eighteen years old, Tom She's not a baby."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Give her the key."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "She always comes home early."
+    },
+    {
+      "speaker": "FATHER",
+      "content": "Oh, all right!"
+    },
+    {
+      "speaker": "FATHER",
+      "content": "Here you are."
+    },
+    {
+      "speaker": "FATHER",
+      "content": "But you mustn't come home after a quarter past eleven."
+    },
+    {
+      "speaker": "FATHER",
+      "content": "Do you hear?"
+    },
+    {
+      "speaker": "JILL",
+      "content": "Yes, Dad."
+    },
+    {
+      "speaker": "JILL",
+      "content": "Thanks, Mum."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "That's all right."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Goodbye."
+    },
+    {
+      "speaker": "MOTHER",
+      "content": "Enjoy yourself!"
+    },
+    {
+      "speaker": "JILL",
+      "content": "We always enjoy ourselves, Mum."
+    },
+    {
+      "speaker": "JILL",
+      "content": "Bye-bye."
+    }
+  ],
+  "67": [
+    {
+      "speaker": "",
+      "content": "GREENGROCER o BUTCHERo woom"
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "Hello."
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "Were you at the butcher's?"
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "Yes, I was."
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "Were you at the butcher's, too?"
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "No, I wasn't."
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "I was at the greengrocer's."
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "How's Jimmy today?"
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "He's very well, thank you."
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "Was he absent from school last week?"
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "Yes, he was."
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "He was absent on Monday, Tuesday."
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "Wednesday and Thursday."
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "How are you all keeping?"
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "Very well, thank you."
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "We're going to spend three days in the country."
+    },
+    {
+      "speaker": "MRS. JOHNSON",
+      "content": "We're going to stay at my mother's for the weekend."
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "Friday, Saturday and Sunday in the country!"
+    },
+    {
+      "speaker": "MRS. WILLIAMS",
+      "content": "Aren't you lucky!"
+    }
+  ],
+  "71": [
+    {
+      "speaker": "PAULINE",
+      "content": "He's awful!"
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "He telephoned me four times yesterday, and three times the day before yesterday."
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "He telephoned the office yesterday morning and yesterday afternoon."
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "My boss answered the telephone."
+    },
+    {
+      "speaker": "JANE",
+      "content": "What did your boss say to him?"
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "He said, ‘Pauline is typing letters."
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "She can't speak to you now!'"
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "Then I arrived home at six o'clock yesterday evening."
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "He telephoned again."
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "But I didn't answer the phone!"
+    },
+    {
+      "speaker": "JANE",
+      "content": "Did he telephone again last night?"
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "Yes, he did."
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "He telephoned at nine o'clock."
+    },
+    {
+      "speaker": "JANE",
+      "content": "What did you say to him?"
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "I said, “This is Pauline's mother."
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "Please don't telephone my daughter again!'"
+    },
+    {
+      "speaker": "JANE",
+      "content": "Did he telephone again?"
+    },
+    {
+      "speaker": "PAULINE",
+      "content": "No, he didn't!"
+    }
+  ],
+  "73": [
+    {
+      "speaker": "",
+      "content": "Last week Mrs."
+    },
+    {
+      "speaker": "",
+      "content": "Mills went to London."
+    },
+    {
+      "speaker": "",
+      "content": "She does not know London very well, and she lost her way."
+    },
+    {
+      "speaker": "",
+      "content": "Suddenly, she saw a man near a bus stop."
+    },
+    {
+      "speaker": "",
+      "content": "STOP 'I can ask him the way,' she said to herself."
+    },
+    {
+      "speaker": "",
+      "content": "“Excuse me,' she said."
+    },
+    {
+      "speaker": "",
+      "content": "'Can you tell me the way to King Street, please?' The man smiled pleasantly."
+    },
+    {
+      "speaker": "",
+      "content": "He did not understand English!"
+    },
+    {
+      "speaker": "",
+      "content": "He spoke German."
+    },
+    {
+      "speaker": "",
+      "content": "Srop He was a tourist."
+    },
+    {
+      "speaker": "",
+      "content": "Then he put his hand into his pocket, and took out a phrasebook."
+    },
+    {
+      "speaker": "",
+      "content": "STOP He opened the book and found a phrase."
+    },
+    {
+      "speaker": "",
+      "content": "He read the phrase slowly."
+    },
+    {
+      "speaker": "",
+      "content": "'I am sorry,' he said."
+    },
+    {
+      "speaker": "",
+      "content": "'I do not speak English.'"
+    }
+  ],
+  "74": [
+    {
+      "speaker": "",
+      "content": "He shaved hurriedly He took a cake this morning and and ate it quickly."
+    },
+    {
+      "speaker": "",
+      "content": "cut himself badly."
+    },
+    {
+      "speaker": "",
+      "content": "I gave him a glass of water I met her in the street and he drank it thirstily."
+    },
+    {
+      "speaker": "",
+      "content": "the day before yesterday and she greeted me warmiy."
+    },
+    {
+      "speaker": "",
+      "content": "The bus went slowly They worked very hard yesterday afternoon this morning."
+    },
+    {
+      "speaker": "",
+      "content": "and we arrived home late."
+    },
+    {
+      "speaker": "",
+      "content": "We enjoyed ourselves He swam very well this afternoon."
+    },
+    {
+      "speaker": "",
+      "content": "very much last night."
+    }
+  ],
+  "75": [
+    {
+      "speaker": "",
+      "content": "LadY : Do you have any shoes like these?"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "What size?"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "LAdY : Size five."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "What colour?"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "LAdY : Black."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "I'm sorry."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "We don't have any."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "LAdY : But my sister bought this pair last month."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "Did she buy them here?"
+    },
+    {
+      "speaker": "LADY",
+      "content": "No, she bought them in the U.S."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "We had some shoes like those a month ago, but we don't have any now."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "LAdY : Can you get a pair for me, please?"
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "I'm afraid that I can't."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "They were in fashion last year and the year before last."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "But they're not in fashion this year."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "These shoes are in fashion now."
+    },
+    {
+      "speaker": "LADY",
+      "content": "They look very uncomfortable."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "They are very uncomfortable."
+    },
+    {
+      "speaker": "SHOP ASSISTANT",
+      "content": "But women always wear uncomfortable shoes!"
+    }
+  ],
+  "76": [
+    {
+      "speaker": "",
+      "content": "this week last week the week before last this month last month the month before last this year last year the year before last a minute two minutes an hour five hours Krp?"
+    },
+    {
+      "speaker": "",
+      "content": "three days a week two weeks a month four months a year six years walked washed looked jumped worked his hands off the wall across the park at a photograph in an office talked asked typed watched thanked those letters television to the salesman a question her father waited wanted dusted painted greeted at the bus stop a car like that one the cupboard that bookcase her"
+    }
+  ],
+  "81": [
+    {
+      "speaker": "SAM",
+      "content": "Hi, Carol!"
+    },
+    {
+      "speaker": "SAM",
+      "content": "Where's Tom?"
+    },
+    {
+      "speaker": "CAROL",
+      "content": "He's upstairs."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "He's having a bath."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Tom!"
+    },
+    {
+      "speaker": "TOM",
+      "content": "Yes?"
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Sam's here."
+    },
+    {
+      "speaker": "TOM",
+      "content": "I'm nearly ready."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Hello, Sam."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Have a cigarette."
+    },
+    {
+      "speaker": "SAM",
+      "content": "No, thanks, Tom."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Have a glass of whisky then."
+    },
+    {
+      "speaker": "SAM",
+      "content": "OK."
+    },
+    {
+      "speaker": "SAM",
+      "content": "Thanks."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Is dinner ready, Carol?"
+    },
+    {
+      "speaker": "CAROL",
+      "content": "It's nearly ready."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "We can have dinner at seven o'clock."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Sam and I had lunch together today."
+    },
+    {
+      "speaker": "TOM",
+      "content": "We went to a restaurant."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "What did you have?"
+    },
+    {
+      "speaker": "TOM",
+      "content": "We had roast beef and potatoes."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Oh!"
+    },
+    {
+      "speaker": "TOM",
+      "content": "What's the matter, Carol?"
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Well, you're going to have roast beef and potatoes again tonight!"
+    }
+  ],
+  "82": [
+    {
+      "speaker": "",
+      "content": "1,010 lunch breakfast tea dinner 1.020 1,030 1,040 1.050 a bath a meal a swim a haircut 1.080 1,070 1.060 1.090 a holiday a lesson a party a good time"
+    }
+  ],
+  "83": [
+    {
+      "speaker": "CAROL",
+      "content": "Hello, Sam."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Come in."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Hi, Sam."
+    },
+    {
+      "speaker": "TOM",
+      "content": "We're having lunch."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Do you want to have lunch with us?"
+    },
+    {
+      "speaker": "SAM",
+      "content": "No, thank you, Tom."
+    },
+    {
+      "speaker": "SAM",
+      "content": "I've already had lunch."
+    },
+    {
+      "speaker": "SAM",
+      "content": "I had lunch at half past twelve."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Have a cup of coffee then."
+    },
+    {
+      "speaker": "SAM",
+      "content": "I've just had a cup, thank you."
+    },
+    {
+      "speaker": "SAM",
+      "content": "I had one after my lunch."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Let's go into the living room, Carol."
+    },
+    {
+      "speaker": "TOM",
+      "content": "We can have our coffee there."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Excuse the mess, Sam."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "This room's very untidy."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "We're packing our suitcases."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "We're going to leave tomorrow."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Tom and I are going to have a holiday."
+    },
+    {
+      "speaker": "SAM",
+      "content": "Aren't you lucky!"
+    },
+    {
+      "speaker": "TOM",
+      "content": "When are you going to have a holiday, Sam?"
+    },
+    {
+      "speaker": "SAM",
+      "content": "I don't know."
+    },
+    {
+      "speaker": "SAM",
+      "content": "I've already had my holiday this year."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Where did you go?"
+    },
+    {
+      "speaker": "SAM",
+      "content": "I stayed at home!"
+    }
+  ],
+  "89": [
+    {
+      "speaker": "NIGEL",
+      "content": "Good afternoon."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "I believe that SALE this house is for sale."
+    },
+    {
+      "speaker": "IAN",
+      "content": "That's right."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "May I have a look at it, please?"
+    },
+    {
+      "speaker": "IAN",
+      "content": "Yes, of course."
+    },
+    {
+      "speaker": "IAN",
+      "content": "Come in."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "How long have you lived here?"
+    },
+    {
+      "speaker": "IAN",
+      "content": "I've lived here for twenty years."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "Twenty years!"
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "That's a long time."
+    },
+    {
+      "speaker": "IAN",
+      "content": "Yes, I've been here since 1976."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "Then why do you want to sell it?"
+    },
+    {
+      "speaker": "IAN",
+      "content": "Because I've just retired."
+    },
+    {
+      "speaker": "IAN",
+      "content": "I want to buy a small house in the country."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "How much does this house cost?"
+    },
+    {
+      "speaker": "IAN",
+      "content": "68,500."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "That's a lot of money!"
+    },
+    {
+      "speaker": "IAN",
+      "content": "It's worth every penny of it."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "Well, I like the house, but I can't decide yet."
+    },
+    {
+      "speaker": "NIGEL",
+      "content": "My wife must see it first."
+    },
+    {
+      "speaker": "IAN",
+      "content": "Women always have the last word."
+    }
+  ],
+  "90": [
+    {
+      "speaker": "",
+      "content": "Yes."
+    },
+    {
+      "speaker": "",
+      "content": "I have."
+    },
+    {
+      "speaker": "",
+      "content": "Yes, I have."
+    },
+    {
+      "speaker": "",
+      "content": "When did you read it?"
+    },
+    {
+      "speaker": "",
+      "content": "When did you do it?"
+    },
+    {
+      "speaker": "",
+      "content": "I read it last year."
+    },
+    {
+      "speaker": "",
+      "content": "I did it half an hour ago."
+    },
+    {
+      "speaker": "",
+      "content": "Has he gone yet?"
+    },
+    {
+      "speaker": "",
+      "content": "Has she spoken to him yet?"
+    },
+    {
+      "speaker": "",
+      "content": "Yes, he has."
+    },
+    {
+      "speaker": "",
+      "content": "Yes, she has."
+    },
+    {
+      "speaker": "",
+      "content": "When did he go?"
+    },
+    {
+      "speaker": "",
+      "content": "When did she speak to him?"
+    },
+    {
+      "speaker": "",
+      "content": "He went an hour ago."
+    },
+    {
+      "speaker": "",
+      "content": "She spoke to him yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "Study these verbs."
+    },
+    {
+      "speaker": "",
+      "content": "do cut cut did cut done eat ate eaten put put put come came come go went gone read read read give given gave rise rose risen set set set swim swam swum see saw seen shut shut shut take took taken spoke speak spoken"
+    }
+  ],
+  "91": [
+    {
+      "speaker": "JENNY",
+      "content": "Yes, he has."
+    },
+    {
+      "speaker": "JENNY",
+      "content": "He sold it last week."
+    },
+    {
+      "speaker": "CATHERINE",
+      "content": "Has:he moved to his new house yet?"
+    },
+    {
+      "speaker": "JENNY",
+      "content": "No, not yet."
+    },
+    {
+      "speaker": "JENNY",
+      "content": "He's still here."
+    },
+    {
+      "speaker": "JENNY",
+      "content": "He's going to move tomorrow."
+    },
+    {
+      "speaker": "CATHERINE",
+      "content": "When?"
+    },
+    {
+      "speaker": "CATHERINE",
+      "content": "Tomorrow morning?"
+    },
+    {
+      "speaker": "JENNY",
+      "content": "No."
+    },
+    {
+      "speaker": "JENNY",
+      "content": "Tomorrow afternoon."
+    },
+    {
+      "speaker": "JENNY",
+      "content": "I'll miss him."
+    },
+    {
+      "speaker": "JENNY",
+      "content": "He has always been a good neighbour."
+    },
+    {
+      "speaker": "LINDA",
+      "content": "He's a very nice person."
+    },
+    {
+      "speaker": "LINDA",
+      "content": "We'll all miss him."
+    },
+    {
+      "speaker": "CATHERINE",
+      "content": "When will the new peopile move into this house?"
+    },
+    {
+      "speaker": "JENNY",
+      "content": "I think that they'll move in the day after tomorrow."
+    },
+    {
+      "speaker": "LINDA",
+      "content": "Will you see lan today, Jenny?"
+    },
+    {
+      "speaker": "JENNY",
+      "content": "Yes, I will."
+    },
+    {
+      "speaker": "LINDA",
+      "content": "Please give him my regards."
+    },
+    {
+      "speaker": "CATHERINE",
+      "content": "Poor Ian!"
+    },
+    {
+      "speaker": "CATHERINE",
+      "content": "He didn't want to leave this house."
+    },
+    {
+      "speaker": "JENNY",
+      "content": "No, he didn't want to lcave, but his wife did!"
+    }
+  ],
+  "93": [
+    {
+      "speaker": "",
+      "content": "Nigel is our new next-door neighbour."
+    },
+    {
+      "speaker": "",
+      "content": "He's a pilot."
+    },
+    {
+      "speaker": "",
+      "content": "He was in the R.A.F."
+    },
+    {
+      "speaker": "",
+      "content": "Hewill flytoNewYorknextmonth."
+    },
+    {
+      "speaker": "",
+      "content": "The month after next he'll fly to Tokyo."
+    },
+    {
+      "speaker": "",
+      "content": "At the moment, he's in Madrid."
+    },
+    {
+      "speaker": "",
+      "content": "He flew to Spain a week ago."
+    },
+    {
+      "speaker": "",
+      "content": "He'll return to London the week after next."
+    },
+    {
+      "speaker": "",
+      "content": "He's only forty-one years old, and he has already been to nearly every country in the world."
+    },
+    {
+      "speaker": "",
+      "content": "Nigel is a very lucky man."
+    },
+    {
+      "speaker": "",
+      "content": "But his wife isn't very lucky."
+    },
+    {
+      "speaker": "",
+      "content": "She usually stays at home!"
+    }
+  ],
+  "95": [
+    {
+      "speaker": "GEORGE",
+      "content": "Two return tickets to London, please."
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "What time will the next train leave?"
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "At nineteen minutes past eight."
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "Which platform?"
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "Platform Two."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "Over the bridge."
+    },
+    {
+      "speaker": "KEN",
+      "content": "What time will the next train leave?"
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "At eight nineteen."
+    },
+    {
+      "speaker": "KEN",
+      "content": "We've got plenty of time."
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "It's only three minutes to eight."
+    },
+    {
+      "speaker": "KEN",
+      "content": "Let's go and have a drink."
+    },
+    {
+      "speaker": "KEN",
+      "content": "There's a bar next door to the station."
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "We had better go back to the station now, Ken."
+    },
+    {
+      "speaker": "PORTER",
+      "content": "Tickets, please."
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "We want to catch the eight nineteen to London."
+    },
+    {
+      "speaker": "PORTER",
+      "content": "You've just missed it!"
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "What!"
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "It's only eight fifteen."
+    },
+    {
+      "speaker": "PORTER",
+      "content": "I'm sorry, sir."
+    },
+    {
+      "speaker": "PORTER",
+      "content": "That clock's ten minutes slow."
+    },
+    {
+      "speaker": "GEORGE",
+      "content": "When's the next train?"
+    },
+    {
+      "speaker": "PORTER",
+      "content": "In five hours' time!"
+    }
+  ],
+  "97": [
+    {
+      "speaker": "MR. HALL",
+      "content": "I left a suitcase on the train to London the other day."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "Can you describe it, sir?"
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "It's a small blue case and it's got a zip."
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "There's a label on the handle with my name and address on it."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "Is this case yours?"
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "No, that's not mine."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "What about this one?"
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "This one's got a label."
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "Let me see it."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "What's your name and address?"
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "David Hall."
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "83, Bridge Street."
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "D.N.HALL 83BRIDGE"
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "That's right."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "STREET."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "D."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "N."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "Hall."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "83, Bridge Street."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "Three pounds fifty pence, please."
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "Here you are."
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "Thank you."
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "Hey!"
+    },
+    {
+      "speaker": "ATTENDANT",
+      "content": "What's the matter?"
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "This case doesn't belong to me!"
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "You've given me the wrong case!"
+    },
+    {
+      "speaker": "MR. HALL",
+      "content": "1Q7"
+    }
+  ],
+  "99": [
+    {
+      "speaker": "",
+      "content": "Must Andy go fo see the doctor?"
+    },
+    {
+      "speaker": "ANDY",
+      "content": "Ow!"
+    },
+    {
+      "speaker": "LUCY",
+      "content": "What's the matter, Andy?"
+    },
+    {
+      "speaker": "ANDY",
+      "content": "I slipped and fell downstairs."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "Have you hurt yourself?"
+    },
+    {
+      "speaker": "ANDY",
+      "content": "Yes, I have."
+    },
+    {
+      "speaker": "ANDY",
+      "content": "I think that I've hurt my back."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "Try and stand up."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "Can you stand up?"
+    },
+    {
+      "speaker": "LUCY",
+      "content": "Here."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "Let me help you."
+    },
+    {
+      "speaker": "ANDY",
+      "content": "I'm sorry, Lucy."
+    },
+    {
+      "speaker": "ANDY",
+      "content": "I'm afraid that I can't get up."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "I think that the doctor had better see you."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "I'll phone Dr."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "Carter."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "The doctor says that he will come at once."
+    },
+    {
+      "speaker": "LUCY",
+      "content": "I'm sure that you need an X-ray, Andy."
+    }
+  ],
+  "100": [
+    {
+      "speaker": "",
+      "content": "says is ."
+    },
+    {
+      "speaker": "",
+      "content": "thinks feels ..."
+    },
+    {
+      "speaker": "",
+      "content": "believes has (got) .."
+    },
+    {
+      "speaker": "",
+      "content": "He knows that he needs .."
+    },
+    {
+      "speaker": "",
+      "content": "understands wants."
+    },
+    {
+      "speaker": "",
+      "content": "is afraid can ."
+    },
+    {
+      "speaker": "",
+      "content": "is sorry must ..."
+    },
+    {
+      "speaker": "",
+      "content": "is sure will is/are feel(s) thirsty tired il has/have (got) a cold a headache an earache a toothache need(s) want(s) a haircut a licence an X-ray some money can must will wait catch repair sell"
+    }
+  ],
+  "101": [
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "Read Jimmy's card to me please, Penny."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "'I have just arrived in Scotland and I'm staying at a Youth Hostel."
+    },
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "Eh?"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "He says he's just arrived in Scotland."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "He says he's staying at a Youth Hostel."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "You know he's a member of the Y.H.A."
+    },
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "The what?"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "The Y.H.A., Mum."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "The Youth Hostels Association."
+    },
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "What else does he say?"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "\"I'll write a letter soon."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "I hope you are all well.'"
+    },
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "What?"
+    },
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "Speak up, Penny."
+    },
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "I'm afraid I can't hear you."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "He says he'll write a letter soon."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "He hopes we are all well."
+    },
+    {
+      "speaker": "PENNY",
+      "content": "\"Love, Jimmy.'"
+    },
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "Is that all?"
+    },
+    {
+      "speaker": "GRANDMOTHER",
+      "content": "He doesn't say very much, does he?"
+    },
+    {
+      "speaker": "PENNY",
+      "content": "He can't write very much on a card, Mum."
+    }
+  ],
+  "102": [
+    {
+      "speaker": "",
+      "content": "says is thinks feels ."
+    },
+    {
+      "speaker": "",
+      "content": "."
+    },
+    {
+      "speaker": "",
+      "content": "believes has (got) ."
+    },
+    {
+      "speaker": "",
+      "content": "He he knows needs ."
+    },
+    {
+      "speaker": "",
+      "content": "hopes wants ."
+    },
+    {
+      "speaker": "",
+      "content": "is afraid can ."
+    },
+    {
+      "speaker": "",
+      "content": "is sorry must ."
+    },
+    {
+      "speaker": "",
+      "content": "is sure will ."
+    },
+    {
+      "speaker": "",
+      "content": "is/are feel(s) thirsty cold tired ill has/have (got) a headache an earache a cold a toothache need(s) want(s) an X-ray a licence a haircut some money can must will repair wait catch sell"
+    }
+  ],
+  "103": [
+    {
+      "speaker": "",
+      "content": "EXAMINATION ROOM"
+    },
+    {
+      "speaker": "GARY",
+      "content": "How was the exam, Richard?"
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "Not too bad."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "I think I passed in English and Mathematics."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "The questions were very easy."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "How about you, Gary?"
+    },
+    {
+      "speaker": "GARY",
+      "content": "The English and Maths papers weren't easy enough for me."
+    },
+    {
+      "speaker": "GARY",
+      "content": "I hope I haven't failed."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "I think I failed the French paper."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "I could answer sixteen of the questions."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "They were very easy."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "But I couldn't answer the rest."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "They were too difficult for me."
+    },
+    {
+      "speaker": "GARY",
+      "content": "French tests are awful, aren't they?"
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "I hate them."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "I'm sure I've got a low mark."
+    },
+    {
+      "speaker": "GARY",
+      "content": "Oh, cheer up!"
+    },
+    {
+      "speaker": "GARY",
+      "content": "Perhaps we didn't do too badly."
+    },
+    {
+      "speaker": "GARY",
+      "content": "The guy next to me wrote his name at the top of the paper."
+    },
+    {
+      "speaker": "RICHARD",
+      "content": "Yes?"
+    },
+    {
+      "speaker": "GARY",
+      "content": "Then he sat there and looked at it for three hours!"
+    },
+    {
+      "speaker": "GARY",
+      "content": "He didn't write a word!"
+    }
+  ],
+  "104": [
+    {
+      "speaker": "",
+      "content": "I could answer the questions."
+    },
+    {
+      "speaker": "",
+      "content": "They were very easy."
+    },
+    {
+      "speaker": "",
+      "content": "I couldn't answer the questions."
+    },
+    {
+      "speaker": "",
+      "content": "They were too difficult."
+    },
+    {
+      "speaker": "",
+      "content": "The questions were easy enough for me to answer."
+    },
+    {
+      "speaker": "",
+      "content": "The questions were too difficult for me to answer."
+    },
+    {
+      "speaker": "",
+      "content": "answer all the questions answer all the guestions difficult clever easy stupid E150 E8.000 buy the car eat the cakes cheap fresh expensive stale hear the stereo climb the wall low low loud high eat the pear eat the orange soft hard sweet sour"
+    }
+  ],
+  "107": [
+    {
+      "speaker": "LADY",
+      "content": "I like the colour very much."
+    },
+    {
+      "speaker": "LADY",
+      "content": "It's a lovely dress, but it's too small for me."
+    },
+    {
+      "speaker": "ASSISTANT",
+      "content": "What about this one?"
+    },
+    {
+      "speaker": "ASSISTANT",
+      "content": "It's a lovely dress."
+    },
+    {
+      "speaker": "ASSISTANT",
+      "content": "It's very smart."
+    },
+    {
+      "speaker": "ASSISTANT",
+      "content": "Short skirts are in fashion now."
+    },
+    {
+      "speaker": "ASSISTANT",
+      "content": "Would you like to try it?"
+    },
+    {
+      "speaker": "LADY",
+      "content": "All right."
+    },
+    {
+      "speaker": "LADY",
+      "content": "LadY : I'm afraid this green dress is too small for me as well."
+    },
+    {
+      "speaker": "LADY",
+      "content": "It's smaller than the blue one."
+    },
+    {
+      "speaker": "LADY",
+      "content": "I don't like the colour either."
+    },
+    {
+      "speaker": "LADY",
+      "content": "It doesn't suit me at all."
+    },
+    {
+      "speaker": "LADY",
+      "content": "I think the blue dress is prettier."
+    },
+    {
+      "speaker": "LADY",
+      "content": "LadY : Could you show me another blue dress?"
+    },
+    {
+      "speaker": "LADY",
+      "content": "I want a dress like that one, but it must be my size."
+    },
+    {
+      "speaker": "ASSISTANT",
+      "content": "I'm afraid I haven't got a larger.dress."
+    },
+    {
+      "speaker": "ASSISTANT",
+      "content": "This is the largest dress in the shop."
+    }
+  ],
+  "108": [
+    {
+      "speaker": "",
+      "content": "Sophie is tall."
+    },
+    {
+      "speaker": "",
+      "content": "Paul is taller Hans is the tallest than Sophie."
+    },
+    {
+      "speaker": "",
+      "content": "student in our class."
+    },
+    {
+      "speaker": "",
+      "content": "It was hotter It is hot today."
+    },
+    {
+      "speaker": "",
+      "content": "The day before yesterday yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "was the hottest day in the year."
+    },
+    {
+      "speaker": "",
+      "content": "There was a large This year the It is the largest crowd is larger."
+    },
+    {
+      "speaker": "",
+      "content": "crowd at the race crowd I have ever seen."
+    },
+    {
+      "speaker": "",
+      "content": "last year."
+    },
+    {
+      "speaker": "",
+      "content": "The blue suitcase The brown suitcase The green suitcase is is heavy."
+    },
+    {
+      "speaker": "",
+      "content": "is heavier than the heaviest of them all."
+    },
+    {
+      "speaker": "",
+      "content": "the brown one."
+    }
+  ],
+  "110": [
+    {
+      "speaker": "",
+      "content": "I've got more than you have."
+    },
+    {
+      "speaker": "",
+      "content": "Have you got any chocolate?"
+    },
+    {
+      "speaker": "",
+      "content": "I've got the most."
+    },
+    {
+      "speaker": "",
+      "content": "I haven't got much."
+    },
+    {
+      "speaker": "",
+      "content": "I've got less than you have."
+    },
+    {
+      "speaker": "",
+      "content": "Have you got any chocolate?"
+    },
+    {
+      "speaker": "",
+      "content": "I've got the least."
+    },
+    {
+      "speaker": "",
+      "content": "I've got very little."
+    },
+    {
+      "speaker": "",
+      "content": "Have you made any mistakes?"
+    },
+    {
+      "speaker": "",
+      "content": "I've made more than you I've made the most."
+    },
+    {
+      "speaker": "",
+      "content": "I haven't made many."
+    },
+    {
+      "speaker": "",
+      "content": "have."
+    },
+    {
+      "speaker": "",
+      "content": "Have you made any mistakes?"
+    },
+    {
+      "speaker": "",
+      "content": "I've made fewer than you I've made the fewest."
+    },
+    {
+      "speaker": "",
+      "content": "I've made very few."
+    },
+    {
+      "speaker": "",
+      "content": "have."
+    },
+    {
+      "speaker": "",
+      "content": "You must see my new car."
+    },
+    {
+      "speaker": "",
+      "content": "This one's better."
+    },
+    {
+      "speaker": "",
+      "content": "This one's the best It's very good."
+    },
+    {
+      "speaker": "",
+      "content": "I've ever seen."
+    },
+    {
+      "speaker": "",
+      "content": "You mustn't go to that restaurant."
+    },
+    {
+      "speaker": "",
+      "content": "This one's worse."
+    },
+    {
+      "speaker": "",
+      "content": "This one's the worst It's very bad."
+    },
+    {
+      "speaker": "",
+      "content": "I've ever seen."
+    }
+  ],
+  "112": [
+    {
+      "speaker": "",
+      "content": "As...as 像......一样 short blunt tall old sweet sharp Not as ..."
+    },
+    {
+      "speaker": "",
+      "content": "as 不像..."
+    },
+    {
+      "speaker": "",
+      "content": "clean fat light smart new expensive TEST NO.3 12N102 EXEFXRGXGHXC S2U3X2 BDBGIFNJQSWC B2D1EF2 DCDECOFCBAD This test is This test is This is the most difficult difficult."
+    },
+    {
+      "speaker": "",
+      "content": "more difficult."
+    },
+    {
+      "speaker": "",
+      "content": "test I have ever done!"
+    },
+    {
+      "speaker": "",
+      "content": "This book is This book is This is the least interesting interesting."
+    },
+    {
+      "speaker": "",
+      "content": "less interesting."
+    },
+    {
+      "speaker": "",
+      "content": "book I have ever read!"
+    }
+  ],
+  "114": [
+    {
+      "speaker": "",
+      "content": "I haven't got any."
+    },
+    {
+      "speaker": "",
+      "content": "Have you got any I haven't any either."
+    },
+    {
+      "speaker": "",
+      "content": "I've got no chocolate."
+    },
+    {
+      "speaker": "",
+      "content": "Neither have I."
+    },
+    {
+      "speaker": "",
+      "content": "I've got none."
+    },
+    {
+      "speaker": "",
+      "content": "I haven't got any."
+    },
+    {
+      "speaker": "",
+      "content": "Have you got any I haven't any either."
+    },
+    {
+      "speaker": "",
+      "content": "I've got no envelopes."
+    },
+    {
+      "speaker": "",
+      "content": "Neither have I."
+    },
+    {
+      "speaker": "",
+      "content": "I've got none."
+    },
+    {
+      "speaker": "",
+      "content": "I've got some."
+    },
+    {
+      "speaker": "",
+      "content": "Have you got any So have I."
+    },
+    {
+      "speaker": "",
+      "content": "Ccake?"
+    },
+    {
+      "speaker": "",
+      "content": "I've got some."
+    },
+    {
+      "speaker": "",
+      "content": "Have you got any So have I."
+    }
+  ],
+  "115": [
+    {
+      "speaker": "HELEN",
+      "content": "Isn't there anyone at home?"
+    },
+    {
+      "speaker": "JIM",
+      "content": "I'll knock again, Helen."
+    },
+    {
+      "speaker": "JIM",
+      "content": "Everything's very quiet."
+    },
+    {
+      "speaker": "JIM",
+      "content": "I'm sure there's no one at home."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "But that's impossible."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "Carol and Tom invited us to lunch."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "Look through the window."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "Can you see anything?"
+    },
+    {
+      "speaker": "JIM",
+      "content": "Nothing at all."
+    },
+    {
+      "speaker": "HELEN",
+      "content": "Let's try the back door."
+    },
+    {
+      "speaker": "JIM",
+      "content": "Look!"
+    },
+    {
+      "speaker": "JIM",
+      "content": "Everyone's in the garden."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Hello, Helen."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Hello, Jim."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Everybody wants to have lunch in the garden."
+    },
+    {
+      "speaker": "TOM",
+      "content": "It's nice and warm out here."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Come and have something to drink."
+    },
+    {
+      "speaker": "JIM",
+      "content": "Thanks, Carol."
+    },
+    {
+      "speaker": "JIM",
+      "content": "May I'have a glass of beer please?"
+    },
+    {
+      "speaker": "CAROL",
+      "content": "Beer?"
+    },
+    {
+      "speaker": "CAROL",
+      "content": "There's none left."
+    },
+    {
+      "speaker": "CAROL",
+      "content": "You can have some lemonade."
+    },
+    {
+      "speaker": "JIM",
+      "content": "Lemonade!"
+    },
+    {
+      "speaker": "TOM",
+      "content": "Don't believe her, Jim She's only joking."
+    },
+    {
+      "speaker": "TOM",
+      "content": "Have some beer!"
+    },
+    {
+      "speaker": "TOM",
+      "content": "BEER"
+    }
+  ],
+  "119": [
+    {
+      "speaker": "",
+      "content": "I want to tell you a true story."
+    },
+    {
+      "speaker": "",
+      "content": "It happened to a friend of mine a year ago."
+    },
+    {
+      "speaker": "",
+      "content": "While my friend, George, was reading in bed, two thieves climbed into his kitchen."
+    },
+    {
+      "speaker": "",
+      "content": "After they had entered the house, they went into the dining room."
+    },
+    {
+      "speaker": "",
+      "content": "It was very dark, so they turned on a torch Suddenly, they heard a voice behind them."
+    },
+    {
+      "speaker": "",
+      "content": "'What's up?"
+    },
+    {
+      "speaker": "",
+      "content": "What's up?' someone called."
+    },
+    {
+      "speaker": "",
+      "content": "The thieves dropped the torch and ran away as quickly as they could."
+    },
+    {
+      "speaker": "",
+      "content": "George heard the noise and came downstairs quickly."
+    },
+    {
+      "speaker": "",
+      "content": "He turned on the light, but he couldn't see anyone."
+    },
+    {
+      "speaker": "",
+      "content": "The thieves had already gone."
+    },
+    {
+      "speaker": "",
+      "content": "But George's parrot, Henry, was still there."
+    },
+    {
+      "speaker": "",
+      "content": "\"What's up, George?' he called."
+    },
+    {
+      "speaker": "",
+      "content": "'Nothing, Henry,' George said and smiled."
+    },
+    {
+      "speaker": "",
+      "content": "'Go back to sleep.'"
+    }
+  ],
+  "120": [
+    {
+      "speaker": "",
+      "content": "I asked the price of the car, I ran to the platform quickly, but they had already sold it."
+    },
+    {
+      "speaker": "",
+      "content": "but the train had already left."
+    },
+    {
+      "speaker": "",
+      "content": "PLANES He gave us our exercise books She went on holiday after he had corrected them."
+    },
+    {
+      "speaker": "",
+      "content": "after she had taken the examination."
+    },
+    {
+      "speaker": "",
+      "content": "She had finished the housework We had had dinner before she went out."
+    },
+    {
+      "speaker": "",
+      "content": "before they arrived."
+    }
+  ],
+  "121": [
+    {
+      "speaker": "CUSTOMER",
+      "content": "I bought two expensive dictionaries here half an hour ago, but I forgot to take them with me."
+    },
+    {
+      "speaker": "MANAGER",
+      "content": "Who served you, sir?"
+    },
+    {
+      "speaker": "CUSTOMER",
+      "content": "The lady who is standing behind the counter."
+    },
+    {
+      "speaker": "MANAGER",
+      "content": "Which books did you buy?"
+    },
+    {
+      "speaker": "CUSTOMER",
+      "content": "The books which are on the counter."
+    },
+    {
+      "speaker": "MANAGER",
+      "content": "Did you serve this gentleman half an hour ago, Caroline?"
+    },
+    {
+      "speaker": "MANAGER",
+      "content": "He says he's the man who bought these books."
+    },
+    {
+      "speaker": "CAROLINE",
+      "content": "I can't remember."
+    },
+    {
+      "speaker": "CAROLINE",
+      "content": "The man who I served was wearing a hat."
+    },
+    {
+      "speaker": "MANAGER",
+      "content": "Have you got a hat, sir?"
+    },
+    {
+      "speaker": "CUSTOMER",
+      "content": "Yes, 1 have."
+    },
+    {
+      "speaker": "MANAGER",
+      "content": "Would you put it on, please?"
+    },
+    {
+      "speaker": "CUSTOMER",
+      "content": "All right."
+    },
+    {
+      "speaker": "MANAGER",
+      "content": "Is this the man that you served, Caroline?"
+    },
+    {
+      "speaker": "CAROLINE",
+      "content": "Yes."
+    },
+    {
+      "speaker": "CAROLINE",
+      "content": "I recognize him now."
+    }
+  ],
+  "124": [
+    {
+      "speaker": "",
+      "content": "behind the counter."
+    },
+    {
+      "speaker": "",
+      "content": "behind the counter."
+    },
+    {
+      "speaker": "",
+      "content": "The men repairing the road."
+    },
+    {
+      "speaker": "",
+      "content": "I served her I served him I saw them yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "He is the man She is the woman They are the men I served yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "I served yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "I saw yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "What's this?"
+    },
+    {
+      "speaker": "",
+      "content": "What are these?"
+    },
+    {
+      "speaker": "",
+      "content": "What's this?"
+    },
+    {
+      "speaker": "",
+      "content": "These are the books This is the book This is the kitten I bought yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "I bought yesterday."
+    },
+    {
+      "speaker": "",
+      "content": "I found in the garden."
+    }
+  ],
+  "128": [
+    {
+      "speaker": "",
+      "content": "He can't be ill."
+    },
+    {
+      "speaker": "",
+      "content": "It can't be my new hat."
+    },
+    {
+      "speaker": "",
+      "content": "He must be tired."
+    },
+    {
+      "speaker": "",
+      "content": "It must be my old one."
+    },
+    {
+      "speaker": "",
+      "content": "She can't be Danish."
+    },
+    {
+      "speaker": "",
+      "content": "He can't be a dentist."
+    },
+    {
+      "speaker": "",
+      "content": "She must be Swedish."
+    },
+    {
+      "speaker": "",
+      "content": "He must be a doctor."
+    },
+    {
+      "speaker": "",
+      "content": "She can't be forty."
+    },
+    {
+      "speaker": "",
+      "content": "It can't be the 20th."
+    },
+    {
+      "speaker": "",
+      "content": "She must be fifty."
+    },
+    {
+      "speaker": "",
+      "content": "It must be the 21st."
+    },
+    {
+      "speaker": "",
+      "content": "He can't be the youngest."
+    },
+    {
+      "speaker": "",
+      "content": "He can't be reading."
+    },
+    {
+      "speaker": "",
+      "content": "He must be the oldest."
+    },
+    {
+      "speaker": "",
+      "content": "He must be sleeping."
+    }
+  ],
+  "129": [
+    {
+      "speaker": "",
+      "content": "husband to do next time?"
+    },
+    {
+      "speaker": "ANN",
+      "content": "Look, Gary!"
+    },
+    {
+      "speaker": "ANN",
+      "content": "That policeman's waving to you."
+    },
+    {
+      "speaker": "ANN",
+      "content": "He wants you to stop."
+    },
+    {
+      "speaker": "POLICEMAN",
+      "content": "Where do you think you are?"
+    },
+    {
+      "speaker": "POLICEMAN",
+      "content": "On a race track?"
+    },
+    {
+      "speaker": "POLICEMAN",
+      "content": "You must have been driving at seventy miles an hour."
+    },
+    {
+      "speaker": "GARY",
+      "content": "I can't have been."
+    },
+    {
+      "speaker": "POLICEMAN",
+      "content": "I was doing eighty when I overtook you."
+    },
+    {
+      "speaker": "POLICEMAN",
+      "content": "Didn't you see the speed limit?"
+    },
+    {
+      "speaker": "GARY",
+      "content": "I'm afraid I didn't, officer."
+    },
+    {
+      "speaker": "GARY",
+      "content": "I must have been dreaming"
+    },
+    {
+      "speaker": "ANN",
+      "content": "He wasn't dreaming, officer."
+    },
+    {
+      "speaker": "ANN",
+      "content": "I was telling him to drive slowly."
+    },
+    {
+      "speaker": "GARY",
+      "content": "That's why I didn't see the sign."
+    },
+    {
+      "speaker": "POLICEMAN",
+      "content": "Let me see your driving licence."
+    },
+    {
+      "speaker": "POLICEMAN",
+      "content": "I won't charge you this time."
+    },
+    {
+      "speaker": "POLICEMAN",
+      "content": "But you'd better not do it again!"
+    },
+    {
+      "speaker": "GARY",
+      "content": "Thank you."
+    },
+    {
+      "speaker": "GARY",
+      "content": "I'll certainly be more careful."
+    },
+    {
+      "speaker": "ANN",
+      "content": "I told you to drive slowly, Gary."
+    },
+    {
+      "speaker": "GARY",
+      "content": "You always tell me to drive slowly, darling."
+    },
+    {
+      "speaker": "ANN",
+      "content": "Well, next time you'd better take my advice!"
+    }
+  ],
+  "130": [
+    {
+      "speaker": "",
+      "content": "He can't have been ill."
+    },
+    {
+      "speaker": "",
+      "content": "It can't have been my new hat."
+    },
+    {
+      "speaker": "",
+      "content": "He must have been tired."
+    },
+    {
+      "speaker": "",
+      "content": "It must have been my old one."
+    },
+    {
+      "speaker": "",
+      "content": "She can't have been Danish."
+    },
+    {
+      "speaker": "",
+      "content": "He can't have been a dentist."
+    },
+    {
+      "speaker": "",
+      "content": "She must have been Swedish."
+    },
+    {
+      "speaker": "",
+      "content": "He must have been a doctor."
+    },
+    {
+      "speaker": "",
+      "content": "She can't have been forty."
+    },
+    {
+      "speaker": "",
+      "content": "It can't have been the 20th."
+    },
+    {
+      "speaker": "",
+      "content": "She must have been fifty."
+    },
+    {
+      "speaker": "",
+      "content": "It must have been the 2lst."
+    },
+    {
+      "speaker": "",
+      "content": "He can't have been the youngest."
+    },
+    {
+      "speaker": "",
+      "content": "He can't have been reading."
+    },
+    {
+      "speaker": "",
+      "content": "He must have been the oldest."
+    },
+    {
+      "speaker": "",
+      "content": "He must have been sleeping"
+    }
+  ],
+  "131": [
+    {
+      "speaker": "GARY",
+      "content": "We may go abroad."
+    },
+    {
+      "speaker": "GARY",
+      "content": "I'm not sure."
+    },
+    {
+      "speaker": "GARY",
+      "content": "My wife wants to go to Egypt."
+    },
+    {
+      "speaker": "GARY",
+      "content": "I'd like to go there, too."
+    },
+    {
+      "speaker": "GARY",
+      "content": "We can't make up our minds."
+    },
+    {
+      "speaker": "MARTIN",
+      "content": "Will you travel by sea or by air?"
+    },
+    {
+      "speaker": "GARY",
+      "content": "We may travel by sea."
+    },
+    {
+      "speaker": "MARTIN",
+      "content": "It's cheaper, isn't it?"
+    },
+    {
+      "speaker": "GARY",
+      "content": "It may be cheaper, but it takes a long time."
+    },
+    {
+      "speaker": "MARTIN",
+      "content": "I'm sure you'Il enjoy yourselves."
+    },
+    {
+      "speaker": "GARY",
+      "content": "Don't be so sure."
+    },
+    {
+      "speaker": "GARY",
+      "content": "We' might not go anywhere."
+    },
+    {
+      "speaker": "GARY",
+      "content": "My wife always worries too much."
+    },
+    {
+      "speaker": "GARY",
+      "content": "Who's going to look after the dog?"
+    },
+    {
+      "speaker": "GARY",
+      "content": "Who's going to look after the house?"
+    },
+    {
+      "speaker": "GARY",
+      "content": "Who's going to look after the garden?"
+    },
+    {
+      "speaker": "GARY",
+      "content": "We have this problem every year."
+    },
+    {
+      "speaker": "GARY",
+      "content": "In the end, we stay at home and look after everything!"
+    }
+  ],
+  "132": [
+    {
+      "speaker": "",
+      "content": "He may be in his room."
+    },
+    {
+      "speaker": "",
+      "content": "He may go to the cinema."
+    },
+    {
+      "speaker": "",
+      "content": "I'm not sure."
+    },
+    {
+      "speaker": "",
+      "content": "I'm not sure."
+    },
+    {
+      "speaker": "",
+      "content": "Why is he late?"
+    },
+    {
+      "speaker": "",
+      "content": "What is he doing?"
+    },
+    {
+      "speaker": "",
+      "content": "He may be busy."
+    },
+    {
+      "speaker": "",
+      "content": "He may be reading."
+    },
+    {
+      "speaker": "",
+      "content": "I'm not sure."
+    },
+    {
+      "speaker": "",
+      "content": "I'm not sure."
+    },
+    {
+      "speaker": "",
+      "content": "Why was he late?"
+    },
+    {
+      "speaker": "",
+      "content": "What was he doing?"
+    },
+    {
+      "speaker": "",
+      "content": "He may have been busy."
+    },
+    {
+      "speaker": "",
+      "content": "He may have been reading."
+    },
+    {
+      "speaker": "",
+      "content": "I'm not sure."
+    },
+    {
+      "speaker": "",
+      "content": "I'm not sure."
+    }
+  ],
+  "133": [
+    {
+      "speaker": "MISS MARSH",
+      "content": "Yes, I have."
+    },
+    {
+      "speaker": "REPORTER",
+      "content": "Are you going to make another?"
+    },
+    {
+      "speaker": "MISS MARSH",
+      "content": "No, I'm not."
+    },
+    {
+      "speaker": "MISS MARSH",
+      "content": "I'm going to retire."
+    },
+    {
+      "speaker": "MISS MARSH",
+      "content": "I feel very tired."
+    },
+    {
+      "speaker": "MISS MARSH",
+      "content": "I don't wanttomakeanotherfilm for a long time."
+    },
+    {
+      "speaker": "KATE",
+      "content": "Let's buy a newspaper, Liz."
+    },
+    {
+      "speaker": "KATE",
+      "content": "Listen to this!"
+    },
+    {
+      "speaker": "KATE",
+      "content": "“Karen Marsh: Sensational News!"
+    },
+    {
+      "speaker": "KATE",
+      "content": "AREN MARSH By our reporter, Alan Jones."
+    },
+    {
+      "speaker": "KATE",
+      "content": "NEWS Karen Marsh arrived at London Airport today."
+    },
+    {
+      "speaker": "KATE",
+      "content": "She was wearing a blue dress and a mink coat."
+    },
+    {
+      "speaker": "KATE",
+      "content": "She told me she had just made a new film."
+    },
+    {
+      "speaker": "KATE",
+      "content": "She said she was not going to make another."
+    },
+    {
+      "speaker": "KATE",
+      "content": "She said she was going to retire."
+    },
+    {
+      "speaker": "KATE",
+      "content": "She told reporters she felt very tired and didn't want to make another film for a long time.'"
+    },
+    {
+      "speaker": "LIZ",
+      "content": "I wonder why!"
+    }
+  ],
+  "136": [
+    {
+      "speaker": "",
+      "content": "I'll leave He said (that) he would What did he tell you?"
+    },
+    {
+      "speaker": "",
+      "content": "tomorrow."
+    },
+    {
+      "speaker": "",
+      "content": "leave tomorrow."
+    },
+    {
+      "speaker": "",
+      "content": "He told me (that) he would leave tomorrow."
+    },
+    {
+      "speaker": "",
+      "content": "What did he say?"
+    },
+    {
+      "speaker": "",
+      "content": "I can't do this He said (that) he couldn't What did he tell you?"
+    },
+    {
+      "speaker": "",
+      "content": "Maths problem."
+    },
+    {
+      "speaker": "",
+      "content": "do this Maths problem."
+    },
+    {
+      "speaker": "",
+      "content": "He told me (that) he couldn't do this Maths problem."
+    },
+    {
+      "speaker": "",
+      "content": "What did she say?"
+    },
+    {
+      "speaker": "",
+      "content": "I may return at She said (that) she might What did she tell you?"
+    },
+    {
+      "speaker": "",
+      "content": "six o'clock."
+    },
+    {
+      "speaker": "",
+      "content": "return at six o'clock."
+    },
+    {
+      "speaker": "",
+      "content": "She told me (that) she might return at six o'clock."
+    }
+  ],
+  "138": [
+    {
+      "speaker": "",
+      "content": "BOOK If you break this window, If you don't hurry, you'll have to pay for it!"
+    },
+    {
+      "speaker": "",
+      "content": "we'll miss the train."
+    },
+    {
+      "speaker": "",
+      "content": "If he falls, If it rains tomorrow, he'll hurt himself."
+    },
+    {
+      "speaker": "",
+      "content": "If you feel better, If he sells that car, you can get up."
+    },
+    {
+      "speaker": "",
+      "content": "he can buy a new one."
+    }
+  ],
+  "141": [
+    {
+      "speaker": "",
+      "content": "Last week, my four-year-old daughter, Sally."
+    },
+    {
+      "speaker": "",
+      "content": "was invited to a children's party."
+    },
+    {
+      "speaker": "",
+      "content": "I decided to take her by train."
+    },
+    {
+      "speaker": "",
+      "content": "Sally was very excited because she had never travelled on a train before."
+    },
+    {
+      "speaker": "",
+      "content": "She sat near the window and asked questions about everything she saw."
+    },
+    {
+      "speaker": "",
+      "content": "Suddenly, a middle-aged lady got on the train and sat opposite Sally."
+    },
+    {
+      "speaker": "",
+      "content": "'Hello, little girl,' she said."
+    },
+    {
+      "speaker": "",
+      "content": "Sally did not answer, but looked at her curiously."
+    },
+    {
+      "speaker": "",
+      "content": "The lady was dressed in a blue coat and a large, funny hat."
+    },
+    {
+      "speaker": "",
+      "content": "After the train had left the station, She then began to make up her face."
+    },
+    {
+      "speaker": "",
+      "content": "\"Why are you doing that?' Sally asked."
+    },
+    {
+      "speaker": "",
+      "content": "'To make myself beautiful,' the lady answered."
+    },
+    {
+      "speaker": "",
+      "content": "She put away her compact and smiled kindly."
+    },
+    {
+      "speaker": "",
+      "content": "'But you are still ugly,' Sally said."
+    },
+    {
+      "speaker": "",
+      "content": "Sally was amused, but I was very embarrassed!"
+    }
+  ],
+  "143": [
+    {
+      "speaker": "",
+      "content": "I live in a very old town which is surrounded by beautiful woods."
+    },
+    {
+      "speaker": "",
+      "content": "It is a famous beauty spot."
+    },
+    {
+      "speaker": "",
+      "content": "On Sundays, hundreds of people come from the city to see our town and to walk through the woods."
+    },
+    {
+      "speaker": "",
+      "content": "Visitors have been asked to keep the woods clean and tidy."
+    },
+    {
+      "speaker": "",
+      "content": "Litter baskets have been placed under the trees."
+    },
+    {
+      "speaker": "",
+      "content": "but people still throw their rubbish everywhere."
+    },
+    {
+      "speaker": "",
+      "content": "Last Wednesday, I went for a walk in the woods."
+    },
+    {
+      "speaker": "",
+      "content": "What I saw made me very sad."
+    },
+    {
+      "speaker": "",
+      "content": "I counted seven old cars and three old refrigerators."
+    },
+    {
+      "speaker": "",
+      "content": "The litter baskets were empty and the ground was covered with pieces of paper, cigarette ends, old tyres, empty bottles and rusty tins."
+    },
+    {
+      "speaker": "",
+      "content": "Among the rubbish, I found a sign which said, Anyone who leaves litter in these woods will be prosecuted !'"
+    }
+  ]
+}
