@@ -165,7 +165,12 @@ export function compareTexts(spoken: string, target: string): number {
   }
 
   const rawScore = (dp[m][n] / n) * 100;
-  return Math.round(Math.min(100, Math.max(0, rawScore)));
+  const raw = Math.round(Math.min(100, Math.max(0, rawScore)));
+  // 鼓励校准曲线：离线小模型对童声的识别有限，线性原始分普遍压在 60-70，
+  // 70 分过关线几乎不可达。按温和曲线校准（65→78、80→87、95→98、100→100），
+  // 让分数更贴近孩子的真实朗读质量；识别完全离谱时分数仍会显著偏低。
+  const calibrated = Math.min(100, Math.round(raw + (100 - raw) * 0.35));
+  return calibrated;
 }
 
 // ---------------------------------------------------------------------------
@@ -184,6 +189,8 @@ export interface SpeechEvalResult {
   maxLevel: number;
   /** 麦克风不可用（权限被拒/设备占用/无设备）——UI 应提示检查麦克风而非"没声音" */
   micError?: boolean;
+  /** 本次录音（webm/opus，可直接播放）——供"听自己的发音"回放；无声/无录音时缺省 */
+  recording?: Blob;
 }
 
 /** 进行中的口语评测会话 */
@@ -236,31 +243,37 @@ export function startSpeechEvaluation(
   // 分发死锁主线程导致白屏，故弃用；MediaRecorder 是旧版已验证稳定路径）
   let mediaRecorder: MediaRecorder | null = null;
   let mediaChunks: Blob[] = [];
+  let recordedBlob: Blob | null = null; // 本次录音（回放用）
   const startedAt = Date.now();
 
   /** 出最终结果（vosk 文本优先） */
   const settle = (voskText: string) => {
+    const withRecording = <T extends Omit<SpeechEvalResult, 'recording'>>(r: T): SpeechEvalResult => {
+      const out: SpeechEvalResult = { ...r };
+      if (recordedBlob && recordedBlob.size > 0) out.recording = recordedBlob;
+      return out;
+    };
     let result: SpeechEvalResult;
     if (voskText.trim()) {
-      result = {
+      result = withRecording({
         score: compareTexts(voskText, targetText),
         mode: 'vosk',
         transcript: voskText,
         maxLevel,
-      };
+      });
     } else if (recognitionDone && transcript.trim()) {
-      result = {
+      result = withRecording({
         score: compareTexts(transcript, targetText),
         mode: 'recognized',
         transcript,
         maxLevel,
-      };
+      });
     } else {
       const voicedRatio = totalFrames > 0 ? voicedFrames / totalFrames : 0;
       if (micFailed) {
         result = { score: 0, mode: 'silent', maxLevel, micError: true };
       } else if (maxLevel < SILENT_LEVEL_THRESHOLD || voicedRatio < 0.05) {
-        result = { score: 0, mode: 'silent', maxLevel };
+        result = withRecording({ score: 0, mode: 'silent', maxLevel });
       } else {
         // 开口练习分：开口占比 + 音量饱满度 + 朗读时长接近度
         const wordCount = normalizeText(targetText).split(' ').filter(Boolean).length;
@@ -269,7 +282,11 @@ export function startSpeechEvaluation(
         const durationCloseness = Math.max(0, 1 - Math.abs(elapsedMs - idealMs) / idealMs);
         const raw =
           45 + voicedRatio * 25 + Math.min(1, maxLevel / 0.5) * 15 + durationCloseness * 15;
-        result = { score: Math.round(Math.min(88, raw)), mode: 'energy', maxLevel };
+        result = withRecording({
+          score: Math.round(Math.min(88, raw)),
+          mode: 'energy',
+          maxLevel,
+        });
       }
     }
     resolvePromise(result);
@@ -296,24 +313,26 @@ export function startSpeechEvaluation(
       }
     };
 
+    // 停 MediaRecorder（依赖活跃流，须在停 tracks 之前调用）
+    const stopMedia = (): Promise<void> =>
+      new Promise((res) => {
+        if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+          res();
+          return;
+        }
+        mediaRecorder.onstop = () => res();
+        try {
+          mediaRecorder.stop();
+        } catch {
+          res();
+        }
+      });
+
     if (voskSessionOk && window.electronAPI?.voskFinish) {
       // 顺序关键：先 stop MediaRecorder（依赖活跃流，先停 tracks 会死锁 stop()），
       // webm/opus blob 交主进程 ffmpeg 子进程解码为 16k PCM 喂 vosk
       // （渲染端 ScriptProcessor/decodeAudioData/AudioWorklet 在本机全部死锁，只剩 ffmpeg 子进程可用），
       // 最后取识别文本出分并清理流资源
-      const stopMedia = (): Promise<void> =>
-        new Promise((res) => {
-          if (!mediaRecorder || mediaRecorder.state === 'inactive') {
-            res();
-            return;
-          }
-          mediaRecorder.onstop = () => res();
-          try {
-            mediaRecorder.stop();
-          } catch {
-            res();
-          }
-        });
       const feedRecording = async (): Promise<void> => {
         logger.info(MODULE, 'finish', `stopMedia 完成 chunks=${mediaChunks.length}`);
         if (mediaChunks.length === 0) return;
@@ -322,6 +341,7 @@ export function startSpeechEvaluation(
         });
         mediaChunks = [];
         if (blob.size === 0) return;
+        recordedBlob = blob; // 保留录音供回放
         logger.info(MODULE, 'finish', `webm blob size=${blob.size}`);
         const ab = await blob.arrayBuffer();
         const dr = await window.electronAPI!.voskDecode!(ab);
@@ -340,8 +360,22 @@ export function startSpeechEvaluation(
         })
         .finally(cleanup);
     } else {
-      cleanup();
-      settle('');
+      // 非 vosk 路径：同样停表收集录音（回放用）后再出分
+      stopMedia()
+        .then(() => {
+          if (mediaChunks.length > 0) {
+            const blob = new Blob(mediaChunks, {
+              type: mediaRecorder?.mimeType || 'audio/webm',
+            });
+            mediaChunks = [];
+            if (blob.size > 0) recordedBlob = blob;
+          }
+        })
+        .catch(() => {})
+        .then(() => {
+          cleanup();
+          settle('');
+        });
     }
   };
 

@@ -63,6 +63,28 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
   const evalSessionRef = useRef<SpeechEvaluationSession | null>(null);
   const waitNextRef = useRef<((action: 'retry' | 'advance') => void) | null>(null);
   const micBarRef = useRef<HTMLDivElement | null>(null); // 音量条（rAF 直改样式避免重渲染）
+  const [recordingUrl, setRecordingUrl] = useState<string | null>(null); // 孩子录音回放
+  const recordingUrlRef = useRef<string | null>(null);
+
+  /** 释放上一条录音的 Blob URL（换句/停止/退出时调用） */
+  const revokeRecording = useCallback(() => {
+    if (recordingUrlRef.current) {
+      URL.revokeObjectURL(recordingUrlRef.current);
+      recordingUrlRef.current = null;
+    }
+    setRecordingUrl(null);
+  }, []);
+
+  /** 回放孩子的录音（webm/opus，Chromium 原生可播） */
+  const handlePlayRecording = () => {
+    if (!recordingUrlRef.current) return;
+    try {
+      const audio = new Audio(recordingUrlRef.current);
+      void audio.play().catch((e) => logger.warn(MODULE, '录音回放', String(e)));
+    } catch (e) {
+      logger.warn(MODULE, '录音回放', String(e));
+    }
+  };
 
   const handlePickStyle = (id: StyleId) => {
     setTheme(id);
@@ -121,6 +143,10 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
     return () => {
       session.current++;
       evalRef.current?.stop();
+      if (recordingUrlRef.current) {
+        URL.revokeObjectURL(recordingUrlRef.current);
+        recordingUrlRef.current = null;
+      }
       stopSpeaking();
     };
   }, []);
@@ -184,6 +210,7 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
         if (repeatModeRef.current) {
           await sleep(500); // 留给孩子反应时间，也避开 TTS 尾音
           if (sessionRef.current !== mySession) return;
+          revokeRecording(); // 丢弃上一句录音
           setListening(true);
           const result = await new Promise<SpeechEvalResult>((resolve) => {
             const session = startSpeechEvaluation(para.content, 12000, (level) => {
@@ -199,10 +226,15 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
           setListening(false);
           setScoredResult(result);
           setLineScores((prev) => ({ ...prev, [i]: result.score }));
+          // 录音回放：blob → URL，面板上「听我的」按钮可用
+          if (result.recording && result.recording.size > 0) {
+            recordingUrlRef.current = URL.createObjectURL(result.recording);
+            setRecordingUrl(recordingUrlRef.current);
+          }
           logger.info(MODULE, '跟读评分', `第 ${i + 1} 句 ${result.score} 分（${result.mode}）`);
           if (result.score >= 70) {
             playCorrectSound();
-            await sleep(1300); // 亮分庆祝后自动下一句
+            await sleep(2200); // 亮分庆祝+留出试听录音的时间，自动下一句
             if (sessionRef.current !== mySession) return;
           } else {
             // 未达标：停在得分面板，等「再读一遍」或「跳过」
@@ -222,13 +254,14 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
       }
       if (sessionRef.current !== mySession) return;
       // 剧终：全体挥手谢幕
+      revokeRecording();
       setListening(false);
       setScoredResult(null);
       setPlaying(false);
       setFinished(true);
       logger.info(MODULE, '播放完成', text.title);
     },
-    [config, lessonId, text]
+    [config, lessonId, text, revokeRecording]
   );
 
   const handleStop = () => {
@@ -239,6 +272,7 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
     setSpeakerKey(null);
     setListening(false);
     setScoredResult(null);
+    revokeRecording();
   };
 
   const handleJump = (i: number) => {
@@ -386,14 +420,23 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
                   <i className="theater-repeat-heard">听到：{scoredResult.transcript}</i>
                 )}
               </div>
-              {scoredResult.score < 70 && (
+              {(scoredResult.score < 70 || recordingUrl) && (
                 <div className="theater-repeat-actions">
-                  <button className="theater-btn primary" onClick={handleRetryLine}>
-                    🔁 再读一遍
-                  </button>
-                  <button className="theater-btn" onClick={handleSkipLine}>
-                    跳过这句 ⏭
-                  </button>
+                  {recordingUrl && (
+                    <button className="theater-btn" onClick={handlePlayRecording} title="听听自己的发音">
+                      🔊 听我的
+                    </button>
+                  )}
+                  {scoredResult.score < 70 && (
+                    <>
+                      <button className="theater-btn primary" onClick={handleRetryLine}>
+                        🔁 再读一遍
+                      </button>
+                      <button className="theater-btn" onClick={handleSkipLine}>
+                        跳过这句 ⏭
+                      </button>
+                    </>
+                  )}
                 </div>
               )}
             </>
