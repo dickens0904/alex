@@ -455,15 +455,28 @@ function genReadingTranslation(lesson, cap) {
 
   const exercises = [];
   const maxIdx = Math.min(paragraphs.length, translations.length);
+  // 译文出现次数计数：课文含重复句时，同一译文对应多段——
+  // 给重复句出翻译题会产生"两个选项语义都对"的歧义题，跳过
+  const transCount = new Map();
+  for (const t of translations) {
+    const k = String(t).trim();
+    transCount.set(k, (transCount.get(k) || 0) + 1);
+  }
   const selectedIndices = pickRandom(
-    Array.from({ length: maxIdx }, (_, i) => i),
+    Array.from({ length: maxIdx }, (_, i) => i).filter(
+      (i) => (transCount.get(String(translations[i]).trim()) || 0) === 1
+    ),
     Math.min(cap, maxIdx)
   );
 
   for (const idx of selectedIndices) {
     const correctTranslation = translations[idx];
     const englishLine = paragraphs[idx].content;
-    const otherTranslations = translations.filter((_, i) => i !== idx);
+    // 干扰项池按文本去重：重复句的译文在数组中出现多次，
+    // 不去重会抽到两个相同文本的选项（选项重复 bug）
+    const otherTranslations = [
+      ...new Set(translations.map((t) => String(t).trim())),
+    ].filter((t) => t !== String(correctTranslation).trim());
     if (otherTranslations.length < 3) continue;
 
     exercises.push({

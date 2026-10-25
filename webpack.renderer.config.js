@@ -10,6 +10,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist/renderer'),
     filename: 'bundle.js',
     publicPath: './',
+    // 构建前清空输出目录：webpack 5 默认保留旧文件，6 月的陈旧 chunk 会残留进安装包
+    clean: true,
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.js', '.jsx'],

@@ -64,6 +64,8 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
   const waveLevelsRef = useRef<number[]>([]);
   // 每题已给分（重试覆盖而非重复累计）：key=题目索引, value=已计入 score 的分数
   const awardedRef = useRef<Record<number, number>>({});
+  // 已计入连击/正确数的题目（重试答对不重复累计连击与正确数）
+  const countedCorrectRef = useRef<Set<number>>(new Set());
 
   const updateScore = (delta: number) => {
     setScore((prev) => {
@@ -165,13 +167,17 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
       }
 
       if (correct) {
-        correctCountRef.current += 1;
-        const newStreak = streak + 1;
-        setStreak(newStreak);
-        if (newStreak > maxStreakRef.current) maxStreakRef.current = newStreak;
+        // 连击/正确数每题只计首次答对：重试答对不重复累计（刷连击）
+        if (!countedCorrectRef.current.has(currentIndex)) {
+          countedCorrectRef.current.add(currentIndex);
+          correctCountRef.current += 1;
+          const newStreak = streak + 1;
+          setStreak(newStreak);
+          if (newStreak > maxStreakRef.current) maxStreakRef.current = newStreak;
+          if (newStreak >= 3 && newStreak % 3 === 0) playStreakSound(newStreak);
+        }
         playCorrectSound();
-        if (newStreak >= 3 && newStreak % 3 === 0) playStreakSound(newStreak);
-        setEncouragement(getEncouragement(newStreak, true));
+        setEncouragement(getEncouragement(streak, true));
       } else {
         setStreak(0);
         playWrongSound();
