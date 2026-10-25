@@ -214,10 +214,12 @@ if (!gotTheLock) {
       mainWindow.loadFile(rendererPath);
     }
 
-    // 打开 DevTools 方便调试
-    mainWindow.webContents.on('did-finish-load', () => {
-      mainWindow?.webContents.openDevTools({ mode: 'bottom' });
-    });
+    // DevTools 仅开发态自动打开（发布版不带调试界面）
+    if (!app.isPackaged) {
+      mainWindow.webContents.on('did-finish-load', () => {
+        mainWindow?.webContents.openDevTools({ mode: 'bottom' });
+      });
+    }
 
     // 拦截前端 TTS 日志输出到主进程控制台
     mainWindow.webContents.on('console-message', (event, level, message) => {

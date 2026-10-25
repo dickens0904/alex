@@ -1,6 +1,6 @@
 {
   "name": "new-concept-english-practice",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "新概念英语第一册学习程序 - 为8岁儿童设计的英语练习应用",
   "main": "dist/electron/electron/main.js",
   "author": "Your Name",
