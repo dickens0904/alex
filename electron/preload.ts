@@ -64,4 +64,7 @@ contextBridge.exposeInMainWorld('electronAPI', {
   // 日志文件
   writeLogFile: (logLine: string) => ipcRenderer.invoke('write-log-file', logLine),
   getLogFilePath: () => ipcRenderer.invoke('get-log-file-path'),
+
+  // 应用信息
+  getAppVersion: () => ipcRenderer.invoke('get-app-version'),
 });

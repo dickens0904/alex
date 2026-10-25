@@ -277,3 +277,119 @@
     gap: 24px;
   }
 }
+
+/* ---------- 「关于」入口与模态框 ---------- */
+.about-entry {
+  margin-top: 18px;
+  padding: 8px 18px;
+  border: none;
+  border-radius: 18px;
+  background: transparent;
+  color: #a08c76;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.about-entry:hover {
+  background: #f3ead9;
+  color: #5d4037;
+}
+.about-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 52, 54, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: about-fade 0.2s ease;
+}
+@keyframes about-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.about-card {
+  position: relative;
+  width: 480px;
+  max-width: 92vw;
+  max-height: 86vh;
+  background: #fffdf8;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(45, 52, 54, 0.3);
+  padding: 26px 28px;
+  text-align: center;
+  animation: about-pop 0.25s cubic-bezier(0.34, 1.4, 0.5, 1);
+}
+@keyframes about-pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+.about-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  border: none;
+  background: #f3ead9;
+  color: #5d4037;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 13px;
+  cursor: pointer;
+}
+.about-close:hover {
+  background: #e8dcc8;
+}
+.about-logo {
+  width: 104px;
+  height: 104px;
+  border-radius: 50%;
+  box-shadow: 0 4px 14px rgba(230, 126, 34, 0.25);
+}
+.about-title {
+  margin: 12px 0 4px;
+  font-size: 22px;
+  color: #5d4037;
+}
+.about-version {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 10px;
+  background: #fff0d9;
+  color: #e67e22;
+  font-size: 13px;
+  font-weight: 700;
+}
+.about-changelog {
+  margin-top: 16px;
+  max-height: 44vh;
+  overflow-y: auto;
+  text-align: left;
+  border-top: 1px solid #f3ead9;
+  padding-top: 12px;
+}
+.about-changelog-item {
+  padding: 8px 4px;
+}
+.about-changelog-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.about-changelog-head b {
+  color: #e67e22;
+  font-size: 15px;
+}
+.about-changelog-head span {
+  color: #b2a08c;
+  font-size: 12px;
+}
+.about-changelog-item ul {
+  margin: 5px 0 0;
+  padding-left: 18px;
+}
+.about-changelog-item li {
+  color: #5d4037;
+  font-size: 13.5px;
+  line-height: 1.65;
+}

@@ -6,6 +6,8 @@ import type { Achievement } from '../../services/achievement';
 import { getTotalLessonCount } from '../../services/lesson';
 import { getStreakData, getStreakLevel } from '../../services/dailyStreak';
 import { logger } from '../../utils/logger';
+import { APP_NAME, APP_CHANGELOG } from '../../data/appChangelog';
+import aboutLogo from '../../assets/images/about-logo.png';
 
 interface UserStats {
   totalScore: number;
@@ -26,6 +28,8 @@ const Home: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const [achievements, setAchievements] = useState<Achievement[]>([]);
+  const [appVersion, setAppVersion] = useState('');
+  const [showAbout, setShowAbout] = useState(false);
   const streakData = getStreakData();
   const streakLevel = getStreakLevel(streakData.currentStreak);
 
@@ -39,6 +43,7 @@ const Home: React.FC = () => {
     Promise.all([loadStats(), loadAchievements(), loadTotalLessons()]).finally(() =>
       setLoading(false)
     );
+    window.electronAPI?.getAppVersion?.().then((v) => setAppVersion(v)).catch(() => {});
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -63,7 +68,7 @@ const Home: React.FC = () => {
       <div className="home-content">
         {/* 欢迎标题 */}
         <div className="welcome-section">
-          <h1 className="title">新概念英语练习王</h1>
+          <h1 className="title">{APP_NAME}</h1>
           <p className="subtitle">让英语学习变得有趣又简单！</p>
         </div>
 
@@ -158,6 +163,40 @@ const Home: React.FC = () => {
                   <span className="achievement-name">{badge.name}</span>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* 关于入口 */}
+        <button className="about-entry" onClick={() => setShowAbout(true)} title="版本信息与更新说明">
+          ℹ️ 关于{APP_NAME}
+        </button>
+
+        {/* 「关于」模态框 */}
+        {showAbout && (
+          <div className="about-overlay" onClick={() => setShowAbout(false)}>
+            <div className="about-card" onClick={(e) => e.stopPropagation()}>
+              <button className="about-close" onClick={() => setShowAbout(false)}>
+                ✕
+              </button>
+              <img src={aboutLogo} alt="logo" className="about-logo" />
+              <h2 className="about-title">{APP_NAME}</h2>
+              <span className="about-version">{appVersion ? `v${appVersion}` : ''}</span>
+              <div className="about-changelog">
+                {APP_CHANGELOG.map((entry) => (
+                  <div key={entry.version} className="about-changelog-item">
+                    <div className="about-changelog-head">
+                      <b>v{entry.version}</b>
+                      <span>{entry.date}</span>
+                    </div>
+                    <ul>
+                      {entry.items.map((it, i) => (
+                        <li key={i}>{it}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

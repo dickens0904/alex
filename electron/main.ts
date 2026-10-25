@@ -159,6 +159,7 @@ if (!gotTheLock) {
       minHeight: 768,
       backgroundColor: '#FFF5E6',
       show: false,
+      icon: path.join(app.getAppPath(), 'resources', 'images', 'icon.ico'),
       webPreferences: {
         contextIsolation: true,
         nodeIntegration: false,
@@ -202,6 +203,11 @@ if (!gotTheLock) {
 
     ipcMain.handle('get-log-file-path', () => {
       return logFilePath;
+    });
+
+    // 「关于」界面：应用版本号
+    ipcMain.handle('get-app-version', () => {
+      return app.getVersion();
     });
 
     // 加载应用

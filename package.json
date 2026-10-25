@@ -1,6 +1,6 @@
 {
   "name": "new-concept-english-practice",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "新概念英语第一册学习程序 - 为8岁儿童设计的英语练习应用",
   "main": "dist/electron/electron/main.js",
   "author": "Your Name",
@@ -75,7 +75,7 @@
   },
   "build": {
     "appId": "com.english.practice",
-    "productName": "新概念英语练习王",
+    "productName": "蟹老板新概念英语",
     "directories": {
       "output": "release"
     },
@@ -106,7 +106,7 @@
       "installerHeaderIcon": "resources/images/icon.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "新概念英语练习王"
+      "shortcutName": "蟹老板新概念英语"
     },
     "asarUnpack": [
       "models/**/*",
@@ -116,7 +116,9 @@
       "provider": "github",
       "owner": "dickens0904",
       "repo": "alex"
-    }
+    },
+    "icon": "resources/images/icon.ico",
+    "artifactName": "new-concept-english-practice-setup-${version}.${ext}"
   },
   "allowScripts": {
     "koffi@3.3.3": true

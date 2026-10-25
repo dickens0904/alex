@@ -103,6 +103,23 @@ declare global {
       // 日志文件
       writeLogFile: (logLine: string) => Promise<{ success: boolean; error?: string }>;
       getLogFilePath: () => Promise<string>;
+
+      // 应用信息
+      getAppVersion: () => Promise<string>;
     };
   }
+}
+
+// 静态图片资源以 import 方式引入（webpack file-loader 处理）
+declare module '*.png' {
+  const src: string;
+  export default src;
+}
+declare module '*.jpg' {
+  const src: string;
+  export default src;
+}
+declare module '*.svg' {
+  const src: string;
+  export default src;
 }
