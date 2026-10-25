@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from 'electron';
+import { app, BrowserWindow, ipcMain, dialog } from 'electron';
 import { spawn } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
@@ -64,6 +64,55 @@ async function loadEdgeTTS() {
 }
 
 let mainWindow: BrowserWindow | null = null;
+
+// ==================== 自动更新（仅打包态；源：GitHub Releases） ====================
+// 检查/下载走 electron-updater，元数据为 Release 资产里的 latest.yml。
+// 国内网络访问 GitHub 不稳定：所有错误静默，不打扰使用。
+function setupAutoUpdater(): void {
+  if (!app.isPackaged) return; // 开发态跳过
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires, @typescript-eslint/no-explicit-any
+    const { autoUpdater } = require('electron-updater') as any;
+    autoUpdater.autoDownload = false; // 安装包 300MB+，先询问用户再下载
+    autoUpdater.on('update-available', (info: { version: string }) => {
+      if (!mainWindow) return;
+      dialog
+        .showMessageBox(mainWindow, {
+          type: 'info',
+          title: '发现新版本',
+          message: `发现新版本 v${info.version}（当前 v${app.getVersion()}），是否下载？`,
+          detail: '下载完成后会提示你重启安装，学习进度不会丢失。',
+          buttons: ['下载', '暂不'],
+          defaultId: 0,
+        })
+        .then(({ response }) => {
+          if (response === 0) autoUpdater.downloadUpdate().catch(() => {});
+        });
+    });
+    autoUpdater.on('update-downloaded', () => {
+      if (!mainWindow) return;
+      dialog
+        .showMessageBox(mainWindow, {
+          type: 'info',
+          title: '更新就绪',
+          message: '新版本已下载完成，立即重启并安装？',
+          buttons: ['立即重启安装', '下次启动时'],
+          defaultId: 0,
+        })
+        .then(({ response }) => {
+          if (response === 0) autoUpdater.quitAndInstall();
+        });
+    });
+    autoUpdater.on('error', () => {
+      /* 静默：网络不可达/超时是常态 */
+    });
+    // 启动 30 秒后检查，避开启动高峰
+    setTimeout(() => autoUpdater.checkForUpdates().catch(() => {}), 30000);
+    console.log('[更新] 自动更新已启用（GitHub Releases）');
+  } catch (e) {
+    console.warn('[更新] 初始化失败:', e);
+  }
+}
 
 // ==================== 单实例锁：防止多开 ====================
 let gotTheLock = false;
@@ -213,6 +262,8 @@ if (!gotTheLock) {
       app.quit();
     }
   });
+
+  setupAutoUpdater();
 
   // IPC通信处理
   ipcMain.handle('get-lesson', async (event, lessonId: number) => {

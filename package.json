@@ -14,7 +14,7 @@
     "build:electron": "tsc -p tsconfig.electron.json",
     "start": "electron .",
     "pack": "electron-builder --dir",
-    "dist": "electron-builder",
+    "dist": "electron-builder --publish=never",
     "lint": "eslint src/**/*.{ts,tsx} electron/**/*.ts",
     "lint:fix": "eslint src/**/*.{ts,tsx} electron/**/*.ts --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,css}\" \"electron/**/*.ts\"",
@@ -27,6 +27,7 @@
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "better-sqlite3": "^9.2.2",
+    "electron-updater": "^6.8.11",
     "msedge-tts": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -110,7 +111,12 @@
     "asarUnpack": [
       "models/**/*",
       "node_modules/sherpa-onnx/**"
-    ]
+    ],
+    "publish": {
+      "provider": "github",
+      "owner": "dickens0904",
+      "repo": "alex"
+    }
   },
   "allowScripts": {
     "koffi@3.3.3": true
