@@ -61,6 +61,7 @@ const ShootingGame: React.FC<ShootingGameProps> = ({ vocabulary, onFinish, onBac
   );
   const [timer, setTimer] = useState(ROUND_TIME / 1000);
   const [cannonAngle, setCannonAngle] = useState(0);
+  const [hoverTargetId, setHoverTargetId] = useState<number | null>(null);
 
   const animFrameRef = useRef<number>(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -405,6 +406,41 @@ const ShootingGame: React.FC<ShootingGameProps> = ({ vocabulary, onFinish, onBac
 
       {/* 游戏区域 */}
       <div className="game-area" ref={gameAreaRef}>
+        {/* 弹道虚线：悬停瞄准线 + 射击轨迹线（SVG 不挡点击） */}
+        <svg className="trajectory-svg">
+          {(() => {
+            const muzzleX = GAME_WIDTH / 2;
+            const muzzleY = CANNON_Y - 30;
+            const hover =
+              hoverTargetId != null
+                ? targets.find((t) => t.id === hoverTargetId && !t.hit && !t.missed)
+                : null;
+            return (
+              <>
+                {hover && (
+                  <line
+                    className="aim-line"
+                    x1={muzzleX}
+                    y1={muzzleY}
+                    x2={hover.x + TARGET_SIZE / 2}
+                    y2={hover.y + TARGET_SIZE / 2}
+                  />
+                )}
+                {bullets.map((b) => (
+                  <line
+                    key={b.id}
+                    className="trail-line"
+                    x1={muzzleX}
+                    y1={muzzleY}
+                    x2={b.targetX}
+                    y2={b.targetY}
+                  />
+                ))}
+              </>
+            );
+          })()}
+        </svg>
+
         {/* 目标 */}
         {targets.map((t) => (
           <div
@@ -412,6 +448,8 @@ const ShootingGame: React.FC<ShootingGameProps> = ({ vocabulary, onFinish, onBac
             className={`target ${t.hit ? 'hit' : ''} ${t.missed ? 'missed' : ''}`}
             style={{ left: t.x, top: t.y, width: TARGET_SIZE, height: TARGET_SIZE }}
             onClick={() => handleTargetClick(t)}
+            onMouseEnter={() => setHoverTargetId(t.id)}
+            onMouseLeave={() => setHoverTargetId((cur) => (cur === t.id ? null : cur))}
           >
             <div className="target-inner">
               <span className="target-text">{t.text}</span>

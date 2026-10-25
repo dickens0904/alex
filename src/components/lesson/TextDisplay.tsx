@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { speakSentence, speakText, stopSpeaking } from '../../services/tts';
 import VoiceSelector from './VoiceSelector';
+import { getStageConfig } from '../theater/scenes';
+import StoryTheater from '../theater/StoryTheater';
 
 interface Paragraph {
   speaker?: string;
@@ -17,6 +19,8 @@ interface TextDisplayProps {
   text: TextData;
   illustration?: string;
   autoPlay?: boolean;
+  /** 课程 id：配置了剧场场景的课显示"情景剧场"入口 */
+  lessonId?: number;
 }
 
 /** 获取有效的 speaker 标识，空的也返回一个默认值 */
@@ -24,12 +28,14 @@ function getEffectiveSpeaker(speaker?: string): string {
   return speaker && speaker.trim() ? speaker.trim() : 'N';
 }
 
-const TextDisplay: React.FC<TextDisplayProps> = ({ text, illustration, autoPlay }) => {
+const TextDisplay: React.FC<TextDisplayProps> = ({ text, illustration, autoPlay, lessonId }) => {
   // 用于触发声音变更后的刷新
   const [, setRefreshKey] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
+  const [theaterOpen, setTheaterOpen] = useState(false);
   const autoPlayRef = useRef(false);
   const mountedRef = useRef(false);
+  const hasTheater = lessonId != null && getStageConfig(lessonId) != null;
 
   const handleSpeakSentence = (content: string, speaker?: string) => {
     const effectiveSpeaker = getEffectiveSpeaker(speaker);
@@ -45,7 +51,15 @@ const TextDisplay: React.FC<TextDisplayProps> = ({ text, illustration, autoPlay 
     speakText(normalizedParagraphs);
   }, [text.paragraphs]);
 
-  // 自动播放逻辑：进入课文 tab 后自动朗读全文
+  // 仅在组件卸载时停止朗读（重渲染不应打断进行中的朗读）
+  useEffect(() => {
+    return () => {
+      stopSpeaking();
+      mountedRef.current = false;
+    };
+  }, []);
+
+  // 自动播放逻辑：进入课文 tab 后自动朗读全文（组件挂载时触发一次）
   useEffect(() => {
     if (autoPlay && !mountedRef.current) {
       mountedRef.current = true;
@@ -60,14 +74,11 @@ const TextDisplay: React.FC<TextDisplayProps> = ({ text, illustration, autoPlay 
           autoPlayRef.current = false;
         }, estDuration);
       }, 800);
+      // 依赖变化时只取消尚未开始的定时器，不停正在进行的朗读
       return () => {
         clearTimeout(timer);
-        stopSpeaking();
       };
     }
-    return () => {
-      stopSpeaking();
-    };
   }, [autoPlay, handleSpeakAll, text.paragraphs.length]);
 
   return (
@@ -115,6 +126,17 @@ const TextDisplay: React.FC<TextDisplayProps> = ({ text, illustration, autoPlay 
         })}
       </div>
       <div className="text-actions">
+        {hasTheater && (
+          <button
+            className="theater-entry-btn"
+            onClick={() => {
+              stopSpeaking(); // 停掉课文自动朗读，把声音让给剧场
+              setTheaterOpen(true);
+            }}
+          >
+            🎬 情景剧场
+          </button>
+        )}
         <button
           className={`speak-all-btn ${isAutoPlaying ? 'playing' : ''}`}
           onClick={handleSpeakAll}
@@ -122,6 +144,17 @@ const TextDisplay: React.FC<TextDisplayProps> = ({ text, illustration, autoPlay 
           {isAutoPlaying ? '🔊 朗读中...' : '🔊 朗读全文'}
         </button>
       </div>
+
+      {theaterOpen && (
+        <StoryTheater
+          lessonId={lessonId!}
+          text={{ title: text.title, paragraphs: text.paragraphs, translation: text.translation }}
+          onClose={() => {
+            setTheaterOpen(false);
+            setRefreshKey((k) => k + 1);
+          }}
+        />
+      )}
     </div>
   );
 };

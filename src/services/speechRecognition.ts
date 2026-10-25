@@ -1,7 +1,15 @@
 /**
- * 语音识别服务
- * 提供语音评测功能：录音、语音识别、文本比对与评分
+ * 语音识别与口语评测服务
+ *
+ * 评分链路（优先级从高到低）：
+ * 1. vosk 离线识别（Electron 主进程，MediaRecorder webm → ffmpeg 解码 16k PCM）——真实词级比对打分
+ * 2. Web Speech API（浏览器环境且有 Google 服务时）——文本比对
+ * 3. 开口练习分（energy）——按开口占比/音量/时长评估
+ * 4. silent —— 完全没检测到声音 / 麦克风不可用
  */
+import { logger } from '../utils/logger';
+
+const MODULE = 'speechRecognition';
 
 // ---------------------------------------------------------------------------
 // Type declarations for Web Speech API (not included in lib.dom.d.ts by default)
@@ -66,6 +74,13 @@ function getSpeechRecognitionConstructor(): (new () => SpeechRecognitionInstance
 }
 
 /**
+ * 检查当前浏览器是否支持语音识别（Web Speech API）
+ */
+export function isSpeechRecognitionAvailable(): boolean {
+  return getSpeechRecognitionConstructor() !== null;
+}
+
+/**
  * 文本归一化：转小写、移除标点与多余空格
  */
 function normalizeText(text: string): string {
@@ -104,67 +119,12 @@ function levenshteinDistance(a: string, b: string): number {
 }
 
 /**
- * 录制一段音频（用于 fallback 场景）
- * 返回录音时长（毫秒）
- */
-function recordAudioForDuration(maxDurationMs: number): Promise<number> {
-  return new Promise((resolve) => {
-    const startTime = Date.now();
-
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      // 无法录音，立即返回 0
-      resolve(0);
-      return;
-    }
-
-    let stream: MediaStream | null = null;
-    let recorder: MediaRecorder | null = null;
-
-    navigator.mediaDevices
-      .getUserMedia({ audio: true })
-      .then((s) => {
-        stream = s;
-        recorder = new MediaRecorder(stream);
-        recorder.start();
-
-        setTimeout(() => {
-          if (recorder && recorder.state === 'recording') {
-            recorder.stop();
-          }
-        }, maxDurationMs);
-
-        recorder.onstop = () => {
-          const elapsed = Date.now() - startTime;
-          stream?.getTracks().forEach((t) => t.stop());
-          resolve(elapsed);
-        };
-      })
-      .catch(() => {
-        // 麦克风权限被拒绝等场景，立即返回
-        resolve(0);
-      });
-  });
-}
-
-// ---------------------------------------------------------------------------
-// Public API
-// ---------------------------------------------------------------------------
-
-/**
- * 检查当前浏览器是否支持语音识别（Web Speech API）
- */
-export function isSpeechRecognitionAvailable(): boolean {
-  return getSpeechRecognitionConstructor() !== null;
-}
-
-/**
  * 比对两段文本的相似度，返回 0-100 的评分
  *
  * 算法：
  * 1. 归一化两段文本（小写、去标点）
- * 2. 拆分为单词数组，计算单词级别的匹配比例
- * 3. 对未匹配的单词用 Levenshtein 距离衡量部分相似度
- * 4. 综合得出最终分数
+ * 2. 词级 LCS 动态规划，完全匹配得 1 分
+ * 3. 未完全匹配的词用字符级 Levenshtein 距离折算部分相似度
  */
 export function compareTexts(spoken: string, target: string): number {
   const normSpoken = normalizeText(spoken);
@@ -181,23 +141,16 @@ export function compareTexts(spoken: string, target: string): number {
 
   if (targetWords.length === 0) return 0;
 
-  // 逐词匹配：对 spoken 中每个词在 target 对应位置找最佳匹配
-  let matchedScore = 0;
-
-  // 使用 LCS（最长公共子序列）风格的动态规划来计算词级相似度
+  // dp[i][j] = 前 i 个 spoken 词和前 j 个 target 词的最大匹配分数
   const m = spokenWords.length;
   const n = targetWords.length;
-
-  // dp[i][j] = 前 i 个 spoken 词和前 j 个 target 词的最大匹配分数
   const dp: number[][] = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
 
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
       if (spokenWords[i - 1] === targetWords[j - 1]) {
-        // 完全匹配得 1 分
         dp[i][j] = dp[i - 1][j - 1] + 1;
       } else {
-        // 计算 Levenshtein 部分匹配分（基于字符级距离）
         const dist = levenshteinDistance(spokenWords[i - 1], targetWords[j - 1]);
         const maxLen = Math.max(spokenWords[i - 1].length, targetWords[j - 1].length);
         const partialScore = maxLen > 0 ? 1 - dist / maxLen : 0;
@@ -211,151 +164,335 @@ export function compareTexts(spoken: string, target: string): number {
     }
   }
 
-  matchedScore = dp[m][n];
-
-  // 最终分数 = 匹配分 / target 词数，限制在 [0, 100]
-  const rawScore = (matchedScore / n) * 100;
+  const rawScore = (dp[m][n] / n) * 100;
   return Math.round(Math.min(100, Math.max(0, rawScore)));
 }
 
+// ---------------------------------------------------------------------------
+// 口语评测（一次录音完成采集 + 波形 + 评分）
+// ---------------------------------------------------------------------------
+
+/** 口语评测结果 */
+export interface SpeechEvalResult {
+  /** 0-100 分 */
+  score: number;
+  /** 评分来源：vosk=离线识别比对 / recognized=Web Speech比对 / energy=开口练习分 / silent=未检测到声音 */
+  mode: 'vosk' | 'recognized' | 'energy' | 'silent';
+  /** 识别出的文本（vosk/recognized 模式） */
+  transcript?: string;
+  /** 录音期间的最大音量（0-1，已做视觉增益） */
+  maxLevel: number;
+  /** 麦克风不可用（权限被拒/设备占用/无设备）——UI 应提示检查麦克风而非"没声音" */
+  micError?: boolean;
+}
+
+/** 进行中的口语评测会话 */
+export interface SpeechEvaluationSession {
+  /** 自然结束（识别完成/超时）或手动 stop() 后 resolve（二者只会 resolve 一次） */
+  promise: Promise<SpeechEvalResult>;
+  /** 提前结束录音并出分（如用户点"完成录音"） */
+  stop: () => void;
+}
+
+/** 判定"无声"的音量阈值（视觉增益后） */
+const SILENT_LEVEL_THRESHOLD = 0.08;
+/** 判定"开口"的单帧音量阈值 */
+const VOICED_LEVEL_THRESHOLD = 0.1;
+
 /**
- * 语音评测：录音 -> 识别 -> 与目标文本比对 -> 返回评分 (0-100)
- *
- * 流程：
- * 1. 启动麦克风录音（MediaRecorder）
- * 2. 同时启动 Web Speech Recognition 进行实时识别
- * 3. 识别结束后将识别结果与 targetText 比对
- * 4. 返回相似度评分
- *
- * Fallback：若浏览器不支持 SpeechRecognition，则仅录音并根据录音时长返回模拟分数
- *
- * @param targetText  目标文本（用户应该朗读的内容）
- * @param maxRecordMs 最大录音时长，默认 10000ms（10 秒）
+ * 启动一次口语评测：
+ * - 打开麦克风（AudioContext 16kHz 自动重采样）实时计算音量供波形绘制
+ * - vosk 可用时把 16kHz Int16 PCM 经 IPC 流式喂给主进程识别（离线，出真实词级比分）
+ * - vosk 不可用时尝试 Web Speech（Electron 里云端服务通常不可达，8 秒无结果自动放弃）
+ * - 全部失败则按音量评估出"开口练习分"
  */
-export function evaluateSpeech(targetText: string, maxRecordMs: number = 10000): Promise<number> {
-  // --- Fallback：浏览器不支持语音识别 ---
-  if (!isSpeechRecognitionAvailable()) {
-    console.warn(
-      '[speechRecognition] 当前浏览器不支持 Web Speech Recognition API，将使用 fallback 模式（仅录音）。'
-    );
-    return evaluateSpeechFallback(targetText, maxRecordMs);
-  }
+export function startSpeechEvaluation(
+  targetText: string,
+  maxRecordMs: number = 10000,
+  onLevel?: (level: number) => void
+): SpeechEvaluationSession {
+  let settled = false;
+  let resolvePromise!: (r: SpeechEvalResult) => void;
+  const promise = new Promise<SpeechEvalResult>((res) => {
+    resolvePromise = res;
+  });
 
-  return new Promise<number>((resolve) => {
-    const Constructor = getSpeechRecognitionConstructor()!;
-    const recognition = new Constructor();
+  let recognition: SpeechRecognitionInstance | null = null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  let audioContext: any = null;
+  let stream: MediaStream | null = null;
+  let rafId = 0;
+  let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
+  let transcript = '';
+  let recognitionDone = false; // Web Speech 流程正常产出过结果
+  let micFailed = false; // 麦克风不可用（权限/占用/无设备）
+  let recognitionWatchdog: ReturnType<typeof setTimeout> | null = null;
+  let maxLevel = 0;
+  let voicedFrames = 0;
+  let totalFrames = 0;
+  let voskSessionOk = false; // 主进程 vosk 识别会话是否建立
+  // MediaRecorder 采集（ScriptProcessorNode 在本机 Electron 里 onaudioprocess 首帧
+  // 分发死锁主线程导致白屏，故弃用；MediaRecorder 是旧版已验证稳定路径）
+  let mediaRecorder: MediaRecorder | null = null;
+  let mediaChunks: Blob[] = [];
+  const startedAt = Date.now();
+
+  /** 出最终结果（vosk 文本优先） */
+  const settle = (voskText: string) => {
+    let result: SpeechEvalResult;
+    if (voskText.trim()) {
+      result = {
+        score: compareTexts(voskText, targetText),
+        mode: 'vosk',
+        transcript: voskText,
+        maxLevel,
+      };
+    } else if (recognitionDone && transcript.trim()) {
+      result = {
+        score: compareTexts(transcript, targetText),
+        mode: 'recognized',
+        transcript,
+        maxLevel,
+      };
+    } else {
+      const voicedRatio = totalFrames > 0 ? voicedFrames / totalFrames : 0;
+      if (micFailed) {
+        result = { score: 0, mode: 'silent', maxLevel, micError: true };
+      } else if (maxLevel < SILENT_LEVEL_THRESHOLD || voicedRatio < 0.05) {
+        result = { score: 0, mode: 'silent', maxLevel };
+      } else {
+        // 开口练习分：开口占比 + 音量饱满度 + 朗读时长接近度
+        const wordCount = normalizeText(targetText).split(' ').filter(Boolean).length;
+        const idealMs = wordCount * 450 + 800;
+        const elapsedMs = Date.now() - startedAt;
+        const durationCloseness = Math.max(0, 1 - Math.abs(elapsedMs - idealMs) / idealMs);
+        const raw =
+          45 + voicedRatio * 25 + Math.min(1, maxLevel / 0.5) * 15 + durationCloseness * 15;
+        result = { score: Math.round(Math.min(88, raw)), mode: 'energy', maxLevel };
+      }
+    }
+    resolvePromise(result);
+  };
+
+  const finish = () => {
+    if (settled) return;
+    settled = true;
+    if (timeoutId) clearTimeout(timeoutId);
+    if (recognitionWatchdog) clearTimeout(recognitionWatchdog);
+    cancelAnimationFrame(rafId);
+    try {
+      recognition?.abort();
+    } catch {
+      /* 已停止 */
+    }
+
+    const cleanup = () => {
+      stream?.getTracks().forEach((t) => t.stop());
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      if (audioContext && typeof (audioContext as any).close === 'function') {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (audioContext as any).close().catch(() => {});
+      }
+    };
+
+    if (voskSessionOk && window.electronAPI?.voskFinish) {
+      // 顺序关键：先 stop MediaRecorder（依赖活跃流，先停 tracks 会死锁 stop()），
+      // webm/opus blob 交主进程 ffmpeg 子进程解码为 16k PCM 喂 vosk
+      // （渲染端 ScriptProcessor/decodeAudioData/AudioWorklet 在本机全部死锁，只剩 ffmpeg 子进程可用），
+      // 最后取识别文本出分并清理流资源
+      const stopMedia = (): Promise<void> =>
+        new Promise((res) => {
+          if (!mediaRecorder || mediaRecorder.state === 'inactive') {
+            res();
+            return;
+          }
+          mediaRecorder.onstop = () => res();
+          try {
+            mediaRecorder.stop();
+          } catch {
+            res();
+          }
+        });
+      const feedRecording = async (): Promise<void> => {
+        logger.info(MODULE, 'finish', `stopMedia 完成 chunks=${mediaChunks.length}`);
+        if (mediaChunks.length === 0) return;
+        const blob = new Blob(mediaChunks, {
+          type: mediaRecorder?.mimeType || 'audio/webm',
+        });
+        mediaChunks = [];
+        if (blob.size === 0) return;
+        logger.info(MODULE, 'finish', `webm blob size=${blob.size}`);
+        const ab = await blob.arrayBuffer();
+        const dr = await window.electronAPI!.voskDecode!(ab);
+        logger.info(MODULE, 'finish', `voskDecode=${JSON.stringify(dr)}`);
+      };
+      stopMedia()
+        .then(feedRecording)
+        .then(() => window.electronAPI!.voskFinish!())
+        .then((r) => {
+          logger.info(MODULE, 'finish', `voskFinish=${JSON.stringify(r)}`);
+          settle(r?.text ?? '');
+        })
+        .catch((e) => {
+          console.warn('[speechEval] finish 链路异常:', e);
+          settle('');
+        })
+        .finally(cleanup);
+    } else {
+      cleanup();
+      settle('');
+    }
+  };
+
+  // --- 麦克风 + 音量分析 + vosk 录音采集 ---
+  const startAudio = async (useVosk: boolean): Promise<boolean> => {
+    if (!navigator.mediaDevices?.getUserMedia) {
+      micFailed = true;
+      finish();
+      return false;
+    }
+    try {
+      // 3 秒拿不到流视为失败：上次 stop 后设备未释放完/被占用时 getUserMedia 可能挂起，
+      // 不设超时会卡满 maxRecordMs 才出结果，用户感知是"点了没反应"
+      stream = await Promise.race([
+        navigator.mediaDevices.getUserMedia({ audio: true }),
+        new Promise<never>((_, rej) =>
+          setTimeout(() => rej(new Error('microphone-open-timeout')), 3000)
+        ),
+      ]);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const Ctx = (window as any).AudioContext || (window as any).webkitAudioContext;
+      if (!Ctx) return true; // 拿到流但没有 AudioContext：跳过音量分析，仍可走识别
+      // 默认采样率（48k）。本机 ScriptProcessorNode + getUserMedia 组合会死锁主线程
+      // （onaudioprocess 首帧分发冻结），故实时音量走 AnalyserNode，PCM 采集走 MediaRecorder
+      audioContext = new Ctx();
+      const source = audioContext.createMediaStreamSource(stream);
+      const analyser = audioContext.createAnalyser();
+      analyser.fftSize = 1024;
+      source.connect(analyser);
+
+      // vosk 录音：MediaRecorder（旧版已验证稳定），结束后统一解码喂给识别器
+      if (useVosk && window.electronAPI?.voskChunk) {
+        try {
+          mediaChunks = [];
+          mediaRecorder = new MediaRecorder(stream);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          mediaRecorder.ondataavailable = (e: any) => {
+            if (e.data && e.data.size > 0) mediaChunks.push(e.data);
+          };
+          mediaRecorder.start(); // 无 timeslice：stop() 时单次吐块（start(timeslice) 与 stop() 在本机有死锁）
+        } catch (err) {
+          console.warn('[speechRecognition] MediaRecorder 启动失败:', err);
+        }
+      }
+
+      const buf = new Uint8Array(analyser.fftSize);
+      const tick = () => {
+        if (settled) return;
+        analyser.getByteTimeDomainData(buf);
+        let sum = 0;
+        for (let i = 0; i < buf.length; i++) {
+          const v = (buf[i] - 128) / 128;
+          sum += v * v;
+        }
+        const rms = Math.sqrt(sum / buf.length);
+        const level = Math.min(1, rms * 4); // 视觉增益：正常人声 rms≈0.05-0.3 → 0.2-1.0
+        totalFrames++;
+        if (level > VOICED_LEVEL_THRESHOLD) voicedFrames++;
+        if (level > maxLevel) maxLevel = level;
+        onLevel?.(level);
+        rafId = requestAnimationFrame(tick);
+      };
+      rafId = requestAnimationFrame(tick);
+      return true;
+    } catch {
+      // 权限被拒 / 设备占用 / 打开超时
+      micFailed = true;
+      finish();
+      return false;
+    }
+  };
+
+  // --- Web Speech 识别（vosk 不可用时的备选） ---
+  // Chromium 的语音识别依赖 Google 云端服务（Electron 无内置 API key，国内网络也不可达），
+  // 典型表现是 start 成功但永远不返回结果（不报错也不触发 onend）。
+  // watchdog：启动后 8 秒仍无识别结果就放弃识别，走音量评估降级，不让用户干等。
+  const startRecognition = () => {
+    const Constructor = getSpeechRecognitionConstructor();
+    if (!Constructor) return;
+    recognition = new Constructor();
     recognition.lang = 'en-US';
     recognition.continuous = false;
     recognition.interimResults = false;
     recognition.maxAlternatives = 1;
 
-    let resolved = false;
-    let spokenTranscript = '';
-    let mediaStream: MediaStream | null = null;
-    let mediaRecorder: MediaRecorder | null = null;
-
-    // 超时保护：防止识别过程无限挂起
-    const timeoutId = setTimeout(() => {
-      if (!resolved) {
-        resolved = true;
-        recognition.abort();
-        mediaStream?.getTracks().forEach((t) => t.stop());
-        console.warn('[speechRecognition] 识别超时（', maxRecordMs, 'ms），使用已获取的结果。');
-        resolve(spokenTranscript ? compareTexts(spokenTranscript, targetText) : 0);
-      }
-    }, maxRecordMs);
-
-    // 同时启动 MediaRecorder 录音（用于可视化 / 调试）
-    const startMediaRecording = (): Promise<void> => {
-      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-        return Promise.resolve();
-      }
-      return navigator.mediaDevices
-        .getUserMedia({ audio: true })
-        .then((stream) => {
-          mediaStream = stream;
-          mediaRecorder = new MediaRecorder(stream);
-          mediaRecorder.start();
-        })
-        .catch((err) => {
-          console.warn('[speechRecognition] 无法启动 MediaRecorder:', err);
-        });
-    };
-
-    const finish = () => {
-      if (resolved) return;
-      resolved = true;
-      clearTimeout(timeoutId);
-
-      // 停止录音
-      if (mediaRecorder && mediaRecorder.state === 'recording') {
-        mediaRecorder.stop();
-      }
-      mediaStream?.getTracks().forEach((t) => t.stop());
-
-      const score = compareTexts(spokenTranscript, targetText);
-      resolve(score);
-    };
-
-    // --- SpeechRecognition 事件 ---
-    recognition.onstart = () => {
-      // 识别已开始
-    };
-
     recognition.onresult = (event: SpeechRecognitionEvent) => {
       const results: string[] = [];
       for (let i = event.resultIndex; i < event.results.length; i++) {
-        if (event.results[i].isFinal) {
-          results.push(event.results[i][0].transcript);
-        }
+        if (event.results[i].isFinal) results.push(event.results[i][0].transcript);
       }
-      spokenTranscript = results.join(' ');
+      if (results.length > 0) {
+        transcript = results.join(' ');
+        recognitionDone = true;
+        if (recognitionWatchdog) clearTimeout(recognitionWatchdog);
+      }
     };
-
     recognition.onerror = (event: SpeechRecognitionErrorEvent) => {
       console.warn('[speechRecognition] 识别出错:', event.error);
-      finish();
+      // 不立即 finish：让音量分析继续跑到超时/手动停止（Electron 里识别常因网络失败）
     };
-
     recognition.onend = () => {
+      // 识别自然结束（用户读完一句话）：立即出分
       finish();
     };
+    try {
+      recognition.start();
+      recognitionWatchdog = setTimeout(() => {
+        if (!recognitionDone && !settled) {
+          console.warn('[speechRecognition] 识别 8 秒无结果（云端服务不可达），放弃识别走音量评估');
+          finish();
+        }
+      }, 8000);
+    } catch (err) {
+      console.warn('[speechRecognition] 启动失败:', err);
+      recognition = null;
+    }
+  };
 
-    // 启动录音和识别
-    startMediaRecording().then(() => {
-      try {
-        recognition.start();
-      } catch (err) {
-        console.warn('[speechRecognition] 启动 SpeechRecognition 失败:', err);
-        finish();
+  timeoutId = setTimeout(finish, maxRecordMs);
+
+  // 主流程：先建 vosk 会话（含惰性加载模型）→ 建音频采集 → vosk 失败才走 Web Speech
+  (async () => {
+    let voskOk = false;
+    try {
+      logger.info(MODULE, 'start', 'voskStart 调用前');
+      if (window.electronAPI?.voskStart) {
+        const r = await window.electronAPI.voskStart();
+        logger.info(MODULE, 'start', `voskStart=${JSON.stringify(r)}`);
+        voskOk = !!r?.ok;
+        if (!voskOk && r?.error) {
+          logger.warn(MODULE, 'start', `vosk 会话建立失败: ${r.error}`);
+        }
+      } else {
+        logger.warn(MODULE, 'start', 'electronAPI.voskStart 不存在');
       }
-    });
-  });
-}
+    } catch (e) {
+      logger.warn(MODULE, 'start', `voskStart 异常: ${String(e)}`);
+      voskOk = false;
+    }
+    voskSessionOk = voskOk;
+    logger.info(MODULE, 'start', `voskSessionOk=${voskSessionOk}`);
+    const audioOk = await startAudio(voskOk);
+    logger.info(MODULE, 'start', `startAudio=${audioOk}`);
+    if (settled) return;
+    // vosk 已主导识别；vosk 不可用时才尝试 Web Speech（浏览器环境可能有服务）
+    if (!audioOk) return;
+    if (!voskOk) startRecognition();
+  })();
 
-/**
- * Fallback 评测：当 SpeechRecognition 不可用时使用
- *
- * 策略：
- * - 录制音频（最长 5 秒）
- * - 根据录音时长给出模拟分数：
- *   - 录音时长 > 0 表示用户有在说话，给予基础分 40-70（按时长线性映射）
- *   - 录音时长为 0 或极短（< 500ms）表示用户没有说话，返回 0
- * - 这样避免了纯随机分数，同时鼓励用户开口练习
- */
-async function evaluateSpeechFallback(_targetText: string, _maxRecordMs: number): Promise<number> {
-  const fallbackMaxDuration = 5000; // fallback 模式固定录制 5 秒
-  const elapsed = await recordAudioForDuration(fallbackMaxDuration);
-
-  if (elapsed < 500) {
-    // 用户几乎没有说话
-    return 0;
-  }
-
-  // 线性映射：500ms -> 40 分, 5000ms -> 70 分
-  const minScore = 40;
-  const maxScore = 70;
-  const ratio = Math.min(1, (elapsed - 500) / (fallbackMaxDuration - 500));
-  return Math.round(minScore + ratio * (maxScore - minScore));
+  return {
+    promise,
+    stop: () => finish(),
+  };
 }

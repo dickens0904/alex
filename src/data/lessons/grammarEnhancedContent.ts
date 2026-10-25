@@ -880,7 +880,7 @@ const baseContent: Record<number, EnhancedContent> = {
 };
 
 // 合并所有批次数据（主题1-20在上方定义，21-100在批次文件中）
-const grammarEnhancedContent: Record<number, EnhancedContent> = {
+const rawEnhancedContent: Record<number, EnhancedContent> = {
   ...baseContent,
   ...batch1,
   ...batch2,
@@ -888,4 +888,19 @@ const grammarEnhancedContent: Record<number, EnhancedContent> = {
   ...batch4,
 };
 
-export default grammarEnhancedContent;
+/** 导出前给拓展例句统一打上分组标识（字面量里显式写了 group 的以显式值为准） */
+const tagExtraGroup = (
+  record: Record<number, EnhancedContent>
+): Record<number, EnhancedContent> => {
+  const out: Record<number, EnhancedContent> = {};
+  for (const key of Object.keys(record)) {
+    const item = record[Number(key)];
+    out[Number(key)] = {
+      ...item,
+      extraExamples: item.extraExamples.map((e) => ({ ...e, group: e.group ?? '拓展例句' })),
+    };
+  }
+  return out;
+};
+
+export default tagExtraGroup(rawEnhancedContent);

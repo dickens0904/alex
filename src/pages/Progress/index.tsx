@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Progress.css';
-import { getAllLessons, getTotalLessonCount } from '../../services/lesson';
+import { getAllLessons } from '../../services/lesson';
 import { logger } from '../../utils/logger';
 import type { Lesson } from '../../types/lesson';
 
@@ -23,7 +23,7 @@ interface UserStats {
 
 const Progress: React.FC = () => {
   const navigate = useNavigate();
-  const totalLessons = getTotalLessonCount();
+  const [totalLessons, setTotalLessons] = useState(0);
   const [stats, setStats] = useState<UserStats>({
     totalScore: 0,
     completedLessons: 0,
@@ -45,9 +45,10 @@ const Progress: React.FC = () => {
     setError(null);
     try {
       // 加载课程列表
-      const lessons = getAllLessons();
+      const lessons = await getAllLessons();
       setAllLessons(lessons);
       logger.info('Progress', '页面加载', `课程数: ${lessons.length}`);
+      setTotalLessons(lessons.length);
 
       // 加载统计
       const userStats = await window.electronAPI?.getUserStats?.();

@@ -33,6 +33,28 @@
   color: white;
 }
 
+/* 左上角返回图标按钮（圆形箭头，明显可点） */
+.back-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.back-icon-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateX(-2px);
+}
+
 .page-title {
   font-size: 32px;
   font-weight: bold;
@@ -636,6 +658,80 @@
   color: var(--text-secondary);
 }
 
+/* 口语录音实时波形 */
+.speech-wave-box {
+  display: flex;
+  justify-content: center;
+  margin: 16px auto 0;
+  padding: 10px 14px;
+  background: var(--bg-tertiary);
+  border-radius: var(--radius-md);
+  width: fit-content;
+  max-width: 100%;
+}
+
+.speech-wave-canvas {
+  display: block;
+  width: 480px;
+  max-width: 100%;
+  height: 64px;
+}
+
+/* 口语评分模式徽章 */
+.speech-mode-badge {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.speech-mode-badge.recognized {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.speech-mode-badge.energy {
+  background: #fff3e0;
+  color: #e65100;
+}
+
+.speech-mode-badge.silent {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.speech-transcript {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+/* 口语结果页操作按钮（限定容器，避免污染其他 .retry-btn） */
+.speaking-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.speaking-actions .retry-btn {
+  padding: 14px 32px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg);
+  font-size: 17px;
+  font-weight: 600;
+  transition: all var(--transition-fast);
+}
+
+.speaking-actions .retry-btn:hover {
+  background: var(--primary-light);
+  color: white;
+}
+
 .spelling-input {
   width: 100%;
   padding: 16px;
@@ -885,8 +981,10 @@
   gap: 16px;
 }
 
-.retry-btn,
-.back-btn {
+/* 练习结果页（深色背景）专用返回按钮——必须限定父容器，
+   否则会全局覆盖顶部 header 的返回按钮样式，导致白底白字"隐形" */
+.practice-result .retry-btn,
+.practice-result .back-btn {
   padding: 16px 32px;
   border: none;
   border-radius: 16px;
@@ -896,19 +994,19 @@
   transition: all 0.3s ease;
 }
 
-.retry-btn {
+.practice-result .retry-btn {
   background: white;
   color: #667eea;
 }
 
-.back-btn {
+.practice-result .back-btn {
   background: rgba(255, 255, 255, 0.2);
   color: white;
   border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
-.retry-btn:hover,
-.back-btn:hover {
+.practice-result .retry-btn:hover,
+.practice-result .back-btn:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }

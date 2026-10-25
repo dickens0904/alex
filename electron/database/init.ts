@@ -96,6 +96,29 @@ function createTables(): void {
     )
   `);
 
+  // 迁移：progress 表的外键指向从未灌数据的 lessons 表，导致 saveProgress 永远
+  // 因 FOREIGN KEY constraint failed 而丢进度（练习进度从未存成功）。
+  // 检测到 lessons 外键时重建为无外键版本（本应用单用户，lesson_id/user_id 仅作记录字段）。
+  const progressFks = db.prepare('PRAGMA foreign_key_list(progress)').all() as { table: string }[];
+  if (progressFks.some((fk) => fk.table === 'lessons')) {
+    db.exec(`
+      CREATE TABLE progress_new (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        lesson_id INTEGER,
+        user_id INTEGER,
+        completed BOOLEAN DEFAULT FALSE,
+        score INTEGER,
+        time_spent INTEGER,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      );
+      INSERT INTO progress_new (id, lesson_id, user_id, completed, score, time_spent, created_at)
+        SELECT id, lesson_id, user_id, completed, score, time_spent, created_at FROM progress;
+      DROP TABLE progress;
+      ALTER TABLE progress_new RENAME TO progress;
+    `);
+    console.log('progress 表已迁移：移除指向空 lessons 表的外键约束，进度可正常保存');
+  }
+
   // 创建默认用户
   const userCount = db.prepare('SELECT COUNT(*) as count FROM users').get() as { count: number };
   if (userCount.count === 0) {

@@ -1,23 +1,21 @@
 @echo off
 echo ========================================
-echo 新概念英语练习王 - 快速启动
+echo NCE Practice King - Quick Start
 echo ========================================
 echo.
 
-echo [1/3] 检查依赖...
+echo [1/3] Checking dependencies...
 if not exist "node_modules" (
-    echo 未找到node_modules，正在安装依赖...
+    echo node_modules not found, installing...
     call npm install
 ) else (
-    echo 依赖已安装
+    echo Dependencies OK
 )
 
 echo.
-echo [2/3] 启动开发服务器...
-echo 这将启动Webpack开发服务器和Electron应用
+echo [2/3] Starting dev server + Electron app...
 echo.
 
-echo [3/3] 启动应用...
 call npm run dev
 
 pause

@@ -81,6 +81,21 @@ declare global {
       edgeTtsTest: () => Promise<{ available: boolean; error?: string }>;
       edgeTtsStop: () => Promise<{ success: boolean }>;
       edgeTtsSpeakSSML?: (ssml: string) => Promise<TtsSpeakResult>;
+      // 本地 TTS 缓存兜底（预生成 MP3，相对 tts-cache/ 的路径）
+      ttsCacheGet: (relPath: string) => Promise<TtsSpeakResult>;
+      // 本地 TTS 缓存自愈回写（在线合成成功后保存 MP3，相对 tts-cache/ 的路径）
+      ttsCachePut?: (
+        relPath: string,
+        dataUrl: string
+      ) => Promise<{ success: boolean; existed?: boolean; error?: string }>;
+
+      // vosk 离线语音识别
+      voskCheck?: () => Promise<{ available: boolean; reason: string }>;
+      voskStart?: () => Promise<{ ok: boolean; error?: string }>;
+      voskChunk?: (pcm: ArrayBuffer) => void;
+      voskDecode?: (recording: ArrayBuffer) => Promise<{ ok: boolean; error?: string }>;
+      voskFinish?: () => Promise<{ text: string; error?: string }>;
+      voskAbort?: () => void;
 
       // 平台信息
       platform: string;

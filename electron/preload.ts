@@ -42,6 +42,21 @@ contextBridge.exposeInMainWorld('electronAPI', {
   edgeTtsGetVoices: () => ipcRenderer.invoke('edge-tts-get-voices'),
   edgeTtsTest: () => ipcRenderer.invoke('edge-tts-test'),
   edgeTtsStop: () => ipcRenderer.invoke('edge-tts-stop'),
+  // 本地 TTS 缓存兜底（预生成 MP3）
+  ttsCacheGet: (relPath: string) => ipcRenderer.invoke('tts-cache-get', relPath),
+  // 本地 TTS 缓存自愈回写（在线合成成功后保存 MP3）
+  ttsCachePut: (relPath: string, dataUrl: string) =>
+    ipcRenderer.invoke('tts-cache-put', relPath, dataUrl),
+
+  // vosk 离线语音识别（口语练习打分）
+  voskCheck: () => ipcRenderer.invoke('vosk-check'),
+  voskStart: () => ipcRenderer.invoke('vosk-start'),
+  // 16kHz Int16 PCM 音频块（结构化克隆传输 ArrayBuffer）
+  voskChunk: (pcm: ArrayBuffer) => ipcRenderer.send('vosk-chunk', pcm),
+  // MediaRecorder webm/opus 录音 → 主进程 ffmpeg 解码 16k PCM → 喂识别器
+  voskDecode: (recording: ArrayBuffer) => ipcRenderer.invoke('vosk-decode', recording),
+  voskFinish: () => ipcRenderer.invoke('vosk-finish'),
+  voskAbort: () => ipcRenderer.send('vosk-abort'),
 
   // 平台信息
   platform: process.platform,

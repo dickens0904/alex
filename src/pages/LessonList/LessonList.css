@@ -33,6 +33,28 @@
   color: white;
 }
 
+/* 左上角回主界面图标按钮（圆形房子图标，醒目可点） */
+.back-icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.back-icon-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+}
+
 .page-title {
   font-size: 32px;
   font-weight: bold;
@@ -41,6 +63,24 @@
 
 .placeholder {
   width: 100px;
+}
+
+/* 语法专项练习入口 */
+.lesson-list-container .practice-center-entry {
+  width: 100px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #f5b041, #e67e22);
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(230, 126, 34, 0.3);
+}
+
+.lesson-list-container .practice-center-entry:hover {
+  background: linear-gradient(135deg, #e67e22, #d35400);
 }
 
 /* 课程网格 */
@@ -177,6 +217,108 @@
   height: 100vh;
   font-size: 24px;
   color: var(--text-secondary);
+}
+
+/* ===== 学习完成度标注（限定容器前缀防全局污染） ===== */
+
+/* 头部总进度统计条 */
+.lesson-list-container .progress-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 30px 0;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.lesson-list-container .progress-summary-text {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.lesson-list-container .progress-summary-text b {
+  color: var(--primary-color);
+  font-size: 17px;
+}
+
+.lesson-list-container .progress-summary-bar {
+  flex: 1;
+  height: 8px;
+  background: #e8edf4;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lesson-list-container .progress-summary-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50 0%, #66bb6a 100%);
+  border-radius: 4px;
+  transition: width 0.6s ease;
+  min-width: 0;
+}
+
+/* 卡片右上角状态徽章 */
+.lesson-list-container .lesson-status-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  line-height: 1;
+  z-index: 2;
+}
+
+.lesson-list-container .lesson-status-badge.completed {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4caf50 0%, #43a047 100%);
+  color: #fff;
+  font-size: 15px;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.4);
+}
+
+.lesson-list-container .lesson-status-badge.attempted {
+  padding: 3px 8px;
+  border-radius: 10px;
+  background: #fff3cd;
+  color: #b8860b;
+  font-size: 11px;
+  border: 1px solid #f0d98c;
+}
+
+/* 已完成卡片轻微着色 */
+.lesson-list-container .lesson-card.completed {
+  background: linear-gradient(135deg, #ffffff 0%, #f2f9f2 100%);
+}
+
+/* 卡片底部状态条 */
+.lesson-list-container .lesson-status-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: #edf0f5;
+}
+
+.lesson-list-container .lesson-status-fill {
+  height: 100%;
+  transition: width 0.5s ease;
+}
+
+.lesson-list-container .lesson-status-track.completed .lesson-status-fill {
+  background: linear-gradient(90deg, #4caf50 0%, #66bb6a 100%);
+}
+
+.lesson-list-container .lesson-status-track.attempted .lesson-status-fill {
+  background: linear-gradient(90deg, #ffc107 0%, #ffca28 100%);
 }
 
 /* 响应式 */

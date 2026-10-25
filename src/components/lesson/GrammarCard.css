@@ -204,6 +204,37 @@
   gap: 16px;
 }
 
+.grammar-card .example-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.grammar-card .example-group-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #5b6b8c;
+  padding: 6px 4px 2px;
+  border-bottom: 2px dashed #d7dfec;
+  padding-bottom: 8px;
+}
+
+.grammar-card .example-group-count {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8a97b0;
+  background: #eef2f8;
+  border-radius: 10px;
+  padding: 2px 10px;
+}
+
+.grammar-card .example-group .example-card {
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+}
+
 .example-card {
   background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
   border-radius: 16px;
@@ -552,9 +583,10 @@
 }
 
 /* 结果卡片 */
-.result-card {
+.grammar-card .result-card {
   display: flex;
   align-items: center;
+  flex-wrap: wrap; /* 窄屏时按钮换行而不是挤压提示文字成窄条 */
   gap: 16px;
   padding: 20px;
   border-radius: 16px;
@@ -572,33 +604,56 @@
   }
 }
 
-.result-card.correct {
+.grammar-card .result-card.correct {
   background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
   color: white;
 }
 
-.result-card.wrong {
+.grammar-card .result-card.wrong {
   background: linear-gradient(135deg, #fc8181 0%, #f56565 100%);
   color: white;
 }
 
-.result-icon {
+.grammar-card .result-icon {
   font-size: 40px;
+  flex-shrink: 0;
 }
 
-.result-content {
+.grammar-card .result-content {
   flex: 1;
+  min-width: 200px; /* 防止被其他元素挤压成每行一两个字的窄条 */
 }
 
-.result-content h4 {
+.grammar-card .result-content h4 {
   margin: 0 0 6px 0;
   font-size: 18px;
 }
 
-.result-content .explanation {
+.grammar-card .result-content .explanation {
   margin: 0;
   font-size: 14px;
   opacity: 0.9;
+  word-break: break-word; /* 长句自动换行，不撑破容器 */
+  line-height: 1.6;
+}
+
+/* 答错时的错因与正确答案提示（wrong 卡为红色渐变底，统一用白字高对比） */
+.grammar-card .result-content .wrong-reason,
+.grammar-card .result-content .correct-answer-hint {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  font-weight: 700;
+  color: white;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 8px 12px;
+  word-break: break-word;
+}
+
+.grammar-card .result-card .next-btn {
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .grammar-card .next-btn {

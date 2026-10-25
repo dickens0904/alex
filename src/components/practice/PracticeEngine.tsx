@@ -1,7 +1,8 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { speakWord, speakSentence } from '../../services/tts';
 import { playCorrectSound, playWrongSound, playStreakSound } from '../../services/soundEffects';
-import { evaluateSpeech } from '../../services/speechRecognition';
+import { startSpeechEvaluation } from '../../services/speechRecognition';
+import type { SpeechEvalResult, SpeechEvaluationSession } from '../../services/speechRecognition';
 import { logger } from '../../utils/logger';
 import type { PracticeType } from './PracticeMenu';
 import type { Exercise } from '../../types/lesson';
@@ -47,7 +48,7 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
   const [score, setScore] = useState(0);
   const [_totalScore, setTotalScore] = useState(0);
   const [isRecording, setIsRecording] = useState(false);
-  const [speakingScore, setSpeakingScore] = useState(0);
+  const [speechFeedback, setSpeechFeedback] = useState<SpeechEvalResult | null>(null);
   const [streak, setStreak] = useState(0);
   const [encouragement, setEncouragement] = useState('');
 
@@ -56,6 +57,13 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
   const totalScoreRef = useRef(0);
   const maxStreakRef = useRef(0);
   const correctCountRef = useRef(0);
+
+  // 口语评测会话与波形绘制
+  const evalSessionRef = useRef<SpeechEvaluationSession | null>(null);
+  const waveCanvasRef = useRef<HTMLCanvasElement | null>(null);
+  const waveLevelsRef = useRef<number[]>([]);
+  // 每题已给分（重试覆盖而非重复累计）：key=题目索引, value=已计入 score 的分数
+  const awardedRef = useRef<Record<number, number>>({});
 
   const updateScore = (delta: number) => {
     setScore((prev) => {
@@ -74,16 +82,31 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
   };
 
   const startTimeRef = useRef<number>(Date.now());
-  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-  const recordingTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // 清理录音定时器
+  // 组件卸载时中止进行中的口语评测（会话代数防护，防泄漏）
   React.useEffect(() => {
     return () => {
-      if (recordingTimerRef.current) {
-        clearTimeout(recordingTimerRef.current);
-      }
+      evalSessionRef.current?.stop();
+      evalSessionRef.current = null;
     };
+  }, []);
+
+  /** 绘制滚动音量柱状波形（绿→橙→红 随音量变化，直观显示是否采集到声音） */
+  const drawWave = useCallback(() => {
+    const canvas = waveCanvasRef.current;
+    const ctx = canvas?.getContext('2d');
+    if (!canvas || !ctx) return;
+    const { width, height } = canvas;
+    ctx.clearRect(0, 0, width, height);
+    const levels = waveLevelsRef.current;
+    const barCount = 48;
+    const barW = width / barCount;
+    for (let i = 0; i < levels.length; i++) {
+      const h = Math.max(3, levels[i] * (height - 8));
+      const x = width - (levels.length - i) * barW;
+      ctx.fillStyle = levels[i] > 0.6 ? '#e53935' : levels[i] > 0.25 ? '#fb8c00' : '#66bb6a';
+      ctx.fillRect(x, height - h, barW * 0.7, h);
+    }
   }, []);
 
   const currentExercise = exercises[currentIndex];
@@ -123,57 +146,80 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
     setShowResult(true);
   }, [currentIndex, exercises, practiceType, userAnswer, streak]);
 
-  // ---- Speaking: recording & evaluation ----
+  // ---- Speaking: 一次录音完成采集+波形+评分 ----
 
-  const startRecording = useCallback(async () => {
-    try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      const mediaRecorder = new MediaRecorder(stream);
+  const handleEvalResult = useCallback(
+    (exercise: Exercise, result: SpeechEvalResult) => {
+      const correct = result.score >= 70;
+      setSpeechFeedback(result);
 
-      mediaRecorder.onstop = () => {
-        stream.getTracks().forEach((track) => track.stop());
-      };
-
-      mediaRecorderRef.current = mediaRecorder;
-      mediaRecorder.start();
-      setIsRecording(true);
-
-      // Auto-stop after 5 seconds，存储 timer ID 以便清理
-      recordingTimerRef.current = setTimeout(() => {
-        if (mediaRecorder.state === 'recording') {
-          mediaRecorder.stop();
-        }
-        setIsRecording(false);
-        recordingTimerRef.current = null;
-      }, 5000);
-    } catch {
-      alert('无法访问麦克风，请检查权限设置');
-    }
-  }, []);
-
-  const handleSpeakingSubmit = useCallback(async () => {
-    const exercise = exercises[currentIndex];
-    const targetText: string = exercise.content.sentence ?? '';
-
-    try {
-      const resultScore = await evaluateSpeech(targetText);
-      setSpeakingScore(resultScore);
-      setIsCorrect(resultScore >= 70);
-
-      if (resultScore >= 70) {
-        updateScore(exercise.score);
+      // 计分：重试覆盖该题已给分（差值更新），满分池每题只计一次
+      const newAwarded = Math.round((result.score / 100) * exercise.score);
+      const prevAwarded = awardedRef.current[currentIndex] ?? 0;
+      awardedRef.current[currentIndex] = newAwarded;
+      const delta = newAwarded - prevAwarded;
+      if (delta !== 0) updateScore(delta);
+      if (prevAwarded === 0) {
+        // 首次评分（含首次 0 分）占住满分池，重试不再累计
+        updateTotalScore(exercise.score);
       }
-      updateTotalScore(exercise.score);
-    } catch {
-      // Fallback: treat as failed attempt
-      setSpeakingScore(0);
-      setIsCorrect(false);
-      updateTotalScore(exercise.score);
-    }
 
-    setShowResult(true);
-    setIsRecording(false);
-  }, [currentIndex, exercises]);
+      if (correct) {
+        correctCountRef.current += 1;
+        const newStreak = streak + 1;
+        setStreak(newStreak);
+        if (newStreak > maxStreakRef.current) maxStreakRef.current = newStreak;
+        playCorrectSound();
+        if (newStreak >= 3 && newStreak % 3 === 0) playStreakSound(newStreak);
+        setEncouragement(getEncouragement(newStreak, true));
+      } else {
+        setStreak(0);
+        playWrongSound();
+        setEncouragement(getEncouragement(0, false));
+      }
+      logger.info(
+        'PracticeEngine',
+        '口语评分',
+        `第${currentIndex + 1}题 | 模式: ${result.mode} | 得分: ${result.score} | 计分: ${newAwarded}/${exercise.score}`
+      );
+      setIsCorrect(correct);
+      setShowResult(true);
+    },
+    [currentIndex, streak]
+  );
+
+  const startRecording = useCallback(() => {
+    const exercise = exercises[currentIndex];
+    if (!exercise) return;
+    const targetText = exercise.content.sentence ?? '';
+
+    waveLevelsRef.current = [];
+    setSpeechFeedback(null);
+
+    // 会话代数：先置 null 再挂新会话，避免旧回调误判
+    evalSessionRef.current = null;
+    const session = startSpeechEvaluation(targetText, 10000, (level) => {
+      const levels = waveLevelsRef.current;
+      levels.push(level);
+      if (levels.length > 48) levels.shift();
+      drawWave();
+    });
+    evalSessionRef.current = session;
+    setIsRecording(true);
+    logger.info('PracticeEngine', '开始录音', `第${currentIndex + 1}题`);
+
+    session.promise.then((result) => {
+      // 过期会话检查：只有当前挂着的会话才驱动 UI
+      if (evalSessionRef.current !== session) return;
+      evalSessionRef.current = null;
+      setIsRecording(false);
+      handleEvalResult(exercise, result);
+    });
+  }, [currentIndex, exercises, drawWave, handleEvalResult]);
+
+  const stopRecording = useCallback(() => {
+    evalSessionRef.current?.stop();
+  }, []);
 
   // ---- Navigation ----
 
@@ -197,7 +243,7 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
       setCurrentIndex((prev) => prev + 1);
       setUserAnswer('');
       setShowResult(false);
-      setSpeakingScore(0);
+      setSpeechFeedback(null);
     }
   }, [isLastQuestion, onFinish, practiceType]);
 
@@ -257,6 +303,7 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
     spelling: '✏️ 拼写练习',
     writing: '📝 填空练习',
     reading: '📖 阅读理解',
+    vocabStructure: '🔤 词汇与结构专项',
   };
 
   // ---- Renderers per exercise type ----
@@ -276,49 +323,121 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
     </div>
   );
 
-  const renderSpeaking = () => (
-    <div className="exercise-content">
-      <div className="instruction">{currentExercise.content.instruction}</div>
-      <div className="sentence-to-speak">{currentExercise.content.sentence}</div>
-      {currentExercise.content.translation && (
-        <div className="sentence-translation">{currentExercise.content.translation}</div>
-      )}
-      <button
-        className="listen-btn"
-        onClick={() => speakSentence(currentExercise.content.sentence ?? '')}
-      >
-        🔊 听示范发音
-      </button>
-      <div className="recording-section">
-        <button
-          className={`record-btn ${isRecording ? 'recording' : ''}`}
-          onClick={startRecording}
-          disabled={isRecording}
-        >
-          {isRecording ? '🔴 录音中...' : '🎤 开始录音'}
-        </button>
-        <div className="recording-tip">点击后说 &quot;{currentExercise.content.sentence}&quot;</div>
-      </div>
-      {showResult && (
-        <div className="speaking-result">
-          <div className="speaking-score">发音得分: {speakingScore}分</div>
-          <div className={`result ${isCorrect ? 'correct' : 'wrong'}`}>
-            {isCorrect ? '✅ 发音很棒！' : '💪 继续练习，多读几遍会更好！'}
+  const renderSpeaking = () => {
+    const feedback = speechFeedback;
+    const isZh2En = currentExercise.content.mode === 'zh2en';
+    const isWord = currentExercise.content.mode === 'word';
+    // 出分后才揭示英文（中译英模式）
+    const revealEnglish = !isZh2En || showResult;
+    const speakDemo = () =>
+      isWord
+        ? speakWord(currentExercise.content.sentence ?? '')
+        : speakSentence(currentExercise.content.sentence ?? '');
+    return (
+      <div className="exercise-content">
+        <div className="instruction">{currentExercise.content.instruction}</div>
+        {revealEnglish && (
+          <div className="sentence-to-speak">{currentExercise.content.sentence}</div>
+        )}
+        {currentExercise.content.translation && (
+          <div className="sentence-translation">
+            {isZh2En && !showResult
+              ? `中文：${currentExercise.content.translation}`
+              : currentExercise.content.translation}
           </div>
-        </div>
-      )}
-      {!showResult && !isRecording && (
-        <button className="submit-btn" onClick={handleSpeakingSubmit}>
-          提交并评分
-        </button>
-      )}
-      {showResult && (
-        <button className="next-btn" onClick={handleNext}>
-          {nextButtonLabel}
-        </button>
-      )}
-    </div>
-  );
+        )}
+        {revealEnglish && (
+          <button className="listen-btn" onClick={speakDemo}>
+            🔊 听示范发音
+          </button>
+        )}
+        {!showResult && !isRecording && (
+          <div className="recording-section">
+            <button className="record-btn" onClick={startRecording}>
+              🎤 开始录音
+            </button>
+            <div className="recording-tip">
+              点击后朗读句子，波形会实时显示麦克风采集到的声音
+            </div>
+          </div>
+        )}
+        {isRecording && (
+          <div className="recording-section">
+            <div className="speech-wave-box">
+              <canvas
+                ref={waveCanvasRef}
+                className="speech-wave-canvas"
+                width={480}
+                height={64}
+              />
+            </div>
+            <button className="record-btn recording" onClick={stopRecording}>
+              ⏹ 完成录音
+            </button>
+            <div className="recording-tip">正在录音…读完后点击按钮结束（最长 10 秒）</div>
+          </div>
+        )}
+        {showResult && feedback && (
+          <div className="speaking-result">
+            <div className="speaking-score">
+              {feedback.mode === 'vosk' && (
+                <>
+                  发音得分: {feedback.score} 分
+                  <span className="speech-mode-badge recognized">离线识别评分</span>
+                </>
+              )}
+              {feedback.mode === 'recognized' && (
+                <>
+                  发音得分: {feedback.score} 分
+                  <span className="speech-mode-badge recognized">识别评分</span>
+                </>
+              )}
+              {feedback.mode === 'energy' && (
+                <>
+                  开口练习分: {feedback.score} 分
+                  <span className="speech-mode-badge energy">识别服务不可达，按声音评估</span>
+                </>
+              )}
+              {feedback.mode === 'silent' && (
+                <>
+                  {feedback.micError ? '麦克风不可用' : '未检测到声音'}
+                  <span className="speech-mode-badge silent">
+                    {feedback.micError ? '请检查麦克风权限或是否被占用' : '请对着麦克风大声读'}
+                  </span>
+                </>
+              )}
+            </div>
+            {feedback.transcript && (
+              <div className="speech-transcript">识别结果：{feedback.transcript}</div>
+            )}
+            <div className={`result ${isCorrect ? 'correct' : 'wrong'}`}>
+              {feedback.mode === 'silent'
+                ? '🎙️ 没听到你的声音，再试一次吧！'
+                : isCorrect
+                  ? '✅ 发音很棒！'
+                  : '💪 继续练习，多读几遍会更好！'}
+            </div>
+          </div>
+        )}
+        {showResult && (
+          <div className="speaking-actions">
+            <button
+              className="retry-btn"
+              onClick={() => {
+                setShowResult(false);
+                startRecording();
+              }}
+            >
+              🔄 再试一次
+            </button>
+            <button className="next-btn" onClick={handleNext}>
+              {nextButtonLabel}
+            </button>
+          </div>
+        )}
+      </div>
+    );
+  };
 
   const renderSpelling = () => (
     <div className="exercise-content">
@@ -407,12 +526,33 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
     </div>
   );
 
+  const renderVocabStructure = () => (
+    <div className="exercise-content">
+      <div className="question">{currentExercise.content.question}</div>
+      <div className="fill-sentence">
+        {currentExercise.content.sentence}
+        <button
+          className="speak-sentence-btn small"
+          onClick={() => speakSentence(currentExercise.content.sentence ?? '')}
+          title="朗读句子"
+        >
+          🔊
+        </button>
+      </div>
+      <div className="fill-translation">翻译：{currentExercise.content.translation}</div>
+      {renderOptions(currentExercise.content.options ?? [])}
+      {renderResultFeedback('✅ 回答正确！', `❌ 回答错误！正确答案是：${currentExercise.answer}`)}
+      {renderActions(!userAnswer)}
+    </div>
+  );
+
   const RENDERERS: Record<PracticeType, () => React.ReactNode> = {
     listening: renderListening,
     speaking: renderSpeaking,
     spelling: renderSpelling,
     writing: renderWriting,
     reading: renderReading,
+    vocabStructure: renderVocabStructure,
   };
 
   if (!currentExercise) {

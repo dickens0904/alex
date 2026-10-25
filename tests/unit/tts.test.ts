@@ -44,21 +44,27 @@ const mockSpeechSpeak = jest.fn().mockImplementation((utterance: any) => {
   onerror: null as any,
 }));
 
-// Mock Audio（支持 onended 回调以模拟播放完成）
+// Mock Audio（模拟真实生命周期：构造后触发 oncanplay，play() 后触发 onended）
 const mockAudioInstances: any[] = [];
 (global as any).Audio = jest.fn().mockImplementation((src: string) => {
   const instance: any = {
     src,
+    preload: '',
     pause: jest.fn(),
     currentTime: 0,
     load: jest.fn(),
     onended: null,
     onerror: null,
+    oncanplay: null,
   };
   instance.play = jest.fn().mockImplementation(async () => {
     // 模拟播放完成，触发 onended 回调
     await Promise.resolve();
     if (instance.onended) instance.onended({});
+  });
+  // 模拟浏览器行为：音频加载完成后异步触发 oncanplay（tts.ts 依赖此事件才开始播放）
+  Promise.resolve().then(() => {
+    if (instance.oncanplay) instance.oncanplay({});
   });
   mockAudioInstances.push(instance);
   return instance;
@@ -301,8 +307,9 @@ describe('TTS Service', () => {
 
   // ==================== getSpeechRate / setSpeechRate ====================
   describe('speechRate', () => {
-    test('默认语速为 slow', () => {
-      expect(getSpeechRate()).toBe('slow');
+    // 全局默认语速为 normal（单词发音单独走 slow，见 speakWord 的 'slow' 参数）
+    test('默认语速为 normal', () => {
+      expect(getSpeechRate()).toBe('normal');
     });
 
     test('可以设置语速为 normal', () => {
@@ -369,9 +376,9 @@ describe('TTS Service', () => {
 
   // ==================== getCurrentPreset / setVoicePreset ====================
   describe('voicePreset', () => {
-    test('默认预设为美式英语', () => {
+    test('默认预设为英式英语', () => {
       const preset = getCurrentPreset();
-      expect(preset.id).toBe('us');
+      expect(preset.id).toBe('uk');
     });
 
     test('可以切换到英式预设', () => {
@@ -452,8 +459,9 @@ describe('TTS Service', () => {
       expect(localStorageMock['chinese-voice']).toBe('zh-CN-YunxiNeural');
     });
 
-    test('默认中文语速', () => {
-      expect(getCurrentChineseRate()).toBe('slow');
+    // 中文全局默认语速与代码一致为 normal
+    test('默认中文语速为 normal', () => {
+      expect(getCurrentChineseRate()).toBe('normal');
     });
 
     test('设置中文语速', () => {

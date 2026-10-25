@@ -14,7 +14,7 @@
 
 import { GrammarDetail } from '../../types/lesson';
 
-export const grammarDataEnhanced: Record<number, GrammarDetail> = {
+const rawGrammarDataEnhanced: Record<number, GrammarDetail> = {
   // ==================== 第1课：be动词的肯定式 ====================
   1: {
     title: 'be动词的肯定式',
@@ -12972,3 +12972,19 @@ export const grammarDataEnhanced: Record<number, GrammarDetail> = {
     keywords: ['被动语态', '总复习', '第一册', '综合练习', 'all'],
   },
 };
+
+/** 导出前给基础例句统一打上分组标识（字面量里显式写了 group 的以显式值为准） */
+const tagBaseGroup = (record: Record<number, GrammarDetail>): Record<number, GrammarDetail> => {
+  const out: Record<number, GrammarDetail> = {};
+  for (const key of Object.keys(record)) {
+    const grammar = record[Number(key)];
+    out[Number(key)] = {
+      ...grammar,
+      examples: grammar.examples.map((e) => ({ ...e, group: e.group ?? '课本句型' })),
+    };
+  }
+  return out;
+};
+
+export const grammarDataEnhanced: Record<number, GrammarDetail> =
+  tagBaseGroup(rawGrammarDataEnhanced);

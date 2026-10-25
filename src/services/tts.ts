@@ -7,7 +7,14 @@
  * 支持每个单词独立选择声音
  */
 
-import { getSpeakerGender } from '../data/speakerGender';
+import { getSpeakerGender, SPEAKER_VOICE_HINTS } from '../data/speakerGender';
+import {
+  buildLessonVoiceMap,
+  getSpeakerVoiceAge,
+  getVoicePool,
+  speakerHash,
+  VOICE_POOLS,
+} from '../data/voiceAssignment';
 import { logger } from '../utils/logger';
 
 const MODULE = 'TTS';
@@ -22,6 +29,9 @@ const RATE_MAP: Record<SpeechRate, number> = {
 
 let currentRate: SpeechRate = 'normal';
 let edgeTtsAvailable = false;
+// 朗读会话代数：stopSpeaking / 新的单句朗读会使其递增，
+// speakText 的逐句循环检测到代数变化即退出，防止旧循环与新朗读互相打断
+let readingSession = 0;
 
 // 音频播放器
 let currentAudio: HTMLAudioElement | null = null;
@@ -177,6 +187,8 @@ export const VOICE_PRESETS: VoicePreset[] = [
     female: 'zh-HK-HiuMaanNeural',
   },
 ];
+
+// （声音池、角色人设与分配算法已抽到 src/data/voiceAssignment.ts，供运行时与预生成脚本共用）
 
 // ==================== 中文声音定义 ====================
 
@@ -337,19 +349,16 @@ export const CANTONESE_VOICES: ChineseVoice[] = [
     desc: '沉稳大气',
     tags: ['沉稳', '大气'],
   },
-  {
-    id: 'zh-HK-WatSamNeural',
-    name: '云森',
-    gender: 'male',
-    desc: '成熟稳重',
-    tags: ['成熟', '稳重'],
-  },
 ];
 
-// 当前口音预设
+// 当前口音预设（默认英式：课文朗读以英式为主，美式作为对照口音）
 let currentPreset: VoicePreset = (() => {
   const saved = localStorage.getItem('voice-preset');
-  return VOICE_PRESETS.find((p) => p.id === saved) || VOICE_PRESETS[0];
+  return (
+    VOICE_PRESETS.find((p) => p.id === saved) ||
+    VOICE_PRESETS.find((p) => p.id === 'uk') ||
+    VOICE_PRESETS[0]
+  );
 })();
 
 // 每个角色独立的声音选择（从 localStorage 恢复）
@@ -361,6 +370,41 @@ let speakerVoices: Record<string, string> = (() => {
     return {};
   }
 })();
+
+// 全部合法音色集合：声音池 + 人设映射 + 口音预设默认声
+const VALID_VOICE_IDS: Set<string> = (() => {
+  const s = new Set<string>();
+  for (const pools of Object.values(VOICE_POOLS)) {
+    for (const group of [pools.adult, pools.child, pools.elder]) {
+      for (const v of group.male) s.add(v);
+      for (const v of group.female) s.add(v);
+    }
+  }
+  for (const v of Object.values(SPEAKER_VOICE_HINTS)) s.add(v);
+  for (const p of VOICE_PRESETS) {
+    s.add(p.male);
+    s.add(p.female);
+  }
+  return s;
+})();
+
+// 清洗历史遗留的非法音色（如 Azure 专属的 Davis/Tony/Jason/Monica/Alfie，
+// Edge 免费接口不支持，选中后只会静音），有清洗则回写 localStorage
+let _removedInvalidVoices = false;
+for (const [key, voiceId] of Object.entries(speakerVoices)) {
+  if (!VALID_VOICE_IDS.has(voiceId)) {
+    delete speakerVoices[key];
+    _removedInvalidVoices = true;
+  }
+}
+if (_removedInvalidVoices) {
+  try {
+    localStorage.setItem('speaker-voices', JSON.stringify(speakerVoices));
+  } catch {
+    /* ignore */
+  }
+  logger.warn(MODULE, `已清除无效自定义音色配置（含 Edge 接口不支持的音色）`);
+}
 
 // 完整声音列表缓存
 let cachedEdgeVoices: EdgeVoice[] | null = null;
@@ -387,6 +431,10 @@ export function setVoicePreset(presetId: string): void {
     } catch {
       /* ignore */
     }
+    // 同步清除最近一次全文朗读的课内角色分配表——它记录的是旧预设的声音
+    // （如英式 Ryan/Thomas），不清掉的话单句朗读会一直沿用旧口音，离线缓存
+    // 也按旧声音寻址，导致右上角口音选项对单句朗读和缓存命中都不生效
+    lastLessonVoiceMap = null;
   }
 }
 
@@ -423,9 +471,69 @@ function getDefaultVoiceForSpeaker(speaker?: string): string {
   const key = speaker.toUpperCase();
   // 优先使用用户自定义
   if (speakerVoices[key]) return speakerVoices[key];
-  // 使用性别映射数据库判断
+  // 优先使用最近一次全文朗读构建的课内分配表（保证单句与全文声音一致）
+  if (lastLessonVoiceMap?.has(key)) return lastLessonVoiceMap.get(key)!;
+  // 角色人设映射（仅美式预设）：符合角色身份/性格的专属声音
+  const hint = currentPreset.id === 'us' ? SPEAKER_VOICE_HINTS[key] : undefined;
+  if (hint) return hint;
+  // 使用性别映射数据库判断性别与年龄段
   const gender = getSpeakerGender(speaker);
-  return gender === 'male' ? currentPreset.male : currentPreset.female;
+  if (gender === 'male' || gender === 'female') {
+    // 多男/多女角色场景：按角色名 hash 从对应声音池取不同声音，避免同性别角色同声
+    const pool = getVoicePool(currentPreset.id, gender, getSpeakerVoiceAge(key), currentPreset.male, currentPreset.female);
+    return pool[speakerHash(key) % pool.length];
+  }
+  return currentPreset.female;
+}
+
+/** 最近一次全文朗读的角色→声音分配表（单句朗读复用，保证与全文一致） */
+let lastLessonVoiceMap: Map<string, string> | null = null;
+
+/**
+ * 角色的"默认分配"声音：与 getDefaultVoiceForSpeaker 相同的 hint/性别池/hash 逻辑，
+ * 但**跳过用户自定义与课内分配表**——与预生成缓存的分配完全一致。
+ * 用作自定义声音缓存 miss 时的兜底声音（保证切角色后依然有声）。
+ */
+function getDefaultVoiceNoCustom(speaker?: string): string {
+  if (!speaker) return currentPreset.female;
+  const key = speaker.toUpperCase();
+  const hint = currentPreset.id === 'us' ? SPEAKER_VOICE_HINTS[key] : undefined;
+  if (hint) return hint;
+  const gender = getSpeakerGender(speaker);
+  if (gender === 'male' || gender === 'female') {
+    const pool = getVoicePool(currentPreset.id, gender, getSpeakerVoiceAge(key), currentPreset.male, currentPreset.female);
+    return pool[speakerHash(key) % pool.length];
+  }
+  return currentPreset.female;
+}
+
+/**
+ * 剧场专用：按指定 voiceId 朗读一句（缓存寻址与在线合成都用该声音）。
+ * 声音选择权交给调用方（剧场按画面原型性别分配），不走 getDefaultVoiceForSpeaker——
+ * 因为剧本 cast key（A/B/C…）跨课复用且性别各异，直接查表会错性别或 miss 缓存。
+ * @param fallbackVoice 可选兜底：自定义声音缓存 miss 时回落到默认分配声音缓存
+ */
+export async function speakTheaterLine(
+  text: string,
+  voiceId: string,
+  fallbackVoice?: string
+): Promise<void> {
+  await speakWithEdgeTTS(text, voiceId, RATE_MAP[currentRate] * 0.9, fallbackVoice);
+}
+
+/** 剧场构建声音分配表所需的运行时配置（当前口音预设 + 用户自定义音色） */
+export function getTheaterVoiceOptions(): {
+  presetId: string;
+  defaultMale: string;
+  defaultFemale: string;
+  userVoices: Record<string, string>;
+} {
+  return {
+    presetId: currentPreset.id,
+    defaultMale: currentPreset.male,
+    defaultFemale: currentPreset.female,
+    userVoices: speakerVoices,
+  };
 }
 
 /**
@@ -447,6 +555,16 @@ export async function fetchEdgeVoices(): Promise<EdgeVoice[]> {
     }
   }
   return [];
+}
+
+/**
+ * Electron 环境判定：有本地缓存 IPC 或 Edge TTS IPC 即走 speakWithEdgeTTS（缓存优先）。
+ * 不依赖 edgeTtsTest 在线探测结果——断网/探测失败时本地预生成 MP3 缓存照常可用，
+ * 保证"默认播放缓存音色"与网络状态解耦。
+ */
+function hasElectronTtsPipeline(): boolean {
+  const api = window.electronAPI;
+  return Boolean(api?.edgeTtsSpeak || api?.ttsCacheGet);
 }
 
 /**
@@ -478,10 +596,175 @@ async function initEdgeTTS(): Promise<boolean> {
   }
 }
 
+// ==================== 本地 MP3 缓存兜底 ====================
+
+/** 支持变速播放的 Audio 类型（preservesPitch 保持音高不变） */
+type PitchPreservingAudio = HTMLAudioElement & { preservesPitch?: boolean };
+
+/**
+ * 用全局 Audio 播放 Blob URL（在线播放与缓存兜底共用同一套打断/清理机制）。
+ * playbackRate：可选变速播放（用于缓存 MP3 对齐目标语速，保持音高）。
+ * 播放完成返回 true，出错返回 false。
+ */
+function playBlobUrl(blobUrl: string, playbackRate?: number): Promise<boolean> {
+  return new Promise<boolean>((resolve) => {
+    // 保存 resolve 函数，以便在清理时正确解决
+    pendingTtsResolve = resolve;
+    let settled = false;
+    const cleanup = () => {
+      if (!settled) {
+        settled = true;
+        pendingTtsResolve = null;
+        revokeCurrentBlobUrl();
+      }
+    };
+    currentAudio = new Audio(blobUrl);
+    currentAudio.preload = 'auto';
+    if (playbackRate && Math.abs(playbackRate - 1) > 0.01) {
+      currentAudio.playbackRate = playbackRate;
+      // 显式保持音高，避免变速时变调（Chromium 默认即 true，此处防御性声明）
+      (currentAudio as PitchPreservingAudio).preservesPitch = true;
+    }
+    currentAudio.oncanplay = () => {
+      if (settled) return;
+      currentAudio?.play().catch((err) => {
+        logger.error(MODULE, '音频播放', `播放失败: ${err}`);
+        cleanup();
+        resolve(false);
+      });
+    };
+    currentAudio.onended = () => {
+      if (settled) return;
+      logger.info(MODULE, '音频播放', '播放完成');
+      cleanup();
+      resolve(true);
+    };
+    currentAudio.onerror = (e) => {
+      if (settled) return;
+      logger.error(MODULE, '音频播放', `播放出错: ${e}`);
+      cleanup();
+      resolve(false);
+    };
+    // 超时保护：如果 5 秒内没有 canplay 事件，尝试直接播放
+    setTimeout(() => {
+      if (!settled && currentAudio && currentAudio.readyState < 3) {
+        logger.warn(MODULE, '音频播放', '音频加载超时，尝试直接播放');
+        currentAudio.play().catch(() => {
+          cleanup();
+          resolve(false);
+        });
+      }
+    }, 5000);
+    // 二次保护：10 秒仍无可用媒体数据（readyState<2）判定音频失效，
+    // 放行 Promise 避免播放循环永久卡死（实测本地 Blob 偶发解码停滞：
+    // 既不触发 ended 也不触发 error，play() 后停在 stalled 状态）
+    setTimeout(() => {
+      if (!settled && currentAudio && currentAudio.readyState < 2) {
+        logger.warn(MODULE, '音频播放', '音频加载失败（10 秒无媒体数据），跳过本句');
+        cleanup();
+        resolve(false);
+      }
+    }, 10000);
+  });
+}
+
+/** 文本 → SHA-1 hex 前 16 位（与预生成脚本 scripts/generate-tts-cache.ts 算法一致） */
+async function textHash(text: string): Promise<string> {
+  const data = new TextEncoder().encode(text);
+  const digest = await crypto.subtle.digest('SHA-1', data);
+  return Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('')
+    .slice(0, 16);
+}
+
+/** 单词 → 缓存文件名（与预生成脚本一致）：保留字母/数字/撇号，其余替换为下划线 */
+function wordSlug(word: string): string {
+  return word.toLowerCase().replace(/[^a-z0-9']/g, '_');
+}
+
+/** 预生成单词缓存固定音色（与 scripts/generate-tts-cache.ts 的 WORD_VOICE 保持一致） */
+const WORD_CACHE_VOICE = 'en-US-AriaNeural';
+
+// 预生成缓存的烘焙语速（与 scripts/generate-tts-cache.ts 的 SENTENCE_RATE/WORD_RATE 对齐）：
+// 句子 -10%（0.9）、单词 -20%（0.8）。播放缓存时按 目标语速/烘焙语速 变速对齐
+const SENTENCE_BAKED_RATE = 0.9;
+const WORD_BAKED_RATE = 0.8;
+
+/** 旧键（speakWithEdgeTTS 默认值）映射为标准声音 id，与预生成脚本的命名对齐 */
+function canonicalVoiceId(voice: string): string {
+  return voice === 'en-female' ? 'en-US-AriaNeural' : voice === 'en-male' ? 'en-US-GuyNeural' : voice;
+}
+
+/**
+ * 查询并播放本地预生成的 MP3 缓存（tts-cache/ 目录）。
+ * targetRate：目标语速（绝对倍率，如 0.72/0.9/1.08），用于把烘焙语速的 MP3 变速对齐。
+ * 命中并播放返回 true；未命中或播放失败返回 false（调用方继续走原降级链）。
+ */
+async function tryPlayCachedAudio(
+  text: string,
+  voice: string,
+  targetRate?: number
+): Promise<boolean> {
+  try {
+    const electronAPI = window.electronAPI;
+    if (!electronAPI?.ttsCacheGet) return false;
+    const voiceId = canonicalVoiceId(voice);
+    const hash = await textHash(text);
+    // 句子按 voice+文本哈希寻址；单词按 voice+单词名寻址。
+    // 英文：预生成句子 0.9 / 单词 0.8 烘焙；中文（zh-*）：自愈缓存一律按原速 1.0 烘焙
+    const isChineseVoice = voiceId.startsWith('zh-');
+    const sentenceBaked = isChineseVoice ? 1.0 : SENTENCE_BAKED_RATE;
+    const wordBaked = isChineseVoice ? 1.0 : WORD_BAKED_RATE;
+    const candidates: Array<{ relPath: string; bakedRate: number }> = [
+      { relPath: `sentences/${voiceId}/${hash}.mp3`, bakedRate: sentenceBaked },
+      { relPath: `words/${voiceId}/${wordSlug(text)}.mp3`, bakedRate: wordBaked },
+    ];
+    // 无空格短文本更像单词：words 优先
+    const isWord = !/\s/.test(text) && text.length <= 20;
+    if (isWord) candidates.reverse();
+    for (const { relPath, bakedRate } of candidates) {
+      const result = await electronAPI.ttsCacheGet(relPath);
+      if (result?.success && result.audio) {
+        logger.info(MODULE, 'TTS缓存兜底', `命中本地缓存: ${relPath}`);
+        const blobUrl = dataUrlToBlobUrl(result.audio);
+        currentBlobUrl = blobUrl;
+        const playbackRate = targetRate ? targetRate / bakedRate : undefined;
+        return await playBlobUrl(blobUrl, playbackRate);
+      }
+    }
+    // 单词缓存预生成只覆盖美式 Aria 音色；其他口音预设（如英式）未命中时补查美式缓存，
+    // 避免单词发音落到系统 TTS 降级（用户听到的"第二遍降级音"）
+    if (isWord && voiceId !== WORD_CACHE_VOICE) {
+      const relPath = `words/${WORD_CACHE_VOICE}/${wordSlug(text)}.mp3`;
+      const result = await electronAPI.ttsCacheGet(relPath);
+      if (result?.success && result.audio) {
+        logger.info(MODULE, 'TTS缓存兜底', `命中本地缓存（美式兜底音色）: ${relPath}`);
+        const blobUrl = dataUrlToBlobUrl(result.audio);
+        currentBlobUrl = blobUrl;
+        const playbackRate = targetRate ? targetRate / WORD_BAKED_RATE : undefined;
+        return await playBlobUrl(blobUrl, playbackRate);
+      }
+    }
+    return false;
+  } catch (e) {
+    logger.warn(MODULE, 'TTS缓存兜底', `查询/播放失败: ${e}`);
+    return false;
+  }
+}
+
 /**
  * 使用Edge TTS播放语音
+ * @param fallbackVoice 可选的兜底声音：自定义声音缓存 miss 时回落到默认分配声音的
+ * 缓存（预生成缓存按默认分配生成，用户切角色声音后寻址必 miss → Edge 风控期会
+ * 降级系统音/无声）。兜底保证"切角色后也有声"，Edge 恢复后自愈回写自定义声音版
  */
-async function speakWithEdgeTTS(text: string, voice?: string, rate?: number): Promise<boolean> {
+async function speakWithEdgeTTS(
+  text: string,
+  voice?: string,
+  rate?: number,
+  fallbackVoice?: string
+): Promise<boolean> {
   // 递增请求计数器，用于检测并发请求
   const myGeneration = ++ttsRequestGeneration;
 
@@ -495,6 +778,7 @@ async function speakWithEdgeTTS(text: string, voice?: string, rate?: number): Pr
     // 清除旧音频的回调，防止旧 Audio 的 onerror 干扰新请求
     // 如果有正在等待的旧请求，正确解决它（标记为被取代）
     if (pendingTtsResolve) {
+      logger.info(MODULE, 'Edge TTS播放', '上一请求被新请求取代');
       pendingTtsResolve(false);
       pendingTtsResolve = null;
     }
@@ -508,18 +792,35 @@ async function speakWithEdgeTTS(text: string, voice?: string, rate?: number): Pr
     }
     revokeCurrentBlobUrl();
 
-    // 通知后端取消正在进行的 TTS 请求，避免并发冲突
+    // 缓存优先：命中本地预生成 MP3 直接变速播放，跳过在线合成——
+    // 这是全文朗读逐句衔接零等待的关键（每句省去 2~4 秒在线合成延迟）
+    const targetRate = rate || RATE_MAP[currentRate];
+    const cachedFirst = await tryPlayCachedAudio(text, voice || 'en-female', targetRate);
+    if (myGeneration !== ttsRequestGeneration) return cachedFirst;
+    if (cachedFirst) return true;
+    // 兜底链：自定义声音缓存 miss → 默认分配声音的缓存（预生成必有）
+    if (fallbackVoice && fallbackVoice !== voice) {
+      const fbHit = await tryPlayCachedAudio(text, fallbackVoice, targetRate);
+      if (myGeneration !== ttsRequestGeneration) return fbHit;
+      if (fbHit) {
+        logger.info(MODULE, 'TTS缓存兜底', '自定义声音缓存未命中，已用默认分配声音兜底（有声优先）');
+        return true;
+      }
+    }
+
+    // 通知后端取消正在进行的 TTS 请求，并等待取消完成——
+    // 若不等待，stop 可能迟到并把本请求的音频流误 abort，产生空音频
     if (electronAPI.edgeTtsStop) {
-      electronAPI.edgeTtsStop().catch(() => {});
+      await electronAPI.edgeTtsStop().catch(() => {});
     }
 
     const textPreview = text.length > 30 ? text.substring(0, 30) + '...' : text;
     logger.info(MODULE, 'Edge TTS播放', `文本: "${textPreview}", 声音: ${voice || '默认'}`);
 
-    const result = await electronAPI.edgeTtsSpeak({
+    let result = await electronAPI.edgeTtsSpeak({
       text,
       voice: voice || 'en-female',
-      rate: rate || RATE_MAP[currentRate],
+      rate: targetRate,
     });
 
     // 如果已经有更新的请求，丢弃当前结果
@@ -528,55 +829,61 @@ async function speakWithEdgeTTS(text: string, voice?: string, rate?: number): Pr
       return false;
     }
 
+    // 生成失败（含 429 限流/网络异常）：优先用本地预生成 MP3 兜底，命中即可无缝继续
+    if (!result.success || !result.audio) {
+      const isAborted =
+        result.error === '语音请求已取消' || /TTS_REQUEST_ABORTED/.test(String(result.error || ''));
+      if (!isAborted && myGeneration === ttsRequestGeneration) {
+        const cached = await tryPlayCachedAudio(text, voice || 'en-female', targetRate);
+        if (myGeneration !== ttsRequestGeneration) return false;
+        if (cached) {
+          logger.info(MODULE, 'TTS缓存兜底', '在线生成失败，已用本地缓存 MP3 播放');
+          return true;
+        }
+      }
+      // 缓存未命中且是微软限流（429）或空音频（stop 迟到竞态）：等待后重试一次，
+      // 避免连续朗读时整句丢失
+      if (result.error && (/429/.test(String(result.error)) || /音频数据为空/.test(String(result.error)))) {
+        logger.info(MODULE, 'Edge TTS播放', '触发限流（429）或音频为空且无本地缓存，1.5 秒后重试');
+        await new Promise((resolve) => setTimeout(resolve, 1500));
+        if (myGeneration !== ttsRequestGeneration) return false;
+        result = await electronAPI.edgeTtsSpeak({
+          text,
+          voice: voice || 'en-female',
+          rate: targetRate,
+        });
+        if (myGeneration !== ttsRequestGeneration) {
+          logger.info(MODULE, 'Edge TTS播放', '重试结果已被更新的请求取代，丢弃结果');
+          return false;
+        }
+      }
+    }
+
     if (result.success && result.audio) {
       logger.success(MODULE, 'Edge TTS播放', '音频生成成功，开始播放');
       // 将 data URL 转为 Blob URL（Electron Chromium 对 data URL 音频支持不完善）
       const blobUrl = dataUrlToBlobUrl(result.audio);
       currentBlobUrl = blobUrl;
-      // 创建音频播放器，等待 canplay 后再播放
-      return new Promise<boolean>((resolve) => {
-        // 保存 resolve 函数，以便在清理时正确解决
-        pendingTtsResolve = resolve;
-        let settled = false;
-        const cleanup = () => {
-          if (!settled) {
-            settled = true;
-            pendingTtsResolve = null;
-            revokeCurrentBlobUrl();
-          }
-        };
-        currentAudio = new Audio(blobUrl);
-        currentAudio.preload = 'auto';
-        currentAudio.oncanplay = () => {
-          if (settled) return;
-          currentAudio?.play().catch((err) => {
-            logger.error(MODULE, 'Edge TTS播放', `播放失败: ${err}`);
-            cleanup();
-          });
-        };
-        currentAudio.onended = () => {
-          if (settled) return;
-          logger.info(MODULE, 'Edge TTS播放', '播放完成');
-          cleanup();
-          resolve(true);
-        };
-        currentAudio.onerror = (e) => {
-          if (settled) return;
-          logger.error(MODULE, 'Edge TTS播放', `播放出错: ${e}`);
-          cleanup();
-          resolve(false);
-        };
-        // 超时保护：如果 5 秒内没有 canplay 事件，尝试直接播放
-        setTimeout(() => {
-          if (!settled && currentAudio && currentAudio.readyState < 3) {
-            logger.warn(MODULE, 'Edge TTS播放', '音频加载超时，尝试直接播放');
-            currentAudio.play().catch(() => {
-              cleanup();
-              resolve(false);
-            });
-          }
-        }, 5000);
-      });
+      const played = await playBlobUrl(blobUrl);
+      if (myGeneration !== ttsRequestGeneration) return played;
+      if (played) {
+        // 自愈缓存：把本次合成的 MP3 回写本地缓存（fire-and-forget），
+        // 让用户自定义音色/新句子第一次在线读过之后，后续全部秒出。
+        // 仅当目标语速与缓存烘焙语速一致时写入，避免不同语速的音频污染统一语速缓存
+        const isWordText = !/\s/.test(text) && text.length <= 20;
+        const bakedRate = isWordText ? WORD_BAKED_RATE : SENTENCE_BAKED_RATE;
+        if (Math.abs(targetRate - bakedRate) < 0.02 && electronAPI.ttsCachePut) {
+          const voiceId = canonicalVoiceId(voice || 'en-female');
+          const hash = await textHash(text);
+          const relPath = isWordText
+            ? `words/${voiceId}/${wordSlug(text)}.mp3`
+            : `sentences/${voiceId}/${hash}.mp3`;
+          electronAPI.ttsCachePut(relPath, result.audio).catch(() => {});
+        }
+        return true;
+      }
+      // 在线音频播放失败（音频损坏等）：尝试本地缓存兜底
+      return await tryPlayCachedAudio(text, voice || 'en-female', targetRate);
     }
 
     if (result.error !== '语音请求已取消') {
@@ -664,6 +971,8 @@ function speakWithWebSpeech(
       return;
     }
 
+    // 降级是异常路径（硬约束禁止系统降级音），必须留痕便于排查"哪来的系统音"
+    logger.warn(MODULE, '系统TTS降级', `Edge 链路失败，改用系统语音: "${text.slice(0, 30)}"`);
     window.speechSynthesis.cancel();
 
     const utterance = new SpeechSynthesisUtterance(text);
@@ -714,10 +1023,18 @@ async function speakInternal(
   rate: number,
   voiceId: string,
   lang: string = 'en-US',
-  webVoice?: SpeechSynthesisVoice | null
+  webVoice?: SpeechSynthesisVoice | null,
+  fallbackVoice?: string
 ): Promise<void> {
-  if (edgeTtsAvailable) {
-    const success = await speakWithEdgeTTS(text, voiceId, rate);
+  // 单句朗读是用户主动意图：递增会话代数，让进行中的全文朗读循环退出让位
+  readingSession++;
+  if (hasElectronTtsPipeline()) {
+    const genBefore = ttsRequestGeneration;
+    const success = await speakWithEdgeTTS(text, voiceId, rate, fallbackVoice);
+    // speakWithEdgeTTS 恰好把 generation 推进一代（genBefore+1）；
+    // 超过它说明有更新的朗读请求挤入取代了本次——此时新请求已接管出声，
+    // 绝不降级系统音（否则先出系统机械音、后出 Edge 音，即"先离线后 Edge"双路声音）
+    if (ttsRequestGeneration > genBefore + 1) return;
     if (success) return;
   }
   await speakWithWebSpeech(text, lang, webVoice);
@@ -743,21 +1060,57 @@ export async function speakEnglish(
 
   const voiceId = getDefaultVoiceForSpeaker(speaker);
   const webVoice = getWebVoiceBySpeaker(speaker);
-  await speakInternal(text, RATE_MAP[rate || currentRate], voiceId, 'en-US', webVoice);
+  // 兜底：自定义声音（用户在角色旁的声音选择器里选过）缓存 miss 时，
+  // 回落到默认分配声音的缓存——预生成按默认分配生成，必命中
+  const fallbackVoice =
+    voiceId !== getDefaultVoiceNoCustom(speaker) ? getDefaultVoiceNoCustom(speaker) : undefined;
+  await speakInternal(text, RATE_MAP[rate || currentRate], voiceId, 'en-US', webVoice, fallbackVoice);
 }
 
+/** 英美口音对照声音（单词双读：当前口音读一遍，再用对照口音读一遍） */
+const ALTERNATE_ACCENT_VOICE: Record<string, string> = {
+  'en-US-AriaNeural': 'en-GB-SoniaNeural',
+  'en-US-GuyNeural': 'en-GB-RyanNeural',
+  'en-GB-SoniaNeural': 'en-US-AriaNeural',
+  'en-GB-RyanNeural': 'en-US-GuyNeural',
+};
+
+/** 获取对照口音声音：英美对照表优先，否则按前缀推断；非英语声音默认给美式 */
+function getAlternateAccentVoice(voiceId: string): string {
+  if (ALTERNATE_ACCENT_VOICE[voiceId]) return ALTERNATE_ACCENT_VOICE[voiceId];
+  if (voiceId.startsWith('en-GB-')) return 'en-US-AriaNeural';
+  if (voiceId.startsWith('en-US-')) return 'en-GB-SoniaNeural';
+  return 'en-US-AriaNeural';
+}
+
+/** 上次单词朗读发起时间（毫秒），用于识别"快速浏览"——连点切词时抑制双读第二遍 */
+let lastWordSpeakAt = 0;
+
 /**
- * 朗读单词（英文，使用全局口音预设）
+ * 朗读单词（英文，双口音对比朗读）
+ * 第一遍：当前口音预设的声音（慢速）
+ * 第二遍：另一种口音再读一遍（仅 Edge TTS，失败静默跳过，不落系统 TTS 降级音）
+ * 快速浏览（距上次单词朗读 < 3 秒，如连点"下一个"）时跳过第二遍：
+ * 对照口音声音不同，快速切换下听起来像"迟到的另一路响应"，徒增困惑
  */
 export async function speakWord(word: string): Promise<void> {
+  const sessionBefore = readingSession;
+  const now = Date.now();
+  const isRapidSwitch = now - lastWordSpeakAt < 3000;
+  lastWordSpeakAt = now;
   await speakEnglish(word, 'slow');
+  // 第一遍期间被外部停止/新朗读打断（speakInternal 自身也会 +1），跳过第二遍
+  if (readingSession !== sessionBefore + 1) return;
+  if (isRapidSwitch) return;
+  const altVoice = getAlternateAccentVoice(getDefaultVoiceForSpeaker(undefined));
+  await speakWithEdgeTTS(word, altVoice, RATE_MAP.slow);
 }
 
 /**
- * 朗读句子（英文，正常速度，可指定角色）
+ * 朗读句子（跟随右上角语速设置，可指定角色）
  */
 export async function speakSentence(sentence: string, speaker?: string): Promise<void> {
-  await speakEnglish(sentence, 'normal', speaker);
+  await speakEnglish(sentence, currentRate, speaker);
 }
 
 /**
@@ -875,6 +1228,9 @@ export async function speakChinese(
   const voice = voiceId || currentChineseVoice;
   const speechRate = rate || currentChineseRate;
 
+  // 中文朗读是用户主动意图：递增会话代数，让进行中的全文朗读循环退出让位
+  readingSession++;
+
   // 记录本次播放内容（用于实时反馈重播）
   lastChineseText = text;
   _lastChineseVoice = voice;
@@ -883,13 +1239,14 @@ export async function speakChinese(
   const textPreview = text.length > 30 ? text.substring(0, 30) + '...' : text;
   logger.info(MODULE, '朗读中文', `文本: "${textPreview}", 声音: ${voice}, 语速: ${speechRate}`);
 
-  // 使用 Edge TTS
-  if (edgeTtsAvailable) {
+  const targetRate = CHINESE_RATE_NUMBER_MAP[speechRate];
+  // 递增请求计数器（声明在 try 外，catch 的缓存兜底也要引用）
+  const myGeneration = ++ttsRequestGeneration;
+
+  // 缓存优先 + Edge TTS（与英文路径一致：断网/探测失败时本地缓存照常可用）
+  if (hasElectronTtsPipeline()) {
     const electronAPI = window.electronAPI;
     try {
-      // 递增请求计数器，用于检测并发请求
-      const myGeneration = ++ttsRequestGeneration;
-
       // 清除旧音频的回调，防止旧 Audio 的 onerror 干扰新请求
       if (pendingTtsResolve) {
         pendingTtsResolve(false);
@@ -905,16 +1262,21 @@ export async function speakChinese(
       }
       revokeCurrentBlobUrl();
 
-      // 通知后端取消正在进行的 TTS 请求
+      // 缓存优先：命中本地 MP3 直接变速播放（中文自愈缓存按原速 1.0 烘焙）
+      const cachedFirst = await tryPlayCachedAudio(text, voice, targetRate);
+      if (myGeneration !== ttsRequestGeneration) return;
+      if (cachedFirst) return;
+
+      // 通知后端取消正在进行的 TTS 请求，并等待取消完成，防止误 abort 本请求
       if (electronAPI.edgeTtsStop) {
-        electronAPI.edgeTtsStop().catch(() => {});
+        await electronAPI.edgeTtsStop().catch(() => {});
       }
 
-      logger.info(MODULE, '朗读中文', `调用IPC: voice=${voice}, rate=${CHINESE_RATE_NUMBER_MAP[speechRate]}`);
+      logger.info(MODULE, '朗读中文', `调用IPC: voice=${voice}, rate=${targetRate}`);
       const result = await electronAPI.edgeTtsSpeak({
         text,
         voice,
-        rate: CHINESE_RATE_NUMBER_MAP[speechRate],
+        rate: targetRate,
       });
 
       // 如果已经有更新的请求，丢弃当前结果
@@ -972,14 +1334,33 @@ export async function speakChinese(
             }
           }, 5000);
         });
+        // 自愈缓存：中文按原速（1.0）烘焙写入，第二次朗读起秒出
+        if (Math.abs(targetRate - 1.0) < 0.02 && electronAPI.ttsCachePut) {
+          const hash = await textHash(text);
+          electronAPI
+            .ttsCachePut(`sentences/${canonicalVoiceId(voice)}/${hash}.mp3`, result.audio)
+            .catch(() => {});
+        }
         return;
       }
 
       if (result.error !== '语音请求已取消') {
         logger.warn(MODULE, '朗读中文', `返回失败: ${result.error || '未知错误'}`);
       }
+      // 在线失败（429/断网）：查本地缓存兜底，未命中才降级 Web Speech
+      if (myGeneration === ttsRequestGeneration) {
+        const cached = await tryPlayCachedAudio(text, voice, targetRate);
+        if (cached) {
+          logger.info(MODULE, '朗读中文', '在线生成失败，已用本地缓存 MP3 播放');
+          return;
+        }
+      }
     } catch (e) {
-      logger.warn(MODULE, '朗读中文', `Edge TTS 失败，降级到 Web Speech: ${e}`);
+      logger.warn(MODULE, '朗读中文', `Edge TTS 失败，尝试缓存兜底: ${e}`);
+      if (myGeneration === ttsRequestGeneration) {
+        const cached = await tryPlayCachedAudio(text, voice, targetRate);
+        if (cached) return;
+      }
     }
   }
 
@@ -1010,7 +1391,9 @@ function loadChineseVoiceConfig(): void {
   try {
     const savedVoice = localStorage.getItem('chinese-voice');
     if (savedVoice) {
-      currentChineseVoice = savedVoice;
+      // 白名单校验：仅保留实测可播的音色，历史遗留的付费/不可播音色（如 WatSam）回退默认
+      const validIds = new Set([...CHINESE_VOICES, ...CANTONESE_VOICES].map((v) => v.id));
+      currentChineseVoice = validIds.has(savedVoice) ? savedVoice : 'zh-CN-XiaoxiaoNeural';
     }
     const savedRate = localStorage.getItem('chinese-rate') as ChineseSpeechRate;
     if (savedRate && ['slow', 'normal', 'fast'].includes(savedRate)) {
@@ -1126,13 +1509,17 @@ export async function speakChineseWithEmotion(
   const speechRate = rate || currentChineseRate;
   const speechEmotion = emotion || currentChineseEmotion;
 
-  // 使用 Edge TTS
-  if (edgeTtsAvailable) {
+  // 用户主动朗读：递增会话代数，让进行中的全文朗读循环退出让位
+  readingSession++;
+
+  const targetRate = CHINESE_RATE_NUMBER_MAP[speechRate];
+  // 递增请求计数器（声明在 try 外，catch 的缓存兜底也要引用）
+  const myGeneration = ++ttsRequestGeneration;
+
+  // 缓存优先 + Edge TTS（与英文路径一致：断网/探测失败时本地缓存照常可用）
+  if (hasElectronTtsPipeline()) {
     const electronAPI = window.electronAPI;
     try {
-      // 递增请求计数器，用于检测并发请求
-      const myGeneration = ++ttsRequestGeneration;
-
       // 清除旧音频的回调
       if (pendingTtsResolve) {
         pendingTtsResolve(false);
@@ -1148,9 +1535,14 @@ export async function speakChineseWithEmotion(
       }
       revokeCurrentBlobUrl();
 
-      // 通知后端取消正在进行的 TTS 请求
+      // 缓存优先：命中本地 MP3 直接变速播放（情感朗读复用普通缓存）
+      const cachedFirst = await tryPlayCachedAudio(text, voice, targetRate);
+      if (myGeneration !== ttsRequestGeneration) return;
+      if (cachedFirst) return;
+
+      // 通知后端取消正在进行的 TTS 请求，并等待取消完成，防止误 abort 本请求
       if (electronAPI.edgeTtsStop) {
-        electronAPI.edgeTtsStop().catch(() => {});
+        await electronAPI.edgeTtsStop().catch(() => {});
       }
 
       let result;
@@ -1163,13 +1555,13 @@ export async function speakChineseWithEmotion(
           (await electronAPI.edgeTtsSpeak({
             text,
             voice,
-            rate: CHINESE_RATE_NUMBER_MAP[speechRate],
+            rate: targetRate,
           }));
       } else {
         result = await electronAPI.edgeTtsSpeak({
           text,
           voice,
-          rate: CHINESE_RATE_NUMBER_MAP[speechRate],
+          rate: targetRate,
         });
       }
 
@@ -1222,8 +1614,20 @@ export async function speakChineseWithEmotion(
         });
         return;
       }
+      // 在线失败（429/断网）：查本地缓存兜底，未命中才降级 Web Speech
+      if (myGeneration === ttsRequestGeneration) {
+        const cached = await tryPlayCachedAudio(text, voice, targetRate);
+        if (cached) {
+          logger.info(MODULE, '朗读中文', '在线生成失败，已用本地缓存 MP3 播放');
+          return;
+        }
+      }
     } catch (e) {
-      console.warn('Edge TTS 中文情感朗读失败，降级到普通朗读:', e);
+      logger.warn(MODULE, '朗读中文', `Edge TTS 情感朗读失败，尝试缓存兜底: ${e}`);
+      if (myGeneration === ttsRequestGeneration) {
+        const cached = await tryPlayCachedAudio(text, voice, targetRate);
+        if (cached) return;
+      }
     }
   }
 
@@ -1381,11 +1785,14 @@ export async function speakGrammarContent(text: string): Promise<void> {
 export async function speakText(
   paragraphs: Array<{ speaker?: string; content: string }>
 ): Promise<void> {
-  if (!edgeTtsAvailable) {
-    // Web Speech API：逐句朗读，根据角色切换声音，等待每句读完
+  if (!hasElectronTtsPipeline()) {
+    // 纯 Web 环境（无 Electron 缓存/Edge IPC）：Web Speech API 逐句朗读
     stopSpeaking();
+    const mySession = readingSession;
 
     for (const para of paragraphs) {
+      // 会话已过期（被停止/新朗读取代），立即退出
+      if (mySession !== readingSession) return;
       const webVoice = getWebVoiceBySpeaker(para.speaker);
       await speakWithWebSpeech(para.content, 'en-US', webVoice);
       // 等待一小段时间再朗读下一句
@@ -1398,11 +1805,36 @@ export async function speakText(
   stopSpeaking();
   // 等待一小段时间让旧音频完全停止
   await new Promise((resolve) => setTimeout(resolve, 200));
+  const mySession = readingSession;
+  // 构建本课角色→声音分配表：多个男/女角色各配不同声音
+  const voiceMap = buildLessonVoiceMap(paragraphs, {
+    presetId: currentPreset.id,
+    defaultMale: currentPreset.male,
+    defaultFemale: currentPreset.female,
+    userVoices: speakerVoices,
+  });
+  lastLessonVoiceMap = voiceMap;
+  // 默认分配表（忽略用户自定义）：自定义声音缓存 miss 时的兜底声音
+  const defaultMap = buildLessonVoiceMap(paragraphs, {
+    presetId: currentPreset.id,
+    defaultMale: currentPreset.male,
+    defaultFemale: currentPreset.female,
+    userVoices: {},
+  });
 
   for (const para of paragraphs) {
-    const voice = getDefaultVoiceForSpeaker(para.speaker);
-    await speakWithEdgeTTS(para.content, voice, RATE_MAP[currentRate] * 0.9);
+    // 会话已过期（被停止/新的单句朗读/新课文朗读取代），立即退出
+    if (mySession !== readingSession) {
+      logger.info(MODULE, '朗读课文', '朗读会话已被取代，退出循环');
+      return;
+    }
+    const key = (para.speaker || '').toUpperCase();
+    const voice = voiceMap.get(key) || getDefaultVoiceForSpeaker(para.speaker);
+    const fallbackVoice = defaultMap.get(key);
+    await speakWithEdgeTTS(para.content, voice, RATE_MAP[currentRate] * 0.9, fallbackVoice);
 
+    // 会话过期则不再等待，直接退出
+    if (mySession !== readingSession) return;
     // 等待一小段时间再朗读下一句
     await new Promise((resolve) => setTimeout(resolve, 500));
   }
@@ -1418,12 +1850,15 @@ export async function speakWithVoice(
 ): Promise<void> {
   stopSpeaking();
 
-  if (edgeTtsAvailable) {
+  if (hasElectronTtsPipeline()) {
+    const genBefore = ttsRequestGeneration;
     const success = await speakWithEdgeTTS(
       text,
       voiceId,
       rate ? RATE_MAP[rate] : RATE_MAP[currentRate]
     );
+    // 被更新的试听请求取代时不降级（genBefore+1 是自己占的一代，超出即被取代）
+    if (ttsRequestGeneration > genBefore + 1) return;
     if (success) return;
   }
 
@@ -1435,8 +1870,14 @@ export async function speakWithVoice(
  * 停止朗读
  */
 export function stopSpeaking(): void {
+  // 递增朗读会话代数：使进行中的全文朗读循环退出
+  readingSession++;
+  // 递增请求代数：打断进行中的 speakWithEdgeTTS 链（playBlobUrl 被放行后，
+  // 链条在下一个代数检查点立即返回，不再继续跑兜底缓存/在线合成）
+  ttsRequestGeneration++;
   // 如果有正在等待的 TTS Promise，正确解决它
   if (pendingTtsResolve) {
+    logger.info(MODULE, '停止朗读', '打断进行中的朗读（stopSpeaking）');
     pendingTtsResolve(false);
     pendingTtsResolve = null;
   }

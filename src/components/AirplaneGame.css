@@ -42,7 +42,8 @@
   color: #ffd93d;
 }
 
-.back-btn {
+/* 限定在游戏容器内，避免全局覆盖其他页面的 .back-btn（曾导致选课页返回按钮隐形） */
+.airplane-game-container .back-btn {
   padding: 6px 14px;
   border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
@@ -53,7 +54,7 @@
   transition: all 0.2s;
 }
 
-.back-btn:hover {
+.airplane-game-container .back-btn:hover {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.6);
 }
@@ -165,12 +166,14 @@
 
 .game-area {
   position: relative;
-  width: 100%;
+  /* 固定 700px 逻辑宽度并居中：敌机/子弹/飞机/星星坐标全按 GAME_WIDTH=700 设计，
+     自适应宽度会让鼠标映射和实体坐标错位（游戏挤在左侧 700px 内） */
+  width: 700px;
   height: 500px;
   background: linear-gradient(180deg, #0c1445 0%, #1a237e 40%, #283593 100%);
   border-radius: 12px;
   overflow: hidden;
-  margin-top: 8px;
+  margin: 8px auto 0;
   cursor: none;
 }
 

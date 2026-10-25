@@ -100,6 +100,16 @@ export function recordBreak(): void {
   saveSessionData(data);
 }
 
+/** 推迟休息提醒（跳过休息时调用）：重置会话计时但不计休息次数，
+ *  否则连续学习时长不重置，30 秒后 checkNeedBreak 仍为 true，弹窗会无限重新弹出 */
+export function postponeBreak(): void {
+  const data = getSessionData();
+  const sessionDuration = Math.floor((Date.now() - data.startTime) / 1000);
+  data.totalToday += sessionDuration;
+  data.startTime = Date.now();
+  saveSessionData(data);
+}
+
 /** 格式化时长 */
 export function formatDuration(seconds: number): string {
   const mins = Math.floor(seconds / 60);

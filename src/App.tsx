@@ -1,9 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './pages/Home';
-import LessonList from './pages/LessonList';
-import LessonDetail from './pages/LessonDetail';
-import Progress from './pages/Progress';
 import { preloadVoices } from './services/tts';
 import { logger } from './utils/logger';
 import ErrorBoundary from './components/ErrorBoundary';
@@ -12,6 +8,34 @@ import EyeProtectionModal from './components/EyeProtectionModal';
 import './styles/index.css';
 
 const MODULE = 'App';
+
+/** 路由懒加载时的儿童风格加载页 */
+const PageLoader: React.FC = () => (
+  <div
+    style={{
+      width: '100%',
+      height: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      background: 'linear-gradient(135deg, #FFF5E6 0%, #F5E6D3 100%)',
+      textAlign: 'center',
+    }}
+  >
+    <div style={{ fontSize: '72px', marginBottom: '16px', animation: 'bounce 1s infinite' }}>
+      🎓
+    </div>
+    <p style={{ fontSize: '20px', color: '#FF8C42', fontWeight: 600 }}>正在加载...</p>
+  </div>
+);
+
+// 路由级代码分割：每个页面独立 chunk，按需加载
+const Home = lazy(() => import('./pages/Home'));
+const LessonList = lazy(() => import('./pages/LessonList'));
+const LessonDetail = lazy(() => import('./pages/LessonDetail'));
+const Progress = lazy(() => import('./pages/Progress'));
+const PracticeCenter = lazy(() => import('./pages/PracticeCenter'));
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -30,11 +54,13 @@ const App: React.FC = () => {
     <ErrorBoundary>
       <Router>
         <div className="app">
-          <Routes>
+          <Suspense fallback={<PageLoader />}>
+            <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/lessons" element={<LessonList />} />
             <Route path="/lesson/:id" element={<LessonDetail />} />
             <Route path="/progress" element={<Progress />} />
+            <Route path="/practice" element={<PracticeCenter />} />
             <Route
               path="*"
               element={
@@ -76,6 +102,7 @@ const App: React.FC = () => {
               }
             />
           </Routes>
+          </Suspense>
 
           {/* 日志查看器 */}
           <LogViewer maxLogs={100} position="bottom-right" />

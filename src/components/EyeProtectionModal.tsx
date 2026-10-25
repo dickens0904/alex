@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import {
   checkNeedBreak,
   recordBreak,
+  postponeBreak,
   getCurrentSessionDuration,
   getTodayTotalDuration,
   formatDuration,
@@ -151,6 +152,12 @@ const EyeProtectionModal: React.FC<EyeProtectionModalProps> = ({ onDismiss }) =>
   };
 
   const handleSkip = () => {
+    // 重置会话计时（不计休息次数）：
+    // 否则连续学习时长仍超阈值，30 秒后弹窗会再次弹出，造成"无法退出本课"
+    postponeBreak();
+    setSessionDuration(0);
+    setTodayDuration(getTodayTotalDuration());
+    logger.info('EyeProtection', '跳过休息', `本次连续学习: ${formatDuration(getTodayTotalDuration())}，提醒已推迟`);
     setShowModal(false);
     setIsResting(false);
     onDismiss?.();

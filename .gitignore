@@ -32,3 +32,16 @@ coverage/
 # 构建缓存
 .cache/
 *.tsbuildinfo
+
+# vosk 离线语音识别（大二进制不进 git：模型 39MB + dll 28MB）
+models/
+electron/lib/vosk/
+tts-cache/
+
+# CDP 验证截图（可再生）
+smoke-shots/
+
+# 数据修复过程备份
+*.bak
+*.bak2
+*.vbak

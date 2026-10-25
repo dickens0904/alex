@@ -49,7 +49,6 @@ const ENEMY_WIDTH = 56;
 const ENEMY_HEIGHT = 50;
 const BULLET_SPEED = 8;
 const ENEMY_BASE_SPEED = 0.8;
-const SHOOT_INTERVAL = 500;
 const MAX_ROUNDS = 10;
 const INITIAL_LIVES = 3;
 const HIT_RADIUS = 30;
@@ -91,7 +90,6 @@ const AirplaneGame: React.FC<AirplaneGameProps> = ({ vocabulary, onFinish, onBac
   const bulletsRef = useRef<Bullet[]>([]);
   const keysRef = useRef<{ left: boolean; right: boolean }>({ left: false, right: false });
   const animFrameRef = useRef<number>(0);
-  const shootTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const bulletIdRef = useRef(0);
   const enemyIdRef = useRef(0);
   const explosionIdRef = useRef(0);
@@ -398,11 +396,30 @@ const AirplaneGame: React.FC<AirplaneGameProps> = ({ vocabulary, onFinish, onBac
     setTick(tickRef.current);
   }, []);
 
-  // 键盘事件
+  // 点击发射子弹（从机头位置发出；轮次间隙/非 playing 状态不发射）
+  const handleFire = useCallback(() => {
+    if (gameStateRef.current !== 'playing' || !roundActiveRef.current) return;
+    const bulletId = ++bulletIdRef.current;
+    bulletsRef.current.push({
+      id: bulletId,
+      x: playerXRef.current + PLAYER_WIDTH / 2,
+      y: GAME_HEIGHT - 60,
+    });
+    dirtyRef.current = true;
+    tickRef.current += 1;
+    setTick(tickRef.current);
+  }, []);
+
+  // 键盘事件：← → 移动，空格发射
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft' || e.key === 'a') keysRef.current.left = true;
       if (e.key === 'ArrowRight' || e.key === 'd') keysRef.current.right = true;
+      // 空格发射：按住不放由系统自动重复会变成机关枪，只认首次按下
+      if ((e.key === ' ' || e.code === 'Space') && !e.repeat) {
+        e.preventDefault(); // 防止页面滚动
+        handleFire();
+      }
     };
     const handleKeyUp = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft' || e.key === 'a') keysRef.current.left = false;
@@ -414,34 +431,7 @@ const AirplaneGame: React.FC<AirplaneGameProps> = ({ vocabulary, onFinish, onBac
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, []);
-
-  // 自动射击
-  useEffect(() => {
-    if (gameState !== 'playing') {
-      if (shootTimerRef.current) {
-        clearInterval(shootTimerRef.current);
-        shootTimerRef.current = null;
-      }
-      return;
-    }
-
-    shootTimerRef.current = setInterval(() => {
-      if (gameStateRef.current !== 'playing' || !roundActiveRef.current) return;
-      const bulletId = ++bulletIdRef.current;
-      const bx = playerXRef.current + PLAYER_WIDTH / 2;
-      const by = GAME_HEIGHT - 60;
-      bulletsRef.current.push({ id: bulletId, x: bx, y: by });
-    }, SHOOT_INTERVAL);
-
-    return () => {
-      if (shootTimerRef.current) {
-        clearInterval(shootTimerRef.current);
-        shootTimerRef.current = null;
-      }
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameState]);
+  }, [handleFire]);
 
   // 爆炸自动消失
   useEffect(() => {
@@ -467,7 +457,7 @@ const AirplaneGame: React.FC<AirplaneGameProps> = ({ vocabulary, onFinish, onBac
           <div className="ready-icon">🛩️</div>
           <h2>飞机大战</h2>
           <p>用战斗机击落标有正确中文翻译的敌机！</p>
-          <p>键盘 ← → 或鼠标移动飞机，自动发射子弹</p>
+          <p>移动鼠标或按 ← → 控制飞机，点击或按空格发射子弹！</p>
           <p className="ready-hint">击中正确答案 +10 分，连续命中额外加分！</p>
           <button className="start-btn" onClick={handleStart}>
             开始战斗！
@@ -546,7 +536,7 @@ const AirplaneGame: React.FC<AirplaneGameProps> = ({ vocabulary, onFinish, onBac
       </div>
 
       {/* 游戏区域 */}
-      <div className="game-area" ref={gameAreaRef} onMouseMove={handleMouseMove}>
+      <div className="game-area" ref={gameAreaRef} onMouseMove={handleMouseMove} onClick={handleFire}>
         {/* 星星背景 */}
         {STARS.map((star, i) => (
           <div

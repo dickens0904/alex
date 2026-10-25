@@ -16,7 +16,7 @@ interface UserStats {
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
-  const totalLessons = getTotalLessonCount();
+  const [totalLessons, setTotalLessons] = useState(0);
   const [stats, setStats] = useState<UserStats>({
     totalScore: 0,
     completedLessons: 0,
@@ -29,9 +29,16 @@ const Home: React.FC = () => {
   const streakData = getStreakData();
   const streakLevel = getStreakLevel(streakData.currentStreak);
 
+  const loadTotalLessons = async () => {
+    const count = await getTotalLessonCount();
+    setTotalLessons(count);
+  };
+
   useEffect(() => {
     logger.info('Home', '页面加载', `总课程: ${totalLessons}`);
-    Promise.all([loadStats(), loadAchievements()]).finally(() => setLoading(false));
+    Promise.all([loadStats(), loadAchievements(), loadTotalLessons()]).finally(() =>
+      setLoading(false)
+    );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -77,7 +84,10 @@ const Home: React.FC = () => {
             <span className="btn-text">学习进度</span>
           </button>
 
-          <button className="btn btn-accent btn-large" onClick={() => navigate('/lessons')}>
+          <button
+            className="btn btn-accent btn-large"
+            onClick={() => navigate('/lessons', { state: { intent: 'games' } })}
+          >
             <span className="btn-icon">🎮</span>
             <span className="btn-text">趣味练习</span>
           </button>

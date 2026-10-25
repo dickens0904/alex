@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Exercise } from '../../types/lesson';
 
-export type PracticeType = 'listening' | 'speaking' | 'spelling' | 'writing' | 'reading';
+export type PracticeType = 'listening' | 'speaking' | 'spelling' | 'writing' | 'reading' | 'vocabStructure';
 
 interface PracticeMenuProps {
   exercises: Exercise[];
@@ -19,6 +19,12 @@ const PRACTICE_TYPES: {
   { type: 'spelling', icon: '✏️', title: '拼写练习', desc: '根据提示拼写单词' },
   { type: 'writing', icon: '📝', title: '填空练习', desc: '选择正确的单词填入空白' },
   { type: 'reading', icon: '📖', title: '阅读理解', desc: '阅读课文，回答理解题' },
+  {
+    type: 'vocabStructure',
+    icon: '🔤',
+    title: '词汇与结构',
+    desc: 'Vocabulary & Structure 专项：选出正确单词完成句子',
+  },
 ];
 
 const PracticeMenu: React.FC<PracticeMenuProps> = ({ exercises, onStart }) => {

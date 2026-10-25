@@ -1,15 +1,29 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
+import { spawn } from 'child_process';
 import * as path from 'path';
 import * as fs from 'fs';
 import { pathToFileURL as _pathToFileURL } from 'url';
 import { webcrypto } from 'crypto';
 import { initDatabase, getDatabase, isDatabaseAvailable } from './database/init';
+import {
+  voskAvailability,
+  voskStart,
+  voskChunk,
+  voskFinish,
+  voskStopDiscard,
+  voskDecodeAndFeed,
+} from './voskBinding';
 
 // msedge-tts 需要 crypto 模块
 if (!globalThis.crypto) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   (globalThis as any).crypto = webcrypto;
 }
+
+// 禁用独立音频服务进程：本机 getUserMedia 激活后再创建音频处理实体
+// （ScriptProcessor 事件分发 / decodeAudioData / AudioWorklet.addModule）全部死锁，
+// 疑似 audio service 进程与采集流互斥死锁，音频回浏览器进程规避
+app.commandLine.appendSwitch('disable-features', 'AudioServiceOutOfProcess');
 
 // Edge TTS 相关（使用 msedge-tts 替代旧的 edge-tts）
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -99,9 +113,16 @@ if (!gotTheLock) {
       webPreferences: {
         contextIsolation: true,
         nodeIntegration: false,
-        sandbox: true,
+        // sandbox: false 规避 Chromium sandbox 渲染进程 + ScriptProcessorNode
+        // 音频事件分发的死锁（onaudioprocess 首帧冻结主线程，导致口语录音白屏）
+        sandbox: false,
         preload: path.join(__dirname, 'preload.js'),
       },
+    });
+
+    // 转发渲染端 console 到主进程 stdout（排障用）
+    mainWindow.webContents.on('console-message', (_event, _level, message) => {
+      console.log(`[Renderer] ${message}`);
     });
 
     // ==================== 日志文件写入 ====================
@@ -330,18 +351,20 @@ if (!gotTheLock) {
 
   // 可用的语音列表（扩展多角色声音）
   const VOICE_MAP: Record<string, string> = {
-    // ===== 美式英语 =====
+    // ===== 美式英语 =====（以下均为 Edge 免费接口实测可用音色）
     // 女声
     'en-US-AriaNeural': 'en-US-AriaNeural',
     'en-US-JennyNeural': 'en-US-JennyNeural',
     'en-US-MichelleNeural': 'en-US-MichelleNeural',
-    'en-US-MonicaNeural': 'en-US-MonicaNeural',
+    'en-US-AvaNeural': 'en-US-AvaNeural',
+    'en-US-EmmaNeural': 'en-US-EmmaNeural',
     'en-US-AnaNeural': 'en-US-AnaNeural',
     // 男声
     'en-US-GuyNeural': 'en-US-GuyNeural',
-    'en-US-DavisNeural': 'en-US-DavisNeural',
-    'en-US-TonyNeural': 'en-US-TonyNeural',
-    'en-US-JasonNeural': 'en-US-JasonNeural',
+    'en-US-AndrewNeural': 'en-US-AndrewNeural',
+    'en-US-EricNeural': 'en-US-EricNeural',
+    'en-US-RogerNeural': 'en-US-RogerNeural',
+    'en-US-ChristopherNeural': 'en-US-ChristopherNeural',
     'en-US-SteffanNeural': 'en-US-SteffanNeural',
     // ===== 英式英语 =====
     // 女声
@@ -351,7 +374,6 @@ if (!gotTheLock) {
     // 男声
     'en-GB-RyanNeural': 'en-GB-RyanNeural',
     'en-GB-ThomasNeural': 'en-GB-ThomasNeural',
-    'en-GB-AlfieNeural': 'en-GB-AlfieNeural',
     // ===== 中文语音 =====
     'zh-CN-XiaoxiaoNeural': 'zh-CN-XiaoxiaoNeural',
     'zh-CN-XiaoyiNeural': 'zh-CN-XiaoyiNeural',
@@ -395,12 +417,20 @@ if (!gotTheLock) {
       desc: '沉稳清晰',
     },
     {
-      id: 'en-US-MonicaNeural',
-      name: 'Monica',
+      id: 'en-US-AvaNeural',
+      name: 'Ava',
       lang: 'en-US',
       gender: 'female',
       accent: '美式',
-      desc: '柔和甜美',
+      desc: '温柔关怀',
+    },
+    {
+      id: 'en-US-EmmaNeural',
+      name: 'Emma',
+      lang: 'en-US',
+      gender: 'female',
+      accent: '美式',
+      desc: '开朗亲切',
     },
     {
       id: 'en-US-AnaNeural',
@@ -420,28 +450,36 @@ if (!gotTheLock) {
       desc: '轻松友好',
     },
     {
-      id: 'en-US-DavisNeural',
-      name: 'Davis',
+      id: 'en-US-AndrewNeural',
+      name: 'Andrew',
       lang: 'en-US',
       gender: 'male',
       accent: '美式',
-      desc: '低沉磁性',
+      desc: '温暖沉稳',
     },
     {
-      id: 'en-US-TonyNeural',
-      name: 'Tony',
+      id: 'en-US-EricNeural',
+      name: 'Eric',
+      lang: 'en-US',
+      gender: 'male',
+      accent: '美式',
+      desc: '理性清晰',
+    },
+    {
+      id: 'en-US-RogerNeural',
+      name: 'Roger',
       lang: 'en-US',
       gender: 'male',
       accent: '美式',
       desc: '活力阳光',
     },
     {
-      id: 'en-US-JasonNeural',
-      name: 'Jason',
+      id: 'en-US-ChristopherNeural',
+      name: 'Christopher',
       lang: 'en-US',
       gender: 'male',
       accent: '美式',
-      desc: '成熟稳重',
+      desc: '成熟权威',
     },
     {
       id: 'en-US-SteffanNeural',
@@ -493,14 +531,6 @@ if (!gotTheLock) {
       accent: '英式',
       desc: '庄重有力',
     },
-    {
-      id: 'en-GB-AlfieNeural',
-      name: 'Alfie',
-      lang: 'en-GB',
-      gender: 'male',
-      accent: '英式',
-      desc: '年轻朝气',
-    },
   ];
 
   // 清理当前 TTS 请求
@@ -522,6 +552,63 @@ if (!gotTheLock) {
       currentTtsStream = null;
     }
   };
+
+  // 本地 TTS 缓存兜底：读取预生成的 MP3（tts-cache/ 目录），在线 Edge TTS 失败时播放
+  ipcMain.handle('tts-cache-get', async (_event, relPath: string) => {
+    try {
+      if (
+        typeof relPath !== 'string' ||
+        relPath.length === 0 ||
+        relPath.includes('..') ||
+        path.isAbsolute(relPath)
+      ) {
+        return { success: false, error: '非法路径' };
+      }
+      const cacheDir = path.join(app.getAppPath(), 'tts-cache');
+      const filePath = path.normalize(path.join(cacheDir, relPath));
+      if (!filePath.startsWith(cacheDir + path.sep)) {
+        return { success: false, error: '非法路径' };
+      }
+      const data = await fs.promises.readFile(filePath);
+      return { success: true, audio: `data:audio/mpeg;base64,${data.toString('base64')}` };
+    } catch (error) {
+      // 文件不存在等属于正常未命中，不打 error 日志
+      return { success: false, error: String(error) };
+    }
+  });
+
+  // 本地 TTS 缓存自愈：在线合成成功后回写 MP3（仅允许写入 tts-cache 内的合法相对路径）
+  ipcMain.handle('tts-cache-put', async (_event, relPath: string, dataUrl: string) => {
+    try {
+      if (
+        typeof relPath !== 'string' ||
+        typeof dataUrl !== 'string' ||
+        relPath.length === 0 ||
+        relPath.includes('..') ||
+        path.isAbsolute(relPath)
+      ) {
+        return { success: false, error: '非法路径' };
+      }
+      const m = /^data:audio\/mpeg;base64,([A-Za-z0-9+/=]+)$/.exec(dataUrl);
+      if (!m) {
+        return { success: false, error: '非法音频数据' };
+      }
+      const cacheDir = path.join(app.getAppPath(), 'tts-cache');
+      const filePath = path.normalize(path.join(cacheDir, relPath));
+      if (!filePath.startsWith(cacheDir + path.sep)) {
+        return { success: false, error: '非法路径' };
+      }
+      if (fs.existsSync(filePath)) {
+        return { success: true, existed: true };
+      }
+      await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
+      await fs.promises.writeFile(filePath, Buffer.from(m[1], 'base64'));
+      console.log(`[TTS Cache] 自愈缓存写入: ${relPath}`);
+      return { success: true };
+    } catch (error) {
+      return { success: false, error: String(error) };
+    }
+  });
 
   // Edge TTS 生成音频（支持 msedge-tts 和旧版 edge-tts）
   ipcMain.handle(
@@ -559,88 +646,179 @@ if (!gotTheLock) {
           `[Edge TTS] 生成语音: "${options.text.substring(0, 30)}..." voice=${voiceName} rate=${rateStr}`
         );
 
-        let audioBuffer: Buffer;
         const abortController = new AbortController();
         currentTtsAbortController = abortController;
 
-        if (msEdgeTTS) {
-          // eslint-disable-next-line @typescript-eslint/no-var-requires
-          const { MsEdgeTTS } = require('msedge-tts');
-          const tts = new MsEdgeTTS();
-          await tts.setMetadata(voiceName, outputFormatMP3, {});
-          const { audioStream } = tts.toStream(options.text, {
-            rate: rateStr,
-            pitch: pitchStr,
-          });
-          currentTtsStream = audioStream;
-
-          audioBuffer = await new Promise<Buffer>((resolve, reject) => {
-            const chunks: Buffer[] = [];
-            let completed = false;
-
-            const finalize = () => {
-              if (completed) return;
-              completed = true;
-              // 关闭 TTS WebSocket
-              try { tts.close(); } catch (_) {}
-              // 清除全局引用（仅当仍然是当前请求时）
-              if (currentTtsStream === audioStream) {
-                currentTtsStream = null;
-              }
-              if (currentTtsAbortController === abortController) {
-                currentTtsAbortController = null;
-              }
-              resolve(Buffer.concat(chunks));
+        // Python edge-tts 7.3.1+ 子进程：spawn 合成到临时 mp3，读回 Buffer
+        const generateOncePython = (): Promise<Buffer> =>
+          new Promise<Buffer>((resolve, reject) => {
+            const outPath = path.join(
+              app.getPath('temp'),
+              `edge-tts-${Date.now()}-${Math.random().toString(36).slice(2, 8)}.mp3`
+            );
+            const pyExe = process.platform === 'win32' ? 'python' : 'python3';
+            const pyScript = path.join(app.getAppPath(), 'electron', 'edge_tts_py.py');
+            const child = spawn(
+              pyExe,
+              [
+                pyScript,
+                '--voice', voiceName,
+                '--rate', rateStr,
+                '--pitch', pitchStr,
+                '--out', outPath,
+                '--text-file', '-', // 文本走 stdin（规避命令行长度与转义问题）
+              ],
+              { windowsHide: true }
+            );
+            currentTtsStream = child;
+            let killed = false;
+            let stderr = '';
+            const kill = () => {
+              if (killed) return;
+              killed = true;
+              try { child.kill(); } catch (_) {}
             };
-
-            const fail = (err: Error) => {
-              if (completed) return;
-              completed = true;
-              try { tts.close(); } catch (_) {}
-              if (currentTtsStream === audioStream) {
-                currentTtsStream = null;
+            child.stderr?.on('data', (c: Buffer) => { stderr += c.toString(); });
+            child.stdin?.write(options.text, 'utf-8');
+            child.stdin?.end();
+            const timer = setTimeout(() => {
+              kill();
+              reject(new Error('edge-tts py 超时(45s)'));
+            }, 45000);
+            child.on('close', (code) => {
+              clearTimeout(timer);
+              if (currentTtsStream === child) currentTtsStream = null;
+              if (killed || abortController.signal.aborted) {
+                reject(new Error('TTS_REQUEST_ABORTED'));
+                return;
               }
-              if (currentTtsAbortController === abortController) {
-                currentTtsAbortController = null;
+              if (code !== 0) {
+                reject(new Error(`edge-tts py exit ${code}: ${stderr.slice(0, 150)}`));
+                return;
               }
+              fs.readFile(outPath, (err, buf) => {
+                try { fs.unlinkSync(outPath); } catch (_) {}
+                if (err) reject(err);
+                else resolve(buf);
+              });
+            });
+            child.on('error', (err) => {
+              clearTimeout(timer);
+              if (currentTtsStream === child) currentTtsStream = null;
               reject(err);
-            };
-
-            audioStream.on('data', (chunk: Buffer) => {
-              if (!completed && !abortController.signal.aborted) {
-                chunks.push(chunk);
-              }
             });
-            audioStream.on('end', finalize);
-            audioStream.on('close', finalize);
-            audioStream.on('error', (err: Error) => {
-              if (abortController.signal.aborted) {
-                finalize();
-              } else {
-                fail(err);
-              }
-            });
-
-            abortController.signal.addEventListener('abort', () => {
-              fail(new Error('TTS_REQUEST_ABORTED'));
-            });
+            abortController.signal.addEventListener('abort', kill);
           });
-        } else if (edgeTTSModule) {
-          audioBuffer = await edgeTTSModule.tts(options.text, {
-            voice: voiceName,
-            rate: rateStr,
-            pitch: pitchStr,
-          });
-        } else {
-          cleanupTtsRequest();
-          return { success: false, error: '没有可用的 TTS 模块' };
+
+        // 单次生成（空音频时自动重试）
+        const generateOnce = async (): Promise<Buffer> => {
+          // 优先走 Python edge-tts >= 7.3.1 子进程：2026-10 微软端点挂 Akamai 反爬，
+          // npm msedge-tts 2.1.0 的旧握手参数全部 403/200（实测），7.3.1 的 GEC v2 令牌可用
+          try {
+            return await generateOncePython();
+          } catch (pyErr) {
+            console.warn('[Edge TTS] Python 管线失败，回退 msedge-tts:', String(pyErr).slice(0, 150));
+          }
+          if (msEdgeTTS) {
+            // eslint-disable-next-line @typescript-eslint/no-var-requires
+            const { MsEdgeTTS } = require('msedge-tts');
+            const tts = new MsEdgeTTS();
+            await tts.setMetadata(voiceName, outputFormatMP3, {});
+            // msedge-tts 2.x: toStream 返回 Promise（内部生成 Sec-MS-GEC 风控令牌）
+            const { audioStream } = await tts.toStream(options.text, {
+              rate: rateStr,
+              pitch: pitchStr,
+            });
+            currentTtsStream = audioStream;
+
+            return await new Promise<Buffer>((resolve, reject) => {
+              const chunks: Buffer[] = [];
+              let completed = false;
+
+              const finalize = () => {
+                if (completed) return;
+                completed = true;
+                // 关闭 TTS WebSocket
+                try { tts.close(); } catch (_) {}
+                // 清除全局引用（仅当仍然是当前请求时）
+                if (currentTtsStream === audioStream) {
+                  currentTtsStream = null;
+                }
+                if (currentTtsAbortController === abortController) {
+                  currentTtsAbortController = null;
+                }
+                resolve(Buffer.concat(chunks));
+              };
+
+              const fail = (err: Error) => {
+                if (completed) return;
+                completed = true;
+                try { tts.close(); } catch (_) {}
+                if (currentTtsStream === audioStream) {
+                  currentTtsStream = null;
+                }
+                if (currentTtsAbortController === abortController) {
+                  currentTtsAbortController = null;
+                }
+                reject(err);
+              };
+
+              audioStream.on('data', (chunk: Buffer) => {
+                if (!completed && !abortController.signal.aborted) {
+                  chunks.push(chunk);
+                }
+              });
+              audioStream.on('end', finalize);
+              audioStream.on('close', finalize);
+              audioStream.on('error', (err: Error) => {
+                if (abortController.signal.aborted) {
+                  finalize();
+                } else {
+                  fail(err);
+                }
+              });
+
+              abortController.signal.addEventListener('abort', () => {
+                fail(new Error('TTS_REQUEST_ABORTED'));
+              });
+            });
+          } else if (edgeTTSModule) {
+            return await edgeTTSModule.tts(options.text, {
+              voice: voiceName,
+              rate: rateStr,
+              pitch: pitchStr,
+            });
+          } else {
+            return Buffer.alloc(0);
+          }
+        };
+
+        let audioBuffer = await generateOnce();
+        if (audioBuffer.length < 100 && !abortController.signal.aborted) {
+          // 微软偶发返回空流（未报错），重试一次。
+          // 注意：这里绝不能调 cleanupTtsRequest()——它会无条件 abort 全局 current，
+          // 若此刻新请求已注册会被误杀；generateOnce 内部会自行注册新的流引用
+          console.warn('[Edge TTS] 音频数据为空，自动重试一次');
+          await new Promise((r) => setTimeout(r, 300));
+          // 等待期间可能已被新请求取消，重试前再查一次
+          if (!abortController.signal.aborted) {
+            audioBuffer = await generateOnce();
+          }
         }
 
-        cleanupTtsRequest();
+        // 收尾：仅当自己仍是当前请求时清除 controller 引用，
+        // 避免误 abort/覆盖后续请求注册的状态（finalize/fail 已有身份保护地清理过流）
+        if (currentTtsAbortController === abortController) {
+          currentTtsAbortController = null;
+        }
 
         const base64Audio = audioBuffer.toString('base64');
 
         if (audioBuffer.length < 100) {
+          // 被新请求取消时按"已取消"上报，渲染端将其识别为"被取代"而非错误重试
+          if (abortController.signal.aborted) {
+            return { success: false, error: '语音请求已取消' };
+          }
           return { success: false, error: '音频数据为空' };
         }
 
@@ -650,7 +828,9 @@ if (!gotTheLock) {
         };
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (error: any) {
-        cleanupTtsRequest();
+        // 注意：此处不动全局 TTS 状态（cleanupTtsRequest 会无条件 abort/destroy，
+        // 若本请求已被新请求取代会误杀对方）。本请求自身的引用已由 fail/finalize
+        // 带身份清理；残留的死 controller 会被下一个请求的入口清理覆盖，无竞态风险。
         if (error?.code === 'EPIPE' || error?.message?.includes('broken pipe')) {
           console.warn('[Edge TTS] 连接中断（可能是用户快速切换）:', error.message);
           return { success: false, error: '语音请求已取消' };
@@ -699,4 +879,66 @@ if (!gotTheLock) {
       return { available: false, error: String(error) };
     }
   });
+
+  // ==================== vosk 离线语音识别（口语练习打分） ====================
+  const voskModelsRoot = path.join(app.getAppPath(), 'models');
+  ipcMain.handle('vosk-check', () => {
+    try {
+      return voskAvailability(voskModelsRoot);
+    } catch (error) {
+      return { available: false, reason: String(error) };
+    }
+  });
+  ipcMain.handle('vosk-start', () => {
+    try {
+      const r = voskStart(voskModelsRoot);
+      if (!r.ok) console.warn('[Vosk] start 失败:', r.error);
+      return r;
+    } catch (error) {
+      return { ok: false, error: String(error) };
+    }
+  });
+  // 音频块高频单向通道（每 ~100ms 一块 16kHz Int16 PCM）
+  ipcMain.on('vosk-chunk', (_event, pcm: ArrayBuffer) => {
+    try {
+      voskChunk(Buffer.from(pcm));
+    } catch {
+      /* 忽略坏块 */
+    }
+  });
+  // MediaRecorder webm/opus 录音 → ffmpeg 子进程解码 16k PCM → 喂 vosk（绕开渲染端音频栈死锁）
+  ipcMain.handle('vosk-decode', async (_event, recording: ArrayBuffer) => {
+    try {
+      await voskDecodeAndFeed(Buffer.from(recording));
+      return { ok: true };
+    } catch (error) {
+      console.warn('[Vosk] webm 解码失败:', error);
+      return { ok: false, error: String(error) };
+    }
+  });
+  ipcMain.handle('vosk-finish', () => {
+    try {
+      return { text: voskFinish() };
+    } catch (error) {
+      return { text: '', error: String(error) };
+    }
+  });
+  ipcMain.on('vosk-abort', () => {
+    voskStopDiscard();
+  });
+
+  // 启动后后台预热模型（加载约 1-2 秒，预热后首次口语录音零等待）
+  setTimeout(() => {
+    try {
+      const started = voskStart(voskModelsRoot);
+      if (started.ok) {
+        console.log('[Vosk] 模型预热完成，离线识别就绪');
+        voskStopDiscard(); // 释放预热用的识别器，保留已加载的模型
+      } else {
+        console.warn('[Vosk] 预热失败:', started.error);
+      }
+    } catch (error) {
+      console.warn('[Vosk] 预热异常:', error);
+    }
+  }, 3000);
 } // end of else (单实例锁)

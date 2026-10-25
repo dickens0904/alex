@@ -1,0 +1,359 @@
+/*
+ * 句型探索（PatternExplorer）样式
+ * 全部限定在 .grammar-card 容器内，防止 webpack 全局样式互相污染
+ */
+
+/* ========== 整体布局 ========== */
+.grammar-card .pattern-explorer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.grammar-card .pattern-explorer h3 {
+  margin: 0 0 6px 0;
+  font-size: 17px;
+  color: #5b3ea8;
+}
+
+.grammar-card .pattern-explorer .magic-hint {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: #8a7bb8;
+}
+
+/* ========== 魔法词总览 ========== */
+.grammar-card .magic-words-card,
+.grammar-card .pattern-challenge {
+  background: linear-gradient(135deg, #f3efff 0%, #ebe4ff 100%);
+  border: 2px solid #d9cbff;
+  border-radius: 14px;
+  padding: 14px 16px;
+}
+
+.grammar-card .magic-words-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.grammar-card .magic-word-chip {
+  border: 2px solid #b79bff;
+  background: #ffffff;
+  color: #6b3fd4;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.grammar-card .magic-word-chip:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 10px rgba(123, 77, 220, 0.25);
+}
+
+.grammar-card .magic-word-chip:active {
+  transform: scale(0.95);
+}
+
+/* ========== 句子积木 ========== */
+.grammar-card .pattern-sentences {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.grammar-card .pattern-sentence-card {
+  background: #ffffff;
+  border: 2px solid #e3e0f5;
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 2px 6px rgba(93, 63, 211, 0.06);
+}
+
+.grammar-card .pattern-tokens,
+.grammar-card .challenge-sentence {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  line-height: 1.4;
+}
+
+/* 单词积木块 */
+.grammar-card .pattern-word {
+  display: inline-block;
+  border: none;
+  background: #eef1fb;
+  color: #33355c;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 5px 10px;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.2s ease;
+}
+
+.grammar-card .pattern-word.normal:hover {
+  background: #dfe6fb;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(76, 100, 210, 0.2);
+}
+
+.grammar-card .pattern-word.normal:active {
+  transform: scale(0.94);
+}
+
+/* 魔法词（高亮语法结构词） */
+.grammar-card .pattern-word.magic {
+  background: linear-gradient(135deg, #7b4dff 0%, #a66bff 100%);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(123, 77, 255, 0.35);
+  animation: pattern-magic-glow 2.4s ease-in-out infinite;
+}
+
+.grammar-card .pattern-word.magic:hover {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 4px 12px rgba(123, 77, 255, 0.5);
+}
+
+@keyframes pattern-magic-glow {
+  0%,
+  100% {
+    box-shadow: 0 2px 6px rgba(123, 77, 255, 0.35);
+  }
+  50% {
+    box-shadow: 0 2px 14px rgba(166, 107, 255, 0.65);
+  }
+}
+
+/* 标点普通块 */
+.grammar-card .pattern-word.plain {
+  background: none;
+  color: #666;
+  padding: 5px 1px;
+  cursor: default;
+}
+
+/* 遮词块 */
+.grammar-card .pattern-word.blank {
+  background: #fff3c2;
+  border: 2px dashed #e0a800;
+  color: #b28500;
+  min-width: 64px;
+  text-align: center;
+  animation: pattern-blank-pulse 1.6s ease-in-out infinite;
+}
+
+.grammar-card .pattern-word.blank.filled {
+  background: linear-gradient(135deg, #7b4dff 0%, #a66bff 100%);
+  border: 2px solid transparent;
+  color: #ffffff;
+  animation: pattern-pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes pattern-blank-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes pattern-pop-in {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* 句卡元信息 */
+.grammar-card .pattern-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.grammar-card .pattern-chinese {
+  font-size: 13px;
+  color: #7d7a96;
+}
+
+.grammar-card .pattern-play-btn {
+  flex-shrink: 0;
+  border: 1.5px solid #b9c4f5;
+  background: #f4f7ff;
+  color: #4a63d8;
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.grammar-card .pattern-play-btn:hover {
+  background: #e6ecff;
+  transform: scale(1.05);
+}
+
+.grammar-card .pattern-point {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: #9b8ec9;
+}
+
+/* ========== 遮词小挑战 ========== */
+.grammar-card .challenge-progress {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: #6b3fd4;
+  margin-bottom: 6px;
+}
+
+.grammar-card .challenge-stars {
+  margin-left: 8px;
+}
+
+.grammar-card .challenge-sentence {
+  background: #ffffff;
+  border: 2px solid #d9cbff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+}
+
+.grammar-card .challenge-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.grammar-card .challenge-option {
+  border: 2px solid #b79bff;
+  background: #ffffff;
+  color: #5b3ea8;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 8px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.grammar-card .challenge-option:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(123, 77, 220, 0.25);
+}
+
+.grammar-card .challenge-option:disabled {
+  cursor: default;
+  opacity: 0.75;
+}
+
+.grammar-card .challenge-option.correct {
+  background: linear-gradient(135deg, #34c77b 0%, #5fe0a1 100%);
+  border-color: transparent;
+  color: #ffffff;
+  animation: pattern-pop-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.grammar-card .challenge-option.shake {
+  animation: pattern-shake 0.5s ease;
+  border-color: #ff6b6b;
+  background: #fff0f0;
+}
+
+@keyframes pattern-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-6px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  60% {
+    transform: translateX(-4px);
+  }
+  80% {
+    transform: translateX(4px);
+  }
+}
+
+.grammar-card .challenge-solved {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #2e9e5b;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.grammar-card .challenge-next-btn {
+  border: none;
+  background: linear-gradient(135deg, #7b4dff 0%, #a66bff 100%);
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 8px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.grammar-card .challenge-next-btn:hover {
+  transform: scale(1.06);
+}
+
+.grammar-card .challenge-done {
+  text-align: center;
+  padding: 8px 0 2px 0;
+}
+
+.grammar-card .challenge-done-stars {
+  font-size: 26px;
+  letter-spacing: 4px;
+  margin-bottom: 6px;
+}
+
+.grammar-card .challenge-done p {
+  margin: 0 0 12px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #5b3ea8;
+}
+
+.grammar-card .challenge-retry-btn {
+  border: 2px solid #b79bff;
+  background: #ffffff;
+  color: #6b3fd4;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: inherit;
+  padding: 7px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.grammar-card .challenge-retry-btn:hover {
+  background: #f3efff;
+  transform: scale(1.05);
+}

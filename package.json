@@ -25,8 +25,10 @@
     "audit": "npm audit --production"
   },
   "dependencies": {
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "better-sqlite3": "^9.2.2",
-    "msedge-tts": "^2.0.6",
+    "koffi": "^3.3.3",
+    "msedge-tts": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.20.0"
@@ -79,6 +81,7 @@
     "files": [
       "dist/**/*",
       "resources/**/*",
+      "tts-cache/**/*",
       "node_modules/**/*"
     ],
     "win": {
@@ -103,5 +106,8 @@
       "createStartMenuShortcut": true,
       "shortcutName": "新概念英语练习王"
     }
+  },
+  "allowScripts": {
+    "koffi@3.3.3": true
   }
 }

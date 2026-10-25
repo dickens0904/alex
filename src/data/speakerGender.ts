@@ -22,6 +22,9 @@ const GENDER_MAP: Record<string, SpeakerGenderInfo> = {
   A: { gender: 'male', note: '默认男声，练习对话角色A' },
   B: { gender: 'female', note: '默认女声，练习对话角色B' },
   '': { gender: 'neutral', note: '旁白/叙述，使用女声' },
+  // N 必须保持 neutral（女声）：预生成缓存按 N=neutral 生成，改成 male 会导致
+  // 剧场旁白/展示台句子缓存全部 miss（Edge 风控期间直接无声）。2026-10-24 回归教训
+  N: { gender: 'neutral', note: '旁白/说书人/展示台句，使用默认女声' },
 
   // ==================== 角色描述（职业/身份） ====================
   MAN: { gender: 'male', note: '男人' },
@@ -303,3 +306,88 @@ export function isMaleSpeaker(speaker: string): boolean {
 export function isFemaleSpeaker(speaker: string): boolean {
   return getSpeakerGender(speaker) === 'female';
 }
+
+/**
+ * 角色人设 → Edge TTS 音色映射（美式口音）。
+ * 依据课文情节给高频角色赋予符合人设的专属声音：
+ *   - 权威/职业男性（医生、老板、警察、海关官员）→ ChristopherNeural（沉稳权威）
+ *   - 活泼年轻男性（TOM/JIM 等）→ RogerNeural（活力）
+ *   - 温和男性（SAM/HANS 等）→ GuyNeural（标准）/ AndrewNeural（温暖）
+ *   - 理性男性（GEORGE/KEN 等）→ EricNeural（理性）
+ *   - 自信女性（CAROL/ANN 等）→ AriaNeural（自信）
+ *   - 亲切职业女性（店员/护士/主妇）→ JennyNeural（亲切）/ MichelleNeural（友好）
+ *   - 开朗少女（PENNY/HELEN 等）→ EmmaNeural（开朗）
+ *   - 成熟女性（AvaNeural，关怀感）
+ * 未收录角色走性别映射 + 课内错开分配。
+ */
+export const SPEAKER_VOICE_HINTS: Record<string, string> = {
+  // ---- 权威/职业男性 → 沉稳权威声 ----
+  DOCTOR: 'en-US-ChristopherNeural',
+  BOSS: 'en-US-ChristopherNeural',
+  MANAGER: 'en-US-ChristopherNeural',
+  'CUSTOMS OFFICER': 'en-US-ChristopherNeural',
+  POLICEMAN: 'en-US-ChristopherNeural',
+  TEACHER: 'en-US-AndrewNeural',
+  'MR. BLAKE': 'en-US-ChristopherNeural',
+  'MR. JACKSON': 'en-US-ChristopherNeural',
+  'MR. RICHARDS': 'en-US-AndrewNeural',
+  // ---- 年轻活力男性 → 活泼声 ----
+  TOM: 'en-US-RogerNeural',
+  JIM: 'en-US-RogerNeural',
+  ROBERT: 'en-US-RogerNeural',
+  TIM: 'en-US-RogerNeural',
+  JACK: 'en-US-RogerNeural',
+  DAN: 'en-US-RogerNeural',
+  // ---- 标准男声（温和/普通角色） ----
+  SAM: 'en-US-GuyNeural',
+  BUTCHER: 'en-US-GuyNeural',
+  REPORTER: 'en-US-GuyNeural',
+  ATTENDANT: 'en-US-EricNeural',
+  CONDUCTOR: 'en-US-EricNeural',
+  CUSTOMER: 'en-US-EricNeural',
+  GEORGE: 'en-US-EricNeural',
+  KEN: 'en-US-EricNeural',
+  BOB: 'en-US-EricNeural',
+  DAVE: 'en-US-EricNeural',
+  STEVEN: 'en-US-GuyNeural',
+  HANS: 'en-US-AndrewNeural',
+  DIMITRI: 'en-US-EricNeural',
+  'CHANG-WOO': 'en-US-EricNeural',
+  LUMING: 'en-US-EricNeural',
+  PAUL: 'en-US-GuyNeural',
+  // ---- 成熟温暖男性 ----
+  FATHER: 'en-US-AndrewNeural',
+  HUSBAND: 'en-US-AndrewNeural',
+  GRANDFATHER: 'en-US-ChristopherNeural',
+  // ---- 自信/开朗女性 ----
+  CAROL: 'en-US-AriaNeural',
+  ANN: 'en-US-AriaNeural',
+  LADY: 'en-US-AriaNeural',
+  WOMAN: 'en-US-AriaNeural',
+  PENNY: 'en-US-EmmaNeural',
+  HELEN: 'en-US-EmmaNeural',
+  NAOKO: 'en-US-EmmaNeural',
+  XIAOHUI: 'en-US-EmmaNeural',
+  AMY: 'en-US-EmmaNeural',
+  // ---- 亲切职业女性 → 亲切/友好声 ----
+  'SHOP ASSISTANT': 'en-US-JennyNeural',
+  ASSISTANT: 'en-US-JennyNeural',
+  NURSE: 'en-US-JennyNeural',
+  KATE: 'en-US-JennyNeural',
+  PAULINE: 'en-US-JennyNeural',
+  'MRS. WILLIAMS': 'en-US-MichelleNeural',
+  'MRS. JONES': 'en-US-MichelleNeural',
+  JEAN: 'en-US-MichelleNeural',
+  LOUISE: 'en-US-MichelleNeural',
+  ANNA: 'en-US-MichelleNeural',
+  // ---- 成熟关怀女性 ----
+  MOTHER: 'en-US-AvaNeural',
+  WIFE: 'en-US-AvaNeural',
+  DAUGHTER: 'en-US-AnaNeural', // 女儿用童声
+  GRANDMOTHER: 'en-US-AvaNeural',
+  SOPHIE: 'en-US-AnaNeural', // 索菲是新学生，小女孩感
+  // ---- 儿童角色 ----
+  GIRL: 'en-US-AnaNeural',
+  BOY: 'en-US-BrianNeural', // 无英语男童声，用最年轻的休闲男声
+  SON: 'en-US-BrianNeural',
+};

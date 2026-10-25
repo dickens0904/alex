@@ -34,10 +34,12 @@ export interface ExerciseContent {
   meaning?: string;
   example?: string;
   passage?: string;
+  /** speaking 题子模式：'word'=单词跟读 / 'zh2en'=看中文学英文（未出分前隐藏英文） */
+  mode?: string;
 }
 
 export interface Exercise {
-  type: 'listening' | 'speaking' | 'reading' | 'writing' | 'spelling';
+  type: 'listening' | 'speaking' | 'reading' | 'writing' | 'spelling' | 'vocabStructure';
   content: ExerciseContent;
   answer: string;
   score: number;
@@ -49,6 +51,7 @@ export interface GrammarExample {
   chinese: string;
   grammarPoint?: string; // 语法点标记
   audio?: string; // 音频文件
+  group?: string; // 例句分组标识（'课本句型' / '拓展例句'），未标注时按课本句型处理
 }
 
 // 语法练习题类型
@@ -60,6 +63,7 @@ export interface GrammarExercise {
   question: string;
   options?: string[]; // 选择题选项
   answer?: string | number; // 正确答案（填空题可选，可通过fillAnswer推断）
+  optionNotes?: (string | undefined)[]; // 与 options 对齐的错误原因说明（正确项为 undefined）
   explanation: string; // 解释
   hint?: string; // 提示
   fillAnswer?: string; // 填空题答案（自动作为answer使用）

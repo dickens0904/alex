@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import './LessonDetail.css';
 import { getLessonById } from '../../services/lesson';
 import {
@@ -35,8 +35,10 @@ import MemoryCardGame from '../../components/MemoryCardGame';
 import AirplaneGame from '../../components/AirplaneGame';
 import { recordStudy } from '../../services/dailyStreak';
 import type { PracticeType } from '../../components/practice/PracticeMenu';
+import { convertFillExercises } from '../../utils/fillToChoice';
 import grammarExtraExercises from '../../data/lessons/grammarExtraExercises';
 import grammarEnhancedContent from '../../data/lessons/grammarEnhancedContent';
+import { grammarAutoExercises } from '../../data/lessons/grammarAutoExercises';
 // 语法数据 - 使用静态导入以确保在 Electron file:// 协议下可用
 import { grammarDataEnhanced } from '../../data/lessons/grammarDataEnhanced';
 import { grammarData } from '../../data/lessons/grammarData';
@@ -64,15 +66,28 @@ function mergeGrammarData(grammar: GrammarDetail, lessonId: number): GrammarDeta
     result.exercises = [...result.exercises, ...extras];
   }
 
+  // 合并自动生成的语法补充练习（连词成句 + 课文填空）
+  const autoExtras = grammarAutoExercises[lessonId];
+  if (autoExtras && autoExtras.length > 0) {
+    result.exercises = [...result.exercises, ...autoExtras];
+  }
+
+  // 填空/句式转换题统一转成选择题：多空逗号/省略号格式靠猜、isn't 与 is not 互不认账，
+  // 点选判断从根上消除输入格式误判（判断逻辑见 src/utils/fillToChoice.ts）
+  result.exercises = convertFillExercises(result.exercises);
+
   return result;
 }
 
 const LessonDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const [lesson, setLesson] = useState<Lesson | null>(null);
+  // 初始页签可由路由 state 指定（首页「趣味练习」入口直接落到练习页签）
   const [activeTab, setActiveTab] = useState<'vocabulary' | 'text' | 'grammar' | 'practice'>(
-    'vocabulary'
+    (location.state as { tab?: 'vocabulary' | 'text' | 'grammar' | 'practice' } | null)?.tab ??
+      'vocabulary'
   );
 
   // 音色选择
@@ -121,9 +136,9 @@ const LessonDetail: React.FC = () => {
     setEnglishRateState(getSpeechRate());
   };
 
-  const loadLesson = useCallback(() => {
+  const loadLesson = useCallback(async () => {
     if (!id) return;
-    const lessonData = getLessonById(parseInt(id));
+    const lessonData = await getLessonById(parseInt(id));
     if (lessonData) setLesson(lessonData);
   }, [id]);
 
@@ -257,8 +272,16 @@ const LessonDetail: React.FC = () => {
     return (
       <div className="lesson-detail-container">
         <div className="header">
-          <button className="back-btn" onClick={() => navigate('/lessons')}>
-            ← 返回
+          <button className="back-icon-btn" onClick={() => navigate(-1)} title="返回上一界面" aria-label="返回上一界面">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path
+                d="M15 18l-6-6 6-6"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </button>
           <h1 className="page-title">课程未找到</h1>
           <div className="placeholder"></div>
@@ -302,8 +325,16 @@ const LessonDetail: React.FC = () => {
   return (
     <div className="lesson-detail-container">
       <div className="header">
-        <button className="back-btn" onClick={() => navigate('/lessons')}>
-          ← 返回
+        <button className="back-icon-btn" onClick={() => navigate(-1)} title="返回上一界面" aria-label="返回上一界面">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M15 18l-6-6 6-6"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
         </button>
         <h1 className="page-title">{lesson.title}</h1>
         <div className="header-right">
@@ -457,6 +488,8 @@ const LessonDetail: React.FC = () => {
 
             {activeTab === 'text' && (
               <TextDisplay
+                key={lesson.id}
+                lessonId={lesson.id}
                 text={lesson.content.text}
                 illustration={lesson.illustration}
                 autoPlay={true}

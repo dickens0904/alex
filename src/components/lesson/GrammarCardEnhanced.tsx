@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { GrammarDetail } from '../../types/lesson';
+import { GrammarDetail, GrammarExample } from '../../types/lesson';
 import { speakEnglish, speakChinese, stopSpeaking } from '../../services/tts';
 import {
   playCorrectSound,
@@ -9,6 +9,7 @@ import {
 } from '../../services/soundEffects';
 import { logger } from '../../utils/logger';
 import ChineseVoiceSelector from './ChineseVoiceSelector';
+import PatternExplorer from './PatternExplorer';
 import './GrammarCard.css';
 
 const MODULE = 'GrammarCard';
@@ -81,7 +82,9 @@ interface GrammarCardProps {
 }
 
 const GrammarCardEnhanced: React.FC<GrammarCardProps> = ({ grammar, onComplete }) => {
-  const [activeSection, setActiveSection] = useState<'rules' | 'examples' | 'exercises'>('rules');
+  const [activeSection, setActiveSection] = useState<'pattern' | 'rules' | 'examples' | 'exercises'>(
+    'pattern'
+  );
   const [currentExercise, setCurrentExercise] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -219,9 +222,10 @@ const GrammarCardEnhanced: React.FC<GrammarCardProps> = ({ grammar, onComplete }
           '朗读例句',
           `朗读例句 ${i + 1}/${grammar.examples.length}: "${example.english}"`
         );
-        // 先朗读英文例句
+        // 朗读纯例句文本（不带序号）：序号前缀会让缓存寻址未命中，被迫依赖在线 Edge，
+        // Edge 被风控/限流时整轮朗读全部降级系统音。序号只在 UI 编号里体现
         try {
-          await speakEnglish(`${i + 1}. ${example.english}`);
+          await speakEnglish(example.english);
         } catch {
           /* ignore */
         }
@@ -257,6 +261,21 @@ const GrammarCardEnhanced: React.FC<GrammarCardProps> = ({ grammar, onComplete }
   };
 
   const currentExc = grammar.exercises[currentExercise];
+
+  // 例句按分组归类（未标注 group 的按课本句型处理），保持出现顺序
+  const exampleGroups = React.useMemo(() => {
+    const groups: { name: string; items: { example: GrammarExample; index: number }[] }[] = [];
+    grammar.examples.forEach((example, index) => {
+      const name = example.group ?? '课本句型';
+      let g = groups.find((x) => x.name === name);
+      if (!g) {
+        g = { name, items: [] };
+        groups.push(g);
+      }
+      g.items.push({ example, index });
+    });
+    return groups;
+  }, [grammar.examples]);
 
   const handleChoiceAnswer = (index: number) => {
     if (showResult) return;
@@ -617,6 +636,15 @@ const GrammarCardEnhanced: React.FC<GrammarCardProps> = ({ grammar, onComplete }
       {/* 标签页 */}
       <div className="grammar-tabs">
         <button
+          className={`tab ${activeSection === 'pattern' ? 'active' : ''}`}
+          onClick={() => {
+            logger.info(MODULE, '切换标签', '切换到句型探索');
+            setActiveSection('pattern');
+          }}
+        >
+          🧩 句型探索
+        </button>
+        <button
           className={`tab ${activeSection === 'rules' ? 'active' : ''}`}
           onClick={() => {
             logger.info(MODULE, '切换标签', '切换到语法规则');
@@ -652,6 +680,8 @@ const GrammarCardEnhanced: React.FC<GrammarCardProps> = ({ grammar, onComplete }
 
       {/* 内容区 */}
       <div className="grammar-content">
+        {activeSection === 'pattern' && <PatternExplorer grammar={grammar} />}
+
         {activeSection === 'rules' && (
           <div className="rules-section">
             {/* 朗读控制栏 */}
@@ -772,32 +802,43 @@ const GrammarCardEnhanced: React.FC<GrammarCardProps> = ({ grammar, onComplete }
             </div>
 
             <div className="examples-list">
-              {grammar.examples.map((example, index) => (
-                <div key={index} className="example-card">
-                  <div className="example-header">
-                    <span className="example-number">{index + 1}</span>
-                    {example.grammarPoint && (
-                      <span className="grammar-tag">{example.grammarPoint}</span>
-                    )}
+              {exampleGroups.map((group) => (
+                <div key={group.name} className="example-group">
+                  <div className="example-group-title">
+                    <span className="example-group-icon">
+                      {group.name === '拓展例句' ? '🌟' : group.name === '课本句型' ? '📖' : '📌'}
+                    </span>
+                    {group.name}
+                    <span className="example-group-count">{group.items.length} 句</span>
                   </div>
-                  <div
-                    className="example-english"
-                    onClick={() => !isReading && speakEnglish(example.english)}
-                  >
-                    <span>{example.english}</span>
-                    <button
-                      className="speak-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (!isReading) speakEnglish(example.english);
-                      }}
-                      disabled={isReading}
-                      title="朗读"
-                    >
-                      🔊
-                    </button>
-                  </div>
-                  <div className="example-chinese">{example.chinese}</div>
+                  {group.items.map(({ example, index }) => (
+                    <div key={index} className="example-card">
+                      <div className="example-header">
+                        <span className="example-number">{index + 1}</span>
+                        {example.grammarPoint && (
+                          <span className="grammar-tag">{example.grammarPoint}</span>
+                        )}
+                      </div>
+                      <div
+                        className="example-english"
+                        onClick={() => !isReading && speakEnglish(example.english)}
+                      >
+                        <span>{example.english}</span>
+                        <button
+                          className="speak-btn"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            if (!isReading) speakEnglish(example.english);
+                          }}
+                          disabled={isReading}
+                          title="朗读"
+                        >
+                          🔊
+                        </button>
+                      </div>
+                      <div className="example-chinese">{example.chinese}</div>
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
@@ -843,6 +884,22 @@ const GrammarCardEnhanced: React.FC<GrammarCardProps> = ({ grammar, onComplete }
                     <div className="result-icon">{isCorrectAnswer ? '🎉' : '😊'}</div>
                     <div className="result-content">
                       <h4>{isCorrectAnswer ? '回答正确！' : '加油！再想想！'}</h4>
+                      {!isCorrectAnswer && selectedAnswer != null && (
+                        <p className="wrong-reason">
+                          ❌ 你选的「{currentExc.options?.[selectedAnswer] ?? ''}」
+                          {currentExc.optionNotes?.[selectedAnswer] && (
+                            <>
+                              <br />
+                              {currentExc.optionNotes[selectedAnswer]}
+                            </>
+                          )}
+                        </p>
+                      )}
+                      {!isCorrectAnswer && currentExc.options?.[currentExc.answer as number] != null && (
+                        <p className="correct-answer-hint">
+                          ✅ 正确答案：{currentExc.options[currentExc.answer as number]}
+                        </p>
+                      )}
                       <p className="explanation">{currentExc.explanation}</p>
                     </div>
                     {currentExercise < grammar.exercises.length - 1 && (
