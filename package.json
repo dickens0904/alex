@@ -1,6 +1,6 @@
 {
   "name": "new-concept-english-practice",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "新概念英语第一册学习程序 - 为8岁儿童设计的英语练习应用",
   "main": "dist/electron/electron/main.js",
   "author": "Your Name",
@@ -27,11 +27,11 @@
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "better-sqlite3": "^9.2.2",
-    "koffi": "^3.3.3",
     "msedge-tts": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.20.0"
+    "react-router-dom": "^6.20.0",
+    "sherpa-onnx": "^2.0.0"
   },
   "devDependencies": {
     "@types/better-sqlite3": "^7.6.8",
@@ -82,7 +82,8 @@
       "dist/**/*",
       "resources/**/*",
       "tts-cache/**/*",
-      "node_modules/**/*"
+      "node_modules/**/*",
+      "models/**/*"
     ],
     "win": {
       "target": [
@@ -105,7 +106,11 @@
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
       "shortcutName": "新概念英语练习王"
-    }
+    },
+    "asarUnpack": [
+      "models/**/*",
+      "node_modules/sherpa-onnx/**"
+    ]
   },
   "allowScripts": {
     "koffi@3.3.3": true

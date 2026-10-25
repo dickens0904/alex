@@ -12,7 +12,7 @@ import {
   voskFinish,
   voskStopDiscard,
   voskDecodeAndFeed,
-} from './voskBinding';
+} from './asrBinding';
 
 // msedge-tts 需要 crypto 模块
 if (!globalThis.crypto) {

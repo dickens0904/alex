@@ -23,7 +23,7 @@
 | 前端 | React 18 + TypeScript + Webpack 5 |
 | 数据存储 | better-sqlite3（学习进度）+ localStorage（设置） |
 | 语音合成 | msedge-tts（在线）+ 本地 MP3 缓存兜底（`tts-cache/`，约 1.2 万个文件，按需自愈回写） |
-| 语音识别 | Vosk 离线识别（`models/` 内置模型）+ @ffmpeg-installer 音频解码（npm 二进制，无系统依赖） |
+| 语音识别 | sherpa-onnx 流式 Zipformer 模型（`models/` 内置，约 48MB）+ @ffmpeg-installer 音频解码（npm 二进制，无系统依赖） |
 | 打包 | electron-builder（NSIS 安装包） |
 | 测试 | jest（256 个单元测试） |
 
