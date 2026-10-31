@@ -4,6 +4,7 @@ import { buildLessonVoiceMap, buildCastVoiceMap } from '../../data/voiceAssignme
 import { startSpeechEvaluation } from '../../services/speechRecognition';
 import type { SpeechEvalResult, SpeechEvaluationSession } from '../../services/speechRecognition';
 import { playCorrectSound } from '../../services/soundEffects';
+import { startAmbient, stopAmbient } from '../../services/ambientSound';
 import { logger } from '../../utils/logger';
 import { getStageConfig, sceneAt, type LineAction } from './scenes';
 import TheaterStage from './TheaterStage';
@@ -31,6 +32,8 @@ interface StoryTheaterProps {
   lessonId: number;
   text: TheaterText;
   onClose: () => void;
+  /** 本课词汇表：跟读评分用它构建音素字典（真人注音优先） */
+  vocabulary?: Array<{ word: string; phonetic?: string }>;
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
@@ -41,7 +44,7 @@ const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
  * - 中断安全：sessionRef 代数取代旧循环，stopSpeaking 兜底
  * - 旁白句（key=N）由说书人朗读，气泡用暖色区分
  */
-const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) => {
+const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose, vocabulary }) => {
   const config = getStageConfig(lessonId);
   const [curIdx, setCurIdx] = useState(-1);
   const [playing, setPlaying] = useState(false);
@@ -65,6 +68,32 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
   const micBarRef = useRef<HTMLDivElement | null>(null); // 音量条（rAF 直改样式避免重渲染）
   const [recordingUrl, setRecordingUrl] = useState<string | null>(null); // 孩子录音回放
   const recordingUrlRef = useRef<string | null>(null);
+  // 逐词卡拉OK：当前句朗读进度 0-1（按估时推进，TTS 完成置 1）
+  const [lineProgress, setLineProgress] = useState(1);
+  const progressTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  // 环境音：记录当前 bg，同景不重启（避免风声从头再来）
+  const ambientBgRef = useRef<string | null>(null);
+
+  /** 停止进度推进计时器 */
+  const clearProgressTimer = useCallback(() => {
+    if (progressTimerRef.current) {
+      clearInterval(progressTimerRef.current);
+      progressTimerRef.current = null;
+    }
+  }, []);
+
+  /** 切换环境音（bg 未变跳过） */
+  const switchAmbient = useCallback((bg: string) => {
+    if (ambientBgRef.current === bg) return;
+    ambientBgRef.current = bg;
+    startAmbient(bg);
+  }, []);
+
+  /** 环境音收尾（停止/剧终/卸载） */
+  const quietAmbient = useCallback(() => {
+    ambientBgRef.current = null;
+    stopAmbient();
+  }, []);
 
   /** 释放上一条录音的 Blob URL（换句/停止/退出时调用） */
   const revokeRecording = useCallback(() => {
@@ -140,9 +169,15 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
   useEffect(() => {
     const session = sessionRef; // 捕获 ref 对象，避免 cleanup 读值警告
     const evalRef = evalSessionRef;
+    const progressTimer = progressTimerRef;
     return () => {
       session.current++;
       evalRef.current?.stop();
+      if (progressTimer.current) {
+        clearInterval(progressTimer.current);
+        progressTimer.current = null;
+      }
+      stopAmbient();
       if (recordingUrlRef.current) {
         URL.revokeObjectURL(recordingUrlRef.current);
         recordingUrlRef.current = null;
@@ -189,6 +224,8 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
         setCurIdx(i);
         setSpeakerKey(Object.keys(actions)[0] ?? null);
         setScoredResult(null);
+        setLineProgress(0);
+        switchAmbient(sceneAt(config, i).bg);
         // 台词声音：优先课文 speaker 标识，否则画面原型（旁白句走说书人）
         const paraKey = para.speaker?.trim() ? para.speaker.toUpperCase() : null;
         const castKey = Object.keys(actions)[0] ?? null;
@@ -199,11 +236,21 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
         const fallbackVoice =
           (paraKey ? defaultTextMap.get(paraKey) : undefined) ??
           (castKey ? defaultCastMap.get(castKey.toUpperCase()) : undefined);
+        // 逐词进度：按估时推进（词数×420ms+起止余量，封顶 14s），100ms 节流渲染
+        clearProgressTimer();
+        const estMs = Math.min(14000, para.content.trim().split(/\s+/).length * 420 + 900);
+        const progressT0 = performance.now();
+        progressTimerRef.current = setInterval(() => {
+          setLineProgress(Math.min(0.97, (performance.now() - progressT0) / estMs));
+        }, 100);
         try {
           await speakTheaterLine(para.content, voice, fallbackVoice);
         } catch (e) {
           logger.warn(MODULE, '台词朗读失败', String(e));
         }
+        clearProgressTimer();
+        if (sessionRef.current !== mySession) return;
+        setLineProgress(1);
         if (sessionRef.current !== mySession) return;
 
         // 跟读模式：录一句评一句，过关（≥70 分）才往下走
@@ -213,11 +260,16 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
           revokeRecording(); // 丢弃上一句录音
           setListening(true);
           const result = await new Promise<SpeechEvalResult>((resolve) => {
-            const session = startSpeechEvaluation(para.content, 12000, (level) => {
-              if (micBarRef.current) {
-                micBarRef.current.style.transform = `scaleY(${Math.max(0.08, Math.min(1, level))})`;
-              }
-            });
+            const session = startSpeechEvaluation(
+              para.content,
+              12000,
+              (level) => {
+                if (micBarRef.current) {
+                  micBarRef.current.style.transform = `scaleY(${Math.max(0.08, Math.min(1, level))})`;
+                }
+              },
+              vocabulary
+            );
             evalSessionRef.current = session;
             void session.promise.then(resolve);
           });
@@ -259,20 +311,25 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
       setScoredResult(null);
       setPlaying(false);
       setFinished(true);
+      setLineProgress(1);
+      quietAmbient(); // 谢幕归静
       logger.info(MODULE, '播放完成', text.title);
     },
-    [config, lessonId, text, revokeRecording]
+    [config, lessonId, text, revokeRecording, vocabulary, clearProgressTimer, switchAmbient, quietAmbient]
   );
 
   const handleStop = () => {
     sessionRef.current++;
+    clearProgressTimer();
     cancelEval();
     stopSpeaking();
     setPlaying(false);
     setSpeakerKey(null);
     setListening(false);
     setScoredResult(null);
+    setLineProgress(1);
     revokeRecording();
+    quietAmbient();
   };
 
   const handleJump = (i: number) => {
@@ -362,6 +419,7 @@ const StoryTheater: React.FC<StoryTheaterProps> = ({ lessonId, text, onClose }) 
           bubbleText={bubbleText}
           speakerKey={finished || !playing ? null : curSpeakerKey}
           theme={theme}
+          lineProgress={lineProgress}
         />
       </div>
 

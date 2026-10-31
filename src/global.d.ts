@@ -38,6 +38,38 @@ interface TtsSpeakResult {
 }
 
 declare global {
+  interface ReviewItemRow {
+    key: string;
+    lesson_id: number;
+    practice_type: string;
+    exercise: string;
+    level: number;
+    hits: number;
+    misses: number;
+    due_at: number;
+    updated_at: string;
+  }
+
+  interface PracticeReport {
+    overview: {
+      sessions: number;
+      score: number;
+      totalScore: number;
+      correct: number;
+      totalCount: number;
+      timeSpent: number;
+    };
+    skills: {
+      type: string;
+      sessions: number;
+      correct: number;
+      totalCount: number;
+      accuracy: number;
+    }[];
+    days: { date: string; sessions: number; score: number; totalScore: number }[];
+    review: { total: number; due: number };
+  }
+
   interface Window {
     electronAPI: {
       // 课程相关
@@ -69,6 +101,36 @@ declare global {
         type: string;
         name: string;
       }) => Promise<{ success: boolean; reason?: string }>;
+
+      // 错题本（间隔重复）
+      reviewAll?: () => Promise<ReviewItemRow[]>;
+      reviewSave?: (item: {
+        key: string;
+        lesson_id: number;
+        practice_type: string;
+        exercise: string;
+        level: number;
+        hits: number;
+        misses: number;
+        due_at: number;
+      }) => Promise<{ success: boolean; error?: string }>;
+      reviewDelete?: (key: string) => Promise<{ success: boolean; error?: string }>;
+      reviewStats?: () => Promise<{ total: number; due: number }>;
+
+      // 练习记录 / 学习报告
+      logPractice?: (record: {
+        lesson_id: number;
+        practice_type: string;
+        score: number;
+        total_score: number;
+        correct_count: number;
+        total_count: number;
+        duration_sec: number;
+      }) => Promise<{ success: boolean; error?: string }>;
+      getPracticeReport?: () => Promise<PracticeReport | null>;
+      exportReport?: (
+        format: 'pdf' | 'png'
+      ) => Promise<{ success: boolean; path?: string; canceled?: boolean; error?: string }>;
 
       // Edge TTS 相关
       edgeTtsSpeak: (options: {

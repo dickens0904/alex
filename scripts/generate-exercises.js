@@ -592,6 +592,115 @@ function genReview(lesson, allLessons, cap) {
   return exercises;
 }
 
+// ==================== 4.5 产出型题生成器（造句 / 问答 / 补全对话） ====================
+
+/**
+ * 造句题（speaking / mode=makeSentence）：给孩子一个本课单词，让他自己造句说出来。
+ * 离线评分口径：识别文本里必须出现这个词（startSpeechEvaluation 以该词为目标），
+ * 说得出、说得准才得分 —— 真正的产出型任务。
+ */
+function genSentenceMaking(lesson, cap) {
+  const vocab = lesson.content.vocabulary;
+  if (!vocab || vocab.length === 0) return [];
+
+  const pool = vocab.filter((v) => !v.word.includes(' ') && v.word.length >= 3 && v.meaning);
+  if (pool.length === 0) return [];
+
+  const selected = pickRandom(pool, Math.min(cap, pool.length));
+  return selected.map((vocabItem) => ({
+    type: 'speaking',
+    content: {
+      instruction: `用单词 "${vocabItem.word}" 自己造一个句子，大声说出来（意思：${vocabItem.meaning}）`,
+      mode: 'makeSentence',
+      sentence: vocabItem.word,
+      translation: vocabItem.meaning,
+    },
+    answer: vocabItem.word,
+    score: 10,
+  }));
+}
+
+/**
+ * 问答练习（speaking / mode=qa）：课文里 A 说了一句，孩子扮演 B 用英语回答。
+ * 出分前只显示 A 的原话和中文提示，不显示 B 的答案句。
+ */
+function genSpeakingQA(lesson, cap) {
+  const text = lesson.content.text;
+  if (!text || !text.paragraphs) return [];
+  const paras = text.paragraphs;
+  const translations = text.translation || [];
+
+  const exercises = [];
+  const used = new Set();
+  for (let i = 0; i < paras.length - 1 && exercises.length < cap; i++) {
+    const a = paras[i];
+    const b = paras[i + 1];
+    // 要求是两人对话相邻两句：A 说完 B 答，答句要有内容（≥3 词）
+    if (!a.speaker || !b.speaker || a.speaker === b.speaker) continue;
+    const answerWords = b.content.trim().split(/\s+/);
+    if (answerWords.length < 3) continue;
+    if (used.has(b.content)) continue;
+    used.add(b.content);
+
+    exercises.push({
+      type: 'speaking',
+      content: {
+        instruction: `${a.speaker} 说了一句话，你来扮演 ${b.speaker} 回答（用英语说出下面隐藏的那句）`,
+        mode: 'qa',
+        question: `${a.speaker}: ${a.content}`,
+        sentence: b.content,
+        translation: translations[i + 1] || '',
+      },
+      answer: b.content,
+      score: 10,
+    });
+  }
+  return exercises;
+}
+
+/**
+ * 补全对话（reading）：给对话上下文，从 4 个选项里选出正确的回答句。
+ * 干扰项来自本课其他对话句，保证同难度、同话题。
+ */
+function genDialogueCompletion(lesson, cap) {
+  const text = lesson.content.text;
+  if (!text || !text.paragraphs) return [];
+  const paras = text.paragraphs;
+
+  // 有内容的对话句（≥3 词）才能当答案/干扰项
+  const dialogueLines = paras
+    .filter((p) => p.speaker && p.content.trim().split(/\s+/).length >= 3)
+    .map((p) => ({ speaker: p.speaker, content: p.content.trim() }));
+  if (dialogueLines.length < 5) return [];
+
+  const exercises = [];
+  const used = new Set();
+  for (let i = 0; i < dialogueLines.length - 1 && exercises.length < cap; i++) {
+    const correct = dialogueLines[i + 1];
+    if (used.has(correct.content)) continue;
+
+    const distractorPool = dialogueLines
+      .filter((l) => l.content !== correct.content && l.speaker !== correct.speaker)
+      .map((l) => l.content);
+    const distractors = [...new Set(distractorPool)];
+    if (distractors.length < 3) continue;
+
+    used.add(correct.content);
+    const prev = dialogueLines[i];
+    exercises.push({
+      type: 'reading',
+      content: {
+        passage: `${prev.speaker}: ${prev.content}\n${correct.speaker}: ______`,
+        question: `选出 ${correct.speaker} 该说的那句话：`,
+        options: shuffle([correct.content, ...pickRandom(distractors, 3)]),
+      },
+      answer: correct.content,
+      score: 10,
+    });
+  }
+  return exercises;
+}
+
 // ==================== 5. 语法补充练习生成器 ====================
 // 全部为选择/判断题（儿童点选友好）：不再生成需要键盘输入的填空题和拖拽排序题
 
@@ -774,6 +883,9 @@ const CAPS = {
   speakingSentence: 8,
   speakingWord: 4,
   speakingZh2En: 4,
+  sentenceMaking: 3,
+  speakingQA: 3,
+  dialogueCompletion: 2,
   spelling: 8,
   writing: 6,
   readingTranslation: 4,
@@ -796,6 +908,10 @@ for (const lesson of lessons) {
   exercises.push(...genListeningPickWord(lesson, lessons, CAPS.listeningPickWord));
   exercises.push(...genListeningSentenceMeaning(lesson, CAPS.listeningSentence));
   exercises.push(...genSpeaking(lesson, CAPS.speakingSentence, CAPS.speakingWord, CAPS.speakingZh2En));
+  // 产出型题：造句 / 问答 / 补全对话
+  exercises.push(...genSentenceMaking(lesson, CAPS.sentenceMaking));
+  exercises.push(...genSpeakingQA(lesson, CAPS.speakingQA));
+  exercises.push(...genDialogueCompletion(lesson, CAPS.dialogueCompletion));
   exercises.push(...genSpelling(lesson, CAPS.spelling));
   exercises.push(...genWriting(lesson, lessons, CAPS.writing));
   exercises.push(...genReadingTranslation(lesson, CAPS.readingTranslation));

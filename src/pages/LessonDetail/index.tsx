@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import './LessonDetail.css';
 import { getLessonById } from '../../services/lesson';
@@ -19,7 +19,7 @@ import {
 } from '../../services/tts';
 import { checkAchievements } from '../../services/achievement';
 import { logger } from '../../utils/logger';
-import type { Lesson, GrammarDetail } from '../../types/lesson';
+import type { Lesson, GrammarDetail, Exercise } from '../../types/lesson';
 import type { Achievement } from '../../services/achievement';
 import VocabularyCard from '../../components/lesson/VocabularyCard';
 import TextDisplay from '../../components/lesson/TextDisplay';
@@ -34,6 +34,13 @@ import ShootingGame from '../../components/ShootingGame';
 import MemoryCardGame from '../../components/MemoryCardGame';
 import AirplaneGame from '../../components/AirplaneGame';
 import { recordStudy } from '../../services/dailyStreak';
+import { getDueReviewItems, getReviewStats, recordReviewResult } from '../../services/review';
+import { selectSmartExercises } from '../../services/smartSelection';
+import {
+  recordSkillAnswer,
+  getAllSkillMastery,
+  type SkillId,
+} from '../../services/skillMastery';
 import type { PracticeType } from '../../components/practice/PracticeMenu';
 import { convertFillExercises } from '../../utils/fillToChoice';
 import grammarExtraExercises from '../../data/lessons/grammarExtraExercises';
@@ -112,6 +119,54 @@ const LessonDetail: React.FC = () => {
   } | null>(null);
   const [newBadges, setNewBadges] = useState<Achievement[]>([]);
   const [activeGame, setActiveGame] = useState<'shooting' | 'memory' | 'airplane' | null>(null);
+  // 错题重练会话（跨题型混排），非空时优先于常规练习渲染
+  const [reviewExercises, setReviewExercises] = useState<Exercise[] | null>(null);
+  // 刚结束的错题重练题组（供结果页"再练一次"复用同一批题）
+  const [reviewRetryExercises, setReviewRetryExercises] = useState<Exercise[] | null>(null);
+  const [reviewStats, setReviewStats] = useState({ total: 0, due: 0 });
+  // 分技能掌握度（PracticeMenu 徽章 + 智能选题目标难度）
+  const [mastery, setMastery] = useState(() => getAllSkillMastery());
+
+  const refreshReviewStats = useCallback(() => {
+    getReviewStats()
+      .then(setReviewStats)
+      .catch(() => setReviewStats({ total: 0, due: 0 }));
+    setMastery(getAllSkillMastery());
+  }, []);
+
+  // 智能选题：常规练习按当前掌握度重排成"热身→主练→挑战"爬坡序列
+  const smartExercises = useMemo(() => {
+    if (!lesson || !practiceType) return [];
+    return selectSmartExercises(
+      (lesson.content.exercises || []).filter((e) => e.type === practiceType),
+      practiceType as SkillId
+    );
+  }, [lesson, practiceType]);
+
+  useEffect(() => {
+    refreshReviewStats();
+  }, [refreshReviewStats]);
+
+  const handleStartReview = async () => {
+    const items = await getDueReviewItems();
+    if (items.length === 0) return;
+    setResultData(null);
+    setPracticeType(null);
+    setReviewExercises(items.map((i) => i.exercise));
+    logger.info(MODULE, '错题重练', `到期 ${items.length} 道`);
+  };
+
+  // 每题作答结果 → 错题本登记/间隔升级（答错入本、答对升一级）
+  const handleRecordAnswer = useCallback(
+    (exercise: Exercise, correct: boolean) => {
+      recordReviewResult(parseInt(id || '0'), exercise.type, exercise, correct)
+        .catch(() => undefined)
+        .finally(refreshReviewStats);
+      // 分技能掌握度：智能选题引擎的目标难度输入
+      recordSkillAnswer(exercise.type as SkillId, exercise, correct);
+    },
+    [id, refreshReviewStats]
+  );
 
   const handleVoiceChange = async (presetId: string) => {
     setVoicePreset(presetId);
@@ -196,10 +251,22 @@ const LessonDetail: React.FC = () => {
   };
 
   const handleFinishPractice = async (data: PracticeFinishData) => {
-    const { score, totalScore, timeSpent, practiceType: lastType, maxStreak, correctCount } = data;
+    const {
+      score,
+      totalScore,
+      timeSpent,
+      practiceType: lastType,
+      maxStreak,
+      correctCount,
+      totalCount,
+      isReview,
+    } = data;
     setResultData({ score, totalScore, practiceType: lastType });
     setPracticeType(null);
+    setReviewRetryExercises(isReview ? reviewExercises : null);
+    setReviewExercises(null);
     setNewBadges([]);
+    refreshReviewStats();
 
     // 记录今天学习了
     const streakInfo = recordStudy();
@@ -214,6 +281,17 @@ const LessonDetail: React.FC = () => {
         time_spent: timeSpent,
       });
 
+      // 练习流水（供家长学习报告统计）
+      await window.electronAPI?.logPractice?.({
+        lesson_id: parseInt(id || '0'),
+        practice_type: isReview ? 'review' : lastType,
+        score,
+        total_score: totalScore,
+        correct_count: correctCount,
+        total_count: totalCount,
+        duration_sec: timeSpent,
+      });
+
       // 获取累计统计
       const userStats = await window.electronAPI?.getUserStats?.();
       if (userStats) {
@@ -223,9 +301,11 @@ const LessonDetail: React.FC = () => {
           lastScore: score,
           lastTotalScore: totalScore,
           lastPracticeType: lastType,
-          spellingCorrectCount: lastType === 'spelling' ? correctCount : undefined,
-          listeningCorrectCount: lastType === 'listening' ? correctCount : undefined,
-          speakingHighCount: lastType === 'speaking' && score >= totalScore * 0.8 ? 1 : undefined,
+          // 错题重练是混排会话，不按单一题型计入专项成就
+          spellingCorrectCount: !isReview && lastType === 'spelling' ? correctCount : undefined,
+          listeningCorrectCount: !isReview && lastType === 'listening' ? correctCount : undefined,
+          speakingHighCount:
+            !isReview && lastType === 'speaking' && score >= totalScore * 0.8 ? 1 : undefined,
           currentStreak: maxStreak,
           timeSpent,
           isFirstAttempt: false,
@@ -245,6 +325,8 @@ const LessonDetail: React.FC = () => {
     setPracticeType(null);
     setResultData(null);
     setActiveGame(null);
+    setReviewExercises(null);
+    refreshReviewStats();
   };
 
   const handleGameFinish = async (score: number, totalScore: number) => {
@@ -409,10 +491,23 @@ const LessonDetail: React.FC = () => {
           onFinish={handleGameFinish}
           onBack={handleBackToPracticeMenu}
         />
+      ) : reviewExercises ? (
+        <PracticeEngine
+          exercises={reviewExercises}
+          practiceType="listening"
+          mixedTypes
+          isReviewMode
+          vocabulary={lesson.content.vocabulary}
+          onRecord={handleRecordAnswer}
+          onFinish={handleFinishPractice}
+          onBack={handleBackToPracticeMenu}
+        />
       ) : practiceType ? (
         <PracticeEngine
-          exercises={allExercises.filter((e) => e.type === practiceType)}
+          exercises={smartExercises}
           practiceType={practiceType}
+          vocabulary={lesson.content.vocabulary}
+          onRecord={handleRecordAnswer}
           onFinish={handleFinishPractice}
           onBack={handleBackToPracticeMenu}
         />
@@ -423,7 +518,13 @@ const LessonDetail: React.FC = () => {
             totalScore={resultData.totalScore}
             onRetry={() => {
               setResultData(null);
-              handleStartPractice(resultData.practiceType);
+              if (reviewRetryExercises) {
+                // 错题重练：沿用同一批题再练一次
+                setReviewExercises(reviewRetryExercises);
+                setReviewRetryExercises(null);
+              } else {
+                handleStartPractice(resultData.practiceType);
+              }
             }}
             onBack={handleBackToPracticeMenu}
           />
@@ -491,6 +592,7 @@ const LessonDetail: React.FC = () => {
                 key={lesson.id}
                 lessonId={lesson.id}
                 text={lesson.content.text}
+                vocabulary={lesson.content.vocabulary}
                 illustration={lesson.illustration}
                 autoPlay={true}
               />
@@ -513,6 +615,30 @@ const LessonDetail: React.FC = () => {
 
             {activeTab === 'practice' && (
               <>
+                {reviewStats.total > 0 && (
+                  <div
+                    className={`review-entry ${reviewStats.due > 0 ? '' : 'empty'}`}
+                    onClick={() => reviewStats.due > 0 && handleStartReview()}
+                  >
+                    <span className="review-entry-icon">🔁</span>
+                    <div className="review-entry-text">
+                      <div className="review-entry-title">
+                        {reviewStats.due > 0 ? '错题重练' : '错题本'}
+                        <span className="review-entry-count">
+                          {reviewStats.due > 0
+                            ? `${reviewStats.due} 道到期`
+                            : `${reviewStats.total} 道待复习`}
+                        </span>
+                      </div>
+                      <div className="review-entry-desc">
+                        {reviewStats.due > 0
+                          ? '按遗忘曲线安排的复习题，答对会延后复习时间'
+                          : '今天没有到期的错题，明天再来吧'}
+                      </div>
+                    </div>
+                    {reviewStats.due > 0 && <span className="review-entry-go">开始 →</span>}
+                  </div>
+                )}
                 <div
                   style={{ display: 'flex', flexDirection: 'column', gap: 10, marginBottom: 16 }}
                 >
@@ -570,7 +696,11 @@ const LessonDetail: React.FC = () => {
                     </div>
                   ))}
                 </div>
-                <PracticeMenu exercises={allExercises} onStart={handleStartPractice} />
+                <PracticeMenu
+                  exercises={allExercises}
+                  mastery={mastery}
+                  onStart={handleStartPractice}
+                />
               </>
             )}
           </div>

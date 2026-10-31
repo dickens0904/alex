@@ -36,6 +36,7 @@ const LessonList = lazy(() => import('./pages/LessonList'));
 const LessonDetail = lazy(() => import('./pages/LessonDetail'));
 const Progress = lazy(() => import('./pages/Progress'));
 const PracticeCenter = lazy(() => import('./pages/PracticeCenter'));
+const Report = lazy(() => import('./pages/Report'));
 
 const App: React.FC = () => {
   useEffect(() => {
@@ -61,6 +62,7 @@ const App: React.FC = () => {
             <Route path="/lesson/:id" element={<LessonDetail />} />
             <Route path="/progress" element={<Progress />} />
             <Route path="/practice" element={<PracticeCenter />} />
+            <Route path="/report" element={<Report />} />
             <Route
               path="*"
               element={

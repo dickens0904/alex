@@ -3,7 +3,7 @@
  * 由 scripts/generate-exercises.js 生成，在 LessonDetail.mergeGrammarData 中合并
  *
  * 共 144 课, 670 道题
- * 生成时间: 2026-10-24T01:37:43.745Z
+ * 生成时间: 2026-10-30T23:31:15.181Z
  */
 
 import type { GrammarExercise } from '../../types/lesson';
@@ -11,1248 +11,1248 @@ import type { GrammarExercise } from '../../types/lesson';
 export const grammarAutoExercises: Record<number, GrammarExercise[]> = {
   // Lesson 1: Lesson 1: Excuse me! 对不起！
   1: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '非常感谢。', options: ['Thank you very much.', 'very Thank you much.', 'Thank very much. you', 'you much. very Thank'], answer: 0, explanation: '正确语序：Thank you very much.（非常感谢。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是您的手提包吗？', options: ['this Is handbag? your', 'Is handbag? your this', 'handbag? Is this your', 'Is this your handbag?'], answer: 3, explanation: '正确语序：Is this your handbag?（这是您的手提包吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Thank you ______ much.', hint: '中文意思：非常感谢。', options: ['very', 'house', 'much', 'your'], answer: 0, explanation: 'Thank you very much.（非常感谢。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ it is.', hint: '中文意思：是的，是我的。', options: ['yes', 'verymuch', 'much', 'your'], answer: 0, explanation: 'Yes, it is.（是的，是我的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ me!', hint: '中文意思：对不起！', options: ['thankyou', 'excuse', 'thank', 'pardon'], answer: 1, explanation: 'Excuse me!（对不起！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是您的手提包吗？', options: ['Is your this handbag?', 'Is this your handbag?', 'handbag? this your Is', 'this Is your handbag?'], answer: 1, explanation: '正确语序：Is this your handbag?（这是您的手提包吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '非常感谢。', options: ['Thank you very much.', 'Thank much. very you', 'very you much. Thank', 'very Thank much. you'], answer: 0, explanation: '正确语序：Thank you very much.（非常感谢。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ you very much.', hint: '中文意思：非常感谢。', options: ['book', 'thank', 'thankyou', 'verymuch'], answer: 1, explanation: 'Thank you very much.（非常感谢。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ me!', hint: '中文意思：对不起！', options: ['dress', 'skirt', 'thank', 'excuse'], answer: 3, explanation: 'Excuse me!（对不起！）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is this ______ handbag?', hint: '中文意思：这是您的手提包吗？', options: ['pen', 'your', 'excuse', 'house'], answer: 1, explanation: 'Is this your handbag?（这是您的手提包吗？）' },
   ],
 
   // Lesson 2: Lesson 2: Is this your...? 这是你的……吗？
   2: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是。', options: ['it not. is No,', 'No, it is not.', 'No, not. is it', 'not. it No, is'], answer: 1, explanation: '正确语序：No, it is not.（不，不是。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是你的铅笔吗？', options: ['this Is pencil? your', 'this pencil? Is your', 'Is this your pencil?', 'your Is pencil? this'], answer: 2, explanation: '正确语序：Is this your pencil?（这是你的铅笔吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是你的钢笔吗？', options: ['Is this your pen?', 'your pen? this Is', 'pen? your Is this', 'pen? Is this your'], answer: 0, explanation: '正确语序：Is this your pen?（这是你的钢笔吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Is this your ______', hint: '中文意思：这是你的铅笔吗？', options: ['pen', 'pencil', 'house', 'dress'], answer: 1, explanation: 'Is this your pencil?（这是你的铅笔吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是你的铅笔吗？', options: ['your Is pencil? this', 'Is this your pencil?', 'Is pencil? this your', 'pencil? your this Is'], answer: 1, explanation: '正确语序：Is this your pencil?（这是你的铅笔吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是你的钢笔吗？', options: ['Is this your pen?', 'Is your pen? this', 'your pen? this Is', 'this your pen? Is'], answer: 0, explanation: '正确语序：Is this your pen?（这是你的钢笔吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是。', options: ['No, it is not.', 'is not. No, it', 'it is not. No,', 'it No, is not.'], answer: 0, explanation: '正确语序：No, it is not.（不，不是。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is this your ______', hint: '中文意思：这是你的铅笔吗？', options: ['shirt', 'dress', 'car', 'pencil'], answer: 3, explanation: 'Is this your pencil?（这是你的铅笔吗？）' },
   ],
 
   // Lesson 3: Lesson 3: Sorry, sir. 对不起，先生。
   3: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这不是我的伞。', options: ['umbrella. not This my is', 'This is not my umbrella.', 'is my not This umbrella.', 'my is This umbrella. not'], answer: 1, explanation: '正确语序：This is not my umbrella.（这不是我的伞。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这把伞是您的吗？', options: ['your umbrella? this Is', 'your umbrella? Is this', 'Is this your umbrella?', 'this umbrella? your Is'], answer: 2, explanation: '正确语序：Is this your umbrella?（这把伞是您的吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是我的票。', options: ['is Here ticket. my', 'is Here my ticket.', 'Here is my ticket.', 'my ticket. Here is'], answer: 2, explanation: '正确语序：Here is my ticket.（这是我的票。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This is not my ______', hint: '中文意思：这不是我的伞。', options: ['teacher', 'umbrella', 'son', 'school'], answer: 1, explanation: 'This is not my umbrella.（这不是我的伞。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ is my ticket.', hint: '中文意思：这是我的票。', options: ['umbrella', 'sir', 'here', 'suit'], answer: 2, explanation: 'Here is my ticket.（这是我的票。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：My coat and my ______ please.', hint: '中文意思：请把我的大衣和伞拿给我。', options: ['umbrella', 'daughter', 'please', 'cloakroom'], answer: 0, explanation: 'My coat and my umbrella please.（请把我的大衣和伞拿给我。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是！', options: ['is it No, not.', 'is No, not. it', 'No, is not. it', 'No, it is not.'], answer: 3, explanation: '正确语序：No, it is not.（不，不是！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这不是我的伞。', options: ['This is not my umbrella.', 'This is my not umbrella.', 'This not umbrella. is my', 'not This my umbrella. is'], answer: 0, explanation: '正确语序：This is not my umbrella.（这不是我的伞。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是我的票。', options: ['ticket. my Here is', 'ticket. is Here my', 'Here is my ticket.', 'my is ticket. Here'], answer: 2, explanation: '正确语序：Here is my ticket.（这是我的票。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：My coat and my umbrella ______', hint: '中文意思：请把我的大衣和伞拿给我。', options: ['please', 'number', 'here', 'school'], answer: 0, explanation: 'My coat and my umbrella please.（请把我的大衣和伞拿给我。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ is my ticket.', hint: '中文意思：这是我的票。', options: ['number', 'five', 'sir', 'here'], answer: 3, explanation: 'Here is my ticket.（这是我的票。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is this your ______', hint: '中文意思：这把伞是您的吗？', options: ['sorry', 'ticket', 'please', 'umbrella'], answer: 3, explanation: 'Is this your umbrella?（这把伞是您的吗？）' },
   ],
 
   // Lesson 4: Lesson 4: Is this your...? 这是你的……吗？
   4: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是。', options: ['it is No, not.', 'No, it is not.', 'is it No, not.', 'No, not. is it'], answer: 1, explanation: '正确语序：No, it is not.（不，不是。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是你的衣服吗？', options: ['Is suit? this your', 'Is this suit? your', 'suit? Is your this', 'Is this your suit?'], answer: 3, explanation: '正确语序：Is this your suit?（这是你的衣服吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是你的学校吗？', options: ['Is this your school?', 'your Is this school?', 'your Is school? this', 'this Is school? your'], answer: 0, explanation: '正确语序：Is this your school?（这是你的学校吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Is this your ______', hint: '中文意思：这是你的学校吗？', options: ['teacher', 'school', 'suit', 'son'], answer: 1, explanation: 'Is this your school?（这是你的学校吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是你的衣服吗？', options: ['Is this your suit?', 'Is your this suit?', 'Is suit? your this', 'suit? Is this your'], answer: 0, explanation: '正确语序：Is this your suit?（这是你的衣服吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是你的学校吗？', options: ['Is this your school?', 'Is this school? your', 'this school? Is your', 'Is school? this your'], answer: 0, explanation: '正确语序：Is this your school?（这是你的学校吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是。', options: ['No, not. it is', 'No, it is not.', 'No, it not. is', 'it not. No, is'], answer: 1, explanation: '正确语序：No, it is not.（不，不是。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is this your ______', hint: '中文意思：这是你的学校吗？', options: ['son', 'daughter', 'school', 'suit'], answer: 2, explanation: 'Is this your school?（这是你的学校吗？）' },
   ],
 
   // Lesson 5: Lesson 5: Nice to meet you. 很高兴见到你。
   5: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '索菲娅是个新学生。', options: ['new Sophie student. a is', 'a student. new Sophie is', 'is Sophie student. new a', 'Sophie is a new student.'], answer: 3, explanation: '正确语序：Sophie is a new student.（索菲娅是个新学生。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '很高兴见到你。', options: ['Nice to meet you.', 'you. to Nice meet', 'to meet Nice you.', 'to meet you. Nice'], answer: 0, explanation: '正确语序：Nice to meet you.（很高兴见到你。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '早上好，布莱克先生。', options: ['Mr. Blake. morning, Good', 'morning, Mr. Blake. Good', 'morning, Good Blake. Mr.', 'Good morning, Mr. Blake.'], answer: 3, explanation: '正确语序：Good morning, Mr. Blake.（早上好，布莱克先生。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This is ______ Sophie Dupont.', hint: '中文意思：这位是索菲娅·杜邦小姐。', options: ['miss', 'korean', 'morning', 'japanese'], answer: 0, explanation: 'This is Miss Sophie Dupont.（这位是索菲娅·杜邦小姐。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：She\'s ______ too.', hint: '中文意思：她也是中国人。', options: ['french', 'english', 'chinese', 'german'], answer: 2, explanation: 'She\'s Chinese, too.（她也是中国人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ to meet you.', hint: '中文意思：很高兴见到你。', options: ['america', 'nice', 'italy', 'french'], answer: 1, explanation: 'Nice to meet you.（很高兴见到你。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这位是索菲娅·杜邦小姐。', options: ['Miss is This Sophie Dupont.', 'is Sophie Dupont. This Miss', 'This is Miss Sophie Dupont.', 'Miss is Dupont. Sophie This'], answer: 2, explanation: '正确语序：This is Miss Sophie Dupont.（这位是索菲娅·杜邦小姐。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '早上好，布莱克先生。', options: ['Blake. Good morning, Mr.', 'Mr. Blake. Good morning,', 'Mr. Blake. morning, Good', 'Good morning, Mr. Blake.'], answer: 3, explanation: '正确语序：Good morning, Mr. Blake.（早上好，布莱克先生。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '很高兴见到你。', options: ['to meet you. Nice', 'Nice to meet you.', 'Nice meet to you.', 'you. to meet Nice'], answer: 1, explanation: '正确语序：Nice to meet you.（很高兴见到你。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Nice to ______ you.', hint: '中文意思：很高兴见到你。', options: ['italian', 'meet', 'french', 'miss'], answer: 1, explanation: 'Nice to meet you.（很高兴见到你。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Sophie is a ______ student.', hint: '中文意思：索菲娅是个新学生。', options: ['new', 'nice', 'french', 'too'], answer: 0, explanation: 'Sophie is a new student.（索菲娅是个新学生。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：She\'s ______ too.', hint: '中文意思：她也是中国人。', options: ['sweden', 'make', 'morning', 'chinese'], answer: 3, explanation: 'She\'s Chinese, too.（她也是中国人。）' },
   ],
 
   // Lesson 6: Lesson 6: What make is it? 它是什么牌子的？
   6: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它是瑞典的车吗？', options: ['Is it a Swedish car?', 'Is a car? Swedish it', 'a Swedish car? it Is', 'it Is Swedish a car?'], answer: 0, explanation: '正确语序：Is it a Swedish car?（它是瑞典的车吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它是什么牌子的？', options: ['it? make What is', 'What make it? is', 'it? is make What', 'What make is it?'], answer: 3, explanation: '正确语序：What make is it?（它是什么牌子的？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It\'s a ______', hint: '中文意思：它是福特牌的。', options: ['italian', 'toyota', 'ford', 'make'], answer: 2, explanation: 'It\'s a Ford.（它是福特牌的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What ______ is it?', hint: '中文意思：它是什么牌子的？', options: ['make', 'daewoo', 'peugeot', 'ford'], answer: 0, explanation: 'What make is it?（它是什么牌子的？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Is it a ______ car?', hint: '中文意思：它是瑞典的车吗？', options: ['swedish', 'italian', 'mini', 'fiat'], answer: 0, explanation: 'Is it a Swedish car?（它是瑞典的车吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它是瑞典的车吗？', options: ['a Swedish Is car? it', 'Is it a Swedish car?', 'Swedish Is it car? a', 'a Swedish car? Is it'], answer: 1, explanation: '正确语序：Is it a Swedish car?（它是瑞典的车吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它是什么牌子的？', options: ['What is it? make', 'make What is it?', 'What make is it?', 'make What it? is'], answer: 2, explanation: '正确语序：What make is it?（它是什么牌子的？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is it a ______ car?', hint: '中文意思：它是瑞典的车吗？', options: ['swedish', 'make', 'toyota', 'english'], answer: 0, explanation: 'Is it a Swedish car?（它是瑞典的车吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It\'s a ______', hint: '中文意思：它是福特牌的。', options: ['fiat', 'italian', 'ford', 'toyota'], answer: 2, explanation: 'It\'s a Ford.（它是福特牌的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What ______ is it?', hint: '中文意思：它是什么牌子的？', options: ['swedish', 'make', 'daewoo', 'ford'], answer: 1, explanation: 'What make is it?（它是什么牌子的？）' },
   ],
 
   // Lesson 7: Lesson 7: Are you a teacher? 你是教师吗？
   7: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我的名字叫罗伯特。', options: ['name Robert. is My', 'Robert. is name My', 'Robert. name My is', 'My name is Robert.'], answer: 3, explanation: '正确语序：My name is Robert.（我的名字叫罗伯特。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是个新学生。', options: ['student. a I am new', 'new a I student. am', 'new student. I am a', 'I am a new student.'], answer: 3, explanation: '正确语序：I am a new student.（我是个新学生。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你是哪国人？', options: ['are What nationality you?', 'are you? nationality What', 'you? are What nationality', 'What nationality are you?'], answer: 3, explanation: '正确语序：What nationality are you?（你是哪国人？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I am a ______ operator.', hint: '中文意思：我是电脑录入员。', options: ['name', 'keyboard', 'operator', 'what'], answer: 1, explanation: 'I am a keyboard operator.（我是电脑录入员。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What nationality ______ you?', hint: '中文意思：你是哪国人？', options: ['are', 'name', 'job', 'keyboard'], answer: 0, explanation: 'What nationality are you?（你是哪国人？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ you a teacher?', hint: '中文意思：你是教师吗？', options: ['are', 'engineer', 'nationality', 'operator'], answer: 0, explanation: 'Are you a teacher?（你是教师吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你是教师吗？', options: ['you teacher? Are a', 'Are you a teacher?', 'Are teacher? a you', 'a Are you teacher?'], answer: 1, explanation: '正确语序：Are you a teacher?（你是教师吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是个新学生。', options: ['am I student. new a', 'a I student. new am', 'I am a new student.', 'am I student. a new'], answer: 2, explanation: '正确语序：I am a new student.（我是个新学生。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是电脑录入员。', options: ['I am a keyboard operator.', 'a I operator. am keyboard', 'operator. I keyboard a am', 'operator. I am a keyboard'], answer: 0, explanation: '正确语序：I am a keyboard operator.（我是电脑录入员。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ you French?', hint: '中文意思：你是法国人吗？', options: ['name', 'are', 'what', 'engineer'], answer: 1, explanation: 'Are you French?（你是法国人吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I am an ______', hint: '中文意思：我是工程师。', options: ['engineer', 'what', 'nationality', 'are'], answer: 0, explanation: 'I am an engineer.（我是工程师。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：My ______ is Robert.', hint: '中文意思：我的名字叫罗伯特。', options: ['keyboard', 'name', 'what', 'nationality'], answer: 1, explanation: 'My name is Robert.（我的名字叫罗伯特。）' },
   ],
 
   // Lesson 8: Lesson 8: What's your job? 你是做什么工作的？
   8: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是警察。', options: ['policeman. am I a', 'I am a policeman.', 'policeman. am a I', 'am I a policeman.'], answer: 1, explanation: '正确语序：I am a policeman.（我是警察。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是空中小姐。', options: ['I am an air hostess.', 'hostess. air am I an', 'hostess. am I air an', 'air hostess. an I am'], answer: 0, explanation: '正确语序：I am an air hostess.（我是空中小姐。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I am a ______', hint: '中文意思：我是警察。', options: ['policeman', 'mechanic', 'housewife', 'taxidriver'], answer: 0, explanation: 'I am a policeman.（我是警察。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是警察。', options: ['policeman. a I am', 'policeman. am a I', 'I am a policeman.', 'am I policeman. a'], answer: 2, explanation: '正确语序：I am a policeman.（我是警察。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是空中小姐。', options: ['I an hostess. air am', 'hostess. air I am an', 'I am an hostess. air', 'I am an air hostess.'], answer: 3, explanation: '正确语序：I am an air hostess.（我是空中小姐。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I am a ______', hint: '中文意思：我是警察。', options: ['mechanic', 'policeman', 'taxidriver', 'housewife'], answer: 1, explanation: 'I am a policeman.（我是警察。）' },
   ],
 
   // Lesson 9: Lesson 9: How are you today? 你今天好吗？
   9: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '很好，谢谢你。', options: ['I am very well, thank you.', 'thank I am very well, you.', 'am very well, thank I you.', 'well, you. am very thank I'], answer: 0, explanation: '正确语序：I am very well, thank you.（很好，谢谢你。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我见到你也很高兴。', options: ['see Nice to you, too.', 'Nice to see you, too.', 'to see too. Nice you,', 'you, to too. see Nice'], answer: 1, explanation: '正确语序：Nice to see you, too.（我见到你也很高兴。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '很好，谢谢。', options: ['am thanks. fine, I', 'I am fine, thanks.', 'fine, am thanks. I', 'am fine, thanks. I'], answer: 1, explanation: '正确语序：I am fine, thanks.（很好，谢谢。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ Helen.', hint: '中文意思：再见，海伦。', options: ['goodbye', 'fine', 'woman', 'how'], answer: 0, explanation: 'Goodbye, Helen.（再见，海伦。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I am very ______ thank you.', hint: '中文意思：很好，谢谢你。', options: ['woman', 'well', 'see', 'today'], answer: 1, explanation: 'I am very well, thank you.（很好，谢谢你。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ is Tony?', hint: '中文意思：托尼好吗？', options: ['woman', 'fine', 'goodbye', 'how'], answer: 3, explanation: 'How is Tony?（托尼好吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他很好，谢谢。', options: ['He is fine, thanks.', 'fine, He thanks. is', 'He fine, thanks. is', 'fine, is thanks. He'], answer: 0, explanation: '正确语序：He is fine, thanks.（他很好，谢谢。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我见到你也很高兴。', options: ['Nice you, see too. to', 'Nice to see you, too.', 'too. you, see Nice to', 'you, too. Nice see to'], answer: 1, explanation: '正确语序：Nice to see you, too.（我见到你也很高兴。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你今天好吗？', options: ['are How you today?', 'are today? How you', 'you are today? How', 'How are you today?'], answer: 3, explanation: '正确语序：How are you today?（你今天好吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I am fine, ______', hint: '中文意思：很好，谢谢。', options: ['see', 'hello', 'thanks', 'fine'], answer: 2, explanation: 'I am fine, thanks.（很好，谢谢。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Nice to ______ you.', hint: '中文意思：见到你真高兴。', options: ['thanks', 'today', 'goodbye', 'see'], answer: 3, explanation: 'Nice to see you.（见到你真高兴。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ Helen.', hint: '中文意思：你好，海伦。', options: ['thanks', 'hello', 'woman', 'see'], answer: 1, explanation: 'Hello, Helen.（你好，海伦。）' },
   ],
 
   // Lesson 10: Lesson 10: Look at... 看……
   10: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看那个男人。', options: ['at Look man. that', 'Look at that man.', 'man. that Look at', 'that at Look man.'], answer: 1, explanation: '正确语序：Look at that man.（看那个男人。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看那个警察。', options: ['at that policeman. Look', 'Look policeman. at that', 'Look at that policeman.', 'policeman. at Look that'], answer: 2, explanation: '正确语序：Look at that policeman.（看那个警察。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看那个女人。', options: ['that at woman. Look', 'at that woman. Look', 'Look at woman. that', 'Look at that woman.'], answer: 3, explanation: '正确语序：Look at that woman.（看那个女人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He is ______', hint: '中文意思：他很胖。', options: ['young', 'clean', 'fat', 'hot'], answer: 2, explanation: 'He is fat.（他很胖。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：She is ______', hint: '中文意思：她很瘦。', options: ['dirty', 'thin', 'tall', 'cold'], answer: 1, explanation: 'She is thin.（她很瘦。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看那个女人。', options: ['Look at that woman.', 'Look woman. that at', 'woman. at that Look', 'Look at woman. that'], answer: 0, explanation: '正确语序：Look at that woman.（看那个女人。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看那个警察。', options: ['that policeman. Look at', 'that at Look policeman.', 'Look at that policeman.', 'Look that at policeman.'], answer: 2, explanation: '正确语序：Look at that policeman.（看那个警察。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看那个男人。', options: ['that at man. Look', 'Look at that man.', 'man. Look that at', 'that Look at man.'], answer: 1, explanation: '正确语序：Look at that man.（看那个男人。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：She is ______', hint: '中文意思：她很瘦。', options: ['dirty', 'old', 'hot', 'thin'], answer: 3, explanation: 'She is thin.（她很瘦。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He is ______', hint: '中文意思：他很高。', options: ['dirty', 'tall', 'short', 'old'], answer: 1, explanation: 'He is tall.（他很高。）' },
   ],
 
   // Lesson 11: Lesson 11: Is this your shirt? 这是你的衬衫吗？
   11: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我的衬衫是蓝色的。', options: ['My blue. shirt is', 'shirt is My blue.', 'is blue. shirt My', 'My shirt is blue.'], answer: 3, explanation: '正确语序：My shirt is blue.（我的衬衫是蓝色的。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '蒂姆的衬衫是白色的。', options: ['Tim\'s is white. shirt', 'is Tim\'s shirt white.', 'is Tim\'s white. shirt', 'Tim\'s shirt is white.'], answer: 3, explanation: '正确语序：Tim\'s shirt is white.（蒂姆的衬衫是白色的。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那是谁的衬衫？', options: ['Whose is shirt that?', 'shirt Whose that? is', 'Whose shirt is that?', 'that? is shirt Whose'], answer: 2, explanation: '正确语序：Whose shirt is that?（那是谁的衬衫？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ it is, sir.', hint: '中文意思：也许是，先生。', options: ['perhaps', 'blue', 'white', 'catch'], answer: 0, explanation: 'Perhaps it is, sir.（也许是，先生。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：My shirt is ______', hint: '中文意思：我的衬衫是蓝色的。', options: ['whose', 'white', 'blue', 'perhaps'], answer: 2, explanation: 'My shirt is blue.（我的衬衫是蓝色的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Tim\'s shirt is ______', hint: '中文意思：蒂姆的衬衫是白色的。', options: ['catch', 'whose', 'blue', 'white'], answer: 3, explanation: 'Tim\'s shirt is white.（蒂姆的衬衫是白色的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这件衬衫是蒂姆的吗？', options: ['this shirt Is Tim\'s?', 'Is shirt this Tim\'s?', 'Tim\'s? this Is shirt', 'Is this shirt Tim\'s?'], answer: 3, explanation: '正确语序：Is this shirt Tim\'s?（这件衬衫是蒂姆的吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这不是我的衬衫。', options: ['It is not my shirt.', 'shirt. It not my is', 'my shirt. not It is', 'It my not is shirt.'], answer: 0, explanation: '正确语序：It is not my shirt.（这不是我的衬衫。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那是谁的衬衫？', options: ['shirt that? Whose is', 'Whose shirt is that?', 'Whose that? is shirt', 'is Whose shirt that?'], answer: 1, explanation: '正确语序：Whose shirt is that?（那是谁的衬衫？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Tim\'s shirt is ______', hint: '中文意思：蒂姆的衬衫是白色的。', options: ['catch', 'white', 'perhaps', 'blue'], answer: 1, explanation: 'Tim\'s shirt is white.（蒂姆的衬衫是白色的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ it is, sir.', hint: '中文意思：也许是，先生。', options: ['perhaps', 'white', 'catch', 'blue'], answer: 0, explanation: 'Perhaps it is, sir.（也许是，先生。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ shirt is that?', hint: '中文意思：那是谁的衬衫？', options: ['whose', 'white', 'catch', 'perhaps'], answer: 0, explanation: 'Whose shirt is that?（那是谁的衬衫？）' },
   ],
 
   // Lesson 12: Lesson 12: Whose is this...? 这……是谁的？
   12: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这条领带是谁的？', options: ['Whose tie? is this', 'is tie? this Whose', 'Whose is this tie?', 'Whose is tie? this'], answer: 2, explanation: '正确语序：Whose is this tie?（这条领带是谁的？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个手提包是谁的？', options: ['Whose is this handbag?', 'is this handbag? Whose', 'this handbag? is Whose', 'this Whose is handbag?'], answer: 0, explanation: '正确语序：Whose is this handbag?（这个手提包是谁的？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这辆小汽车是谁的？', options: ['Whose is this car?', 'is car? this Whose', 'Whose is car? this', 'this Whose car? is'], answer: 0, explanation: '正确语序：Whose is this car?（这辆小汽车是谁的？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Whose is this ______', hint: '中文意思：这条领带是谁的？', options: ['father', 'his', 'tie', 'sister'], answer: 2, explanation: 'Whose is this tie?（这条领带是谁的？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It\'s ______', hint: '中文意思：是他的。', options: ['mother', 'brother', 'his', 'father'], answer: 2, explanation: 'It\'s his.（是他的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这条领带是谁的？', options: ['this tie? Whose is', 'tie? is Whose this', 'this is Whose tie?', 'Whose is this tie?'], answer: 3, explanation: '正确语序：Whose is this tie?（这条领带是谁的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这辆小汽车是谁的？', options: ['car? Whose is this', 'is car? this Whose', 'Whose is this car?', 'this Whose car? is'], answer: 2, explanation: '正确语序：Whose is this car?（这辆小汽车是谁的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个手提包是谁的？', options: ['Whose is handbag? this', 'this Whose is handbag?', 'handbag? is this Whose', 'Whose is this handbag?'], answer: 3, explanation: '正确语序：Whose is this handbag?（这个手提包是谁的？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Whose is this ______', hint: '中文意思：这件女衬衫是谁的？', options: ['mother', 'father', 'sister', 'blouse'], answer: 3, explanation: 'Whose is this blouse?（这件女衬衫是谁的？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It\'s ______', hint: '中文意思：是他的。', options: ['brother', 'his', 'sister', 'tie'], answer: 1, explanation: 'It\'s his.（是他的。）' },
   ],
 
   // Lesson 13: Lesson 13: A new dress 一件新连衣裙
   13: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这件连衣裙真好。', options: ['a nice dress. That\'s', 'dress. nice a That\'s', 'dress. a nice That\'s', 'That\'s a nice dress.'], answer: 3, explanation: '正确语序：That\'s a nice dress.（这件连衣裙真好。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '到楼上看看。', options: ['and upstairs see Come it.', 'Come upstairs and see it.', 'and Come it. upstairs see', 'it. upstairs and see Come'], answer: 1, explanation: '正确语序：Come upstairs and see it.（到楼上看看。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '真是一顶可爱的帽子！', options: ['That is a lovely hat!', 'That lovely hat! a is', 'is hat! lovely a That', 'is That lovely a hat!'], answer: 0, explanation: '正确语序：That is a lovely hat!（真是一顶可爱的帽子！）' },
-    { type: 'choice', question: '选出填入空格的正确单词：That is a ______ hat!', hint: '中文意思：真是一顶可爱的帽子！', options: ['blanket', 'color', 'same', 'lovely'], answer: 3, explanation: 'That is a lovely hat!（真是一顶可爱的帽子！）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It\'s very ______', hint: '中文意思：真漂亮。', options: ['come', 'green', 'smart', 'hat'], answer: 2, explanation: 'It\'s very smart.（真漂亮。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ upstairs and see it.', hint: '中文意思：到楼上看看。', options: ['color', 'come', 'same', 'colour'], answer: 1, explanation: 'Come upstairs and see it.（到楼上看看。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '真是一顶可爱的帽子！', options: ['That is a lovely hat!', 'hat! a That is lovely', 'is That lovely hat! a', 'lovely That a hat! is'], answer: 0, explanation: '正确语序：That is a lovely hat!（真是一顶可爱的帽子！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是什么颜色的？', options: ['is colour What it?', 'What colour is it?', 'is colour it? What', 'it? is What colour'], answer: 1, explanation: '正确语序：What colour is it?（是什么颜色的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你的新连衣裙是什么颜色的？', options: ['What dress? your colour\'s new', 'What dress? new your colour\'s', 'What colour\'s your new dress?', 'dress? colour\'s your new What'], answer: 2, explanation: '正确语序：What colour\'s your new dress?（你的新连衣裙是什么颜色的？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It\'s the same ______ It\'s green, too.', hint: '中文意思：一样的颜色，也是绿的。', options: ['green', 'lovely', 'colour', 'upstairs'], answer: 2, explanation: 'It\'s the same colour. It\'s green, too.（一样的颜色，也是绿的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：That is a ______ hat!', hint: '中文意思：真是一顶可爱的帽子！', options: ['green', 'hat', 'lovely', 'colour'], answer: 2, explanation: 'That is a lovely hat!（真是一顶可爱的帽子！）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It\'s ______', hint: '中文意思：是绿色的。', options: ['hat', 'green', 'lovely', 'puppy'], answer: 1, explanation: 'It\'s green.（是绿色的。）' },
   ],
 
   // Lesson 14: Lesson 14: What colour's your...? 你的……是什么颜色的？
   14: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你的大衣是什么颜色的？', options: ['What colour\'s your coat?', 'your coat? colour\'s What', 'coat? your colour\'s What', 'coat? colour\'s What your'], answer: 0, explanation: '正确语序：What colour\'s your coat?（你的大衣是什么颜色的？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你的衬衫是什么颜色的？', options: ['What shirt? colour\'s your', 'shirt? your What colour\'s', 'What colour\'s your shirt?', 'your What colour\'s shirt?'], answer: 2, explanation: '正确语序：What colour\'s your shirt?（你的衬衫是什么颜色的？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It\'s ______', hint: '中文意思：是黑色的。', options: ['yellow', 'black', 'case', 'carpet'], answer: 1, explanation: 'It\'s black.（是黑色的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你的大衣是什么颜色的？', options: ['What coat? your colour\'s', 'your colour\'s What coat?', 'colour\'s What your coat?', 'What colour\'s your coat?'], answer: 3, explanation: '正确语序：What colour\'s your coat?（你的大衣是什么颜色的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你的衬衫是什么颜色的？', options: ['What colour\'s shirt? your', 'What your shirt? colour\'s', 'What colour\'s your shirt?', 'your shirt? colour\'s What'], answer: 2, explanation: '正确语序：What colour\'s your shirt?（你的衬衫是什么颜色的？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It\'s ______', hint: '中文意思：是黑色的。', options: ['grey', 'red', 'yellow', 'black'], answer: 3, explanation: 'It\'s black.（是黑色的。）' },
   ],
 
   // Lesson 15: Lesson 15: Your passports, please. 请出示你们的护照。
   15: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你们的朋友也是丹麦人吗？', options: ['Are friends Danish, too? your', 'Danish, too? Are your friends', 'Are your friends Danish, too?', 'friends Danish, too? Are your'], answer: 2, explanation: '正确语序：Are your friends Danish, too?（你们的朋友也是丹麦人吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我们不是。', options: ['are not. No, we', 'No, we are not.', 'not. No, are we', 'No, are not. we'], answer: 1, explanation: '正确语序：No, we are not.（不，我们不是。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这些是你们的箱子吗？', options: ['your these Are cases?', 'Are these your cases?', 'cases? Are your these', 'these cases? Are your'], answer: 1, explanation: '正确语序：Are these your cases?（这些是你们的箱子吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Our cases are ______ Here they are.', hint: '中文意思：我们的箱子是棕色的。在这儿呢。', options: ['denmark', 'brown', 'russia', 'customs'], answer: 1, explanation: 'Our cases are brown. Here they are.（我们的箱子是棕色的。在这儿呢。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We are ______', hint: '中文意思：我们是丹麦人。', options: ['holland', 'danish', 'red', 'yellow'], answer: 1, explanation: 'We are Danish.（我们是丹麦人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Are your friends ______ too?', hint: '中文意思：你们的朋友也是丹麦人吗？', options: ['norwegian', 'friend', 'tourist', 'danish'], answer: 3, explanation: 'Are your friends Danish, too?（你们的朋友也是丹麦人吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你们的朋友也是丹麦人吗？', options: ['too? your Are Danish, friends', 'your Danish, Are too? friends', 'Danish, friends Are too? your', 'Are your friends Danish, too?'], answer: 3, explanation: '正确语序：Are your friends Danish, too?（你们的朋友也是丹麦人吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这些是你们的箱子吗？', options: ['these Are your cases?', 'Are these your cases?', 'your these Are cases?', 'Are these cases? your'], answer: 1, explanation: '正确语序：Are these your cases?（这些是你们的箱子吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，他们不是。', options: ['they are not. No,', 'not. No, are they', 'are not. they No,', 'No, they are not.'], answer: 3, explanation: '正确语序：No, they are not.（不，他们不是。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We are ______', hint: '中文意思：我们是丹麦人。', options: ['tourist', 'danish', 'norwegian', 'russia'], answer: 1, explanation: 'We are Danish.（我们是丹麦人。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They are ______', hint: '中文意思：他们是挪威人。', options: ['officer', 'danish', 'norwegian', 'passport'], answer: 2, explanation: 'They are Norwegian.（他们是挪威人。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Our cases are ______ Here they are.', hint: '中文意思：我们的箱子是棕色的。在这儿呢。', options: ['girl', 'danish', 'friend', 'brown'], answer: 3, explanation: 'Our cases are brown. Here they are.（我们的箱子是棕色的。在这儿呢。）' },
   ],
 
   // Lesson 16: Lesson 16: Are you...? 你是……吗？
   16: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这些是你的箱子吗？', options: ['Are your these cases?', 'Are these your cases?', 'these your Are cases?', 'cases? these your Are'], answer: 1, explanation: '正确语序：Are these your cases?（这些是你的箱子吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是。那些是我的箱子。', options: ['are Those cases. are they No, my not.', 'they cases. Those my are not. No, are', 'Those are cases. they not. are No, my', 'No, they are not. Those are my cases.'], answer: 3, explanation: '正确语序：No, they are not. Those are my cases.（不，不是。那些是我的箱子。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我不是。我是挪威人。', options: ['I Norwegian. not. I No, am am', 'am I Norwegian. not. am No, I', 'I am I No, not. am Norwegian.', 'No, I am not. I am Norwegian.'], answer: 3, explanation: '正确语序：No, I am not. I am Norwegian.（不，我不是。我是挪威人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：No, they are not. ______ are my cases.', hint: '中文意思：不，不是。那些是我的箱子。', options: ['grey', 'dutch', 'those', 'orange'], answer: 2, explanation: 'No, they are not. Those are my cases.（不，不是。那些是我的箱子。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Are ______ your cases?', hint: '中文意思：这些是你的箱子吗？', options: ['those', 'dutch', 'russian', 'these'], answer: 3, explanation: 'Are these your cases?（这些是你的箱子吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这些是你的箱子吗？', options: ['Are these your cases?', 'your these Are cases?', 'cases? Are your these', 'Are your these cases?'], answer: 0, explanation: '正确语序：Are these your cases?（这些是你的箱子吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我不是。我是挪威人。', options: ['I Norwegian. am No, am I not.', 'I No, Norwegian. not. am I am', 'No, I am not. I am Norwegian.', 'am No, Norwegian. am I I not.'], answer: 2, explanation: '正确语序：No, I am not. I am Norwegian.（不，我不是。我是挪威人。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是。那些是我的箱子。', options: ['they No, cases. my are Those are not.', 'No, are they my not. Those are cases.', 'No, they are not. Those are my cases.', 'Those cases. No, are not. are they my'], answer: 2, explanation: '正确语序：No, they are not. Those are my cases.（不，不是。那些是我的箱子。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Are ______ your cases?', hint: '中文意思：这些是你的箱子吗？', options: ['these', 'russian', 'black', 'grey'], answer: 0, explanation: 'Are these your cases?（这些是你的箱子吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：No, they are not. ______ are my cases.', hint: '中文意思：不，不是。那些是我的箱子。', options: ['those', 'dutch', 'grey', 'these'], answer: 0, explanation: 'No, they are not. Those are my cases.（不，不是。那些是我的箱子。）' },
   ],
 
   // Lesson 17: Lesson 17: How do you do? 你好！
   17: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '谢谢，杰克逊先生。', options: ['Jackson. you, Thank Mr.', 'Mr. Thank Jackson. you,', 'you, Thank Mr. Jackson.', 'Thank you, Mr. Jackson.'], answer: 3, explanation: '正确语序：Thank you, Mr. Jackson.（谢谢，杰克逊先生。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你们好！', options: ['do? do you How', 'do? How you do', 'How do you do?', 'do? How do you'], answer: 2, explanation: '正确语序：How do you do?（你们好！）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们是推销员。', options: ['sales reps. are They', 'reps. They sales are', 'They are sales reps.', 'sales They are reps.'], answer: 2, explanation: '正确语序：They are sales reps.（他们是推销员。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This is Jim. He is our ______ assistant.', hint: '中文意思：这是吉姆。他是我们的办公室助理。', options: ['salesreps', 'man', 'office', 'hardworking'], answer: 2, explanation: 'This is Jim. He is our office assistant.（这是吉姆。他是我们的办公室助理。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Who is this young ______', hint: '中文意思：这个年轻人是谁？', options: ['hardworking', 'man', 'employee', 'assistant'], answer: 1, explanation: 'Who is this young man?（这个年轻人是谁？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Those women are very ______', hint: '中文意思：那些姑娘很勤快。', options: ['assistant', 'hardworking', 'salesreps', 'man'], answer: 1, explanation: 'Those women are very hard-working.（那些姑娘很勤快。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们不很忙。', options: ['aren\'t very busy! They', 'very busy! They aren\'t', 'very busy! aren\'t They', 'They aren\'t very busy!'], answer: 3, explanation: '正确语序：They aren\'t very busy!（他们不很忙。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那些姑娘很勤快。', options: ['women hard-working. very Those are', 'very women Those hard-working. are', 'very are women Those hard-working.', 'Those women are very hard-working.'], answer: 3, explanation: '正确语序：Those women are very hard-working.（那些姑娘很勤快。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们是电脑录入员。', options: ['keyboard operators. They are', 'They are keyboard operators.', 'are keyboard They operators.', 'are keyboard operators. They'], answer: 1, explanation: '正确语序：They are keyboard operators.（他们是电脑录入员。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Who is this young ______', hint: '中文意思：这个年轻人是谁？', options: ['hardworking', 'salesreps', 'man', 'assistant'], answer: 2, explanation: 'Who is this young man?（这个年轻人是谁？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Those women are very ______', hint: '中文意思：那些姑娘很勤快。', options: ['employee', 'salesreps', 'hardworking', 'office'], answer: 2, explanation: 'Those women are very hard-working.（那些姑娘很勤快。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This is Jim. He is our office ______', hint: '中文意思：这是吉姆。他是我们的办公室助理。', options: ['man', 'employee', 'assistant', 'office'], answer: 2, explanation: 'This is Jim. He is our office assistant.（这是吉姆。他是我们的办公室助理。）' },
   ],
 
   // Lesson 18: Lesson 18: What are their jobs? 他们是做什么工作的？
   18: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们是电脑录入员。', options: ['They keyboard are operators.', 'They are keyboard operators.', 'keyboard are They operators.', 'They keyboard operators. are'], answer: 1, explanation: '正确语序：They are keyboard operators.（他们是电脑录入员。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们是做什么工作的？', options: ['their What are jobs?', 'What are their jobs?', 'are What jobs? their', 'are jobs? What their'], answer: 1, explanation: '正确语序：What are their jobs?（他们是做什么工作的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们是做什么工作的？', options: ['are their What jobs?', 'their What jobs? are', 'What are their jobs?', 'What jobs? are their'], answer: 2, explanation: '正确语序：What are their jobs?（他们是做什么工作的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们是电脑录入员。', options: ['They are keyboard operators.', 'keyboard They are operators.', 'They keyboard are operators.', 'operators. are keyboard They'], answer: 0, explanation: '正确语序：They are keyboard operators.（他们是电脑录入员。）' },
   ],
 
   // Lesson 19: Lesson 19: Tired and thirsty 又累又渴
   19: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你们现在好些了吗？', options: ['Are you all right now?', 'you all right now? Are', 'all you Are right now?', 'right Are all now? you'], answer: 0, explanation: '正确语序：Are you all right now?（你们现在好些了吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们累了，口也渴，妈妈。', options: ['thirsty, tired We and are Mum.', 'We are tired and thirsty, Mum.', 'Mum. and are tired We thirsty,', 'and thirsty, are We Mum. tired'], answer: 1, explanation: '正确语序：We are tired and thirsty, Mum.（我们累了，口也渴，妈妈。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '瞧！有个卖冰淇淋的。', options: ['ice is There an Look! cream man.', 'Look! There is an ice cream man.', 'is ice an Look! cream man. There', 'man. Look! an is cream ice There'], answer: 1, explanation: '正确语序：Look! There is an ice cream man.（瞧！有个卖冰淇淋的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Are you all ______ now?', hint: '中文意思：你们现在好些了吗？', options: ['tired', 'right', 'sitdown', 'shut'], answer: 1, explanation: 'Are you all right now?（你们现在好些了吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What\'s the matter, ______', hint: '中文意思：怎么啦，孩子们？', options: ['children', 'long', 'light', 'heavy'], answer: 0, explanation: 'What\'s the matter, children?（怎么啦，孩子们？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：These ______ creams are nice.', hint: '中文意思：这些冰淇淋真好吃。', options: ['grandfather', 'heavy', 'icecream', 'ice'], answer: 3, explanation: 'These ice creams are nice.（这些冰淇淋真好吃。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '给你们，孩子们。', options: ['Here are, children. you', 'Here you are, children.', 'are, you Here children.', 'are, children. you Here'], answer: 1, explanation: '正确语序：Here you are, children.（给你们，孩子们。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '瞧！有个卖冰淇淋的。', options: ['man. cream ice There is Look! an', 'Look! There is an ice cream man.', 'cream Look! is an man. There ice', 'There ice cream man. an is Look!'], answer: 1, explanation: '正确语序：Look! There is an ice cream man.（瞧！有个卖冰淇淋的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你们现在好些了吗？', options: ['all you right Are now?', 'Are you all right now?', 'Are all now? you right', 'you all now? Are right'], answer: 1, explanation: '正确语序：Are you all right now?（你们现在好些了吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Are you all ______ now?', hint: '中文意思：你们现在好些了吗？', options: ['grandfather', 'shoe', 'children', 'right'], answer: 3, explanation: 'Are you all right now?（你们现在好些了吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Look! There is an ice ______ man.', hint: '中文意思：瞧！有个卖冰淇淋的。', options: ['long', 'shoe', 'children', 'cream'], answer: 3, explanation: 'Look! There is an ice cream man.（瞧！有个卖冰淇淋的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We are tired and thirsty, ______', hint: '中文意思：我们累了，口也渴，妈妈。', options: ['icecream', 'mum', 'kid', 'tired'], answer: 1, explanation: 'We are tired and thirsty, Mum.（我们累了，口也渴，妈妈。）' },
   ],
 
   // Lesson 20: Lesson 20: Look at them! 看看它们！
   20: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看那些冰淇淋。', options: ['Look ice the at creams.', 'Look at the ice creams.', 'at ice the Look creams.', 'ice at the Look creams.'], answer: 1, explanation: '正确语序：Look at the ice creams.（看那些冰淇淋。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看那些冰淇淋。', options: ['the ice Look creams. at', 'at ice the creams. Look', 'at Look the ice creams.', 'Look at the ice creams.'], answer: 3, explanation: '正确语序：Look at the ice creams.（看那些冰淇淋。）' },
   ],
 
   // Lesson 21: Lesson 21: Which book? 哪一本书？
   21: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那本。是那本红的。', options: ['red one. No, The one. not that', 'No, not that one. The red one.', 'not one. that red The one. No,', 'No, one. that The not red one.'], answer: 1, explanation: '正确语序：No, not that one. The red one.（不，不是那本。是那本红的。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请拿本书给我，简。', options: ['Give me a book please, Jane.', 'me a book Give Jane. please,', 'Give Jane. please, a book me', 'a please, me Jane. book Give'], answer: 0, explanation: '正确语序：Give me a book please, Jane.（请拿本书给我，简。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ book?', hint: '中文意思：哪一本？', options: ['which', 'big', 'give', 'chopsticks'], answer: 0, explanation: 'Which book?（哪一本？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This ______', hint: '中文意思：这本吗？', options: ['chopsticks', 'one', 'give', 'which'], answer: 1, explanation: 'This one?（这本吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ me a book please, Jane.', hint: '中文意思：请拿本书给我，简。', options: ['big', 'small', 'chopsticks', 'give'], answer: 3, explanation: 'Give me a book please, Jane.（请拿本书给我，简。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请拿本书给我，简。', options: ['please, Jane. Give a book me', 'Give me a book please, Jane.', 'me a Give book Jane. please,', 'Give book a Jane. please, me'], answer: 1, explanation: '正确语序：Give me a book please, Jane.（请拿本书给我，简。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那本。是那本红的。', options: ['one. red No, one. that The not', 'No, not that one. The red one.', 'one. not that No, one. The red', 'The not one. No, one. that red'], answer: 1, explanation: '正确语序：No, not that one. The red one.（不，不是那本。是那本红的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ me a book please, Jane.', hint: '中文意思：请拿本书给我，简。', options: ['which', 'one', 'give', 'small'], answer: 2, explanation: 'Give me a book please, Jane.（请拿本书给我，简。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ book?', hint: '中文意思：哪一本？', options: ['chopsticks', 'give', 'which', 'small'], answer: 2, explanation: 'Which book?（哪一本？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This ______', hint: '中文意思：这本吗？', options: ['chopsticks', 'give', 'one', 'big'], answer: 2, explanation: 'This one?（这本吗？）' },
   ],
 
   // Lesson 22: Lesson 22: Give me/him/her/us/them a... Which one? 给我/他/她/我们/他们一……哪一……？
   22: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请给他一个玻璃杯。', options: ['him Give a glass please.', 'Give him a please. glass', 'Give him a glass please.', 'a Give him please. glass'], answer: 2, explanation: '正确语序：Give him a glass please.（请给他一个玻璃杯。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '哪一个？这个吗？', options: ['This Which one? one?', 'one? This Which one?', 'Which one? This one?', 'one? one? This Which'], answer: 2, explanation: '正确语序：Which one? This one?（哪一个？这个吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那个。是那个大的。', options: ['No, not that one. The big one.', 'one. The No, one. not that big', 'that not one. No, one. The big', 'one. big not No, one. that The'], answer: 0, explanation: '正确语序：No, not that one. The big one.（不，不是那个。是那个大的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Give us a ______ please.', hint: '中文意思：请给我们一个瓶子。', options: ['blunt', 'bottle', 'empty', 'glass'], answer: 1, explanation: 'Give us a bottle please.（请给我们一个瓶子。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Give her a ______ please.', hint: '中文意思：请给她一个茶杯。', options: ['fork', 'empty', 'sharp', 'cup'], answer: 3, explanation: 'Give her a cup please.（请给她一个茶杯。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Give me a ______ please.', hint: '中文意思：请给我一个盒子。', options: ['large', 'bottle', 'box', 'cup'], answer: 2, explanation: 'Give me a box please.（请给我一个盒子。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请给我们一个瓶子。', options: ['Give us a bottle please.', 'bottle us please. a Give', 'us bottle Give please. a', 'bottle a us please. Give'], answer: 0, explanation: '正确语序：Give us a bottle please.（请给我们一个瓶子。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '哪一个？这个吗？', options: ['one? one? This Which', 'This one? Which one?', 'one? one? Which This', 'Which one? This one?'], answer: 3, explanation: '正确语序：Which one? This one?（哪一个？这个吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那个。是那个大的。', options: ['big one. that No, one. The not', 'big The one. No, not one. that', 'one. No, that big The not one.', 'No, not that one. The big one.'], answer: 3, explanation: '正确语序：No, not that one. The big one.（不，不是那个。是那个大的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Give her a ______ please.', hint: '中文意思：请给她一个茶杯。', options: ['bottle', 'little', 'cup', 'sharp'], answer: 2, explanation: 'Give her a cup please.（请给她一个茶杯。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Give us a ______ please.', hint: '中文意思：请给我们一个瓶子。', options: ['fork', 'bottle', 'full', 'spoon'], answer: 1, explanation: 'Give us a bottle please.（请给我们一个瓶子。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Give them a ______ please.', hint: '中文意思：请给他们一罐。', options: ['box', 'tin', 'sharp', 'blunt'], answer: 1, explanation: 'Give them a tin please.（请给他们一罐。）' },
   ],
 
   // Lesson 23: Lesson 23: Which glasses? 哪几只杯子？
   23: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那几只。是架子上的那几只。', options: ['No, not those. The ones on the shelf.', 'shelf. the not The those. ones on No,', 'ones the The not No, shelf. those. on', 'on No, not those. ones The shelf. the'], answer: 0, explanation: '正确语序：No, not those. The ones on the shelf.（不，不是那几只。是架子上的那几只。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请拿给我几只玻璃杯，简。', options: ['Jane. some please, me Give glasses', 'glasses some Give me Jane. please,', 'Give me some glasses please, Jane.', 'please, glasses Give some me Jane.'], answer: 2, explanation: '正确语序：Give me some glasses please, Jane.（请拿给我几只玻璃杯，简。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：These ______', hint: '中文意思：这几只？', options: ['newspaper', 'shelf', 'television', 'glasses'], answer: 3, explanation: 'These glasses?（这几只？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：No, not those. The ones on the ______', hint: '中文意思：不，不是那几只。是架子上的那几只。', options: ['bed', 'stereo', 'shelf', 'newspaper'], answer: 2, explanation: 'No, not those. The ones on the shelf.（不，不是那几只。是架子上的那几只。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Which ______', hint: '中文意思：哪几只？', options: ['table', 'dressing', 'glasses', 'floor'], answer: 2, explanation: 'Which glasses?（哪几只？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那几只。是架子上的那几只。', options: ['shelf. those. The on No, the ones not', 'No, not those. The ones on the shelf.', 'not ones the on those. No, The shelf.', 'not The shelf. on No, the those. ones'], answer: 1, explanation: '正确语序：No, not those. The ones on the shelf.（不，不是那几只。是架子上的那几只。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请拿给我几只玻璃杯，简。', options: ['Give me some glasses please, Jane.', 'Jane. some please, Give me glasses', 'Jane. glasses please, some Give me', 'some Give glasses me please, Jane.'], answer: 0, explanation: '正确语序：Give me some glasses please, Jane.（请拿给我几只玻璃杯，简。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：No, not those. The ones on the ______', hint: '中文意思：不，不是那几只。是架子上的那几只。', options: ['floor', 'cupboard', 'dish', 'shelf'], answer: 3, explanation: 'No, not those. The ones on the shelf.（不，不是那几只。是架子上的那几只。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：These ______', hint: '中文意思：这几只？', options: ['television', 'dressingtable', 'glasses', 'cigarette'], answer: 2, explanation: 'These glasses?（这几只？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Which ______', hint: '中文意思：哪几只？', options: ['dressing', 'floor', 'bed', 'glasses'], answer: 3, explanation: 'Which glasses?（哪几只？）' },
   ],
 
   // Lesson 24: Lesson 24: Give me/him/her/us/them some... Which ones? 给我/他/她/我们/他们一些……哪些？
   24: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那些。是桌子上的那些。', options: ['No, not those. The ones on the desk.', 'on ones No, the desk. those. not The', 'not No, on ones the desk. The those.', 'ones the desk. The No, on those. not'], answer: 0, explanation: '正确语序：No, not those. The ones on the desk.（不，不是那些。是桌子上的那些。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请给她一些杂志。', options: ['some magazines her please. Give', 'Give her some magazines please.', 'please. some magazines Give her', 'Give some her magazines please.'], answer: 1, explanation: '正确语序：Give her some magazines please.（请给她一些杂志。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '哪些茶杯？这些茶杯吗？', options: ['Which cups? cups? These', 'cups? Which These cups?', 'Which cups? These cups?', 'These cups? Which cups?'], answer: 2, explanation: '正确语序：Which cups? These cups?（哪些茶杯？这些茶杯吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：No, not those. The ones on the ______', hint: '中文意思：不，不是那些。是桌子上的那些。', options: ['dressingtable', 'desk', 'stereo', 'bed'], answer: 1, explanation: 'No, not those. The ones on the desk.（不，不是那些。是桌子上的那些。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那些。是桌子上的那些。', options: ['the desk. not The No, on those. ones', 'No, not those. The ones on the desk.', 'The not on ones the desk. No, those.', 'on The those. the desk. ones No, not'], answer: 1, explanation: '正确语序：No, not those. The ones on the desk.（不，不是那些。是桌子上的那些。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请给她一些杂志。', options: ['her some magazines please. Give', 'Give her some magazines please.', 'please. her Give some magazines', 'Give magazines her some please.'], answer: 1, explanation: '正确语序：Give her some magazines please.（请给她一些杂志。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请给他一些瓶子。', options: ['him please. Give bottles some', 'him bottles please. some Give', 'some Give him bottles please.', 'Give him some bottles please.'], answer: 3, explanation: '正确语序：Give him some bottles please.（请给他一些瓶子。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：No, not those. The ones on the ______', hint: '中文意思：不，不是那些。是桌子上的那些。', options: ['cigarette', 'dressingtable', 'desk', 'cupboard'], answer: 2, explanation: 'No, not those. The ones on the desk.（不，不是那些。是桌子上的那些。）' },
   ],
 
   // Lesson 25: Lesson 25: Mrs. Smith's kitchen 史密斯太太的厨房
   25: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '厨房里有一个电炉。', options: ['kitchen. in an cooker the electric There is', 'There is an electric cooker in the kitchen.', 'the is an kitchen. There electric in cooker', 'There in an electric kitchen. the is cooker'], answer: 1, explanation: '正确语序：There is an electric cooker in the kitchen.（厨房里有一个电炉。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它在左边。', options: ['It is on the left.', 'on is It the left.', 'the left. It is on', 'It left. is the on'], answer: 0, explanation: '正确语序：It is on the left.（它在左边。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '厨房里有一台电冰箱。', options: ['the is in There kitchen. a refrigerator', 'a kitchen. the There refrigerator in is', 'There is a refrigerator in the kitchen.', 'is a There refrigerator kitchen. the in'], answer: 2, explanation: '正确语序：There is a refrigerator in the kitchen.（厨房里有一台电冰箱。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The ______ is white.', hint: '中文意思：电冰箱是白色的。', options: ['refrigerator', 'room', 'chef', 'cook'], answer: 0, explanation: 'The refrigerator is white.（电冰箱是白色的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is on the ______', hint: '中文意思：它在右边。', options: ['cup', 'right', 'left', 'room'], answer: 1, explanation: 'It is on the right.（它在右边。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：There is a table in the middle of the ______', hint: '中文意思：房间的中间有一张桌子。', options: ['cup', 'mrs', 'room', 'cooker'], answer: 2, explanation: 'There is a table in the middle of the room.（房间的中间有一张桌子。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '桌子上还有一只杯子。', options: ['a There cup table, on is too. the', 'a too. table, the There on cup is', 'is on table, There cup too. a the', 'There is a cup on the table, too.'], answer: 3, explanation: '正确语序：There is a cup on the table, too.（桌子上还有一只杯子。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '厨房里有一个电炉。', options: ['cooker an is There kitchen. electric the in', 'kitchen. electric is cooker in an There the', 'kitchen. electric is the in an cooker There', 'There is an electric cooker in the kitchen.'], answer: 3, explanation: '正确语序：There is an electric cooker in the kitchen.（厨房里有一个电炉。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '厨房里有一台电冰箱。', options: ['is the kitchen. There refrigerator a in', 'kitchen. in a is the There refrigerator', 'the a There refrigerator in kitchen. is', 'There is a refrigerator in the kitchen.'], answer: 3, explanation: '正确语序：There is a refrigerator in the kitchen.（厨房里有一台电冰箱。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ Smith\'s kitchen is small.', hint: '中文意思：史密斯太太的厨房很小。', options: ['refrigerator', 'mrs', 'middle', 'chef'], answer: 1, explanation: 'Mrs. Smith\'s kitchen is small.（史密斯太太的厨房很小。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is on the ______', hint: '中文意思：它在右边。', options: ['middle', 'left', 'right', 'electric'], answer: 2, explanation: 'It is on the right.（它在右边。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The ______ is clean.', hint: '中文意思：杯子是干净的。', options: ['kitchen', 'cup', 'cook', 'chef'], answer: 1, explanation: 'The cup is clean.（杯子是干净的。）' },
   ],
 
   // Lesson 26: Lesson 26: Where is it? 它在哪里？
   26: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '钢笔在哪里？', options: ['Where pen? is the', 'Where is the pen?', 'pen? Where the is', 'the Where pen? is'], answer: 1, explanation: '正确语序：Where is the pen?（钢笔在哪里？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '在椅子下面。', options: ['chair. It\'s the under', 'It\'s under the chair.', 'the It\'s chair. under', 'chair. It\'s under the'], answer: 1, explanation: '正确语序：It\'s under the chair.（在椅子下面。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它也在桌子上。', options: ['It\'s on the too. table,', 'on table, It\'s too. the', 'It\'s on the table, too.', 'the It\'s on too. table,'], answer: 2, explanation: '正确语序：It\'s on the table, too.（它也在桌子上。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '杯子在哪里？', options: ['the is cup? Where', 'cup? Where the is', 'the is Where cup?', 'Where is the cup?'], answer: 3, explanation: '正确语序：Where is the cup?（杯子在哪里？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '瓶子在哪里？', options: ['Where the bottle? is', 'Where is the bottle?', 'the Where is bottle?', 'Where is bottle? the'], answer: 1, explanation: '正确语序：Where is the bottle?（瓶子在哪里？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '书在哪里？', options: ['Where is the book?', 'the is Where book?', 'Where the is book?', 'the book? Where is'], answer: 0, explanation: '正确语序：Where is the book?（书在哪里？）' },
   ],
 
   // Lesson 27: Lesson 27: Mrs. Smith's living room 史密斯太太的客厅
   27: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '房间里有一张桌子。', options: ['the is room. There table in a', 'There room. is in table the a', 'There is a table in the room.', 'table There the is a room. in'], answer: 2, explanation: '正确语序：There is a table in the room.（房间里有一张桌子。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '收音机上有一些书。', options: ['the on radio. books are some There', 'There radio. the some books on are', 'on some radio. are the There books', 'There are some books on the radio.'], answer: 3, explanation: '正确语序：There are some books on the radio.（收音机上有一些书。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '桌子上有一些报纸。', options: ['There are some newspapers on the table.', 'are There some the on table. newspapers', 'on table. newspapers the There are some', 'the on are some newspapers There table.'], answer: 0, explanation: '正确语序：There are some newspapers on the table.（桌子上有一些报纸。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The radio is near the ______', hint: '中文意思：收音机靠近门。', options: ['livingroom', 'jeans', 'door', 'image'], answer: 2, explanation: 'The radio is near the door.（收音机靠近门。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The pictures are on the ______', hint: '中文意思：画在墙上。', options: ['window', 'armchair', 'livingroom', 'wall'], answer: 3, explanation: 'The pictures are on the wall.（画在墙上。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The armchairs are ______ the table.', hint: '中文意思：扶手椅靠近桌子。', options: ['near', 'thegreatwall', 'image', 'picture'], answer: 0, explanation: 'The armchairs are near the table.（扶手椅靠近桌子。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '电视机上有一些杂志。', options: ['magazines are some on the television. There', 'on some television. magazines There the are', 'There are some magazines on the television.', 'are some on television. the There magazines'], answer: 2, explanation: '正确语序：There are some magazines on the television.（电视机上有一些杂志。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '房间里有一张桌子。', options: ['in is a room. There table the', 'There is a table in the room.', 'a There in table room. is the', 'table in a the room. is There'], answer: 1, explanation: '正确语序：There is a table in the room.（房间里有一张桌子。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '画在墙上。', options: ['The the are wall. on pictures', 'The pictures are on the wall.', 'are on The wall. pictures the', 'the are wall. The pictures on'], answer: 1, explanation: '正确语序：The pictures are on the wall.（画在墙上。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The radio is near the ______', hint: '中文意思：收音机靠近门。', options: ['window', 'thegreatwall', 'door', 'armchair'], answer: 2, explanation: 'The radio is near the door.（收音机靠近门。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The armchairs are ______ the table.', hint: '中文意思：扶手椅靠近桌子。', options: ['window', 'near', 'livingroom', 'shorts'], answer: 1, explanation: 'The armchairs are near the table.（扶手椅靠近桌子。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The television is ______ the window.', hint: '中文意思：电视机靠近窗户。', options: ['window', 'near', 'livingroom', 'jeans'], answer: 1, explanation: 'The television is near the window.（电视机靠近窗户。）' },
   ],
 
   // Lesson 28: Lesson 28: Where are they? 它们在哪里？
   28: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它们在墙上。', options: ['wall. They\'re the on', 'They\'re on wall. the', 'They\'re on the wall.', 'the They\'re wall. on'], answer: 2, explanation: '正确语序：They\'re on the wall.（它们在墙上。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '书在哪里？', options: ['books? the Where are', 'Where are the books?', 'the Where books? are', 'are the Where books?'], answer: 1, explanation: '正确语序：Where are the books?（书在哪里？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它们在桌子旁边。', options: ['table. They\'re near the', 'the near They\'re table.', 'They\'re the table. near', 'They\'re near the table.'], answer: 3, explanation: '正确语序：They\'re near the table.（它们在桌子旁边。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '图画在哪里？', options: ['are the pictures? Where', 'Where the are pictures?', 'are Where the pictures?', 'Where are the pictures?'], answer: 3, explanation: '正确语序：Where are the pictures?（图画在哪里？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '书在哪里？', options: ['books? the are Where', 'Where are the books?', 'are Where books? the', 'the Where are books?'], answer: 1, explanation: '正确语序：Where are the books?（书在哪里？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它们在墙上。', options: ['on wall. the They\'re', 'They\'re on the wall.', 'They\'re wall. on the', 'on wall. They\'re the'], answer: 1, explanation: '正确语序：They\'re on the wall.（它们在墙上。）' },
   ],
 
   // Lesson 29: Lesson 29: Come in, Amy. 进来，艾米。
   29: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '然后扫地。', options: ['Then sweep the floor.', 'Then floor. sweep the', 'Then floor. the sweep', 'floor. the sweep Then'], answer: 0, explanation: '正确语序：Then sweep the floor.（然后扫地。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '然后把这些衣服放进衣柜里。', options: ['put wardrobe. the in Then these clothes', 'Then put these clothes in the wardrobe.', 'wardrobe. clothes Then the put these in', 'in Then clothes wardrobe. put these the'], answer: 1, explanation: '正确语序：Then put these clothes in the wardrobe.（然后把这些衣服放进衣柜里。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这卧室太不整洁了。', options: ['very bedroom untidy. This is', 'is bedroom untidy. This very', 'This bedroom is very untidy.', 'This bedroom untidy. very is'], answer: 2, explanation: '正确语序：This bedroom is very untidy.（这卧室太不整洁了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Then ______ the floor.', hint: '中文意思：然后扫地。', options: ['dust', 'sweep', 'air', 'tidy'], answer: 1, explanation: 'Then sweep the floor.（然后扫地。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ the dressing table.', hint: '中文意思：掸掉梳妆台上的灰尘。', options: ['wardrobe', 'clothes', 'dust', 'shut'], answer: 2, explanation: 'Dust the dressing table.（掸掉梳妆台上的灰尘。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This bedroom is very ______', hint: '中文意思：这卧室太不整洁了。', options: ['sweep', 'untidy', 'shut', 'closet'], answer: 1, explanation: 'This bedroom is very untidy.（这卧室太不整洁了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '然后把这些衣服放进衣柜里。', options: ['Then put these wardrobe. in clothes the', 'put Then the clothes wardrobe. in these', 'put clothes the wardrobe. in these Then', 'Then put these clothes in the wardrobe.'], answer: 3, explanation: '正确语序：Then put these clothes in the wardrobe.（然后把这些衣服放进衣柜里。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请把门关上。', options: ['please. Shut door, the', 'Shut the door, please.', 'please. Shut the door,', 'Shut the please. door,'], answer: 1, explanation: '正确语序：Shut the door, please.（请把门关上。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '掸掉梳妆台上的灰尘。', options: ['the table. Dust dressing', 'table. dressing Dust the', 'Dust the dressing table.', 'table. Dust dressing the'], answer: 2, explanation: '正确语序：Dust the dressing table.（掸掉梳妆台上的灰尘。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ the dressing table.', hint: '中文意思：掸掉梳妆台上的灰尘。', options: ['dust', 'closet', 'clothes', 'untidy'], answer: 0, explanation: 'Dust the dressing table.（掸掉梳妆台上的灰尘。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ the window and air the room.', hint: '中文意思：开窗，给房间通通风。', options: ['open', 'dust', 'tidy', 'sweep'], answer: 0, explanation: 'Open the window and air the room.（开窗，给房间通通风。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ the door, please.', hint: '中文意思：请把门关上。', options: ['shut', 'sweep', 'clothes', 'wardrobe'], answer: 0, explanation: 'Shut the door, please.（请把门关上。）' },
   ],
 
   // Lesson 30: Lesson 30: What must I do? 我应该做什么？
   30: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '打开电视。', options: ['the on television. Turn', 'Turn television. the on', 'Turn on television. the', 'Turn on the television.'], answer: 3, explanation: '正确语序：Turn on the television.（打开电视。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我应该做什么？', options: ['must do? I What', 'What must I do?', 'I must What do?', 'I do? must What'], answer: 1, explanation: '正确语序：What must I do?（我应该做什么？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '开窗，给房间通通风。', options: ['window and the room. air Open the', 'room. air window the and the Open', 'window air and the room. the Open', 'Open the window and air the room.'], answer: 3, explanation: '正确语序：Open the window and air the room.（开窗，给房间通通风。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ the pencil.', hint: '中文意思：削尖铅笔。', options: ['turnoff', 'puton', 'empty', 'sharpen'], answer: 3, explanation: 'Sharpen the pencil.（削尖铅笔。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ this book.', hint: '中文意思：读这本书。', options: ['read', 'sharpen', 'empty', 'takeoff'], answer: 0, explanation: 'Read this book.（读这本书。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ the cup.', hint: '中文意思：倒空杯子。', options: ['turnon', 'turnoff', 'takeoff', 'empty'], answer: 3, explanation: 'Empty the cup.（倒空杯子。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '打开电视。', options: ['Turn on the television.', 'television. the Turn on', 'the on Turn television.', 'Turn television. the on'], answer: 0, explanation: '正确语序：Turn on the television.（打开电视。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '掸掉梳妆台上的灰尘。', options: ['table. dressing the Dust', 'Dust the dressing table.', 'table. Dust dressing the', 'Dust dressing table. the'], answer: 1, explanation: '正确语序：Dust the dressing table.（掸掉梳妆台上的灰尘。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '开窗，给房间通通风。', options: ['window air the Open room. and the', 'window and room. air the Open the', 'room. the window air Open and the', 'Open the window and air the room.'], answer: 3, explanation: '正确语序：Open the window and air the room.（开窗，给房间通通风。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ the cup.', hint: '中文意思：倒空杯子。', options: ['empty', 'turnon', 'takeoff', 'puton'], answer: 0, explanation: 'Empty the cup.（倒空杯子。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ this book.', hint: '中文意思：读这本书。', options: ['empty', 'read', 'puton', 'turnoff'], answer: 1, explanation: 'Read this book.（读这本书。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ the pencil.', hint: '中文意思：削尖铅笔。', options: ['sharpen', 'turnon', 'empty', 'read'], answer: 0, explanation: 'Sharpen the pencil.（削尖铅笔。）' },
   ],
 
   // Lesson 31: Lesson 31: Where's Sally? 萨莉在哪里？
   31: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它正在草地上跑。', options: ['the running grass. It\'s across', 'across It\'s grass. running the', 'It\'s running across the grass.', 'the running across It\'s grass.'], answer: 2, explanation: '正确语序：It\'s running across the grass.（它正在草地上跑。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '蒂姆也在花园里吗？', options: ['Is Tim in the garden, too?', 'the in Tim Is garden, too?', 'Tim garden, in too? the Is', 'garden, the Is too? Tim in'], answer: 0, explanation: '正确语序：Is Tim in the garden, too?（蒂姆也在花园里吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '谁在爬树？', options: ['climbing is the Who tree?', 'climbing Who is tree? the', 'Who is climbing the tree?', 'tree? climbing Who is the'], answer: 2, explanation: '正确语序：Who is climbing the tree?（谁在爬树？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Who is climbing the ______', hint: '中文意思：谁在爬树？', options: ['garden', 'tap', 'tree', 'running'], answer: 2, explanation: 'Who is climbing the tree?（谁在爬树？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：She\'s sitting ______ the tree.', hint: '中文意思：她正坐在树下。', options: ['milk', 'under', 'type', 'tree'], answer: 1, explanation: 'She\'s sitting under the tree.（她正坐在树下。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The dog\'s in the ______ too.', hint: '中文意思：狗也在花园里。', options: ['who', 'garden', 'drink', 'sitting'], answer: 1, explanation: 'The dog\'s in the garden, too.（狗也在花园里。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请再说一遍。', options: ['I beg your pardon?', 'beg pardon? your I', 'I your pardon? beg', 'pardon? your beg I'], answer: 0, explanation: '正确语序：I beg your pardon?（请再说一遍。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她在花园里，琼。', options: ['garden, She\'s the Jean. in', 'in the She\'s garden, Jean.', 'She\'s Jean. the in garden,', 'She\'s in the garden, Jean.'], answer: 3, explanation: '正确语序：She\'s in the garden, Jean.（她在花园里，琼。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那么狗呢？', options: ['about What the dog?', 'about the dog? What', 'dog? about What the', 'What about the dog?'], answer: 3, explanation: '正确语序：What about the dog?（那么狗呢？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It\'s running ______ a cat.', hint: '中文意思：它在追一只猫。', options: ['tree', 'run', 'after', 'milk'], answer: 2, explanation: 'It\'s running after a cat.（它在追一只猫。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is Tim in the ______ too?', hint: '中文意思：蒂姆也在花园里吗？', options: ['garden', 'bone', 'dog', 'tree'], answer: 0, explanation: 'Is Tim in the garden, too?（蒂姆也在花园里吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What about the ______', hint: '中文意思：那么狗呢？', options: ['dog', 'who', 'tree', 'across'], answer: 0, explanation: 'What about the dog?（那么狗呢？）' },
   ],
 
   // Lesson 32: Lesson 32: What's he/she/it doing? 他/她/它正在做什么？
   32: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她正在读一本书。', options: ['a She reading book. is', 'book. a reading She is', 'She is reading a book.', 'She reading book. is a'], answer: 2, explanation: '正确语序：She is reading a book.（她正在读一本书。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他正在做一个书橱。', options: ['is a He making bookcase.', 'He is bookcase. a making', 'making bookcase. a He is', 'He is making a bookcase.'], answer: 3, explanation: '正确语序：He is making a bookcase.（他正在做一个书橱。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她正在做什么？', options: ['What is she doing?', 'What doing? is she', 'is What doing? she', 'doing? What is she'], answer: 0, explanation: '正确语序：What is she doing?（她正在做什么？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He is ______ bread.', hint: '中文意思：他正在吃面包。', options: ['shaving', 'bookcase', 'turningoff', 'eating'], answer: 3, explanation: 'He is eating bread.（他正在吃面包。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：She is ______ a book.', hint: '中文意思：她正在读一本书。', options: ['climbing', 'typing', 'shaving', 'reading'], answer: 3, explanation: 'She is reading a book.（她正在读一本书。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：She is typing a ______', hint: '中文意思：她正在打一封信。', options: ['reading', 'turningon', 'cleaning', 'letter'], answer: 3, explanation: 'She is typing a letter.（她正在打一封信。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她正在做什么？', options: ['doing? What is she', 'What she doing? is', 'What is she doing?', 'she doing? What is'], answer: 2, explanation: '正确语序：What is she doing?（她正在做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他正在做什么？', options: ['doing? he What is', 'What is he doing?', 'doing? is he What', 'he doing? is What'], answer: 1, explanation: '正确语序：What is he doing?（他正在做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他正在吃面包。', options: ['He is eating bread.', 'is eating He bread.', 'bread. eating He is', 'bread. eating is He'], answer: 0, explanation: '正确语序：He is eating bread.（他正在吃面包。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：She is typing a ______', hint: '中文意思：她正在打一封信。', options: ['drinking', 'turningon', 'letter', 'reading'], answer: 2, explanation: 'She is typing a letter.（她正在打一封信。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：She is ______ a book.', hint: '中文意思：她正在读一本书。', options: ['typing', 'reading', 'bookcase', 'climbing'], answer: 1, explanation: 'She is reading a book.（她正在读一本书。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He is ______ bread.', hint: '中文意思：他正在吃面包。', options: ['shaving', 'cooking', 'eating', 'making'], answer: 2, explanation: 'He is eating bread.（他正在吃面包。）' },
   ],
 
   // Lesson 33: Lesson 33: A fine day 晴天
   33: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '河上有几艘船。', options: ['on There are river. the boats some', 'are river. some the boats There on', 'There are some boats on the river.', 'some There boats river. on the are'], answer: 2, explanation: '正确语序：There are some boats on the river.（河上有几艘船。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '琼斯先生和他的家人在一起。', options: ['Mr. Jones is with his family.', 'Mr. Jones his with is family.', 'with family. Jones is his Mr.', 'Mr. family. with is Jones his'], answer: 0, explanation: '正确语序：Mr. Jones is with his family.（琼斯先生和他的家人在一起。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '蒂姆正在看一架飞机。', options: ['Tim aeroplane. at looking an is', 'Tim is looking at an aeroplane.', 'aeroplane. Tim looking at an is', 'at is looking Tim an aeroplane.'], answer: 1, explanation: '正确语序：Tim is looking at an aeroplane.（蒂姆正在看一架飞机。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Tim is looking at an ______', hint: '中文意思：蒂姆正在看一架飞机。', options: ['wash', 'flying', 'aeroplane', 'shave'], answer: 2, explanation: 'Tim is looking at an aeroplane.（蒂姆正在看一架飞机。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is a fine ______ today.', hint: '中文意思：今天天气好。', options: ['boat', 'across', 'bridge', 'day'], answer: 3, explanation: 'It is a fine day today.（今天天气好。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：There are some boats on the ______', hint: '中文意思：河上有几艘船。', options: ['jump', 'fly', 'river', 'walk'], answer: 2, explanation: 'There are some boats on the river.（河上有几艘船。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '飞机正在河上飞过。', options: ['aeroplane The river. is the over flying', 'is flying river. The aeroplane over the', 'river. The is flying the over aeroplane', 'The aeroplane is flying over the river.'], answer: 3, explanation: '正确语序：The aeroplane is flying over the river.（飞机正在河上飞过。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那艘船正在桥下驶过。', options: ['under The bridge. going is ship the', 'The ship is going under the bridge.', 'The the is under going bridge. ship', 'under The bridge. is the ship going'], answer: 1, explanation: '正确语序：The ship is going under the bridge.（那艘船正在桥下驶过。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '河上有几艘船。', options: ['some are the on river. There boats', 'are on the some river. There boats', 'river. on There are the some boats', 'There are some boats on the river.'], answer: 3, explanation: '正确语序：There are some boats on the river.（河上有几艘船。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The aeroplane is ______ over the river.', hint: '中文意思：飞机正在河上飞过。', options: ['ship', 'bridge', 'flying', 'sky'], answer: 2, explanation: 'The aeroplane is flying over the river.（飞机正在河上飞过。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The ship is going under the ______', hint: '中文意思：那艘船正在桥下驶过。', options: ['cry', 'across', 'bridge', 'river'], answer: 2, explanation: 'The ship is going under the bridge.（那艘船正在桥下驶过。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They are walking over the ______', hint: '中文意思：他们正在过桥。', options: ['wash', 'over', 'boat', 'bridge'], answer: 3, explanation: 'They are walking over the bridge.（他们正在过桥。）' },
   ],
 
   // Lesson 34: Lesson 34: What are the... doing? ……正在做什么？
   34: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '孩子们正在做什么？', options: ['What children doing? are the', 'children What the are doing?', 'What are the children doing?', 'are What children doing? the'], answer: 2, explanation: '正确语序：What are the children doing?（孩子们正在做什么？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '女人们正在做什么？', options: ['What are women the doing?', 'doing? the women are What', 'women the doing? What are', 'What are the women doing?'], answer: 3, explanation: '正确语序：What are the women doing?（女人们正在做什么？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '男人们正在做什么？', options: ['doing? are the men What', 'men are doing? the What', 'the doing? What are men', 'What are the men doing?'], answer: 3, explanation: '正确语序：What are the men doing?（男人们正在做什么？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：They are ______', hint: '中文意思：他们正在谈话。', options: ['jumping', 'waiting', 'sleeping', 'talking'], answer: 3, explanation: 'They are talking.（他们正在谈话。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '男人们正在做什么？', options: ['What are the men doing?', 'are the men doing? What', 'men doing? the What are', 'the men doing? are What'], answer: 0, explanation: '正确语序：What are the men doing?（男人们正在做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '孩子们正在做什么？', options: ['What are the children doing?', 'doing? are children the What', 'What are children the doing?', 'doing? children What are the'], answer: 0, explanation: '正确语序：What are the children doing?（孩子们正在做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '女人们正在做什么？', options: ['What are the women doing?', 'What women are doing? the', 'the are women doing? What', 'women the What doing? are'], answer: 0, explanation: '正确语序：What are the women doing?（女人们正在做什么？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They are ______', hint: '中文意思：他们正在谈话。', options: ['crying', 'washing', 'talking', 'waiting'], answer: 2, explanation: 'They are talking.（他们正在谈话。）' },
   ],
 
   // Lesson 35: Lesson 35: Our village 我们的村庄
   35: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是另一张照片。', options: ['is another Here photograph.', 'is Here another photograph.', 'Here is another photograph.', 'photograph. is Here another'], answer: 2, explanation: '正确语序：Here is another photograph.（这是另一张照片。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它在一条河上。', options: ['It is on a river.', 'on is river. a It', 'on a is river. It', 'is river. a on It'], answer: 0, explanation: '正确语序：It is on a river.（它在一条河上。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它位于公园旁边。', options: ['beside park. is It a', 'a park. is It beside', 'a is beside It park.', 'It is beside a park.'], answer: 3, explanation: '正确语序：It is beside a park.（它位于公园旁边。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Some of them are going into the ______', hint: '中文意思：他们中有几个正走进公园。', options: ['belong', 'building', 'into', 'park'], answer: 3, explanation: 'Some of them are going into the park.（他们中有几个正走进公园。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：My ______ and I are walking along the banks of the river.', hint: '中文意思：我和妻子正在沿河岸走。', options: ['off', 'beside', 'into', 'wife'], answer: 3, explanation: 'My wife and I are walking along the banks of the river.（我和妻子正在沿河岸走。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Here is another ______', hint: '中文意思：这是另一张照片。', options: ['beside', 'photograph', 'along', 'between'], answer: 1, explanation: 'Here is another photograph.（这是另一张照片。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们中有几个正走进公园。', options: ['Some of them are going into the park.', 'are Some the them of going park. into', 'park. Some into them going are of the', 'park. are into of Some going them the'], answer: 0, explanation: '正确语序：Some of them are going into the park.（他们中有几个正走进公园。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '公园在右边。', options: ['is the right. The on park', 'The park is on the right.', 'park The right. on the is', 'on the right. is The park'], answer: 1, explanation: '正确语序：The park is on the right.（公园在右边。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它位于公园旁边。', options: ['beside is a It park.', 'It is beside a park.', 'beside is a park. It', 'a It beside park. is'], answer: 1, explanation: '正确语序：It is beside a park.（它位于公园旁边。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This is a ______ of our village.', hint: '中文意思：这是我们村庄的一张照片。', options: ['enter', 'wife', 'photograph', 'village'], answer: 2, explanation: 'This is a photograph of our village.（这是我们村庄的一张照片。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This is the school ______', hint: '中文意思：这是学校大楼。', options: ['park', 'between', 'building', 'off'], answer: 2, explanation: 'This is the school building.（这是学校大楼。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Some children are coming out of the ______', hint: '中文意思：一些孩子正从楼里出来。', options: ['enter', 'along', 'building', 'between'], answer: 2, explanation: 'Some children are coming out of the building.（一些孩子正从楼里出来。）' },
   ],
 
   // Lesson 36: Lesson 36: Where...? ……在哪里？
   36: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他正在走进商店。', options: ['into is going the shop. He', 'He is going into the shop.', 'into He going shop. the is', 'is shop. He going the into'], answer: 1, explanation: '正确语序：He is going into the shop.（他正在走进商店。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们在哪里坐着？', options: ['they Where sitting? are', 'are they sitting? Where', 'sitting? they are Where', 'Where are they sitting?'], answer: 3, explanation: '正确语序：Where are they sitting?（他们在哪里坐着？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他正从墙上跳下。', options: ['off jumping is He wall. the', 'He is jumping off the wall.', 'off is jumping wall. the He', 'is He the jumping wall. off'], answer: 1, explanation: '正确语序：He is jumping off the wall.（他正从墙上跳下。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那个男人去哪里？', options: ['man Where is the going?', 'Where is the man going?', 'Where man is going? the', 'is the Where man going?'], answer: 1, explanation: '正确语序：Where is the man going?（那个男人去哪里？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们在哪里坐着？', options: ['Where are they sitting?', 'are sitting? Where they', 'Where sitting? are they', 'Where sitting? they are'], answer: 0, explanation: '正确语序：Where are they sitting?（他们在哪里坐着？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他正从墙上跳下。', options: ['off the jumping He wall. is', 'wall. the is He jumping off', 'He is jumping off the wall.', 'wall. the jumping off is He'], answer: 2, explanation: '正确语序：He is jumping off the wall.（他正从墙上跳下。）' },
   ],
 
   // Lesson 37: Lesson 37: Making a bookcase 做书橱
   37: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你干得真辛苦，乔治。', options: ['George. You hard, working are', 'George. hard, working You are', 'are George. working hard, You', 'You are working hard, George.'], answer: 3, explanation: '正确语序：You are working hard, George.（你干得真辛苦，乔治。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算把它漆成粉红色。', options: ['I\'m to pink. paint it going', 'I\'m going to paint it pink.', 'pink. to going I\'m paint it', 'going I\'m pink. to it paint'], answer: 1, explanation: '正确语序：I\'m going to paint it pink.（我打算把它漆成粉红色。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算把它漆一下。', options: ['it. I\'m paint going to', 'I\'m going to paint it.', 'I\'m going paint to it.', 'going paint it. I\'m to'], answer: 1, explanation: '正确语序：I\'m going to paint it.（我打算把它漆一下。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Give me that ______ please, Dan.', hint: '中文意思：请把那把锤子拿给我，丹。', options: ['favourite', 'hammer', 'bookcase', 'make'], answer: 1, explanation: 'Give me that hammer please, Dan.（请把那把锤子拿给我，丹。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This ______ is not for me.', hint: '中文意思：这个书橱不是我用的。', options: ['bookcase', 'paint', 'pink', 'favourite'], answer: 0, explanation: 'This bookcase is not for me.（这个书橱不是我用的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Which ______', hint: '中文意思：哪一把？', options: ['hammer', 'dish', 'paint', 'hard'], answer: 0, explanation: 'Which hammer?（哪一把？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我正在做一个书橱。', options: ['bookcase. I\'m making a', 'making I\'m a bookcase.', 'I\'m making a bookcase.', 'making a I\'m bookcase.'], answer: 2, explanation: '正确语序：I\'m making a bookcase.（我正在做一个书橱。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打算把它漆成什么颜色？', options: ['going you are colour it? to paint What', 'it? going paint to are What you colour', 'you colour What going paint it? are to', 'What colour are you going to paint it?'], answer: 3, explanation: '正确语序：What colour are you going to paint it?（你打算把它漆成什么颜色？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是那把。是那把大的。', options: ['No, not that one. The big one.', 'that big one. not No, The one.', 'big one. No, that one. not The', 'one. one. that big not No, The'], answer: 0, explanation: '正确语序：No, not that one. The big one.（不，不是那把。是那把大的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What colour are you going to ______ it?', hint: '中文意思：你打算把它漆成什么颜色？', options: ['pink', 'paint', 'homework', 'bookcase'], answer: 1, explanation: 'What colour are you going to paint it?（你打算把它漆成什么颜色？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m making a ______', hint: '中文意思：我正在做一个书橱。', options: ['bookcase', 'hard', 'work', 'pink'], answer: 0, explanation: 'I\'m making a bookcase.（我正在做一个书橱。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m going to ______ it pink.', hint: '中文意思：我打算把它漆成粉红色。', options: ['pink', 'hard', 'paint', 'favourite'], answer: 2, explanation: 'I\'m going to paint it pink.（我打算把它漆成粉红色。）' },
   ],
 
   // Lesson 38: Lesson 38: What are you going to do? What are you doing now? 你打算做什么？你现在正在做什么？
   38: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算等公共汽车。', options: ['wait going a I\'m to for bus.', 'a I\'m for to going wait bus.', 'going I\'m bus. to a for wait', 'I\'m going to wait for a bus.'], answer: 3, explanation: '正确语序：I\'m going to wait for a bus.（我打算等公共汽车。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你现在在做什么？', options: ['doing you are What now?', 'What are you doing now?', 'you What are doing now?', 'you are doing now? What'], answer: 1, explanation: '正确语序：What are you doing now?（你现在在做什么？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打算做什么？', options: ['are to you do? What going', 'are you going do? to What', 'What are you going to do?', 'to do? you are What going'], answer: 2, explanation: '正确语序：What are you going to do?（你打算做什么？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What are you ______ now?', hint: '中文意思：你现在在做什么？', options: ['waiting', 'washing', 'doing', 'goingto'], answer: 2, explanation: 'What are you doing now?（你现在在做什么？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I\'m ______ for a bus.', hint: '中文意思：我正在等公共汽车。', options: ['goingto', 'waiting', 'washing', 'doing'], answer: 1, explanation: 'I\'m waiting for a bus.（我正在等公共汽车。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你现在在做什么？', options: ['are you now? What doing', 'you now? What are doing', 'What are you doing now?', 'you doing are now? What'], answer: 2, explanation: '正确语序：What are you doing now?（你现在在做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打算做什么？', options: ['What are you going to do?', 'you What to do? going are', 'to What do? are you going', 'are going do? you to What'], answer: 0, explanation: '正确语序：What are you going to do?（你打算做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我正在等公共汽车。', options: ['I\'m waiting for a bus.', 'a bus. I\'m for waiting', 'a bus. for waiting I\'m', 'I\'m a waiting for bus.'], answer: 0, explanation: '正确语序：I\'m waiting for a bus.（我正在等公共汽车。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What are you ______ now?', hint: '中文意思：你现在在做什么？', options: ['goingto', 'waiting', 'washing', 'doing'], answer: 3, explanation: 'What are you doing now?（你现在在做什么？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m ______ for a bus.', hint: '中文意思：我正在等公共汽车。', options: ['washing', 'doing', 'waiting', 'goingto'], answer: 2, explanation: 'I\'m waiting for a bus.（我正在等公共汽车。）' },
   ],
 
   // Lesson 39: Lesson 39: Don't drop it! 别摔了！
   39: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不要放在那儿，彭妮。', options: ['put Don\'t Penny. it there,', 'put there, Penny. it Don\'t', 'Don\'t put it there, Penny.', 'Penny. there, put Don\'t it'], answer: 2, explanation: '正确语序：Don\'t put it there, Penny.（不要放在那儿，彭妮。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '别放在那儿，萨姆。', options: ['it Don\'t put there, Sam.', 'Sam. put there, Don\'t it', 'put it there, Don\'t Sam.', 'Don\'t put it there, Sam.'], answer: 3, explanation: '正确语序：Don\'t put it there, Sam.（别放在那儿，萨姆。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打算怎么办？', options: ['to What going do are it? you with', 'do going it? to What with you are', 'it? with are do What to going you', 'What are you going to do with it?'], answer: 3, explanation: '正确语序：What are you going to do with it?（你打算怎么办？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What are you going to do with that ______ Penny?', hint: '中文意思：你打算如何处理那个花瓶，彭妮？', options: ['vase', 'infrontof', 'drop', 'front'], answer: 0, explanation: 'What are you going to do with that vase, Penny?（你打算如何处理那个花瓶，彭妮？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is a lovely ______', hint: '中文意思：这是一只漂亮的花瓶。', options: ['vase', 'flower', 'front', 'bring'], answer: 0, explanation: 'It is a lovely vase.（这是一只漂亮的花瓶。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Be ______', hint: '中文意思：小心点！', options: ['flower', 'front', 'bring', 'careful'], answer: 3, explanation: 'Be careful!（小心点！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打算怎么办？', options: ['What are you going to do with it?', 'do are with it? going to What you', 'What it? you are with do to going', 'it? to you going with are What do'], answer: 0, explanation: '正确语序：What are you going to do with it?（你打算怎么办？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是一只漂亮的花瓶。', options: ['lovely a is It vase.', 'a is lovely vase. It', 'is It a vase. lovely', 'It is a lovely vase.'], answer: 3, explanation: '正确语序：It is a lovely vase.（这是一只漂亮的花瓶。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '放在这儿，这个架子上。', options: ['here, on shelf. it Put this', 'Put shelf. it this on here,', 'Put it here, on this shelf.', 'Put here, it on this shelf.'], answer: 2, explanation: '正确语序：Put it here, on this shelf.（放在这儿，这个架子上。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m going to put it here, in ______ of the window.', hint: '中文意思：我打算把它放在这儿，放在窗前。', options: ['front', 'infrontof', 'drop', 'flower'], answer: 0, explanation: 'I\'m going to put it here, in front of the window.（我打算把它放在这儿，放在窗前。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What are you going to do with that ______ Penny?', hint: '中文意思：你打算如何处理那个花瓶，彭妮？', options: ['front', 'infrontof', 'post', 'vase'], answer: 3, explanation: 'What are you going to do with that vase, Penny?（你打算如何处理那个花瓶，彭妮？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is a lovely ______', hint: '中文意思：这是一只漂亮的花瓶。', options: ['vase', 'post', 'front', 'infrontof'], answer: 0, explanation: 'It is a lovely vase.（这是一只漂亮的花瓶。）' },
   ],
 
   // Lesson 40: Lesson 40: What are you going to do? I'm going to... 你打算做什么？我打算……
   40: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算把它给我朋友看。', options: ['I\'m going to show it to my friend.', 'to to going show I\'m my it friend.', 'show I\'m to going it my to friend.', 'show friend. to I\'m my it going to'], answer: 0, explanation: '正确语序：I\'m going to show it to my friend.（我打算把它给我朋友看。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算把它寄给我姐姐。', options: ['it I\'m going my sister. send to to', 'I\'m going to send it to my sister.', 'going sister. it to send my I\'m to', 'to sister. going to it I\'m my send'], answer: 1, explanation: '正确语序：I\'m going to send it to my sister.（我打算把它寄给我姐姐。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算把它们送给我妈妈。', options: ['going I\'m them mother. my to give to', 'my them to give mother. going I\'m to', 'I\'m going to give them to my mother.', 'my to them I\'m mother. going to give'], answer: 2, explanation: '正确语序：I\'m going to give them to my mother.（我打算把它们送给我妈妈。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I\'m going to ______ it to my friend.', hint: '中文意思：我打算把它给我朋友看。', options: ['send', 'give', 'take', 'show'], answer: 3, explanation: 'I\'m going to show it to my friend.（我打算把它给我朋友看。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I\'m going to ______ it to my sister.', hint: '中文意思：我打算把它寄给我姐姐。', options: ['show', 'send', 'give', 'take'], answer: 1, explanation: 'I\'m going to send it to my sister.（我打算把它寄给我姐姐。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I\'m going to ______ them to my mother.', hint: '中文意思：我打算把它们送给我妈妈。', options: ['show', 'give', 'take', 'send'], answer: 1, explanation: 'I\'m going to give them to my mother.（我打算把它们送给我妈妈。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算把它给我朋友看。', options: ['to to my I\'m it going friend. show', 'I\'m going to show it to my friend.', 'to my to it going friend. I\'m show', 'to my it show friend. I\'m going to'], answer: 1, explanation: '正确语序：I\'m going to show it to my friend.（我打算把它给我朋友看。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算把它们送给我妈妈。', options: ['to I\'m give my mother. them going to', 'I\'m going to give them to my mother.', 'my to to mother. them I\'m give going', 'I\'m to them going my give to mother.'], answer: 1, explanation: '正确语序：I\'m going to give them to my mother.（我打算把它们送给我妈妈。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算把它寄给我姐姐。', options: ['sister. it to send to I\'m my going', 'I\'m going to send it to my sister.', 'it to sister. going I\'m my send to', 'to I\'m it send going to my sister.'], answer: 1, explanation: '正确语序：I\'m going to send it to my sister.（我打算把它寄给我姐姐。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m going to ______ them to my mother.', hint: '中文意思：我打算把它们送给我妈妈。', options: ['show', 'take', 'give', 'send'], answer: 2, explanation: 'I\'m going to give them to my mother.（我打算把它们送给我妈妈。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m going to ______ it to my sister.', hint: '中文意思：我打算把它寄给我姐姐。', options: ['give', 'take', 'show', 'send'], answer: 3, explanation: 'I\'m going to send it to my sister.（我打算把它寄给我姐姐。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m going to ______ it to my friend.', hint: '中文意思：我打算把它给我朋友看。', options: ['give', 'send', 'take', 'show'], answer: 3, explanation: 'I\'m going to show it to my friend.（我打算把它给我朋友看。）' },
   ],
 
   // Lesson 41: Lesson 41: Penny's bag 彭妮的包
   41: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '半磅咖啡。', options: ['coffee. pound a Half of', 'a pound Half coffee. of', 'pound a Half of coffee.', 'Half a pound of coffee.'], answer: 3, explanation: '正确语序：Half a pound of coffee.（半磅咖啡。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一块肥皂。', options: ['of A bar soap.', 'A soap. of bar', 'soap. bar of A', 'A bar of soap.'], answer: 3, explanation: '正确语序：A bar of soap.（一块肥皂。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一块奶酪。', options: ['A cheese. piece of', 'cheese. A of piece', 'cheese. A piece of', 'A piece of cheese.'], answer: 3, explanation: '正确语序：A piece of cheese.（一块奶酪。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：A ______ of sugar.', hint: '中文意思：一磅糖。', options: ['pound', 'smoking', 'sugar', 'cheese'], answer: 0, explanation: 'A pound of sugar.（一磅糖。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：A piece of ______', hint: '中文意思：一块奶酪。', options: ['candy', 'cheese', 'quarter', 'sugar'], answer: 1, explanation: 'A piece of cheese.（一块奶酪。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：A quarter of a pound of ______', hint: '中文意思：四分之一磅茶叶。', options: ['loaf', 'some', 'tea', 'cheese'], answer: 2, explanation: 'A quarter of a pound of tea.（四分之一磅茶叶。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一块奶酪。', options: ['A piece of cheese.', 'A of cheese. piece', 'of cheese. piece A', 'of A piece cheese.'], answer: 0, explanation: '正确语序：A piece of cheese.（一块奶酪。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一块肥皂。', options: ['soap. bar A of', 'of bar A soap.', 'of bar soap. A', 'A bar of soap.'], answer: 3, explanation: '正确语序：A bar of soap.（一块肥皂。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一块巧克力。', options: ['of chocolate. bar A', 'A bar chocolate. of', 'A bar of chocolate.', 'bar chocolate. of A'], answer: 2, explanation: '正确语序：A bar of chocolate.（一块巧克力。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：A ______ of soap.', hint: '中文意思：一块肥皂。', options: ['bar', 'half', 'loaf', 'cheese'], answer: 0, explanation: 'A bar of soap.（一块肥皂。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：A pound of ______', hint: '中文意思：一磅糖。', options: ['some', 'quarter', 'cheese', 'sugar'], answer: 3, explanation: 'A pound of sugar.（一磅糖。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Half a pound of ______', hint: '中文意思：半磅咖啡。', options: ['coffee', 'quarter', 'some', 'piece'], answer: 0, explanation: 'Half a pound of coffee.（半磅咖啡。）' },
   ],
 
   // Lesson 42: Lesson 42: Is there a... in/on that...? 在……中/上有一个……吗？
   42: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有牛奶吗？', options: ['Is there any milk here?', 'milk here? there any Is', 'there Is here? any milk', 'there Is milk any here?'], answer: 0, explanation: '正确语序：Is there any milk here?（这里有牛奶吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有护照吗？', options: ['here? passport a there Is', 'Is there a passport here?', 'here? Is a there passport', 'here? passport a Is there'], answer: 1, explanation: '正确语序：Is there a passport here?（这里有护照吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有黄油吗？', options: ['here? Is any butter there', 'Is there any butter here?', 'any Is here? there butter', 'any here? Is butter there'], answer: 1, explanation: '正确语序：Is there any butter here?（这里有黄油吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Is there any ______ here?', hint: '中文意思：这里有黄油吗？', options: ['wine', 'butter', 'apple', 'honey'], answer: 1, explanation: 'Is there any butter here?（这里有黄油吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Is there a ______ here?', hint: '中文意思：这里有护照吗？', options: ['egg', 'wine', 'passport', 'honey'], answer: 2, explanation: 'Is there a passport here?（这里有护照吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有黄油吗？', options: ['any butter here? there Is', 'here? butter any Is there', 'Is there any butter here?', 'any there butter here? Is'], answer: 2, explanation: '正确语序：Is there any butter here?（这里有黄油吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有牛奶吗？', options: ['Is there any milk here?', 'milk Is any there here?', 'there milk here? Is any', 'any Is here? there milk'], answer: 0, explanation: '正确语序：Is there any milk here?（这里有牛奶吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有护照吗？', options: ['a passport here? there Is', 'a Is here? there passport', 'a here? there passport Is', 'Is there a passport here?'], answer: 3, explanation: '正确语序：Is there a passport here?（这里有护照吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is there any ______ here?', hint: '中文意思：这里有黄油吗？', options: ['butter', 'wine', 'passport', 'egg'], answer: 0, explanation: 'Is there any butter here?（这里有黄油吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is there a ______ here?', hint: '中文意思：这里有护照吗？', options: ['wine', 'passport', 'apple', 'butter'], answer: 1, explanation: 'Is there a passport here?（这里有护照吗？）' },
   ],
 
   // Lesson 43: Lesson 43: Hurry up! 快点！
   43: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '水开了！', options: ['water The boiling! is', 'The water is boiling!', 'water is The boiling!', 'boiling! is The water'], answer: 1, explanation: '正确语序：The water is boiling!（水开了！）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能找到它们吗？', options: ['them? you Can find', 'you find Can them?', 'Can you find them?', 'Can you them? find'], answer: 2, explanation: '正确语序：Can you find them?（你能找到它们吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你会沏茶吗，萨姆？', options: ['tea, Can Sam? the make you', 'tea, Sam? you make Can the', 'you Can tea, make the Sam?', 'Can you make the tea, Sam?'], answer: 3, explanation: '正确语序：Can you make the tea, Sam?（你会沏茶吗，萨姆？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ the tea, Sam?', hint: '中文意思：你会沏茶吗，萨姆？', options: ['pot', 'now', 'behind', 'make'], answer: 3, explanation: 'Can you make the tea, Sam?（你会沏茶吗，萨姆？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Is there any water in this ______', hint: '中文意思：这水壶里有水吗？', options: ['hurry', 'kettle', 'teapot', 'find'], answer: 1, explanation: 'Is there any water in this kettle?（这水壶里有水吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is over there, behind the ______', hint: '中文意思：在那儿，茶壶后面。', options: ['teapot', 'kettle', 'find', 'pot'], answer: 0, explanation: 'It is over there, behind the teapot.（在那儿，茶壶后面。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你会沏茶吗，萨姆？', options: ['Can you the tea, Sam? make', 'make Sam? tea, the you Can', 'the Sam? tea, Can make you', 'Can you make the tea, Sam?'], answer: 3, explanation: '正确语序：Can you make the tea, Sam?（你会沏茶吗，萨姆？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '在那儿，茶壶后面。', options: ['behind there, over is the teapot. It', 'It is over there, behind the teapot.', 'over It there, behind the teapot. is', 'behind over teapot. there, is the It'], answer: 1, explanation: '正确语序：It is over there, behind the teapot.（在那儿，茶壶后面。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能找到它们吗？', options: ['Can you find them?', 'them? you Can find', 'them? find Can you', 'find you Can them?'], answer: 0, explanation: '正确语序：Can you find them?（你能找到它们吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I can see the ______ but I can not see the tea.', hint: '中文意思：我看见茶壶了，但是我没看见茶叶。', options: ['oil', 'teapot', 'behind', 'lookfor'], answer: 1, explanation: 'I can see the teapot, but I can not see the tea.（我看见茶壶了，但是我没看见茶叶。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ them?', hint: '中文意思：你能找到它们吗？', options: ['now', 'behind', 'kettle', 'find'], answer: 3, explanation: 'Can you find them?（你能找到它们吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ up, Sam!', hint: '中文意思：快点，萨姆！', options: ['teapot', 'hurry', 'hotpot', 'make'], answer: 1, explanation: 'Hurry up, Sam!（快点，萨姆！）' },
   ],
 
   // Lesson 44: Lesson 44: Is there a...? / Are there any...? 有……吗？
   44: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，桌子上有一个。', options: ['the is Yes, there table. one on', 'one Yes, table. the on there is', 'Yes, there is one on the table.', 'is on Yes, table. there one the'], answer: 2, explanation: '正确语序：Yes, there is one on the table.（是的，桌子上有一个。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有茶杯吗？', options: ['there cups here? any Are', 'Are here? any there cups', 'Are there any cups here?', 'cups there any Are here?'], answer: 2, explanation: '正确语序：Are there any cups here?（这里有茶杯吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有牛奶吗？', options: ['here? there milk Is any', 'Is there any milk here?', 'here? milk any Is there', 'Is milk there here? any'], answer: 1, explanation: '正确语序：Is there any milk here?（这里有牛奶吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Is there any ______ here?', hint: '中文意思：这里有牛奶吗？', options: ['milk', 'cheese', 'bread', 'sugar'], answer: 0, explanation: 'Is there any milk here?（这里有牛奶吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，碗柜里有一些。', options: ['are in the cupboard. there some Yes,', 'Yes, there are some in the cupboard.', 'Yes, some cupboard. there the in are', 'there Yes, in cupboard. are the some'], answer: 1, explanation: '正确语序：Yes, there are some in the cupboard.（是的，碗柜里有一些。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，瓶子里有一些。', options: ['Yes, there is some in the bottle.', 'is some the bottle. there Yes, in', 'there in the bottle. some Yes, is', 'bottle. some there in the is Yes,'], answer: 0, explanation: '正确语序：Yes, there is some in the bottle.（是的，瓶子里有一些。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这里有茶壶吗？', options: ['there a Is here? teapot', 'Is there a teapot here?', 'here? Is a teapot there', 'teapot Is a there here?'], answer: 1, explanation: '正确语序：Is there a teapot here?（这里有茶壶吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is there any ______ here?', hint: '中文意思：这里有牛奶吗？', options: ['milk', 'sugar', 'coffee', 'bread'], answer: 0, explanation: 'Is there any milk here?（这里有牛奶吗？）' },
   ],
 
   // Lesson 45: Lesson 45: The boss's letter 老板的信
   45: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请你来一下好吗，鲍勃？', options: ['Can you come here a minute please, Bob?', 'Bob? here Can minute come please, you a', 'come Can minute you here Bob? please, a', 'minute a Can you here Bob? come please,'], answer: 0, explanation: '正确语序：Can you come here a minute please, Bob?（请你来一下好吗，鲍勃？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打不了这封信。', options: ['can not this I type letter.', 'letter. can I not type this', 'letter. this can type not I', 'I can not type this letter.'], answer: 3, explanation: '正确语序：I can not type this letter.（我打不了这封信。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '老板的字太糟糕了！', options: ['The boss\'s handwriting is terrible!', 'The boss\'s is handwriting terrible!', 'terrible! The handwriting boss\'s is', 'The handwriting is boss\'s terrible!'], answer: 0, explanation: '正确语序：The boss\'s handwriting is terrible!（老板的字太糟糕了！）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Yes, of course I ______', hint: '中文意思：是的，当然可以。', options: ['terrible', 'letter', 'can', 'answer'], answer: 2, explanation: 'Yes, of course I can.（是的，当然可以。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I ______ not type this letter.', hint: '中文意思：我打不了这封信。', options: ['boss', 'next', 'second', 'can'], answer: 3, explanation: 'I can not type this letter.（我打不了这封信。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The boss\'s handwriting is ______', hint: '中文意思：老板的字太糟糕了！', options: ['boss', 'cake', 'terrible', 'answer'], answer: 2, explanation: 'The boss\'s handwriting is terrible!（老板的字太糟糕了！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请你来一下好吗，鲍勃？', options: ['come here you a Bob? minute please, Can', 'minute Can you Bob? come a please, here', 'here Can please, Bob? come a you minute', 'Can you come here a minute please, Bob?'], answer: 3, explanation: '正确语序：Can you come here a minute please, Bob?（请你来一下好吗，鲍勃？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她在隔壁。', options: ['next She is door.', 'She is next door.', 'She door. next is', 'next is door. She'], answer: 1, explanation: '正确语序：She is next door.（她在隔壁。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她能为我打这封信吗？', options: ['Can me? this she type letter for', 'for type me? letter Can this she', 'me? she Can letter type for this', 'Can she type this letter for me?'], answer: 3, explanation: '正确语序：Can she type this letter for me?（她能为我打这封信吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I can not type this ______', hint: '中文意思：我打不了这封信。', options: ['second', 'cake', 'minute', 'letter'], answer: 3, explanation: 'I can not type this letter.（我打不了这封信。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I ______ not read it!', hint: '中文意思：我看不懂！', options: ['biscuit', 'boss', 'can', 'handwriting'], answer: 2, explanation: 'I can not read it!（我看不懂！）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ she type this letter for me?', hint: '中文意思：她能为我打这封信吗？', options: ['door', 'can', 'handwriting', 'terrible'], answer: 1, explanation: 'Can she type this letter for me?（她能为我打这封信吗？）' },
   ],
 
   // Lesson 46: Lesson 46: Can you...? 你能……吗？
   46: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我不能。', options: ['No, I can not.', 'not. I can No,', 'No, not. I can', 'can I No, not.'], answer: 0, explanation: '正确语序：No, I can not.（不，我不能。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能抬起那张桌子吗？', options: ['Can you lift that table?', 'table? that Can lift you', 'table? Can that lift you', 'lift table? you Can that'], answer: 0, explanation: '正确语序：Can you lift that table?（你能抬起那张桌子吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能把它放在桌子上吗？', options: ['Can you put it on the table?', 'on put you it Can the table?', 'it you put Can on table? the', 'on it you Can table? put the'], answer: 0, explanation: '正确语序：Can you put it on the table?（你能把它放在桌子上吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ that table?', hint: '中文意思：你能抬起那张桌子吗？', options: ['type', 'lift', 'put', 'read'], answer: 1, explanation: 'Can you lift that table?（你能抬起那张桌子吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ this letter?', hint: '中文意思：你能读这封信吗？', options: ['read', 'put', 'lift', 'type'], answer: 0, explanation: 'Can you read this letter?（你能读这封信吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ it on the table?', hint: '中文意思：你能把它放在桌子上吗？', options: ['put', 'lift', 'read', 'type'], answer: 0, explanation: 'Can you put it on the table?（你能把它放在桌子上吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能抬起那张桌子吗？', options: ['lift Can you that table?', 'that table? you lift Can', 'lift you Can table? that', 'Can you lift that table?'], answer: 3, explanation: '正确语序：Can you lift that table?（你能抬起那张桌子吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能读这封信吗？', options: ['letter? Can read you this', 'read letter? this Can you', 'Can letter? you this read', 'Can you read this letter?'], answer: 3, explanation: '正确语序：Can you read this letter?（你能读这封信吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我不能。', options: ['can not. I No,', 'not. No, can I', 'I can No, not.', 'No, I can not.'], answer: 3, explanation: '正确语序：No, I can not.（不，我不能。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ that table?', hint: '中文意思：你能抬起那张桌子吗？', options: ['type', 'put', 'read', 'lift'], answer: 3, explanation: 'Can you lift that table?（你能抬起那张桌子吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ this letter?', hint: '中文意思：你能读这封信吗？', options: ['type', 'put', 'lift', 'read'], answer: 3, explanation: 'Can you read this letter?（你能读这封信吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ it on the table?', hint: '中文意思：你能把它放在桌子上吗？', options: ['put', 'lift', 'type', 'read'], answer: 0, explanation: 'Can you put it on the table?（你能把它放在桌子上吗？）' },
   ],
 
   // Lesson 47: Lesson 47: A cup of coffee 一杯咖啡
   47: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你要放牛奶吗？', options: ['you any Do want milk?', 'any milk? you want Do', 'Do you want any milk?', 'any you want milk? Do'], answer: 2, explanation: '正确语序：Do you want any milk?（你要放牛奶吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你要一块吗？', options: ['Do one? want you', 'Do want you one?', 'Do you want one?', 'want one? Do you'], answer: 2, explanation: '正确语序：Do you want one?（你要一块吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你喜欢饼干吗？', options: ['like Do biscuits? you', 'Do you like biscuits?', 'like you biscuits? Do', 'you Do biscuits? like'], answer: 1, explanation: '正确语序：Do you like biscuits?（你喜欢饼干吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Do you ______ any milk?', hint: '中文意思：你要放牛奶吗？', options: ['wine', 'want', 'alcohol', 'fresh'], answer: 1, explanation: 'Do you want any milk?（你要放牛奶吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I ______ black coffee.', hint: '中文意思：我喜欢清咖啡。', options: ['whisky', 'like', 'wine', 'alcohol'], answer: 1, explanation: 'I like black coffee.（我喜欢清咖啡。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Do you ______ any sugar?', hint: '中文意思：你要放糖吗？', options: ['wine', 'want', 'scotch', 'jam'], answer: 1, explanation: 'Do you want any sugar?（你要放糖吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你要一块吗？', options: ['you Do one? want', 'one? you want Do', 'one? want Do you', 'Do you want one?'], answer: 3, explanation: '正确语序：Do you want one?（你要一块吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你喜欢饼干吗？', options: ['you like biscuits? Do', 'Do you like biscuits?', 'you Do like biscuits?', 'biscuits? you Do like'], answer: 1, explanation: '正确语序：Do you like biscuits?（你喜欢饼干吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我喜欢清咖啡。', options: ['black coffee. I like', 'black like I coffee.', 'coffee. like black I', 'I like black coffee.'], answer: 3, explanation: '正确语序：I like black coffee.（我喜欢清咖啡。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Do you ______ any sugar?', hint: '中文意思：你要放糖吗？', options: ['wine', 'orange', 'choice', 'want'], answer: 3, explanation: 'Do you want any sugar?（你要放糖吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Do you ______ a cup?', hint: '中文意思：你要一杯吗？', options: ['butter', 'choice', 'want', 'sweet'], answer: 2, explanation: 'Do you want a cup?（你要一杯吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I ______ black coffee.', hint: '中文意思：我喜欢清咖啡。', options: ['like', 'butter', 'fresh', 'orange'], answer: 0, explanation: 'I like black coffee.（我喜欢清咖啡。）' },
   ],
 
   // Lesson 48: Lesson 48: Do you like...? / Do you want...? 你喜欢……吗？/ 你想要……吗？
   48: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你要一杯吗？', options: ['glass? Do a you want', 'want Do glass? you a', 'Do you want a glass?', 'glass? Do want a you'], answer: 2, explanation: '正确语序：Do you want a glass?（你要一杯吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你喜欢酒吗？', options: ['Do you wine? like', 'wine? Do you like', 'Do like wine? you', 'Do you like wine?'], answer: 3, explanation: '正确语序：Do you like wine?（你喜欢酒吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我不喜欢。', options: ['No, do I not.', 'No, do not. I', 'I No, do not.', 'No, I do not.'], answer: 3, explanation: '正确语序：No, I do not.（不，我不喜欢。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你喜欢酒吗？', options: ['Do you like wine?', 'Do wine? you like', 'Do like wine? you', 'wine? like you Do'], answer: 0, explanation: '正确语序：Do you like wine?（你喜欢酒吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你要一杯吗？', options: ['Do you want a glass?', 'you glass? Do want a', 'Do glass? a want you', 'a Do glass? want you'], answer: 0, explanation: '正确语序：Do you want a glass?（你要一杯吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我不喜欢。', options: ['No, I do not.', 'do I No, not.', 'do I not. No,', 'No, not. do I'], answer: 0, explanation: '正确语序：No, I do not.（不，我不喜欢。）' },
   ],
 
   // Lesson 49: Lesson 49: At the butcher's 在肉店
   49: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '您要牛肉还是要羔羊肉？', options: ['lamb? beef Do you want or', 'lamb? or Do you beef want', 'Do you want beef or lamb?', 'lamb? you or want Do beef'], answer: 2, explanation: '正确语序：Do you want beef or lamb?（您要牛肉还是要羔羊肉？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '您今天要买肉吗，伯德夫人？', options: ['any Do meat want Mrs you today, Bird?', 'Mrs Bird? Do you today, any want meat', 'meat want any today, Bird? Do you Mrs', 'Do you want any meat today, Mrs Bird?'], answer: 3, explanation: '正确语序：Do you want any meat today, Mrs Bird?（您今天要买肉吗，伯德夫人？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '来点牛排怎么样？', options: ['about some What steak?', 'What about some steak?', 'about What steak? some', 'about some steak? What'], answer: 1, explanation: '正确语序：What about some steak?（来点牛排怎么样？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I like ______ but my husband does not.', hint: '中文意思：我喜欢羔羊肉，但我丈夫不喜欢。', options: ['mutton', 'husband', 'lamb', 'tell'], answer: 2, explanation: 'I like lamb, but my husband does not.（我喜欢羔羊肉，但我丈夫不喜欢。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Do you want beef or ______', hint: '中文意思：您要牛肉还是要羔羊肉？', options: ['chicken', 'lamb', 'either', 'butcher'], answer: 1, explanation: 'Do you want beef or lamb?（您要牛肉还是要羔羊肉？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Do you want a ______ Mrs Bird?', hint: '中文意思：您要一只鸡吗，伯德夫人？', options: ['tell', 'either', 'chicken', 'steak'], answer: 2, explanation: 'Do you want a chicken, Mrs Bird?（您要一只鸡吗，伯德夫人？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '还要一磅肉馅。', options: ['And a mince, of too. pound', 'mince, And of pound a too.', 'too. pound And of a mince,', 'And a pound of mince, too.'], answer: 3, explanation: '正确语序：And a pound of mince, too.（还要一磅肉馅。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '您今天要买肉吗，伯德夫人？', options: ['today, any Mrs meat you Bird? Do want', 'want Mrs Bird? today, any meat you Do', 'Do you want any meat today, Mrs Bird?', 'Mrs Do any you Bird? today, meat want'], answer: 2, explanation: '正确语序：Do you want any meat today, Mrs Bird?（您今天要买肉吗，伯德夫人？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '来点牛排怎么样？', options: ['some about steak? What', 'What about some steak?', 'about some What steak?', 'steak? What some about'], answer: 1, explanation: '正确语序：What about some steak?（来点牛排怎么样？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This ______ is very good.', hint: '中文意思：这羔羊肉很好。', options: ['chicken', 'lamb', 'butcher', 'neither'], answer: 1, explanation: 'This lamb is very good.（这羔羊肉很好。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What about some ______', hint: '中文意思：来点牛排怎么样？', options: ['mutton', 'husband', 'either', 'steak'], answer: 3, explanation: 'What about some steak?（来点牛排怎么样？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Do you want a ______ Mrs Bird?', hint: '中文意思：您要一只鸡吗，伯德夫人？', options: ['chicken', 'husband', 'neither', 'truth'], answer: 0, explanation: 'Do you want a chicken, Mrs Bird?（您要一只鸡吗，伯德夫人？）' },
   ],
 
   // Lesson 50: Lesson 50: He likes... 他喜欢……
   50: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，他喜欢。他喜欢西红柿。', options: ['Yes, he does. He likes tomatoes.', 'he likes does. He tomatoes. Yes,', 'likes He he Yes, tomatoes. does.', 'does. Yes, tomatoes. he likes He'], answer: 0, explanation: '正确语序：Yes, he does. He likes tomatoes.（是的，他喜欢。他喜欢西红柿。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他喜欢西红柿吗？', options: ['Does he like tomatoes?', 'tomatoes? like he Does', 'like Does he tomatoes?', 'Does tomatoes? like he'], answer: 0, explanation: '正确语序：Does he like tomatoes?（他喜欢西红柿吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他喜欢卷心菜吗？', options: ['Does he like cabbage?', 'cabbage? he like Does', 'cabbage? like he Does', 'cabbage? Does like he'], answer: 0, explanation: '正确语序：Does he like cabbage?（他喜欢卷心菜吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：No, he does not. He does not like ______', hint: '中文意思：不，他不喜欢。他不喜欢卷心菜。', options: ['tomato', 'cabbage', 'potato', 'grape'], answer: 1, explanation: 'No, he does not. He does not like cabbage.（不，他不喜欢。他不喜欢卷心菜。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Does he like ______', hint: '中文意思：他喜欢卷心菜吗？', options: ['grape', 'cabbage', 'potato', 'bean'], answer: 1, explanation: 'Does he like cabbage?（他喜欢卷心菜吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他喜欢西红柿吗？', options: ['he Does like tomatoes?', 'Does he like tomatoes?', 'he tomatoes? like Does', 'Does like tomatoes? he'], answer: 1, explanation: '正确语序：Does he like tomatoes?（他喜欢西红柿吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，他喜欢。他喜欢西红柿。', options: ['Yes, He does. likes he tomatoes.', 'Yes, he does. He likes tomatoes.', 'Yes, likes does. He he tomatoes.', 'likes He does. tomatoes. he Yes,'], answer: 1, explanation: '正确语序：Yes, he does. He likes tomatoes.（是的，他喜欢。他喜欢西红柿。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他喜欢卷心菜吗？', options: ['Does he like cabbage?', 'he Does like cabbage?', 'he cabbage? Does like', 'like Does cabbage? he'], answer: 0, explanation: '正确语序：Does he like cabbage?（他喜欢卷心菜吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Does he like ______', hint: '中文意思：他喜欢卷心菜吗？', options: ['potato', 'pear', 'grape', 'cabbage'], answer: 3, explanation: 'Does he like cabbage?（他喜欢卷心菜吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：No, he does not. He does not like ______', hint: '中文意思：不，他不喜欢。他不喜欢卷心菜。', options: ['bean', 'peach', 'cabbage', 'pea'], answer: 2, explanation: 'No, he does not. He does not like cabbage.（不，他不喜欢。他不喜欢卷心菜。）' },
   ],
 
   // Lesson 51: Lesson 51: A pleasant climate 宜人的气候
   51: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你是哪国人？', options: ['come do Where from? you', 'Where do you come from?', 'do from? Where come you', 'do from? you come Where'], answer: 1, explanation: '正确语序：Where do you come from?（你是哪国人？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '每天都出太阳。', options: ['The every day. shines sun', 'The sun shines every day.', 'The shines every day. sun', 'sun every The day. shines'], answer: 1, explanation: '正确语序：The sun shines every day.（每天都出太阳。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '气候非常宜人。', options: ['pleasant. very It is', 'It very pleasant. is', 'It is very pleasant.', 'pleasant. It is very'], answer: 2, explanation: '正确语序：It is very pleasant.（气候非常宜人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is always warm in September and ______', hint: '中文意思：九月和十月总是很暖和。', options: ['greece', 'weather', 'october', 'april'], answer: 2, explanation: 'It is always warm in September and October.（九月和十月总是很暖和。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is often cold in ______ and it rains sometimes.', hint: '中文意思：十一月经常很冷，有时下雨。', options: ['winter', 'weather', 'brazil', 'november'], answer: 3, explanation: 'It is often cold in November and it rains sometimes.（十一月经常很冷，有时下雨。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It snows ______', hint: '中文意思：有时下雪。', options: ['december', 'sometimes', 'august', 'country'], answer: 1, explanation: 'It snows sometimes.（有时下雪。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '九月和十月总是很暖和。', options: ['and warm always It in is October. September', 'September October. in is always and It warm', 'always in warm September and It is October.', 'It is always warm in September and October.'], answer: 3, explanation: '正确语序：It is always warm in September and October.（九月和十月总是很暖和。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '夏天的天气怎么样？', options: ['in weather is summer? like the What', 'What is the weather like in summer?', 'in weather like is the summer? What', 'weather summer? What like in is the'], answer: 1, explanation: '正确语序：What is the weather like in summer?（夏天的天气怎么样？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你们国家的气候怎么样？', options: ['country? is in like What climate the your', 'What is the climate like in your country?', 'climate country? like in What your the is', 'in climate like What your is the country?'], answer: 1, explanation: '正确语序：What is the climate like in your country?（你们国家的气候怎么样？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is ______ cold in November and it rains sometimes.', hint: '中文意思：十一月经常很冷，有时下雨。', options: ['pleasant', 'often', 'theus', 'spain'], answer: 1, explanation: 'It is often cold in November and it rains sometimes.（十一月经常很冷，有时下雨。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What is the ______ like in spring?', hint: '中文意思：春天的天气怎么样？', options: ['february', 'weather', 'march', 'spring'], answer: 1, explanation: 'What is the weather like in spring?（春天的天气怎么样？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I come from ______', hint: '中文意思：我是希腊人。', options: ['weather', 'spring', 'greece', 'theus'], answer: 2, explanation: 'I come from Greece.（我是希腊人。）' },
   ],
 
   // Lesson 52: Lesson 52: What nationality are they? 他们是哪国人？
   52: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你是哪国人？', options: ['Where do from? you come', 'Where do you come from?', 'do from? Where come you', 'do come from? you Where'], answer: 1, explanation: '正确语序：Where do you come from?（你是哪国人？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你是哪国人？', options: ['What you? nationality are', 'What nationality are you?', 'nationality What are you?', 'you? are What nationality'], answer: 1, explanation: '正确语序：What nationality are you?（你是哪国人？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是美国人。', options: ['come America. I from', 'from I America. come', 'I come from America.', 'I come America. from'], answer: 2, explanation: '正确语序：I come from America.（我是美国人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I am ______', hint: '中文意思：我是美国人。', options: ['swedish', 'italian', 'american', 'dutch'], answer: 2, explanation: 'I am American.（我是美国人。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你是哪国人？', options: ['What are you? nationality', 'What nationality are you?', 'you? are What nationality', 'are you? What nationality'], answer: 1, explanation: '正确语序：What nationality are you?（你是哪国人？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你是哪国人？', options: ['come do Where you from?', 'Where do you come from?', 'from? you Where do come', 'Where from? come do you'], answer: 1, explanation: '正确语序：Where do you come from?（你是哪国人？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是美国人。', options: ['America. from come I', 'come from I America.', 'I from America. come', 'I come from America.'], answer: 3, explanation: '正确语序：I come from America.（我是美国人。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I am ______', hint: '中文意思：我是美国人。', options: ['brazilian', 'german', 'english', 'american'], answer: 3, explanation: 'I am American.（我是美国人。）' },
   ],
 
   // Lesson 53: Lesson 53: An interesting climate 有趣的气候
   53: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是英国人。', options: ['I from come England.', 'I come England. from', 'from England. come I', 'I come from England.'], answer: 3, explanation: '正确语序：I come from England.（我是英国人。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '太阳升起得晚，落得早。', options: ['sets sun late rises and The early.', 'late sets The and rises early. sun', 'The sun rises late and sets early.', 'rises early. sets late and sun The'], answer: 2, explanation: '正确语序：The sun rises late and sets early.（太阳升起得晚，落得早。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它是我们最喜欢的话题。', options: ['of conversation. is subject It favourite our', 'of It favourite is conversation. our subject', 'It is our favourite subject of conversation.', 'It is favourite conversation. our of subject'], answer: 2, explanation: '正确语序：It is our favourite subject of conversation.（它是我们最喜欢的话题。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Which seasons do you like ______', hint: '中文意思：你最喜欢哪些季节？', options: ['australia', 'best', 'west', 'rise'], answer: 1, explanation: 'Which seasons do you like best?（你最喜欢哪些季节？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is often ______ in the West and warm in the South.', hint: '中文意思：西部经常下雨，南部很温暖。', options: ['china', 'japan', 'wet', 'subject'], answer: 2, explanation: 'It is often wet in the West and warm in the South.（西部经常下雨，南部很温暖。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The sun rises ______ and sets late.', hint: '中文意思：太阳升起得早，落得晚。', options: ['nigeria', 'south', 'turkish', 'early'], answer: 3, explanation: 'The sun rises early and sets late.（太阳升起得早，落得晚。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它是我们最喜欢的话题。', options: ['It is our favourite subject of conversation.', 'favourite conversation. our subject It is of', 'It subject of is conversation. favourite our', 'It is our subject conversation. of favourite'], answer: 0, explanation: '正确语序：It is our favourite subject of conversation.（它是我们最喜欢的话题。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你们国家的气候怎么样？', options: ['climate the like your is country? What in', 'What is the climate like in your country?', 'What the like your is in country? climate', 'country? is your in the What like climate'], answer: 1, explanation: '正确语序：What is the climate like in your country?（你们国家的气候怎么样？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我喜欢春天和夏天。', options: ['I like spring and summer.', 'like summer. and spring I', 'like I and spring summer.', 'spring I and summer. like'], answer: 0, explanation: '正确语序：I like spring and summer.（我喜欢春天和夏天。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The sun rises early and sets ______', hint: '中文意思：太阳升起得早，落得晚。', options: ['mild', 'late', 'indian', 'australia'], answer: 1, explanation: 'The sun rises early and sets late.（太阳升起得早，落得晚。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Which seasons do you like ______', hint: '中文意思：你最喜欢哪些季节？', options: ['set', 'wet', 'best', 'season'], answer: 2, explanation: 'Which seasons do you like best?（你最喜欢哪些季节？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The sun rises late and sets ______', hint: '中文意思：太阳升起得晚，落得早。', options: ['turkish', 'early', 'finnish', 'polish'], answer: 1, explanation: 'The sun rises late and sets early.（太阳升起得晚，落得早。）' },
   ],
 
   // Lesson 54: Lesson 54: What country are they from? 他们来自哪个国家？
   54: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他来自哪个国家？', options: ['does country from? come What he', 'What does come he from? country', 'What country does he come from?', 'from? country What come does he'], answer: 2, explanation: '正确语序：What country does he come from?（他来自哪个国家？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他是哪国人？', options: ['Where does he come from?', 'from? does he come Where', 'come does from? he Where', 'he does come Where from?'], answer: 0, explanation: '正确语序：Where does he come from?（他是哪国人？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他来自澳大利亚。', options: ['Australia. He from comes', 'Australia. He comes from', 'from Australia. comes He', 'He comes from Australia.'], answer: 3, explanation: '正确语序：He comes from Australia.（他来自澳大利亚。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He comes from ______', hint: '中文意思：他来自澳大利亚。', options: ['australia', 'canada', 'austria', 'thailand'], answer: 0, explanation: 'He comes from Australia.（他来自澳大利亚。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他来自澳大利亚。', options: ['from He comes Australia.', 'He Australia. comes from', 'Australia. comes He from', 'He comes from Australia.'], answer: 3, explanation: '正确语序：He comes from Australia.（他来自澳大利亚。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他来自哪个国家？', options: ['country from? does What he come', 'come country What from? he does', 'What country does he come from?', 'he country from? What does come'], answer: 2, explanation: '正确语序：What country does he come from?（他来自哪个国家？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他是哪国人？', options: ['Where does he come from?', 'does he come from? Where', 'from? does he come Where', 'Where come from? does he'], answer: 0, explanation: '正确语序：Where does he come from?（他是哪国人？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He comes from ______', hint: '中文意思：他来自澳大利亚。', options: ['thailand', 'denmark', 'australia', 'austria'], answer: 2, explanation: 'He comes from Australia.（他来自澳大利亚。）' },
   ],
 
   // Lesson 55: Lesson 55: The Sawyer family 索耶一家
   55: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们很早就到家了。', options: ['early. They home arrive', 'They arrive home early.', 'arrive early. They home', 'early. They arrive home'], answer: 1, explanation: '正确语序：They arrive home early.（他们很早就到家了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他很晚才到家。', options: ['late. He arrives home', 'He home arrives late.', 'He arrives home late.', 'home arrives late. He'], answer: 2, explanation: '正确语序：He arrives home late.（他很晚才到家。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '下午，她通常会见朋友。', options: ['afternoon, she friends. In usually her the sees', 'the usually her afternoon, friends. she In sees', 'the friends. afternoon, sees her usually she In', 'In the afternoon, she usually sees her friends.'], answer: 3, explanation: '正确语序：In the afternoon, she usually sees her friends.（下午，她通常会见朋友。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Mrs Sawyer stays at ______ every day.', hint: '中文意思：索耶夫人每天都呆在家里。', options: ['home', 'usually', 'living', 'depart'], answer: 0, explanation: 'Mrs Sawyer stays at home every day.（索耶夫人每天都呆在家里。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Mr Sawyer comes ______ from work.', hint: '中文意思：索耶先生下班回家。', options: ['say', 'usually', 'home', 'housework'], answer: 2, explanation: 'Mr Sawyer comes home from work.（索耶先生下班回家。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：They often drink tea ______', hint: '中文意思：她们经常一起喝茶。', options: ['lunch', 'evening', 'home', 'together'], answer: 3, explanation: 'They often drink tea together.（她们经常一起喝茶。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '下午，她通常会见朋友。', options: ['friends. her the In she sees usually afternoon,', 'In the afternoon, she usually sees her friends.', 'usually afternoon, she friends. In her the sees', 'friends. afternoon, usually her the sees she In'], answer: 1, explanation: '正确语序：In the afternoon, she usually sees her friends.（下午，她通常会见朋友。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '索耶先生下班回家。', options: ['Mr home from work. Sawyer comes', 'home comes Mr Sawyer from work.', 'Mr Sawyer comes home from work.', 'home Sawyer work. from Mr comes'], answer: 2, explanation: '正确语序：Mr Sawyer comes home from work.（索耶先生下班回家。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她做家务。', options: ['She does the housework.', 'the does housework. She', 'She the does housework.', 'does She the housework.'], answer: 0, explanation: '正确语序：She does the housework.（她做家务。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The Sawyers ______ at 87 King Street.', hint: '中文意思：索耶一家住在国王街87号。', options: ['live', 'stay', 'say', 'love'], answer: 0, explanation: 'The Sawyers live at 87 King Street.（索耶一家住在国王街87号。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They arrive ______ early.', hint: '中文意思：他们很早就到家了。', options: ['living', 'arrive', 'stay', 'home'], answer: 3, explanation: 'They arrive home early.（他们很早就到家了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：She does the ______', hint: '中文意思：她做家务。', options: ['housework', 'home', 'afternoon', 'lunch'], answer: 0, explanation: 'She does the housework.（她做家务。）' },
   ],
 
   // Lesson 56: Lesson 56: What do they usually do? 他们通常做什么？
   56: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她早上通常做什么？', options: ['What usually does she the morning? in do', 'in do usually she does What morning? the', 'the she usually does in morning? do What', 'What does she usually do in the morning?'], answer: 3, explanation: '正确语序：What does she usually do in the morning?（她早上通常做什么？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她通常见朋友。', options: ['friends. sees her usually She', 'her friends. usually sees She', 'She usually sees her friends.', 'her friends. sees She usually'], answer: 2, explanation: '正确语序：She usually sees her friends.（她通常见朋友。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她下午通常做什么？', options: ['do does afternoon? What the usually in she', 'What do the afternoon? does in usually she', 'What does she usually do in the afternoon?', 'in do afternoon? What does usually she the'], answer: 2, explanation: '正确语序：What does she usually do in the afternoon?（她下午通常做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她通常去上班。', options: ['to She usually goes work.', 'to goes work. usually She', 'She usually goes to work.', 'work. to She goes usually'], answer: 2, explanation: '正确语序：She usually goes to work.（她通常去上班。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们晚上通常做什么？', options: ['usually do the in evening? they do What', 'What do they usually do in the evening?', 'in do do usually they What the evening?', 'they usually evening? in do What the do'], answer: 1, explanation: '正确语序：What do they usually do in the evening?（他们晚上通常做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她早上通常做什么？', options: ['she the in morning? What do usually does', 'do she does usually the What in morning?', 'the do morning? in What usually she does', 'What does she usually do in the morning?'], answer: 3, explanation: '正确语序：What does she usually do in the morning?（她早上通常做什么？）' },
   ],
 
   // Lesson 57: Lesson 57: An unusual day 不寻常的一天
   57: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '现在是四点钟。', options: ['is It four o\'clock.', 'It is four o\'clock.', 'four It is o\'clock.', 'o\'clock. four It is'], answer: 1, explanation: '正确语序：It is four o\'clock.（现在是四点钟。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '现在是八点钟。', options: ['It is eight o\'clock.', 'o\'clock. eight It is', 'It eight o\'clock. is', 'eight It is o\'clock.'], answer: 0, explanation: '正确语序：It is eight o\'clock.（现在是八点钟。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '索耶先生晚上通常看报纸。', options: ['Mr Sawyer usually reads his newspaper at night.', 'Mr newspaper his Sawyer at usually night. reads', 'Sawyer at reads night. usually Mr newspaper his', 'at his reads usually Sawyer night. newspaper Mr'], answer: 0, explanation: '正确语序：Mr Sawyer usually reads his newspaper at night.（索耶先生晚上通常看报纸。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is ten ______', hint: '中文意思：现在是十点钟。', options: ['moment', 'mall', 'oclock', 'shop'], answer: 2, explanation: 'It is ten o\'clock.（现在是十点钟。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：At the ______ they are playing in the garden.', hint: '中文意思：此刻，他们在花园里玩耍。', options: ['mall', 'store', 'moment', 'oclock'], answer: 2, explanation: 'At the moment, they are playing in the garden.（此刻，他们在花园里玩耍。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is four ______', hint: '中文意思：现在是四点钟。', options: ['mall', 'unusual', 'oclock', 'moment'], answer: 2, explanation: 'It is four o\'clock.（现在是四点钟。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '现在是八点钟。', options: ['eight o\'clock. is It', 'is eight It o\'clock.', 'is o\'clock. eight It', 'It is eight o\'clock.'], answer: 3, explanation: '正确语序：It is eight o\'clock.（现在是八点钟。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但今天晚上他没在看报纸。', options: ['not his he reading newspaper tonight. But is', 'But he is not reading his newspaper tonight.', 'is reading newspaper not But tonight. his he', 'newspaper But he is his not reading tonight.'], answer: 1, explanation: '正确语序：But he is not reading his newspaper tonight.（但今天晚上他没在看报纸。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '现在是九点钟。', options: ['o\'clock. is It nine', 'o\'clock. nine It is', 'nine o\'clock. is It', 'It is nine o\'clock.'], answer: 3, explanation: '正确语序：It is nine o\'clock.（现在是九点钟。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：At the ______ they are playing in the garden.', hint: '中文意思：此刻，他们在花园里玩耍。', options: ['unusual', 'mall', 'moment', 'store'], answer: 2, explanation: 'At the moment, they are playing in the garden.（此刻，他们在花园里玩耍。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is four ______', hint: '中文意思：现在是四点钟。', options: ['oclock', 'clock', 'store', 'unusual'], answer: 0, explanation: 'It is four o\'clock.（现在是四点钟。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is nine ______', hint: '中文意思：现在是九点钟。', options: ['clock', 'oclock', 'store', 'moment'], answer: 1, explanation: 'It is nine o\'clock.（现在是九点钟。）' },
   ],
 
   // Lesson 58: Lesson 58: What's the time? 几点了？
   58: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '八点四十（差二十分九点）。', options: ['is nine. twenty to It', 'is It nine. twenty to', 'It is twenty to nine.', 'nine. is to It twenty'], answer: 2, explanation: '正确语序：It is twenty to nine.（八点四十（差二十分九点）。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '八点了。', options: ['eight It o\'clock. is', 'is o\'clock. eight It', 'is eight o\'clock. It', 'It is eight o\'clock.'], answer: 3, explanation: '正确语序：It is eight o\'clock.（八点了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '八点一刻。', options: ['is a eight. past It quarter', 'It is a quarter past eight.', 'quarter eight. is a It past', 'It quarter is eight. past a'], answer: 1, explanation: '正确语序：It is a quarter past eight.（八点一刻。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '八点一刻。', options: ['quarter is It a past eight.', 'It is a quarter past eight.', 'It past quarter is a eight.', 'It is past quarter a eight.'], answer: 1, explanation: '正确语序：It is a quarter past eight.（八点一刻。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '八点四十（差二十分九点）。', options: ['It is twenty to nine.', 'nine. is to It twenty', 'nine. It twenty is to', 'twenty is to It nine.'], answer: 0, explanation: '正确语序：It is twenty to nine.（八点四十（差二十分九点）。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '几点了？', options: ['is What time? the', 'What is the time?', 'is time? the What', 'is What the time?'], answer: 1, explanation: '正确语序：What is the time?（几点了？）' },
   ],
 
   // Lesson 59: Lesson 59: Is that all? 就这些吗？
   59: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一瓶胶水。', options: ['bottle glue. A of', 'A bottle of glue.', 'A of bottle glue.', 'of glue. bottle A'], answer: 1, explanation: '正确语序：A bottle of glue.（一瓶胶水。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我想要一些信封。', options: ['some please. envelopes, I want', 'please. I envelopes, some want', 'want some I please. envelopes,', 'I want some envelopes, please.'], answer: 3, explanation: '正确语序：I want some envelopes, please.（我想要一些信封。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我要找的零钱。', options: ['I want my change.', 'want change. my I', 'my I change. want', 'I my want change.'], answer: 0, explanation: '正确语序：I want my change.（我要找的零钱。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Do you want the large ______ or the small size?', hint: '中文意思：您要大号的还是小号的？', options: ['writing', 'size', 'shopassistant', 'chalk'], answer: 1, explanation: 'Do you want the large size or the small size?（您要大号的还是小号的？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The large ______ please.', hint: '中文意思：请给我大号的。', options: ['size', 'glue', 'page', 'paper'], answer: 0, explanation: 'The large size, please.（请给我大号的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Do you have any writing ______', hint: '中文意思：您有信纸吗？', options: ['paper', 'writing', 'size', 'page'], answer: 0, explanation: 'Do you have any writing paper?（您有信纸吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我只有小盒的。', options: ['I only have small boxes.', 'have small I only boxes.', 'only have I small boxes.', 'only boxes. I small have'], answer: 0, explanation: '正确语序：I only have small boxes.（我只有小盒的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请给我大号的。', options: ['large The please. size,', 'The large size, please.', 'size, please. The large', 'size, The large please.'], answer: 1, explanation: '正确语序：The large size, please.（请给我大号的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一瓶胶水。', options: ['bottle of A glue.', 'bottle A of glue.', 'glue. bottle A of', 'A bottle of glue.'], answer: 3, explanation: '正确语序：A bottle of glue.（一瓶胶水。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：A bottle of ______', hint: '中文意思：一瓶胶水。', options: ['shopassistant', 'glue', 'size', 'writing'], answer: 1, explanation: 'A bottle of glue.（一瓶胶水。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The large ______ please.', hint: '中文意思：请给我大号的。', options: ['size', 'writing', 'chalk', 'paper'], answer: 0, explanation: 'The large size, please.（请给我大号的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：And I want a large box of ______ too.', hint: '中文意思：我还想要一大盒粉笔。', options: ['envelope', 'writingpaper', 'paper', 'chalk'], answer: 3, explanation: 'And I want a large box of chalk, too.（我还想要一大盒粉笔。）' },
   ],
 
   // Lesson 60: Lesson 60: The future 将来
   60: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算去度假。', options: ['I holiday. am a have going to', 'a I holiday. am going to have', 'a I holiday. have am going to', 'I am going to have a holiday.'], answer: 3, explanation: '正确语序：I am going to have a holiday.（我打算去度假。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算下个月去。', options: ['month. next have am it to I going', 'I am going to have it next month.', 'it I next to have am going month.', 'it going am next have I month. to'], answer: 1, explanation: '正确语序：I am going to have it next month.（我打算下个月去。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打算去度假吗？', options: ['Are holiday? to a have you going', 'you going to have holiday? a Are', 'you holiday? to a have Are going', 'Are you going to have a holiday?'], answer: 3, explanation: '正确语序：Are you going to have a holiday?（你打算去度假吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打算什么时候去？', options: ['you have are When going it? to', 'When it? to are you have going', 'When are you going to have it?', 'When going to it? have you are'], answer: 2, explanation: '正确语序：When are you going to have it?（你打算什么时候去？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算下个月去。', options: ['to I month. next have going it am', 'I am going to have it next month.', 'to I going am it next month. have', 'am it have going to I month. next'], answer: 1, explanation: '正确语序：I am going to have it next month.（我打算下个月去。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打算去度假吗？', options: ['Are to a holiday? you going have', 'Are you going to have a holiday?', 'you a to Are holiday? going have', 'you a to holiday? have going Are'], answer: 1, explanation: '正确语序：Are you going to have a holiday?（你打算去度假吗？）' },
   ],
 
   // Lesson 61: Lesson 61: A bad cold 重感冒
   61: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他得了重感冒，威廉斯先生。', options: ['cold, Williams. a Mr bad He has', 'cold, He Mr bad has Williams. a', 'cold, bad Williams. has He Mr a', 'He has a bad cold, Mr Williams.'], answer: 3, explanation: '正确语序：He has a bad cold, Mr Williams.（他得了重感冒，威廉斯先生。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '记得。是09754。', options: ['Yes. It is 09754.', 'is It Yes. 09754.', 'is Yes. 09754. It', 'is 09754. It Yes.'], answer: 0, explanation: '正确语序：Yes. It is 09754.（记得。是09754。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你记得医生的电话号码吗？', options: ['Can you remember the doctor\'s telephone number?', 'telephone number? doctor\'s the Can remember you', 'the doctor\'s telephone remember you Can number?', 'the doctor\'s telephone number? you Can remember'], answer: 0, explanation: '正确语序：Can you remember the doctor\'s telephone number?（你记得医生的电话号码吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Open your ______ Jimmy.', hint: '中文意思：张开嘴，吉米。', options: ['mouth', 'call', 'cold', 'must'], answer: 0, explanation: 'Open your mouth, Jimmy.（张开嘴，吉米。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We must call the ______', hint: '中文意思：我们必须请医生。', options: ['bad', 'tongue', 'pharmacy', 'doctor'], answer: 3, explanation: 'We must call the doctor.（我们必须请医生。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He has a bad ______ Mr Williams.', hint: '中文意思：他得了重感冒，威廉斯先生。', options: ['headache', 'doctor', 'remember', 'cold'], answer: 3, explanation: 'He has a bad cold, Mr Williams.（他得了重感冒，威廉斯先生。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他在床上。', options: ['bed. in is He', 'in He is bed.', 'He bed. in is', 'He is in bed.'], answer: 3, explanation: '正确语序：He is in bed.（他在床上。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这对吉米来说是个好消息。', options: ['That is good Jimmy. news for', 'That is good news for Jimmy.', 'is Jimmy. That news good for', 'for is That good news Jimmy.'], answer: 1, explanation: '正确语序：That is good news for Jimmy.（这对吉米来说是个好消息。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他怎么了，医生？', options: ['matter the him, is doctor? with What', 'What is the matter with him, doctor?', 'with is doctor? him, the matter What', 'doctor? with the him, matter What is'], answer: 1, explanation: '正确语序：What is the matter with him, doctor?（他怎么了，医生？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What is the matter with him, ______', hint: '中文意思：他怎么了，医生？', options: ['stomachache', 'bad', 'medicine', 'doctor'], answer: 3, explanation: 'What is the matter with him, doctor?（他怎么了，医生？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Open your ______ Jimmy.', hint: '中文意思：张开嘴，吉米。', options: ['feel', 'pharmacy', 'cold', 'mouth'], answer: 3, explanation: 'Open your mouth, Jimmy.（张开嘴，吉米。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Show me your ______', hint: '中文意思：让我看看你的舌头。', options: ['stomachache', 'tongue', 'feel', 'doctor'], answer: 1, explanation: 'Show me your tongue.（让我看看你的舌头。）' },
   ],
 
   // Lesson 62: Lesson 62: What's the matter with...? ……怎么了？
   62: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她怎么了？', options: ['What is the matter with her?', 'her? What with the is matter', 'is her? with matter What the', 'her? with the What matter is'], answer: 0, explanation: '正确语序：What is the matter with her?（她怎么了？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他怎么了？', options: ['is matter What with him? the', 'What is him? with the matter', 'What is the matter with him?', 'is the with matter What him?'], answer: 2, explanation: '正确语序：What is the matter with him?（他怎么了？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她耳痛。', options: ['has earache. She an', 'an She earache. has', 'earache. has She an', 'She has an earache.'], answer: 3, explanation: '正确语序：She has an earache.（她耳痛。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他头痛。', options: ['has He a headache.', 'He a headache. has', 'He has a headache.', 'has headache. a He'], answer: 2, explanation: '正确语序：He has a headache.（他头痛。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她怎么了？', options: ['What is the matter with her?', 'What the with her? is matter', 'What matter with the her? is', 'with is What her? the matter'], answer: 0, explanation: '正确语序：What is the matter with her?（她怎么了？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她该怎么办？', options: ['do? she What must', 'What do? she must', 'What must she do?', 'must do? What she'], answer: 2, explanation: '正确语序：What must she do?（她该怎么办？）' },
   ],
 
   // Lesson 63: Lesson 63: Thank you, doctor 谢谢你，医生
   63: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他发烧吗，医生？', options: ['he have doctor? Does a temperature,', 'a doctor? have Does temperature, he', 'doctor? have a he Does temperature,', 'Does he have a temperature, doctor?'], answer: 3, explanation: '正确语序：Does he have a temperature, doctor?（他发烧吗，医生？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，他不发烧。', options: ['No, he does not.', 'does he not. No,', 'he not. does No,', 'No, not. he does'], answer: 0, explanation: '正确语序：No, he does not.（不，他不发烧。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以看看他吗，威廉斯夫人？', options: ['Can I see him please, Mrs Williams?', 'him Williams? Can I Mrs see please,', 'I please, see him Mrs Williams? Can', 'please, see Mrs Can Williams? I him'], answer: 0, explanation: '正确语序：Can I see him please, Mrs Williams?（我可以看看他吗，威廉斯夫人？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He is ______ thank you, doctor.', hint: '中文意思：他好些了，谢谢你，医生。', options: ['better', 'yet', 'quickly', 'certainly'], answer: 0, explanation: 'He is better, thank you, doctor.（他好些了，谢谢你，医生。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：You are ______ now, but you must not get up yet.', hint: '中文意思：你现在好些了，但还不能起床。', options: ['better', 'quickly', 'food', 'talk'], answer: 0, explanation: 'You are better now, but you must not get up yet.（你现在好些了，但还不能起床。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The boy must not go to school ______ Mrs Williams.', hint: '中文意思：这孩子还不能去上学，威廉斯夫人。', options: ['yet', 'food', 'certainly', 'quickly'], answer: 0, explanation: 'The boy must not go to school yet, Mrs Williams.（这孩子还不能去上学，威廉斯夫人。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你看起来很好，吉米。', options: ['Jimmy. very well, look You', 'You look very well, Jimmy.', 'well, very look Jimmy. You', 'look You very Jimmy. well,'], answer: 1, explanation: '正确语序：You look very well, Jimmy.（你看起来很好，吉米。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他必须卧床吗？', options: ['Must he stay in bed?', 'in stay Must he bed?', 'he in Must bed? stay', 'bed? he in Must stay'], answer: 0, explanation: '正确语序：Must he stay in bed?（他必须卧床吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他在床上，医生。', options: ['doctor. in bed, He is', 'doctor. bed, is He in', 'He is in bed, doctor.', 'is He doctor. bed, in'], answer: 2, explanation: '正确语序：He is in bed, doctor.（他在床上，医生。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Yes. He must ______ in bed for another two days.', hint: '中文意思：是的。他必须再卧床两天。', options: ['drive', 'getup', 'rich', 'remain'], answer: 3, explanation: 'Yes. He must remain in bed for another two days.（是的。他必须再卧床两天。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：You are better now, but you must not get up ______', hint: '中文意思：你现在好些了，但还不能起床。', options: ['remain', 'yet', 'match', 'library'], answer: 1, explanation: 'You are better now, but you must not get up yet.（你现在好些了，但还不能起床。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The boy must not go to school ______ Mrs Williams.', hint: '中文意思：这孩子还不能去上学，威廉斯夫人。', options: ['better', 'leanoutof', 'yet', 'play'], answer: 2, explanation: 'The boy must not go to school yet, Mrs Williams.（这孩子还不能去上学，威廉斯夫人。）' },
   ],
 
   // Lesson 64: Lesson 64: Don't...! 不要……！
   64: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不要吃油腻的食物！', options: ['food! not rich eat Do', 'Do eat food! rich not', 'Do not eat rich food!', 'food! rich eat Do not'], answer: 2, explanation: '正确语序：Do not eat rich food!（不要吃油腻的食物！）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不要吃这个药！', options: ['this take Do medicine! not', 'Do not take this medicine!', 'Do take this medicine! not', 'not this Do medicine! take'], answer: 1, explanation: '正确语序：Do not take this medicine!（不要吃这个药！）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不要喝牛奶！', options: ['Do not drink milk!', 'not Do milk! drink', 'drink Do not milk!', 'milk! not Do drink'], answer: 0, explanation: '正确语序：Do not drink milk!（不要喝牛奶！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不要吃这个药！', options: ['not medicine! Do this take', 'this not take Do medicine!', 'Do not take medicine! this', 'Do not take this medicine!'], answer: 3, explanation: '正确语序：Do not take this medicine!（不要吃这个药！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不要躺在床上！', options: ['not Do stay bed! in', 'in Do not bed! stay', 'Do not stay in bed!', 'stay bed! not Do in'], answer: 2, explanation: '正确语序：Do not stay in bed!（不要躺在床上！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不要吃油腻的食物！', options: ['food! rich not Do eat', 'Do food! eat rich not', 'eat not food! rich Do', 'Do not eat rich food!'], answer: 3, explanation: '正确语序：Do not eat rich food!（不要吃油腻的食物！）' },
   ],
 
   // Lesson 65: Lesson 65: Not a baby 不是小孩子
   65: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '今天你可以拿钥匙。', options: ['key have You can today. the', 'You can have the key today.', 'can the today. You key have', 'You the have can key today.'], answer: 1, explanation: '正确语序：You can have the key today.（今天你可以拿钥匙。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但我已经十七岁了！', options: ['But I am seventeen years old!', 'I am But years old! seventeen', 'seventeen But years am I old!', 'am seventeen years old! I But'], answer: 0, explanation: '正确语序：But I am seventeen years old!（但我已经十七岁了！）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '爸爸说我可以拿。', options: ['says I Dad can have it.', 'have says Dad it. can I', 'can Dad says I have it.', 'Dad says I can have it.'], answer: 3, explanation: '正确语序：Dad says I can have it.（爸爸说我可以拿。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Dad, I am not a ______', hint: '中文意思：爸爸，我不是小孩子。', options: ['hear', 'baby', 'key', 'enjoy'], answer: 1, explanation: 'Dad, I am not a baby.（爸爸，我不是小孩子。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Mum, can I have the ______ to the front door please?', hint: '中文意思：妈妈，请给我前门的钥匙好吗？', options: ['enjoy', 'key', 'dad', 'myself'], answer: 1, explanation: 'Mum, can I have the key to the front door please?（妈妈，请给我前门的钥匙好吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：You can have the ______ today.', hint: '中文意思：今天你可以拿钥匙。', options: ['ourselves', 'dad', 'themselves', 'key'], answer: 3, explanation: 'You can have the key today.（今天你可以拿钥匙。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但你必须早点回家。', options: ['But you early. home come must', 'But you must come home early.', 'But come you must home early.', 'come home must you early. But'], answer: 1, explanation: '正确语序：But you must come home early.（但你必须早点回家。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那是前门的钥匙。', options: ['That is the front door key.', 'is the key. That front door', 'is key. That the front door', 'is key. door the front That'], answer: 0, explanation: '正确语序：That is the front door key.（那是前门的钥匙。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们总是玩得很开心，妈妈。', options: ['enjoy always ourselves, Mum. We', 'ourselves, always Mum. enjoy We', 'We always enjoy ourselves, Mum.', 'We ourselves, Mum. always enjoy'], answer: 2, explanation: '正确语序：We always enjoy ourselves, Mum.（我们总是玩得很开心，妈妈。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Here is the ______', hint: '中文意思：给你钥匙。', options: ['key', 'baby', 'yourself', 'myself'], answer: 0, explanation: 'Here is the key.（给你钥匙。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He says I am not a ______', hint: '中文意思：他说我不是小孩子。', options: ['themselves', 'myself', 'baby', 'himself'], answer: 2, explanation: 'He says I am not a baby.（他说我不是小孩子。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Give me the ______ to the front door please.', hint: '中文意思：请给我前门的钥匙。', options: ['key', 'baby', 'himself', 'myself'], answer: 0, explanation: 'Give me the key to the front door please.（请给我前门的钥匙。）' },
   ],
 
   // Lesson 66: Lesson 66: What's the time? 几点了？
   66: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '几点了？', options: ['What is the time?', 'the time? is What', 'is What time? the', 'the What is time?'], answer: 0, explanation: '正确语序：What is the time?（几点了？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一点了。', options: ['It is one o\'clock.', 'It one is o\'clock.', 'one o\'clock. It is', 'o\'clock. one is It'], answer: 0, explanation: '正确语序：It is one o\'clock.（一点了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一点一刻。', options: ['It is a quarter past one.', 'past quarter It is a one.', 'quarter is one. It past a', 'It is a past quarter one.'], answer: 0, explanation: '正确语序：It is a quarter past one.（一点一刻。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '几点了？', options: ['time? the is What', 'What is the time?', 'is the time? What', 'time? the What is'], answer: 1, explanation: '正确语序：What is the time?（几点了？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一点了。', options: ['one It o\'clock. is', 'one o\'clock. It is', 'It is one o\'clock.', 'one o\'clock. is It'], answer: 2, explanation: '正确语序：It is one o\'clock.（一点了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '一点一刻。', options: ['past is a It one. quarter', 'quarter one. is It past a', 'is a past It quarter one.', 'It is a quarter past one.'], answer: 3, explanation: '正确语序：It is a quarter past one.（一点一刻。）' },
   ],
 
   // Lesson 67: Lesson 67: The weekend 周末
   67: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '星期六我们在蔬菜水果店。', options: ['the on were Saturday. at We greengrocer\'s', 'the were We Saturday. greengrocer\'s at on', 'at greengrocer\'s the on were Saturday. We', 'We were at the greengrocer\'s on Saturday.'], answer: 3, explanation: '正确语序：We were at the greengrocer\'s on Saturday.（星期六我们在蔬菜水果店。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我要去蔬菜水果店。', options: ['the greengrocer\'s. to going am I', 'to greengrocer\'s. I going am the', 'I am going to the greengrocer\'s.', 'I going the greengrocer\'s. to am'], answer: 2, explanation: '正确语序：I am going to the greengrocer\'s.（我要去蔬菜水果店。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '星期天我们在我母亲家。', options: ['We were at my mother\'s on Sunday.', 'Sunday. on were mother\'s my We at', 'We mother\'s on Sunday. were at my', 'Sunday. my on mother\'s at We were'], answer: 0, explanation: '正确语序：We were at my mother\'s on Sunday.（星期天我们在我母亲家。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We were absent from school on Monday, ______ Wednesday and Thursday.', hint: '中文意思：我们星期一、星期二、星期三和星期四没去上学。', options: ['tuesday', 'weekend', 'church', 'grocer'], answer: 0, explanation: 'We were absent from school on Monday, Tuesday, Wednesday and Thursday.（我们星期一、星期二、星期三和星期四没去上学。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We were at my mother\'s on ______', hint: '中文意思：星期天我们在我母亲家。', options: ['sunday', 'absent', 'keep', 'church'], answer: 0, explanation: 'We were at my mother\'s on Sunday.（星期天我们在我母亲家。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We were at the greengrocer\'s on ______', hint: '中文意思：星期六我们在蔬菜水果店。', options: ['tuesday', 'weekday', 'saturday', 'weekend'], answer: 2, explanation: 'We were at the greengrocer\'s on Saturday.（星期六我们在蔬菜水果店。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我要去蔬菜水果店。', options: ['the greengrocer\'s. I to am going', 'going am I to the greengrocer\'s.', 'going the I to am greengrocer\'s.', 'I am going to the greengrocer\'s.'], answer: 3, explanation: '正确语序：I am going to the greengrocer\'s.（我要去蔬菜水果店。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她住在乡下。', options: ['in lives country. the She', 'She lives in the country.', 'the lives country. She in', 'lives in the She country.'], answer: 1, explanation: '正确语序：She lives in the country.（她住在乡下。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们在乡下。', options: ['in We country. the were', 'the in country. were We', 'were in We the country.', 'We were in the country.'], answer: 3, explanation: '正确语序：We were in the country.（我们在乡下。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We are going to stay at my mother\'s for the ______', hint: '中文意思：我们打算在我母亲家过周末。', options: ['grocer', 'monday', 'thursday', 'weekend'], answer: 3, explanation: 'We are going to stay at my mother\'s for the weekend.（我们打算在我母亲家过周末。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：You are ______', hint: '中文意思：你真幸运。', options: ['church', 'lucky', 'greengrocer', 'absent'], answer: 1, explanation: 'You are lucky.（你真幸运。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We were in the ______', hint: '中文意思：我们在乡下。', options: ['absent', 'country', 'lucky', 'weekday'], answer: 1, explanation: 'We were in the country.（我们在乡下。）' },
   ],
 
   // Lesson 68: Lesson 68: When were you...? 你什么时候……？
   68: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我星期一在那儿。', options: ['there was Monday. I on', 'Monday. I on was there', 'I was there on Monday.', 'I there Monday. was on'], answer: 2, explanation: '正确语序：I was there on Monday.（我星期一在那儿。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候在面包店？', options: ['you baker\'s? at the were When', 'When were you at the baker\'s?', 'at When baker\'s? were the you', 'you the were at When baker\'s?'], answer: 1, explanation: '正确语序：When were you at the baker\'s?（你什么时候在面包店？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候在文具店？', options: ['When were you at the stationer\'s?', 'the When stationer\'s? you were at', 'were When you the stationer\'s? at', 'were the you stationer\'s? at When'], answer: 0, explanation: '正确语序：When were you at the stationer\'s?（你什么时候在文具店？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我星期一在那儿。', options: ['Monday. on I was there', 'I there Monday. was on', 'Monday. I on was there', 'I was there on Monday.'], answer: 3, explanation: '正确语序：I was there on Monday.（我星期一在那儿。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候在文具店？', options: ['When at stationer\'s? the you were', 'When were you at the stationer\'s?', 'the you When at stationer\'s? were', 'at the stationer\'s? were you When'], answer: 1, explanation: '正确语序：When were you at the stationer\'s?（你什么时候在文具店？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候在面包店？', options: ['you at the were baker\'s? When', 'When were you at the baker\'s?', 'baker\'s? were the When at you', 'baker\'s? at When the were you'], answer: 1, explanation: '正确语序：When were you at the baker\'s?（你什么时候在面包店？）' },
   ],
 
   // Lesson 69: Lesson 69: The car race 汽车比赛
   69: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是一场令人兴奋的比赛。', options: ['It was an exciting race.', 'exciting an was race. It', 'was exciting It an race.', 'exciting race. an It was'], answer: 0, explanation: '正确语序：It was an exciting race.（这是一场令人兴奋的比赛。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们站在左边。', options: ['on We the standing are left.', 'We standing left. on are the', 'We left. are the on standing', 'We are standing on the left.'], answer: 3, explanation: '正确语序：We are standing on the left.（我们站在左边。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '比赛中有二十辆汽车。', options: ['the There were cars in twenty race.', 'were in cars race. There the twenty', 'in There twenty the cars were race.', 'There were twenty cars in the race.'], answer: 3, explanation: '正确语序：There were twenty cars in the race.（比赛中有二十辆汽车。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：My wife and I were at the ______', hint: '中文意思：我和妻子在比赛现场。', options: ['done', 'winner', 'race', 'exit'], answer: 2, explanation: 'My wife and I were at the race.（我和妻子在比赛现场。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：On the ______ home, my wife said to me...', hint: '中文意思：回家的路上，我妻子对我说……', options: ['year', 'stand', 'way', 'race'], answer: 2, explanation: 'On the way home, my wife said to me...（回家的路上，我妻子对我说……）' },
-    { type: 'choice', question: '选出填入空格的正确单词：There were twenty cars in the ______', hint: '中文意思：比赛中有二十辆汽车。', options: ['race', 'behind', 'crowd', 'exciting'], answer: 0, explanation: 'There were twenty cars in the race.（比赛中有二十辆汽车。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他驾驶十五号车。', options: ['He was in car number fifteen.', 'number was fifteen. car He in', 'fifteen. number He was car in', 'in number car was fifteen. He'], answer: 0, explanation: '正确语序：He was in car number fifteen.（他驾驶十五号车。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '另外五辆车就在他后面。', options: ['other behind Five cars just were him.', 'were him. behind cars other just Five', 'Five just behind him. cars other were', 'Five other cars were just behind him.'], answer: 3, explanation: '正确语序：Five other cars were just behind him.（另外五辆车就在他后面。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是一场令人兴奋的比赛。', options: ['exciting an It race. was', 'It was an exciting race.', 'race. It exciting an was', 'It an race. exciting was'], answer: 1, explanation: '正确语序：It was an exciting race.（这是一场令人兴奋的比赛。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：You can see us in the ______', hint: '中文意思：你能在人群中看到我们。', options: ['just', 'year', 'done', 'crowd'], answer: 3, explanation: 'You can see us in the crowd.（你能在人群中看到我们。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：There were twenty cars in the ______', hint: '中文意思：比赛中有二十辆汽车。', options: ['denmark', 'crowd', 'race', 'stand'], answer: 2, explanation: 'There were twenty cars in the race.（比赛中有二十辆汽车。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The ______ was Billy Stewart.', hint: '中文意思：获胜者是比利·斯图尔特。', options: ['crowd', 'finish', 'winner', 'denmark'], answer: 2, explanation: 'The winner was Billy Stewart.（获胜者是比利·斯图尔特。）' },
   ],
 
   // Lesson 70: Lesson 70: When were they there? 他们什么时候在那儿？
   70: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们什么时候在文具店？', options: ['When they at stationer\'s? the were', 'stationer\'s? were the they at When', 'they were the When stationer\'s? at', 'When were they at the stationer\'s?'], answer: 3, explanation: '正确语序：When were they at the stationer\'s?（他们什么时候在文具店？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们什么时候在报刊亭？', options: ['When were they at the newsagent\'s?', 'the at they When were newsagent\'s?', 'the they were newsagent\'s? When at', 'the at When newsagent\'s? they were'], answer: 0, explanation: '正确语序：When were they at the newsagent\'s?（他们什么时候在报刊亭？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们星期一在那儿。', options: ['They Monday. were there on', 'They were there on Monday.', 'They Monday. on were there', 'there were They on Monday.'], answer: 1, explanation: '正确语序：They were there on Monday.（他们星期一在那儿。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们星期二在那儿。', options: ['Tuesday. They were there on', 'They on Tuesday. there were', 'on there Tuesday. were They', 'They were there on Tuesday.'], answer: 3, explanation: '正确语序：They were there on Tuesday.（他们星期二在那儿。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们什么时候在文具店？', options: ['When were they at the stationer\'s?', 'they were stationer\'s? When at the', 'stationer\'s? at the were they When', 'stationer\'s? they When were the at'], answer: 0, explanation: '正确语序：When were they at the stationer\'s?（他们什么时候在文具店？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们星期一在那儿。', options: ['Monday. They were there on', 'there They were on Monday.', 'on Monday. They there were', 'They were there on Monday.'], answer: 3, explanation: '正确语序：They were there on Monday.（他们星期一在那儿。）' },
   ],
 
   // Lesson 71: Lesson 71: He's awful! 他讨厌死了！
   71: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '电话又响了。', options: ['The telephone rang again.', 'The rang telephone again.', 'The again. rang telephone', 'The telephone again. rang'], answer: 0, explanation: '正确语序：The telephone rang again.（电话又响了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '波琳接了电话。', options: ['Pauline answered the telephone.', 'the Pauline answered telephone.', 'telephone. the answered Pauline', 'answered the telephone. Pauline'], answer: 0, explanation: '正确语序：Pauline answered the telephone.（波琳接了电话。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '"是的，他打了。"她说。', options: ['"Yes, did." he she said.', 'he said. "Yes, she did."', 'he "Yes, said. did." she', '"Yes, he did." she said.'], answer: 3, explanation: '正确语序："Yes, he did." she said.（"是的，他打了。"她说。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What did your boss ______ to him?', hint: '中文意思：你老板对他说了什么？', options: ['telephone', 'phone', 'awfully', 'say'], answer: 3, explanation: 'What did your boss say to him?（你老板对他说了什么？）' },
-    { type: 'choice', question: '选出填入空格的正确单词："Did he ______ again?" I asked.', hint: '中文意思："他又打电话了吗？"我问。', options: ['awfully', 'awful', 'telephone', 'say'], answer: 2, explanation: '"Did he telephone again?" I asked.（"他又打电话了吗？"我问。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Pauline answered the ______', hint: '中文意思：波琳接了电话。', options: ['awfully', 'time', 'telephone', 'last'], answer: 2, explanation: 'Pauline answered the telephone.（波琳接了电话。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '"不，他没有。"她说。', options: ['"No, he did not." she said.', '"No, said. not." did he she', 'he not." "No, she did said.', 'he did said. not." "No, she'], answer: 0, explanation: '正确语序："No, he did not." she said.（"不，他没有。"她说。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '朗·马斯顿这个人怎么样，波琳？', options: ['Marston like, is Ron What Pauline?', 'What is Ron Marston like, Pauline?', 'is What like, Pauline? Ron Marston', 'What like, Ron is Pauline? Marston'], answer: 1, explanation: '正确语序：What is Ron Marston like, Pauline?（朗·马斯顿这个人怎么样，波琳？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '"他又打电话了吗？"我问。', options: ['I asked. "Did he again?" telephone', 'telephone asked. again?" "Did I he', '"Did he telephone again?" I asked.', 'asked. he telephone I again?" "Did'], answer: 2, explanation: '正确语序："Did he telephone again?" I asked.（"他又打电话了吗？"我问。）' },
+    { type: 'choice', question: '选出填入空格的正确单词："I said, \'This is Pauline\'s mother. Please do not telephone my daughter ______', hint: '中文意思："我说，\'我是波琳的母亲。请不要再给我女儿打电话了！\'"', options: ['again', 'last', 'telephone', 'time'], answer: 0, explanation: '"I said, \'This is Pauline\'s mother. Please do not telephone my daughter again!\'"（"我说，\'我是波琳的母亲。请不要再给我女儿打电话了！\'"）' },
+    { type: 'choice', question: '选出填入空格的正确单词："What did you ______ to him?" I asked.', hint: '中文意思："你对他说了什么？"我问。', options: ['telephone', 'say', 'answer', 'phone'], answer: 1, explanation: '"What did you say to him?" I asked.（"你对他说了什么？"我问。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He is ______', hint: '中文意思：他讨厌死了！', options: ['last', 'awful', 'say', 'answer'], answer: 1, explanation: 'He is awful!（他讨厌死了！）' },
   ],
 
   // Lesson 72: Lesson 72: When did you...? 你什么时候……？
   72: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候见到他的？', options: ['When did you see him?', 'you him? see did When', 'you see When him? did', 'you When see did him?'], answer: 0, explanation: '正确语序：When did you see him?（你什么时候见到他的？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候给他打电话的？', options: ['When did you telephone him?', 'him? did telephone When you', 'you telephone did him? When', 'you him? did telephone When'], answer: 0, explanation: '正确语序：When did you telephone him?（你什么时候给他打电话的？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我昨天给他打电话的。', options: ['yesterday. telephoned him I', 'I telephoned yesterday. him', 'I telephoned him yesterday.', 'I him telephoned yesterday.'], answer: 2, explanation: '正确语序：I telephoned him yesterday.（我昨天给他打电话的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我前天见到他的。', options: ['before I day yesterday. the him saw', 'I saw him the day before yesterday.', 'before him saw yesterday. the day I', 'him I the day before yesterday. saw'], answer: 1, explanation: '正确语序：I saw him the day before yesterday.（我前天见到他的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候见到他的？', options: ['When did you see him?', 'you see did When him?', 'When you did him? see', 'him? see you did When'], answer: 0, explanation: '正确语序：When did you see him?（你什么时候见到他的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候给他打电话的？', options: ['When did you telephone him?', 'When did telephone him? you', 'you did When telephone him?', 'When you telephone did him?'], answer: 0, explanation: '正确语序：When did you telephone him?（你什么时候给他打电话的？）' },
   ],
 
   // Lesson 73: Lesson 73: The way to King Street 到国王街怎么走
   73: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我上周去了伦敦。', options: ['I went to London last week.', 'I went last London to week.', 'to went I week. London last', 'to last week. went London I'], answer: 0, explanation: '正确语序：I went to London last week.（我上周去了伦敦。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你知道去国王街的路吗？', options: ['Street? Do to the know King way you', 'the Street? way Do King you know to', 'Do you know the way to King Street?', 'you know Do to way the King Street?'], answer: 2, explanation: '正确语序：Do you know the way to King Street?（你知道去国王街的路吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我没听懂。', options: ['did I not understand.', 'not I understand. did', 'did understand. I not', 'I did not understand.'], answer: 3, explanation: '正确语序：I did not understand.（我没听懂。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I went to ______ last week.', hint: '中文意思：我上周去了伦敦。', options: ['stop', 'week', 'london', 'pleasantly'], answer: 2, explanation: 'I went to London last week.（我上周去了伦敦。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I did not ______', hint: '中文意思：我没听懂。', options: ['pleasantly', 'understand', 'hand', 'week'], answer: 1, explanation: 'I did not understand.（我没听懂。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你知道去国王街的路吗？', options: ['Do you know the way to King Street?', 'King Do to Street? way you know the', 'way the to King Do know Street? you', 'Street? know King to the Do way you'], answer: 0, explanation: '正确语序：Do you know the way to King Street?（你知道去国王街的路吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我没听懂。', options: ['I did not understand.', 'not understand. did I', 'I not understand. did', 'understand. did I not'], answer: 0, explanation: '正确语序：I did not understand.（我没听懂。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我迷路了。', options: ['my way. lost I', 'my I way. lost', 'I lost my way.', 'my lost way. I'], answer: 2, explanation: '正确语序：I lost my way.（我迷路了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I did not ______', hint: '中文意思：我没听懂。', options: ['greet', 'london', 'phrasebook', 'understand'], answer: 3, explanation: 'I did not understand.（我没听懂。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I went to ______ last week.', hint: '中文意思：我上周去了伦敦。', options: ['london', 'pocket', 'pleasantly', 'understand'], answer: 0, explanation: 'I went to London last week.（我上周去了伦敦。）' },
   ],
 
   // Lesson 74: Lesson 74: What did they do? 他们做了什么？
   74: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他快速穿过马路。', options: ['the across quickly. walked He road', 'across He road quickly. the walked', 'road quickly. across walked the He', 'He walked across the road quickly.'], answer: 3, explanation: '正确语序：He walked across the road quickly.（他快速穿过马路。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她工作很努力。', options: ['worked hard. very She', 'worked hard. She very', 'very hard. worked She', 'She worked very hard.'], answer: 3, explanation: '正确语序：She worked very hard.（她工作很努力。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们愉快地玩游戏。', options: ['They played games happily.', 'played They happily. games', 'They happily. games played', 'games They played happily.'], answer: 0, explanation: '正确语序：They played games happily.（他们愉快地玩游戏。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他做了什么？', options: ['What did he do?', 'he What did do?', 'did What he do?', 'What do? did he'], answer: 0, explanation: '正确语序：What did he do?（他做了什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们愉快地玩游戏。', options: ['played happily. games They', 'They played games happily.', 'games happily. They played', 'happily. games They played'], answer: 1, explanation: '正确语序：They played games happily.（他们愉快地玩游戏。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她工作很努力。', options: ['She hard. very worked', 'She worked very hard.', 'hard. very She worked', 'very hard. worked She'], answer: 1, explanation: '正确语序：She worked very hard.（她工作很努力。）' },
   ],
 
   // Lesson 75: Lesson 75: Uncomfortable shoes 不舒适的鞋子
   75: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它们去年很流行。', options: ['in fashion year. were They last', 'They were in fashion last year.', 'fashion were last They in year.', 'They fashion were in last year.'], answer: 1, explanation: '正确语序：They were in fashion last year.（它们去年很流行。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它们很不舒服。', options: ['They are very uncomfortable.', 'very uncomfortable. are They', 'very are uncomfortable. They', 'uncomfortable. are They very'], answer: 0, explanation: '正确语序：They are very uncomfortable.（它们很不舒服。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在伦敦买了这双鞋。', options: ['these I London. bought in shoes', 'I bought these shoes in London.', 'I shoes London. bought these in', 'I these bought shoes London. in'], answer: 1, explanation: '正确语序：I bought these shoes in London.（我在伦敦买了这双鞋。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：They were in ______ last year.', hint: '中文意思：它们去年很流行。', options: ['fashion', 'pair', 'wear', 'ago'], answer: 0, explanation: 'They were in fashion last year.（它们去年很流行。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：They are very ______', hint: '中文意思：它们很不舒服。', options: ['takeoff', 'uncomfortable', 'buy', 'puton'], answer: 1, explanation: 'They are very uncomfortable.（它们很不舒服。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我去年穿过它们。', options: ['them year. I last wore', 'year. last I wore them', 'wore year. I last them', 'I wore them last year.'], answer: 3, explanation: '正确语序：I wore them last year.（我去年穿过它们。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在伦敦买了这双鞋。', options: ['shoes in bought I London. these', 'I bought these shoes in London.', 'these London. bought shoes I in', 'bought these I in London. shoes'], answer: 1, explanation: '正确语序：I bought these shoes in London.（我在伦敦买了这双鞋。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它们去年很流行。', options: ['fashion in They were year. last', 'They were in fashion last year.', 'They last were fashion year. in', 'were fashion in year. They last'], answer: 1, explanation: '正确语序：They were in fashion last year.（它们去年很流行。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They were in ______ last year.', hint: '中文意思：它们去年很流行。', options: ['ago', 'fashion', 'uncomfortable', 'buy'], answer: 1, explanation: 'They were in fashion last year.（它们去年很流行。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They are very ______', hint: '中文意思：它们很不舒服。', options: ['pair', 'ago', 'takeoff', 'uncomfortable'], answer: 3, explanation: 'They are very uncomfortable.（它们很不舒服。）' },
   ],
 
   // Lesson 76: Lesson 76: When did you...? 你什么时候……？
   76: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她两天前遇见他的。', options: ['him two days She met ago.', 'She met him two days ago.', 'met days ago. two him She', 'days ago. him two met She'], answer: 1, explanation: '正确语序：She met him two days ago.（她两天前遇见他的。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她什么时候遇见他的？', options: ['did meet she him? When', 'meet When him? did she', 'When did she meet him?', 'meet him? she When did'], answer: 2, explanation: '正确语序：When did she meet him?（她什么时候遇见他的？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我上个月买的。', options: ['last I it bought month.', 'I bought it last month.', 'it I bought last month.', 'month. bought last I it'], answer: 1, explanation: '正确语序：I bought it last month.（我上个月买的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她两天前遇见他的。', options: ['She two him met ago. days', 'She days ago. him met two', 'days ago. met him two She', 'She met him two days ago.'], answer: 3, explanation: '正确语序：She met him two days ago.（她两天前遇见他的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我上个月买的。', options: ['month. bought it I last', 'last I month. bought it', 'it month. bought I last', 'I bought it last month.'], answer: 3, explanation: '正确语序：I bought it last month.（我上个月买的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她什么时候遇见他的？', options: ['When did meet him? she', 'did she him? meet When', 'meet When him? did she', 'When did she meet him?'], answer: 3, explanation: '正确语序：When did she meet him?（她什么时候遇见他的？）' },
   ],
 
   // Lesson 77: Lesson 77: A terrible toothache 要命的牙痛
   77: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以等到今天下午。', options: ['this afternoon. till can wait I', 'I can wait till this afternoon.', 'can wait afternoon. this till I', 'till can afternoon. wait I this'], answer: 1, explanation: '正确语序：I can wait till this afternoon.（我可以等到今天下午。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我想看牙医。', options: ['I see dentist. to want the', 'want I dentist. see to the', 'dentist. want to the see I', 'I want to see the dentist.'], answer: 3, explanation: '正确语序：I want to see the dentist.（我想看牙医。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你有预约吗？', options: ['appointment? an you Do have', 'Do you have an appointment?', 'you have an appointment? Do', 'an have you appointment? Do'], answer: 1, explanation: '正确语序：Do you have an appointment?（你有预约吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Do you have an ______', hint: '中文意思：你有预约吗？', options: ['til', 'date', 'toothache', 'appointment'], answer: 3, explanation: 'Do you have an appointment?（你有预约吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I want to see the ______', hint: '中文意思：我想看牙医。', options: ['urgent', 'dentist', 'until', 'till'], answer: 1, explanation: 'I want to see the dentist.（我想看牙医。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I can wait ______ this afternoon.', hint: '中文意思：我可以等到今天下午。', options: ['date', 'til', 'toothache', 'till'], answer: 3, explanation: 'I can wait till this afternoon.（我可以等到今天下午。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你有预约吗？', options: ['have you Do an appointment?', 'Do you have an appointment?', 'an you have Do appointment?', 'appointment? an have you Do'], answer: 1, explanation: '正确语序：Do you have an appointment?（你有预约吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我想看牙医。', options: ['to the want I see dentist.', 'to dentist. see I the want', 'I want to see the dentist.', 'the want to I dentist. see'], answer: 2, explanation: '正确语序：I want to see the dentist.（我想看牙医。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以等到今天下午。', options: ['I afternoon. this wait till can', 'I can wait till this afternoon.', 'this can till afternoon. wait I', 'I this till afternoon. can wait'], answer: 1, explanation: '正确语序：I can wait till this afternoon.（我可以等到今天下午。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I want to see the ______', hint: '中文意思：我想看牙医。', options: ['still', 'urgent', 'appointment', 'dentist'], answer: 3, explanation: 'I want to see the dentist.（我想看牙医。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Do you have an ______', hint: '中文意思：你有预约吗？', options: ['toothache', 'still', 'appointment', 'dentist'], answer: 2, explanation: 'Do you have an appointment?（你有预约吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is ______', hint: '中文意思：很紧急。', options: ['appointment', 'booking', 'till', 'urgent'], answer: 3, explanation: 'It is urgent.（很紧急。）' },
   ],
 
   // Lesson 78: Lesson 78: When did you...? 你什么时候……？
   78: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候给她打电话的？', options: ['telephone you When did her?', 'telephone her? When you did', 'her? When telephone did you', 'When did you telephone her?'], answer: 3, explanation: '正确语序：When did you telephone her?（你什么时候给她打电话的？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我前天见到他的。', options: ['day I him saw the yesterday. before', 'I saw him the day before yesterday.', 'I him saw the day yesterday. before', 'yesterday. day saw the before him I'], answer: 1, explanation: '正确语序：I saw him the day before yesterday.（我前天见到他的。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候见到他的？', options: ['him? you When did see', 'When him? see did you', 'you When him? see did', 'When did you see him?'], answer: 3, explanation: '正确语序：When did you see him?（你什么时候见到他的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候给她打电话的？', options: ['telephone When her? did you', 'did you When her? telephone', 'did her? you telephone When', 'When did you telephone her?'], answer: 3, explanation: '正确语序：When did you telephone her?（你什么时候给她打电话的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我前天见到他的。', options: ['I day him saw before yesterday. the', 'I saw him the day before yesterday.', 'before saw him I day the yesterday.', 'day yesterday. the before I him saw'], answer: 1, explanation: '正确语序：I saw him the day before yesterday.（我前天见到他的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我昨晚给她打电话的。', options: ['telephoned last night. her I', 'I her last night. telephoned', 'telephoned her I last night.', 'I telephoned her last night.'], answer: 3, explanation: '正确语序：I telephoned her last night.（我昨晚给她打电话的。）' },
   ],
 
   // Lesson 79: Lesson 79: Shopping 购物
   79: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在写购物清单。', options: ['I making am list. shopping a', 'I shopping am making a list.', 'I am making a shopping list.', 'a I shopping making list. am'], answer: 2, explanation: '正确语序：I am making a shopping list.（我在写购物清单。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我必须去杂货店。', options: ['grocer\'s. must to the go I', 'grocer\'s. the must go I to', 'I must go to the grocer\'s.', 'I the must grocer\'s. to go'], answer: 2, explanation: '正确语序：I must go to the grocer\'s.（我必须去杂货店。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们没有多少茶叶了。', options: ['tea. have We got much not', 'much not got have tea. We', 'We have not got much tea.', 'have much tea. not got We'], answer: 2, explanation: '正确语序：We have not got much tea.（我们没有多少茶叶了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I am making a shopping ______', hint: '中文意思：我在写购物清单。', options: ['list', 'money', 'hope', 'need'], answer: 0, explanation: 'I am making a shopping list.（我在写购物清单。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We ______ a lot of things this week.', hint: '中文意思：这周我们需要很多东西。', options: ['list', 'vegetable', 'need', 'money'], answer: 2, explanation: 'We need a lot of things this week.（这周我们需要很多东西。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你在做什么？', options: ['What are you doing?', 'are you doing? What', 'are What you doing?', 'doing? What are you'], answer: 0, explanation: '正确语序：What are you doing?（你在做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在写购物清单。', options: ['shopping am a list. making I', 'list. making am a I shopping', 'I am making a shopping list.', 'a shopping am making list. I'], answer: 2, explanation: '正确语序：I am making a shopping list.（我在写购物清单。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们没有多少茶叶了。', options: ['We have not got much tea.', 'tea. not have got We much', 'not have much tea. We got', 'have not We tea. got much'], answer: 0, explanation: '正确语序：We have not got much tea.（我们没有多少茶叶了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I am making a ______ list.', hint: '中文意思：我在写购物清单。', options: ['money', 'shopping', 'thing', 'hope'], answer: 1, explanation: 'I am making a shopping list.（我在写购物清单。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We ______ a lot of things this week.', hint: '中文意思：这周我们需要很多东西。', options: ['need', 'vegetable', 'shopping', 'thing'], answer: 0, explanation: 'We need a lot of things this week.（这周我们需要很多东西。）' },
   ],
 
   // Lesson 80: Lesson 80: Have you got any...? 你有……吗？
   80: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我没有很多钱。', options: ['much have got I not money.', 'money. have I not got much', 'money. not got much I have', 'I have not got much money.'], answer: 3, explanation: '正确语序：I have not got much money.（我没有很多钱。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你有奶酪吗？', options: ['got Have any cheese? you', 'Have you got any cheese?', 'got Have you cheese? any', 'any cheese? Have you got'], answer: 1, explanation: '正确语序：Have you got any cheese?（你有奶酪吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我有很多奶酪。', options: ['I have got a lot of cheese.', 'lot got a of I cheese. have', 'a of cheese. lot have I got', 'got cheese. of lot a I have'], answer: 0, explanation: '正确语序：I have got a lot of cheese.（我有很多奶酪。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我有很多奶酪。', options: ['of got a I have lot cheese.', 'a lot have got cheese. of I', 'have a got cheese. of I lot', 'I have got a lot of cheese.'], answer: 3, explanation: '正确语序：I have got a lot of cheese.（我有很多奶酪。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我没有很多钱。', options: ['I money. not have much got', 'I have not got much money.', 'money. got have not I much', 'money. much got I not have'], answer: 1, explanation: '正确语序：I have not got much money.（我没有很多钱。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我没有很多书。', options: ['I many got have not books.', 'got not many books. have I', 'I have books. got many not', 'I have not got many books.'], answer: 3, explanation: '正确语序：I have not got many books.（我没有很多书。）' },
   ],
 
   // Lesson 81: Lesson 81: Roast beef and potatoes 烤牛肉和土豆
   81: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我吃了一顿美餐。', options: ['meal. good a had I', 'I had a good meal.', 'had I meal. good a', 'I a meal. good had'], answer: 1, explanation: '正确语序：I had a good meal.（我吃了一顿美餐。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '快准备好了。', options: ['is It ready. nearly', 'is ready. It nearly', 'It is nearly ready.', 'ready. is It nearly'], answer: 2, explanation: '正确语序：It is nearly ready.（快准备好了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们在饭店吃了晚餐。', options: ['restaurant. at a dinner We had', 'had at restaurant. dinner We a', 'We had dinner at a restaurant.', 'We restaurant. a had dinner at'], answer: 2, explanation: '正确语序：We had dinner at a restaurant.（我们在饭店吃了晚餐。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is ______ ready.', hint: '中文意思：快准备好了。', options: ['dinner', 'barbecue', 'fast', 'nearly'], answer: 3, explanation: 'It is nearly ready.（快准备好了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We are going to have ______ beef and potatoes.', hint: '中文意思：我们准备吃烤牛肉和土豆。', options: ['grill', 'haircut', 'roast', 'ready'], answer: 2, explanation: 'We are going to have roast beef and potatoes.（我们准备吃烤牛肉和土豆。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We had ______ at a restaurant.', hint: '中文意思：我们在饭店吃了晚餐。', options: ['read', 'birth', 'dinner', 'party'], answer: 2, explanation: 'We had dinner at a restaurant.（我们在饭店吃了晚餐。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '快准备好了。', options: ['is It nearly ready.', 'ready. nearly is It', 'It is nearly ready.', 'ready. nearly It is'], answer: 2, explanation: '正确语序：It is nearly ready.（快准备好了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们在饭店吃了晚餐。', options: ['at We had a dinner restaurant.', 'We had dinner at a restaurant.', 'We had dinner restaurant. at a', 'had dinner We at restaurant. a'], answer: 1, explanation: '正确语序：We had dinner at a restaurant.（我们在饭店吃了晚餐。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我吃了一顿美餐。', options: ['had a I meal. good', 'I had a good meal.', 'good meal. a I had', 'I had good a meal.'], answer: 1, explanation: '正确语序：I had a good meal.（我吃了一顿美餐。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We had dinner at a ______', hint: '中文意思：我们在饭店吃了晚餐。', options: ['grill', 'restaurant', 'vacation', 'dinner'], answer: 1, explanation: 'We had dinner at a restaurant.（我们在饭店吃了晚餐。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is nearly ______', hint: '中文意思：快准备好了。', options: ['party', 'birth', 'ready', 'barbecue'], answer: 2, explanation: 'It is nearly ready.（快准备好了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is dinner ______', hint: '中文意思：晚餐准备好了吗？', options: ['birth', 'roast', 'dinner', 'ready'], answer: 3, explanation: 'Is dinner ready?（晚餐准备好了吗？）' },
   ],
 
   // Lesson 82: Lesson 82: Have you had...? 你已经……了吗？
   82: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，他们还没吃午餐。', options: ['lunch No, have they had yet. not', 'No, they have not had lunch yet.', 'have yet. not lunch they had No,', 'No, had have they yet. not lunch'], answer: 1, explanation: '正确语序：No, they have not had lunch yet.（不，他们还没吃午餐。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，我7点吃的早餐。', options: ['Yes, I had breakfast at 7 o\'clock.', 'at I breakfast 7 Yes, had o\'clock.', 'at o\'clock. breakfast 7 I Yes, had', 'Yes, I at breakfast had o\'clock. 7'], answer: 0, explanation: '正确语序：Yes, I had breakfast at 7 o\'clock.（是的，我7点吃的早餐。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们吃过午餐了吗？', options: ['had they Have lunch?', 'had Have they lunch?', 'Have they had lunch?', 'they Have had lunch?'], answer: 2, explanation: '正确语序：Have they had lunch?（他们吃过午餐了吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们吃过午餐了吗？', options: ['Have had lunch? they', 'Have they had lunch?', 'lunch? Have they had', 'Have lunch? they had'], answer: 1, explanation: '正确语序：Have they had lunch?（他们吃过午餐了吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，我7点吃的早餐。', options: ['o\'clock. breakfast 7 Yes, at I had', 'o\'clock. at breakfast I had 7 Yes,', 'Yes, I had breakfast at 7 o\'clock.', 'breakfast 7 o\'clock. at I Yes, had'], answer: 2, explanation: '正确语序：Yes, I had breakfast at 7 o\'clock.（是的，我7点吃的早餐。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你吃过早餐了吗？', options: ['Have you had breakfast?', 'you breakfast? Have had', 'had breakfast? you Have', 'Have breakfast? had you'], answer: 0, explanation: '正确语序：Have you had breakfast?（你吃过早餐了吗？）' },
   ],
 
   // Lesson 83: Lesson 83: Going on holiday 度假
   83: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我已经打包好手提箱了。', options: ['suitcase. packed have already my I', 'my I have packed already suitcase.', 'I have my suitcase. packed already', 'I have already packed my suitcase.'], answer: 3, explanation: '正确语序：I have already packed my suitcase.（我已经打包好手提箱了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们要去度假了。', options: ['holiday. going are on We', 'We going on holiday. are', 'We are going on holiday.', 'holiday. We going are on'], answer: 2, explanation: '正确语序：We are going on holiday.（我们要去度假了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打包好包了吗？', options: ['bags packed yet? Have you your', 'yet? you bags packed your Have', 'Have you packed your bags yet?', 'yet? you bags your Have packed'], answer: 2, explanation: '正确语序：Have you packed your bags yet?（你打包好包了吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We are going on ______', hint: '中文意思：我们要去度假了。', options: ['leave', 'packup', 'mess', 'holiday'], answer: 3, explanation: 'We are going on holiday.（我们要去度假了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What a ______', hint: '中文意思：真乱啊！', options: ['packup', 'mess', 'holiday', 'ready'], answer: 1, explanation: 'What a mess!（真乱啊！）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I have already packed my ______', hint: '中文意思：我已经打包好手提箱了。', options: ['holiday', 'suitcase', 'mess', 'leave'], answer: 1, explanation: 'I have already packed my suitcase.（我已经打包好手提箱了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打包好包了吗？', options: ['you yet? your Have bags packed', 'packed Have you bags your yet?', 'you bags your Have packed yet?', 'Have you packed your bags yet?'], answer: 3, explanation: '正确语序：Have you packed your bags yet?（你打包好包了吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我已经打包好手提箱了。', options: ['I have already packed my suitcase.', 'I already have packed my suitcase.', 'already have suitcase. my packed I', 'suitcase. I packed already have my'], answer: 0, explanation: '正确语序：I have already packed my suitcase.（我已经打包好手提箱了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们要去度假了。', options: ['We are going on holiday.', 'on are holiday. We going', 'holiday. going are We on', 'We holiday. on going are'], answer: 0, explanation: '正确语序：We are going on holiday.（我们要去度假了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What a ______', hint: '中文意思：真乱啊！', options: ['leave', 'mess', 'holiday', 'suitcase'], answer: 1, explanation: 'What a mess!（真乱啊！）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I have already packed my ______', hint: '中文意思：我已经打包好手提箱了。', options: ['disorderly', 'suitcase', 'pack', 'holiday'], answer: 1, explanation: 'I have already packed my suitcase.（我已经打包好手提箱了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We are going on ______', hint: '中文意思：我们要去度假了。', options: ['mess', 'holiday', 'leave', 'suitcase'], answer: 1, explanation: 'We are going on holiday.（我们要去度假了。）' },
   ],
 
   // Lesson 84: Lesson 84: Have you had...? 你已经……了吗？
   84: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，我刚吃过午餐。', options: ['just had lunch. Yes, I have', 'Yes, just had lunch. have I', 'Yes, I have just had lunch.', 'Yes, lunch. I had just have'], answer: 2, explanation: '正确语序：Yes, I have just had lunch.（是的，我刚吃过午餐。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你吃过午餐了吗？', options: ['lunch Have yet? had you', 'yet? you Have had lunch', 'Have you had lunch yet?', 'had you Have lunch yet?'], answer: 2, explanation: '正确语序：Have you had lunch yet?（你吃过午餐了吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，我已经完成了。', options: ['finished Yes, it. I have already', 'Yes, I have already finished it.', 'I it. finished Yes, already have', 'it. Yes, already I finished have'], answer: 1, explanation: '正确语序：Yes, I have already finished it.（是的，我已经完成了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，我已经完成了。', options: ['already Yes, it. I have finished', 'finished already I Yes, have it.', 'Yes, I have already finished it.', 'I it. have finished Yes, already'], answer: 2, explanation: '正确语序：Yes, I have already finished it.（是的，我已经完成了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，我刚吃过午餐。', options: ['just had have I Yes, lunch.', 'Yes, I have just had lunch.', 'Yes, had I have just lunch.', 'just have lunch. I Yes, had'], answer: 1, explanation: '正确语序：Yes, I have just had lunch.（是的，我刚吃过午餐。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你吃过午餐了吗？', options: ['Have you yet? lunch had', 'Have you had lunch yet?', 'had you yet? Have lunch', 'yet? you lunch had Have'], answer: 1, explanation: '正确语序：Have you had lunch yet?（你吃过午餐了吗？）' },
   ],
 
   // Lesson 85: Lesson 85: Paris in the spring 巴黎之春
   85: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '巴黎是一座美丽的城市。', options: ['Paris is a beautiful city.', 'Paris is city. beautiful a', 'a beautiful is city. Paris', 'city. is a Paris beautiful'], answer: 0, explanation: '正确语序：Paris is a beautiful city.（巴黎是一座美丽的城市。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '天气很糟糕。', options: ['weather was awful. The', 'weather was The awful.', 'The weather was awful.', 'The was weather awful.'], answer: 2, explanation: '正确语序：The weather was awful.（天气很糟糕。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，我去过。我去年去的。', options: ['Yes, I I there year. have. went last', 'last I Yes, have. year. I went there', 'Yes, I have. I went there last year.', 'have. year. I there last went Yes, I'], answer: 2, explanation: '正确语序：Yes, I have. I went there last year.（是的，我去过。我去年去的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Have you ______ been to Paris?', hint: '中文意思：你去过巴黎吗？', options: ['beauty', 'ever', 'spring', 'movie'], answer: 1, explanation: 'Have you ever been to Paris?（你去过巴黎吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Paris is a beautiful ______', hint: '中文意思：巴黎是一座美丽的城市。', options: ['cinema', 'city', 'paris', 'film'], answer: 1, explanation: 'Paris is a beautiful city.（巴黎是一座美丽的城市。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I went there in the ______', hint: '中文意思：我春天去的。', options: ['beautiful', 'paris', 'beauty', 'spring'], answer: 3, explanation: 'I went there in the spring.（我春天去的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你去过巴黎吗？', options: ['been ever Paris? to you Have', 'Have Paris? you to been ever', 'Have you ever been to Paris?', 'been you Have to ever Paris?'], answer: 2, explanation: '正确语序：Have you ever been to Paris?（你去过巴黎吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，我去过。我去年去的。', options: ['I there I year. last Yes, have. went', 'year. there Yes, last I have. went I', 'I went there last year. have. Yes, I', 'Yes, I have. I went there last year.'], answer: 3, explanation: '正确语序：Yes, I have. I went there last year.（是的，我去过。我去年去的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我春天去的。', options: ['I went there in the spring.', 'I the in spring. went there', 'the in I there spring. went', 'I the there spring. went in'], answer: 0, explanation: '正确语序：I went there in the spring.（我春天去的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I went there in the ______', hint: '中文意思：我春天去的。', options: ['beauty', 'ever', 'never', 'spring'], answer: 3, explanation: 'I went there in the spring.（我春天去的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ is a beautiful city.', hint: '中文意思：巴黎是一座美丽的城市。', options: ['paris', 'movie', 'cinema', 'spring'], answer: 0, explanation: 'Paris is a beautiful city.（巴黎是一座美丽的城市。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Have you ever been to ______', hint: '中文意思：你去过巴黎吗？', options: ['movie', 'never', 'beauty', 'paris'], answer: 3, explanation: 'Have you ever been to Paris?（你去过巴黎吗？）' },
   ],
 
   // Lesson 86: Lesson 86: What have you done? 你做了什么？
   86: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，他已经退休了。', options: ['retired. Yes, already has he', 'he retired. already Yes, has', 'has already Yes, retired. he', 'Yes, he has already retired.'], answer: 3, explanation: '正确语序：Yes, he has already retired.（是的，他已经退休了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我刚完成工作。', options: ['I finished have work. my just', 'I have just finished my work.', 'work. just my finished I have', 'work. I finished just have my'], answer: 1, explanation: '正确语序：I have just finished my work.（我刚完成工作。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他退休了吗？', options: ['he yet? retired Has', 'Has he retired yet?', 'he Has yet? retired', 'retired he yet? Has'], answer: 1, explanation: '正确语序：Has he retired yet?（他退休了吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，他已经退休了。', options: ['retired. Yes, has already he', 'Yes, he already has retired.', 'Yes, he has already retired.', 'he already retired. Yes, has'], answer: 2, explanation: '正确语序：Yes, he has already retired.（是的，他已经退休了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我刚完成工作。', options: ['just have I my finished work.', 'I have just finished my work.', 'just I finished work. have my', 'I my finished have just work.'], answer: 1, explanation: '正确语序：I have just finished my work.（我刚完成工作。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你做了什么？', options: ['have done? What you', 'done? you What have', 'What have you done?', 'What you have done?'], answer: 2, explanation: '正确语序：What have you done?（你做了什么？）' },
   ],
 
   // Lesson 87: Lesson 87: A car crash 车祸
   87: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们正在努力修理。', options: ['trying repair to are it. They', 'They are trying to repair it.', 'are it. repair They to trying', 'it. repair trying to are They'], answer: 1, explanation: '正确语序：They are trying to repair it.（他们正在努力修理。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我把车撞到路灯柱上了。', options: ['I crashed my car into a lamp-post.', 'I a lamp-post. crashed my into car', 'my into car I crashed lamp-post. a', 'lamp-post. into my I a crashed car'], answer: 0, explanation: '正确语序：I crashed my car into a lamp-post.（我把车撞到路灯柱上了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你把它送去修理厂了吗？', options: ['garage? the you taken to it Have', 'to Have taken the garage? you it', 'Have you taken it to the garage?', 'it to Have you taken the garage?'], answer: 2, explanation: '正确语序：Have you taken it to the garage?（你把它送去修理厂了吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I crashed my car into a ______', hint: '中文意思：我把车撞到路灯柱上了。', options: ['repair', 'bring', 'crash', 'lamppost'], answer: 3, explanation: 'I crashed my car into a lamp-post.（我把车撞到路灯柱上了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：They are trying to ______ it.', hint: '中文意思：他们正在努力修理。', options: ['garage', 'bring', 'repair', 'crash'], answer: 2, explanation: 'They are trying to repair it.（他们正在努力修理。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Have you taken it to the ______', hint: '中文意思：你把它送去修理厂了吗？', options: ['repair', 'garage', 'try', 'attendant'], answer: 1, explanation: 'Have you taken it to the garage?（你把它送去修理厂了吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们正在努力修理。', options: ['They are trying to repair it.', 'trying are it. They to repair', 'They repair trying it. to are', 'repair trying are it. to They'], answer: 0, explanation: '正确语序：They are trying to repair it.（他们正在努力修理。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你把它送去修理厂了吗？', options: ['it taken Have to the garage? you', 'it taken garage? the to you Have', 'Have garage? the taken you it to', 'Have you taken it to the garage?'], answer: 3, explanation: '正确语序：Have you taken it to the garage?（你把它送去修理厂了吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我把车撞到路灯柱上了。', options: ['a into car crashed I my lamp-post.', 'car into a I my crashed lamp-post.', 'car lamp-post. into my I a crashed', 'I crashed my car into a lamp-post.'], answer: 3, explanation: '正确语序：I crashed my car into a lamp-post.（我把车撞到路灯柱上了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They are trying to ______ it.', hint: '中文意思：他们正在努力修理。', options: ['lamppost', 'crash', 'repair', 'garage'], answer: 2, explanation: 'They are trying to repair it.（他们正在努力修理。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Have you taken it to the ______', hint: '中文意思：你把它送去修理厂了吗？', options: ['repair', 'bring', 'garage', 'lamppost'], answer: 2, explanation: 'Have you taken it to the garage?（你把它送去修理厂了吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I crashed my car into a ______', hint: '中文意思：我把车撞到路灯柱上了。', options: ['repair', 'try', 'attendant', 'lamppost'], answer: 3, explanation: 'I crashed my car into a lamp-post.（我把车撞到路灯柱上了。）' },
   ],
 
   // Lesson 88: Lesson 88: Have you... yet? 你已经……了吗？
   88: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你在这里住了多久？', options: ['How long you have lived here?', 'long here? have How lived you', 'you here? long have How lived', 'How long have you lived here?'], answer: 3, explanation: '正确语序：How long have you lived here?（你在这里住了多久？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我还没搬。', options: ['not I moved have No, yet.', 'No, I have not moved yet.', 'have No, yet. I not moved', 'have I not yet. No, moved'], answer: 1, explanation: '正确语序：No, I have not moved yet.（不，我还没搬。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在这住了十年。', options: ['have for I lived ten here years.', 'I have lived here for ten years.', 'years. here lived ten I for have', 'years. lived I have for here ten'], answer: 1, explanation: '正确语序：I have lived here for ten years.（我在这住了十年。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你在这里住了多久？', options: ['lived here? long have How you', 'How long have you lived here?', 'How you long lived here? have', 'here? How long have you lived'], answer: 1, explanation: '正确语序：How long have you lived here?（你在这里住了多久？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你已经搬到新房子了吗？', options: ['to yet? your you new Have house moved', 'Have you moved to your new house yet?', 'you yet? new moved to your Have house', 'to Have moved your yet? new house you'], answer: 1, explanation: '正确语序：Have you moved to your new house yet?（你已经搬到新房子了吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在这住了十年。', options: ['lived I have years. here for ten', 'years. I have ten here for lived', 'years. have lived here ten I for', 'I have lived here for ten years.'], answer: 3, explanation: '正确语序：I have lived here for ten years.（我在这住了十年。）' },
   ],
 
   // Lesson 89: Lesson 89: For sale 待售
   89: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它值每一分钱。', options: ['It of penny it. worth is every', 'It is worth every penny of it.', 'is penny of it. It every worth', 'It it. is penny worth of every'], answer: 1, explanation: '正确语序：It is worth every penny of it.（它值每一分钱。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在这住了二十年。', options: ['I have lived here for twenty years.', 'have years. I here lived twenty for', 'I twenty for lived have here years.', 'for have here lived twenty years. I'], answer: 0, explanation: '正确语序：I have lived here for twenty years.（我在这住了二十年。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这房子出售吗？', options: ['this for Is house sale?', 'Is for sale? house this', 'for this sale? Is house', 'Is this house for sale?'], answer: 3, explanation: '正确语序：Is this house for sale?（这房子出售吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：How much does it ______', hint: '中文意思：多少钱？', options: ['cost', 'why', 'sale', 'cent'], answer: 0, explanation: 'How much does it cost?（多少钱？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It is ______ every penny of it.', hint: '中文意思：它值每一分钱。', options: ['tire', 'cost', 'worth', 'retire'], answer: 2, explanation: 'It is worth every penny of it.（它值每一分钱。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Is this house for ______', hint: '中文意思：这房子出售吗？', options: ['howlong', 'sale', 'why', 'may'], answer: 1, explanation: 'Is this house for sale?（这房子出售吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这房子出售吗？', options: ['Is for this house sale?', 'Is this house for sale?', 'sale? for Is this house', 'for sale? house this Is'], answer: 1, explanation: '正确语序：Is this house for sale?（这房子出售吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在这住了二十年。', options: ['I have lived here for twenty years.', 'here for have lived years. twenty I', 'years. lived I have here twenty for', 'for lived here years. have I twenty'], answer: 0, explanation: '正确语序：I have lived here for twenty years.（我在这住了二十年。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你在这里住了多久？', options: ['How long have you lived here?', 'you have here? lived long How', 'here? How long lived have you', 'long you lived here? have How'], answer: 0, explanation: '正确语序：How long have you lived here?（你在这里住了多久？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is ______ every penny of it.', hint: '中文意思：它值每一分钱。', options: ['worth', 'penny', 'howlong', 'tire'], answer: 0, explanation: 'It is worth every penny of it.（它值每一分钱。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：How much does it ______', hint: '中文意思：多少钱？', options: ['cost', 'believe', 'pound', 'why'], answer: 0, explanation: 'How much does it cost?（多少钱？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Is this house for ______', hint: '中文意思：这房子出售吗？', options: ['howlong', 'because', 'sale', 'penny'], answer: 2, explanation: 'Is this house for sale?（这房子出售吗？）' },
   ],
 
   // Lesson 90: Lesson 90: How long have you...? 你……多久了？
   90: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你认识他多久了？', options: ['How long have you known him?', 'have How known you long him?', 'long known have him? How you', 'known you have How long him?'], answer: 0, explanation: '正确语序：How long have you known him?（你认识他多久了？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我从2010年就在这工作。', options: ['2010. I since have here worked', 'I here have since 2010. worked', 'here since have worked I 2010.', 'I have worked here since 2010.'], answer: 3, explanation: '正确语序：I have worked here since 2010.（我从2010年就在这工作。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我认识他十年了。', options: ['known for have I him years. ten', 'ten him years. known have for I', 'for I known him ten have years.', 'I have known him for ten years.'], answer: 3, explanation: '正确语序：I have known him for ten years.（我认识他十年了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你在这里工作多久了？', options: ['worked long have you here? How', 'How long have you worked here?', 'worked have long How you here?', 'have you long How worked here?'], answer: 1, explanation: '正确语序：How long have you worked here?（你在这里工作多久了？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你认识他多久了？', options: ['known long him? you have How', 'long have known him? you How', 'How long have you known him?', 'known you him? long How have'], answer: 2, explanation: '正确语序：How long have you known him?（你认识他多久了？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我认识他十年了。', options: ['I have known him for ten years.', 'years. ten have known for him I', 'have for ten known I years. him', 'have I years. for ten him known'], answer: 0, explanation: '正确语序：I have known him for ten years.（我认识他十年了。）' },
   ],
 
   // Lesson 91: Lesson 91: Poor Ian 可怜的伊恩
   91: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他什么时候搬？', options: ['When he move? will', 'When will he move?', 'he When move? will', 'will he When move?'], answer: 1, explanation: '正确语序：When will he move?（他什么时候搬？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他是一个很好的人。', options: ['He very person. a is nice', 'He a very nice person. is', 'is nice very He person. a', 'He is a very nice person.'], answer: 3, explanation: '正确语序：He is a very nice person.（他是一个很好的人。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我会想念他的。', options: ['I him. will miss', 'miss him. will I', 'will him. miss I', 'I will miss him.'], answer: 3, explanation: '正确语序：I will miss him.（我会想念他的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：When will he ______', hint: '中文意思：他什么时候搬？', options: ['person', 'still', 'move', 'poor'], answer: 2, explanation: 'When will he move?（他什么时候搬？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He is a very nice ______', hint: '中文意思：他是一个很好的人。', options: ['person', 'people', 'move', 'neighbor'], answer: 0, explanation: 'He is a very nice person.（他是一个很好的人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We will all ______ him.', hint: '中文意思：我们都会想念他。', options: ['still', 'people', 'miss', 'person'], answer: 2, explanation: 'We will all miss him.（我们都会想念他。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我会想念他的。', options: ['miss will him. I', 'him. will miss I', 'will miss him. I', 'I will miss him.'], answer: 3, explanation: '正确语序：I will miss him.（我会想念他的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他是一个很好的人。', options: ['He is a very nice person.', 'person. a He is very nice', 'very is a He nice person.', 'a person. very is nice He'], answer: 0, explanation: '正确语序：He is a very nice person.（他是一个很好的人。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们都会想念他。', options: ['We will all miss him.', 'all him. miss will We', 'him. miss all We will', 'We him. all will miss'], answer: 0, explanation: '正确语序：We will all miss him.（我们都会想念他。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We will all ______ him.', hint: '中文意思：我们都会想念他。', options: ['still', 'miss', 'neighbour', 'move'], answer: 1, explanation: 'We will all miss him.（我们都会想念他。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I will ______ him.', hint: '中文意思：我会想念他的。', options: ['neighbour', 'miss', 'still', 'move'], answer: 1, explanation: 'I will miss him.（我会想念他的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He is a very nice ______', hint: '中文意思：他是一个很好的人。', options: ['still', 'neighbour', 'person', 'miss'], answer: 2, explanation: 'He is a very nice person.（他是一个很好的人。）' },
   ],
 
   // Lesson 92: Lesson 92: When will...? 什么时候将……？
   92: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们什么时候到达？', options: ['When will arrive? they', 'When arrive? they will', 'When will they arrive?', 'arrive? they When will'], answer: 2, explanation: '正确语序：When will they arrive?（他们什么时候到达？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我明天离开。', options: ['leave I tomorrow. will', 'leave I will tomorrow.', 'I will leave tomorrow.', 'I leave will tomorrow.'], answer: 2, explanation: '正确语序：I will leave tomorrow.（我明天离开。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们今晚到达。', options: ['tonight. arrive will They', 'They will arrive tonight.', 'arrive will tonight. They', 'arrive They tonight. will'], answer: 1, explanation: '正确语序：They will arrive tonight.（他们今晚到达。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们什么时候到达？', options: ['When will they arrive?', 'arrive? When they will', 'will arrive? When they', 'arrive? they will When'], answer: 0, explanation: '正确语序：When will they arrive?（他们什么时候到达？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我明天离开。', options: ['will tomorrow. I leave', 'I will leave tomorrow.', 'will I leave tomorrow.', 'leave will tomorrow. I'], answer: 1, explanation: '正确语序：I will leave tomorrow.（我明天离开。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们今晚到达。', options: ['will They tonight. arrive', 'They will arrive tonight.', 'arrive will They tonight.', 'arrive They tonight. will'], answer: 1, explanation: '正确语序：They will arrive tonight.（他们今晚到达。）' },
   ],
 
   // Lesson 93: Lesson 93: Our new neighbour 我们的新邻居
   93: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他是个演员。', options: ['an is actor. He', 'an is He actor.', 'He is an actor.', 'is actor. an He'], answer: 2, explanation: '正确语序：He is an actor.（他是个演员。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他明天早上到。', options: ['tomorrow arrive He morning. will', 'morning. tomorrow He will arrive', 'arrive tomorrow morning. He will', 'He will arrive tomorrow morning.'], answer: 3, explanation: '正确语序：He will arrive tomorrow morning.（他明天早上到。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他什么时候到？', options: ['arrive? When he will', 'arrive? will When he', 'When will he arrive?', 'he arrive? will When'], answer: 2, explanation: '正确语序：When will he arrive?（他什么时候到？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He is an ______', hint: '中文意思：他是个演员。', options: ['actress', 'berlin', 'madrid', 'actor'], answer: 3, explanation: 'He is an actor.（他是个演员。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他什么时候到？', options: ['arrive? When will he', 'he When will arrive?', 'will arrive? he When', 'When will he arrive?'], answer: 3, explanation: '正确语序：When will he arrive?（他什么时候到？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他很快就到。', options: ['here He be will soon.', 'He will be here soon.', 'be will He here soon.', 'He be will soon. here'], answer: 1, explanation: '正确语序：He will be here soon.（他很快就到。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '至少，我是这么想的。', options: ['At least, that is what I think.', 'is what that least, I At think.', 'At what that least, is think. I', 'think. At least, I is that what'], answer: 0, explanation: '正确语序：At least, that is what I think.（至少，我是这么想的。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He is an ______', hint: '中文意思：他是个演员。', options: ['seoul', 'bahrain', 'actor', 'fly'], answer: 2, explanation: 'He is an actor.（他是个演员。）' },
   ],
 
   // Lesson 94: Lesson 94: When did you/will you...? 你（将）什么时候……？
   94: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我明年去巴黎。', options: ['to Paris year. next go I will', 'I will go to Paris next year.', 'I Paris year. next will go to', 'year. will next Paris I go to'], answer: 1, explanation: '正确语序：I will go to Paris next year.（我明年去巴黎。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我去年去的伦敦。', options: ['went last London year. I to', 'I went to London last year.', 'to went London I year. last', 'went I last London to year.'], answer: 1, explanation: '正确语序：I went to London last year.（我去年去的伦敦。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候去巴黎？', options: ['When to you Paris? go will', 'When will you go to Paris?', 'will Paris? go When to you', 'go When will to you Paris?'], answer: 1, explanation: '正确语序：When will you go to Paris?（你什么时候去巴黎？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你什么时候去的伦敦？', options: ['go did London? When to you', 'did you When go London? to', 'go did London? When you to', 'When did you go to London?'], answer: 3, explanation: '正确语序：When did you go to London?（你什么时候去的伦敦？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我去年去的伦敦。', options: ['I last to London went year.', 'I year. last London went to', 'London went last to I year.', 'I went to London last year.'], answer: 3, explanation: '正确语序：I went to London last year.（我去年去的伦敦。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我明年去巴黎。', options: ['I will go to Paris next year.', 'Paris go to will year. I next', 'to year. will go next I Paris', 'go to year. will Paris next I'], answer: 0, explanation: '正确语序：I will go to Paris next year.（我明年去巴黎。）' },
   ],
 
   // Lesson 95: Lesson 95: Tickets, please 请出示车票
   95: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你刚错过它。', options: ['it. You have missed just', 'You have just missed it.', 'it. You have just missed', 'have You just missed it.'], answer: 1, explanation: '正确语序：You have just missed it.（你刚错过它。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Which ______', hint: '中文意思：哪个站台？', options: ['metro', 'station', 'platform', 'return'], answer: 2, explanation: 'Which platform?（哪个站台？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ 2.', hint: '中文意思：二号站台。', options: ['platform', 'subway', 'catch', 'train'], answer: 0, explanation: 'Platform 2.（二号站台。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I want to catch the 10:35 ______ to London.', hint: '中文意思：我想赶10点35分去伦敦的火车。', options: ['return', 'ticket', 'station', 'train'], answer: 3, explanation: 'I want to catch the 10:35 train to London.（我想赶10点35分去伦敦的火车。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你刚错过它。', options: ['it. have You just missed', 'You have just missed it.', 'it. missed just have You', 'You missed just it. have'], answer: 1, explanation: '正确语序：You have just missed it.（你刚错过它。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Which ______', hint: '中文意思：哪个站台？', options: ['return', 'ticket', 'platform', 'train'], answer: 2, explanation: 'Which platform?（哪个站台？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ 2.', hint: '中文意思：二号站台。', options: ['platform', 'miss', 'train', 'catch'], answer: 0, explanation: 'Platform 2.（二号站台。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I want to ______ the 10:35 train to London.', hint: '中文意思：我想赶10点35分去伦敦的火车。', options: ['platform', 'catch', 'station', 'ticket'], answer: 1, explanation: 'I want to catch the 10:35 train to London.（我想赶10点35分去伦敦的火车。）' },
   ],
 
   // Lesson 96: Lesson 96: What time is it? 现在几点？
   96: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '三点十分。', options: ['It is ten past three.', 'It three. is ten past', 'three. past ten is It', 'past It ten three. is'], answer: 0, explanation: '正确语序：It is ten past three.（三点十分。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '七点半。', options: ['It is half past seven.', 'is seven. It past half', 'half is past It seven.', 'half seven. is past It'], answer: 0, explanation: '正确语序：It is half past seven.（七点半。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '六点差一刻。', options: ['a six. is It quarter to', 'quarter to is It a six.', 'It quarter six. a to is', 'It is a quarter to six.'], answer: 3, explanation: '正确语序：It is a quarter to six.（六点差一刻。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '七点半。', options: ['past It seven. is half', 'It half seven. past is', 'half is It past seven.', 'It is half past seven.'], answer: 3, explanation: '正确语序：It is half past seven.（七点半。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '现在几点？', options: ['it? What time is', 'time it? What is', 'What time is it?', 'What time it? is'], answer: 2, explanation: '正确语序：What time is it?（现在几点？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '六点差一刻。', options: ['is quarter It six. to a', 'is to six. It a quarter', 'It is a quarter to six.', 'It quarter to is six. a'], answer: 2, explanation: '正确语序：It is a quarter to six.（六点差一刻。）' },
   ],
 
   // Lesson 97: Lesson 97: A small blue case 一只蓝色的小箱子
   97: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它有拉链。', options: ['a It zip. has got', 'It has got a zip.', 'has a It got zip.', 'It got has a zip.'], answer: 1, explanation: '正确语序：It has got a zip.（它有拉链。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能描述一下吗？', options: ['describe it? you Can', 'Can it? describe you', 'Can you describe it?', 'you Can describe it?'], answer: 2, explanation: '正确语序：Can you describe it?（你能描述一下吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它是一只蓝色的小箱子。', options: ['blue case. a small It is', 'is It case. a blue small', 'case. is a It blue small', 'It is a small blue case.'], answer: 3, explanation: '正确语序：It is a small blue case.（它是一只蓝色的小箱子。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ it?', hint: '中文意思：你能描述一下吗？', options: ['handle', 'zip', 'case', 'describe'], answer: 3, explanation: 'Can you describe it?（你能描述一下吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What is the name and address on the ______', hint: '中文意思：标签上的名字和地址是什么？', options: ['pence', 'zip', 'describe', 'label'], answer: 3, explanation: 'What is the name and address on the label?（标签上的名字和地址是什么？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It has got a ______', hint: '中文意思：它有拉链。', options: ['pence', 'leave', 'describe', 'zip'], answer: 3, explanation: 'It has got a zip.（它有拉链。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能描述一下吗？', options: ['it? you describe Can', 'Can you describe it?', 'describe you Can it?', 'you Can describe it?'], answer: 1, explanation: '正确语序：Can you describe it?（你能描述一下吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它有拉链。', options: ['a It zip. has got', 'It has got a zip.', 'zip. got has It a', 'It has zip. a got'], answer: 1, explanation: '正确语序：It has got a zip.（它有拉链。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我把一个箱子落在火车上了。', options: ['left case a on I the train.', 'on a I train. left the case', 'train. on I the left a case', 'I left a case on the train.'], answer: 3, explanation: '正确语序：I left a case on the train.（我把一个箱子落在火车上了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I left a ______ on the train.', hint: '中文意思：我把一个箱子落在火车上了。', options: ['case', 'pence', 'leave', 'penny'], answer: 0, explanation: 'I left a case on the train.（我把一个箱子落在火车上了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It is a small blue ______', hint: '中文意思：它是一只蓝色的小箱子。', options: ['handle', 'label', 'leave', 'case'], answer: 3, explanation: 'It is a small blue case.（它是一只蓝色的小箱子。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ it?', hint: '中文意思：你能描述一下吗？', options: ['describe', 'zip', 'pence', 'case'], answer: 0, explanation: 'Can you describe it?（你能描述一下吗？）' },
   ],
 
   // Lesson 98: Lesson 98: Whose is it? 它是谁的？
   98: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是我的。是她的。', options: ['No, mine. is it is It not hers.', 'not It is is it No, mine. hers.', 'No, it is not mine. It is hers.', 'is It mine. it not hers. No, is'], answer: 2, explanation: '正确语序：No, it is not mine. It is hers.（不，不是我的。是她的。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个箱子是谁的？', options: ['Whose is this case?', 'is case? Whose this', 'is this case? Whose', 'is Whose case? this'], answer: 0, explanation: '正确语序：Whose is this case?（这个箱子是谁的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个箱子是谁的？', options: ['Whose this is case?', 'this is Whose case?', 'is Whose case? this', 'Whose is this case?'], answer: 3, explanation: '正确语序：Whose is this case?（这个箱子是谁的？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，不是我的。是她的。', options: ['not It No, is it mine. is hers.', 'No, it is not mine. It is hers.', 'mine. hers. not is is It it No,', 'No, mine. not It is is it hers.'], answer: 1, explanation: '正确语序：No, it is not mine. It is hers.（不，不是我的。是她的。）' },
   ],
 
   // Lesson 99: Lesson 99: Ow! 哎哟！
   99: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '让我帮你。', options: ['Let me help you.', 'me Let help you.', 'me you. Let help', 'Let help you. me'], answer: 0, explanation: '正确语序：Let me help you.（让我帮你。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我想我伤着背了。', options: ['my I have that I back. think hurt', 'I think that I have hurt my back.', 'I my I have think that back. hurt', 'I think I back. my have hurt that'], answer: 1, explanation: '正确语序：I think that I have hurt my back.（我想我伤着背了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '试着站起来。', options: ['stand up. Try and', 'Try up. stand and', 'Try and stand up.', 'and Try up. stand'], answer: 2, explanation: '正确语序：Try and stand up.（试着站起来。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Have you ______ yourself?', hint: '中文意思：你伤着自己了吗？', options: ['help', 'back', 'hurt', 'downstairs'], answer: 2, explanation: 'Have you hurt yourself?（你伤着自己了吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I think that I have hurt my ______', hint: '中文意思：我想我伤着背了。', options: ['atonce', 'back', 'sure', 'xray'], answer: 1, explanation: 'I think that I have hurt my back.（我想我伤着背了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Let me ______ you.', hint: '中文意思：让我帮你。', options: ['help', 'oops', 'downstairs', 'fall'], answer: 0, explanation: 'Let me help you.（让我帮你。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我想我伤着背了。', options: ['that hurt back. my I have think I', 'I think that I have hurt my back.', 'I my think I back. that have hurt', 'think have that back. hurt I I my'], answer: 1, explanation: '正确语序：I think that I have hurt my back.（我想我伤着背了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '让我帮你。', options: ['help Let you. me', 'Let me help you.', 'you. me Let help', 'Let help you. me'], answer: 1, explanation: '正确语序：Let me help you.（让我帮你。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我滑倒了，从楼梯上摔下来。', options: ['slipped fell I and downstairs.', 'I slipped and fell downstairs.', 'slipped and I fell downstairs.', 'I slipped downstairs. fell and'], answer: 1, explanation: '正确语序：I slipped and fell downstairs.（我滑倒了，从楼梯上摔下来。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Have you ______ yourself?', hint: '中文意思：你伤着自己了吗？', options: ['fall', 'slip', 'hurt', 'back'], answer: 2, explanation: 'Have you hurt yourself?（你伤着自己了吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Let me ______ you.', hint: '中文意思：让我帮你。', options: ['hurt', 'help', 'downstairs', 'fall'], answer: 1, explanation: 'Let me help you.（让我帮你。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I think that I have hurt my ______', hint: '中文意思：我想我伤着背了。', options: ['atonce', 'help', 'back', 'downstairs'], answer: 2, explanation: 'I think that I have hurt my back.（我想我伤着背了。）' },
   ],
 
   // Lesson 100: Lesson 100: He says that... 他说……
   100: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们说他们饿了。', options: ['hungry. are that say they They', 'They say that they are hungry.', 'are say that hungry. They they', 'that They they are say hungry.'], answer: 1, explanation: '正确语序：They say that they are hungry.（他们说他们饿了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她说她累了。', options: ['She says that she is tired.', 'tired. She that says is she', 'that says is She she tired.', 'that she She says tired. is'], answer: 0, explanation: '正确语序：She says that she is tired.（她说她累了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他感觉不舒服。', options: ['He says that he feels ill.', 'he He feels that ill. says', 'that says ill. feels he He', 'that He he says feels ill.'], answer: 0, explanation: '正确语序：He says that he feels ill.（他说他感觉不舒服。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们说他们饿了。', options: ['they hungry. They that are say', 'say that they hungry. are They', 'that say They hungry. they are', 'They say that they are hungry.'], answer: 3, explanation: '正确语序：They say that they are hungry.（他们说他们饿了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我说我很高兴。', options: ['I I happy. that say am', 'I say I am happy. that', 'I am I that happy. say', 'I say that I am happy.'], answer: 3, explanation: '正确语序：I say that I am happy.（我说我很高兴。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他感觉不舒服。', options: ['he He that says feels ill.', 'says that ill. He feels he', 'that He feels says ill. he', 'He says that he feels ill.'], answer: 3, explanation: '正确语序：He says that he feels ill.（他说他感觉不舒服。）' },
   ],
 
   // Lesson 101: Lesson 101: A card from Jimmy 吉米的明信片
   101: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '吉米的明信片。', options: ['Jimmy. A card from', 'from Jimmy. card A', 'A card from Jimmy.', 'from A card Jimmy.'], answer: 2, explanation: '正确语序：A card from Jimmy.（吉米的明信片。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他很快就会写信。', options: ['he will soon. letter write He a says', 'will a letter soon. write says he He', 'a soon. He will he write letter says', 'He says he will write a letter soon.'], answer: 3, explanation: '正确语序：He says he will write a letter soon.（他说他很快就会写信。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '把吉米的明信片读给我听。', options: ['card Read to me. Jimmy\'s', 'me. to Read Jimmy\'s card', 'to Read Jimmy\'s card me.', 'Read Jimmy\'s card to me.'], answer: 3, explanation: '正确语序：Read Jimmy\'s card to me.（把吉米的明信片读给我听。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：A ______ from Jimmy.', hint: '中文意思：吉米的明信片。', options: ['card', 'scotland', 'youth', 'youngster'], answer: 0, explanation: 'A card from Jimmy.（吉米的明信片。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He says he is in ______', hint: '中文意思：他说他在苏格兰。', options: ['youngster', 'hotel', 'scotland', 'card'], answer: 2, explanation: 'He says he is in Scotland.（他说他在苏格兰。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Read Jimmy\'s ______ to me.', hint: '中文意思：把吉米的明信片读给我听。', options: ['scotland', 'card', 'youth', 'youngster'], answer: 1, explanation: 'Read Jimmy\'s card to me.（把吉米的明信片读给我听。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他很快就会写信。', options: ['letter he soon. write He a will says', 'He will a soon. letter he says write', 'says letter soon. a will he write He', 'He says he will write a letter soon.'], answer: 3, explanation: '正确语序：He says he will write a letter soon.（他说他很快就会写信。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '把吉米的明信片读给我听。', options: ['card me. Jimmy\'s Read to', 'me. to Jimmy\'s Read card', 'Read Jimmy\'s card to me.', 'to Read card Jimmy\'s me.'], answer: 2, explanation: '正确语序：Read Jimmy\'s card to me.（把吉米的明信片读给我听。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他在苏格兰。', options: ['Scotland. is says He he in', 'is Scotland. he says He in', 'in is says He he Scotland.', 'He says he is in Scotland.'], answer: 3, explanation: '正确语序：He says he is in Scotland.（他说他在苏格兰。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He says he is staying at a Youth ______', hint: '中文意思：他说他住在青年旅舍。', options: ['youth', 'scotland', 'association', 'hostel'], answer: 3, explanation: 'He says he is staying at a Youth Hostel.（他说他住在青年旅舍。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Read Jimmy\'s ______ to me.', hint: '中文意思：把吉米的明信片读给我听。', options: ['youth', 'hotel', 'young', 'card'], answer: 3, explanation: 'Read Jimmy\'s card to me.（把吉米的明信片读给我听。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He says he is in ______', hint: '中文意思：他说他在苏格兰。', options: ['hostel', 'scotland', 'youth', 'association'], answer: 1, explanation: 'He says he is in Scotland.（他说他在苏格兰。）' },
   ],
 
   // Lesson 102: Lesson 102: He says he... 他说他……
   102: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他很快就来。', options: ['says come soon. He he will', 'come he He soon. will says', 'he He soon. come says will', 'He says he will come soon.'], answer: 3, explanation: '正确语序：He says he will come soon.（他说他很快就来。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她说她头痛。', options: ['She has she headache. a says', 'a has She she headache. says', 'headache. says a has She she', 'She says she has a headache.'], answer: 3, explanation: '正确语序：She says she has a headache.（她说她头痛。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们说他们在等公共汽车。', options: ['bus. for waiting are they say They a', 'they They a for are say bus. waiting', 'They say they are waiting for a bus.', 'waiting are bus. a for They they say'], answer: 2, explanation: '正确语序：They say they are waiting for a bus.（他们说他们在等公共汽车。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她说她头痛。', options: ['she says headache. She a has', 'she a says headache. She has', 'She says she has a headache.', 'she says She a headache. has'], answer: 2, explanation: '正确语序：She says she has a headache.（她说她头痛。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他觉得冷。', options: ['He says he feels cold.', 'says he He cold. feels', 'he cold. He says feels', 'cold. He says he feels'], answer: 0, explanation: '正确语序：He says he feels cold.（他说他觉得冷。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他很快就来。', options: ['he He come soon. says will', 'He will says soon. he come', 'He says he will come soon.', 'he soon. says come He will'], answer: 2, explanation: '正确语序：He says he will come soon.（他说他很快就来。）' },
   ],
 
   // Lesson 103: Lesson 103: The French test 法语考试
   103: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '题目很容易。', options: ['questions very The were easy.', 'The questions were very easy.', 'very easy. questions The were', 'very were questions The easy.'], answer: 1, explanation: '正确语序：The questions were very easy.（题目很容易。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我想我的英语和数学及格了。', options: ['in I think I Mathematics. passed English and', 'in and passed think English I Mathematics. I', 'English think passed I I in Mathematics. and', 'I think I passed in English and Mathematics.'], answer: 3, explanation: '正确语序：I think I passed in English and Mathematics.（我想我的英语和数学及格了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他一个字也没写！', options: ['He didn\'t write a word!', 'word! write a didn\'t He', 'word! a He didn\'t write', 'write He a word! didn\'t'], answer: 0, explanation: '正确语序：He didn\'t write a word!（他一个字也没写！）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Oh, ______ up!', hint: '中文意思：哦，振作点！', options: ['text', 'top', 'math', 'cheer'], answer: 3, explanation: 'Oh, cheer up!（哦，振作点！）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The questions were very ______', hint: '中文意思：题目很容易。', options: ['failure', 'easy', 'cheer', 'mark'], answer: 1, explanation: 'The questions were very easy.（题目很容易。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The English and Maths papers weren\'t ______ enough for me.', hint: '中文意思：英语和数学试卷对我来说不够容易。', options: ['fail', 'failure', 'easy', 'response'], answer: 2, explanation: 'The English and Maths papers weren\'t easy enough for me.（英语和数学试卷对我来说不够容易。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我希望我没有不及格。', options: ['I hope I haven\'t failed.', 'hope haven\'t failed. I I', 'hope I haven\'t failed. I', 'I failed. I haven\'t hope'], answer: 0, explanation: '正确语序：I hope I haven\'t failed.（我希望我没有不及格。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '法语考试太可怕了，是吗？', options: ['awful, they? aren\'t are French tests', 'aren\'t French are awful, tests they?', 'French tests are awful, aren\'t they?', 'tests they? are awful, French aren\'t'], answer: 2, explanation: '正确语序：French tests are awful, aren\'t they?（法语考试太可怕了，是吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '题目很容易。', options: ['were easy. The questions very', 'questions were very easy. The', 'questions The were very easy.', 'The questions were very easy.'], answer: 3, explanation: '正确语序：The questions were very easy.（题目很容易。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The questions were too ______ for me.', hint: '中文意思：题目对我来说太难了。', options: ['respond', 'difficult', 'fool', 'paper'], answer: 1, explanation: 'The questions were too difficult for me.（题目对我来说太难了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I think I passed in English and ______', hint: '中文意思：我想我的英语和数学及格了。', options: ['pass', 'extra', 'mathematics', 'exam'], answer: 2, explanation: 'I think I passed in English and Mathematics.（我想我的英语和数学及格了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The questions were very ______', hint: '中文意思：题目很容易。', options: ['easy', 'compute', 'guy', 'pass'], answer: 0, explanation: 'The questions were very easy.（题目很容易。）' },
   ],
 
   // Lesson 104: Lesson 104: Too, very, enough 太、非常、足够
   104: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这本书很难。', options: ['This book is very difficult.', 'book This is very difficult.', 'difficult. book This is very', 'book is difficult. This very'], answer: 0, explanation: '正确语序：This book is very difficult.（这本书很难。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这本书对我来说够容易了。', options: ['me. is for enough easy book This', 'This book me. for easy enough is', 'This book is easy enough for me.', 'enough for book is easy me. This'], answer: 2, explanation: '正确语序：This book is easy enough for me.（这本书对我来说够容易了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '题目对他来说太难了。', options: ['The were for difficult questions too him.', 'The questions were too difficult for him.', 'too were difficult The him. questions for', 'too difficult him. questions were The for'], answer: 1, explanation: '正确语序：The questions were too difficult for him.（题目对他来说太难了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He is ______ enough to answer the question.', hint: '中文意思：他够聪明，能回答这个问题。', options: ['stupid', 'stale', 'high', 'clever'], answer: 3, explanation: 'He is clever enough to answer the question.（他够聪明，能回答这个问题。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '题目对他来说太难了。', options: ['difficult him. for questions were The too', 'The questions were too difficult for him.', 'The were for difficult questions too him.', 'difficult questions The him. for too were'], answer: 1, explanation: '正确语序：The questions were too difficult for him.（题目对他来说太难了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这本书对我来说够容易了。', options: ['for book easy is me. enough This', 'is This book for enough me. easy', 'This book is easy enough for me.', 'book enough is easy This for me.'], answer: 2, explanation: '正确语序：This book is easy enough for me.（这本书对我来说够容易了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他够聪明，能回答这个问题。', options: ['is answer to enough clever He the question.', 'to question. enough is clever He answer the', 'He is clever enough to answer the question.', 'clever question. answer He enough is to the'], answer: 2, explanation: '正确语序：He is clever enough to answer the question.（他够聪明，能回答这个问题。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He is ______ enough to answer the question.', hint: '中文意思：他够聪明，能回答这个问题。', options: ['clever', 'stale', 'fresh', 'loud'], answer: 0, explanation: 'He is clever enough to answer the question.（他够聪明，能回答这个问题。）' },
   ],
 
   // Lesson 105: Lesson 105: Hello, Mr. Jones 你好，琼斯先生
   105: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能让他给我回电话吗？', options: ['Could you ask him to call me back?', 'to call me back? him Could ask you', 'Could back? me ask him call you to', 'call ask him back? you Could to me'], answer: 0, explanation: '正确语序：Could you ask him to call me back?（你能让他给我回电话吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '请问我可以和琼斯先生通话吗？', options: ['Mr. Can Jones, I please? speak to', 'Can Mr. please? to speak Jones, I', 'I speak Can Jones, please? to Mr.', 'Can I speak to Mr. Jones, please?'], answer: 3, explanation: '正确语序：Can I speak to Mr. Jones, please?（请问我可以和琼斯先生通话吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以留个口信吗？', options: ['message? Can I a take', 'message? take a Can I', 'message? a I Can take', 'Can I take a message?'], answer: 3, explanation: '正确语序：Can I take a message?（我可以留个口信吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你好，我是琼斯太太。', options: ['Mrs. Jones speaking. this Hello, is', 'Jones speaking. Mrs. Hello, is this', 'this Jones speaking. Mrs. is Hello,', 'Hello, this is Mrs. Jones speaking.'], answer: 3, explanation: '正确语序：Hello, this is Mrs. Jones speaking.（你好，我是琼斯太太。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是琼斯先生吗？', options: ['you, that Mr. Jones? Is', 'Is that you, Mr. Jones?', 'Mr. that Jones? you, Is', 'you, Is that Jones? Mr.'], answer: 1, explanation: '正确语序：Is that you, Mr. Jones?（是琼斯先生吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以留个口信吗？', options: ['Can take I a message?', 'take I Can a message?', 'Can I take a message?', 'I Can message? take a'], answer: 2, explanation: '正确语序：Can I take a message?（我可以留个口信吗？）' },
   ],
 
   // Lesson 106: Lesson 106: 电话用语复习
   106: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，你是哪位？', options: ['that? who Yes, is', 'is that? who Yes,', 'who Yes, is that?', 'Yes, who is that?'], answer: 3, explanation: '正确语序：Yes, who is that?（是的，你是哪位？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以留个口信吗？', options: ['Can a message? take I', 'a Can take I message?', 'Can I take a message?', 'message? a Can I take'], answer: 2, explanation: '正确语序：Can I take a message?（我可以留个口信吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我是史密斯先生。', options: ['This is Mr. Smith speaking.', 'This Mr. Smith speaking. is', 'speaking. is This Mr. Smith', 'This speaking. Mr. is Smith'], answer: 0, explanation: '正确语序：This is Mr. Smith speaking.（我是史密斯先生。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I\'m ______ he is out.', hint: '中文意思：恐怕他出去了。', options: ['moment', 'message', 'phone', 'afraid'], answer: 3, explanation: 'I\'m afraid he is out.（恐怕他出去了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Please tell him to ______ me back.', hint: '中文意思：请告诉他给我回电话。', options: ['afraid', 'moment', 'call', 'phone'], answer: 2, explanation: 'Please tell him to call me back.（请告诉他给我回电话。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Can I take a ______', hint: '中文意思：我可以留个口信吗？', options: ['message', 'phone', 'call', 'moment'], answer: 0, explanation: 'Can I take a message?（我可以留个口信吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是史密斯先生吗？', options: ['Is that Smith? Mr.', 'Is Mr. Smith? that', 'Is that Mr. Smith?', 'Smith? Mr. Is that'], answer: 2, explanation: '正确语序：Is that Mr. Smith?（是史密斯先生吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '恐怕他出去了。', options: ['he out. I\'m afraid is', 'I\'m afraid he is out.', 'is he afraid I\'m out.', 'is I\'m he afraid out.'], answer: 1, explanation: '正确语序：I\'m afraid he is out.（恐怕他出去了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你好，我可以和史密斯先生通话吗？', options: ['may Mr. to Smith? I speak Hello,', 'to speak I Smith? Hello, Mr. may', 'Hello, may I speak to Mr. Smith?', 'Smith? Mr. may speak to Hello, I'], answer: 2, explanation: '正确语序：Hello, may I speak to Mr. Smith?（你好，我可以和史密斯先生通话吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m ______ he is out.', hint: '中文意思：恐怕他出去了。', options: ['message', 'moment', 'phone', 'afraid'], answer: 3, explanation: 'I\'m afraid he is out.（恐怕他出去了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Can I take a ______', hint: '中文意思：我可以留个口信吗？', options: ['call', 'message', 'afraid', 'phone'], answer: 1, explanation: 'Can I take a message?（我可以留个口信吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Please tell him to ______ me back.', hint: '中文意思：请告诉他给我回电话。', options: ['afraid', 'call', 'moment', 'message'], answer: 1, explanation: 'Please tell him to call me back.（请告诉他给我回电话。）' },
   ],
 
   // Lesson 107: Lesson 107: It's too high 太高了
   107: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它多少钱？', options: ['it much How does cost?', 'How much does it cost?', 'it cost? How does much', 'does How it much cost?'], answer: 1, explanation: '正确语序：How much does it cost?（它多少钱？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个型号比那个便宜。', options: ['This than that expensive less one. model\'s', 'This model\'s less expensive than that one.', 'model\'s that than less one. expensive This', 'than model\'s that expensive one. less This'], answer: 1, explanation: '正确语序：This model\'s less expensive than that one.（这个型号比那个便宜。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它值五百英镑。', options: ['costs It hundred five pounds.', 'It costs five hundred pounds.', 'five It hundred costs pounds.', 'costs hundred It five pounds.'], answer: 1, explanation: '正确语序：It costs five hundred pounds.（它值五百英镑。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：You can pay a ______ of thirty pounds.', hint: '中文意思：你可以先付三十英镑的押金。', options: ['deposit', 'million', 'afford', 'madam'], answer: 0, explanation: 'You can pay a deposit of thirty pounds.（你可以先付三十英镑的押金。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I can\'t ______ it.', hint: '中文意思：我买不起。', options: ['instalment', 'model', 'afford', 'compare'], answer: 2, explanation: 'I can\'t afford it.（我买不起。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我非常喜欢这台电视机。', options: ['I like this television very much.', 'this much. I like television very', 'this much. I television very like', 'very I much. like television this'], answer: 0, explanation: '正确语序：I like this television very much.（我非常喜欢这台电视机。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们可以分期付款购买吗？', options: ['Can we buy it on instalments?', 'we on buy Can it instalments?', 'we it instalments? on Can buy', 'we it on buy instalments? Can'], answer: 0, explanation: '正确语序：Can we buy it on instalments?（我们可以分期付款购买吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '另一个型号更贵。', options: ['other model\'s expensive. The more', 'The other model\'s more expensive.', 'expensive. The other model\'s more', 'model\'s more The expensive. other'], answer: 1, explanation: '正确语序：The other model\'s more expensive.（另一个型号更贵。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I can\'t ______ it.', hint: '中文意思：我买不起。', options: ['afford', 'suit', 'aswell', 'price'], answer: 0, explanation: 'I can\'t afford it.（我买不起。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：You can pay a ______ of thirty pounds.', hint: '中文意思：你可以先付三十英镑的押金。', options: ['deposit', 'price', 'instalment', 'compare'], answer: 0, explanation: 'You can pay a deposit of thirty pounds.（你可以先付三十英镑的押金。）' },
   ],
 
   // Lesson 108: Lesson 108: 形容词比较级复习
   108: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这辆车比那辆差。', options: ['car than one. that worse This is', 'than is This that car worse one.', 'one. that is worse than This car', 'This car is worse than that one.'], answer: 3, explanation: '正确语序：This car is worse than that one.（这辆车比那辆差。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个比那个便宜。', options: ['This one. less one than that expensive is', 'This is than less expensive one. that one', 'less that one This expensive is one. than', 'This one is less expensive than that one.'], answer: 3, explanation: '正确语序：This one is less expensive than that one.（这个比那个便宜。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个和那个一样好。', options: ['This one is as good as that one.', 'good This that one. is one as as', 'This as that one is good one. as', 'is as one. one as This good that'], answer: 0, explanation: '正确语序：This one is as good as that one.（这个和那个一样好。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This dress is ______ than that one.', hint: '中文意思：这件连衣裙比那件便宜。', options: ['bigger', 'cheaper', 'smaller', 'longer'], answer: 1, explanation: 'This dress is cheaper than that one.（这件连衣裙比那件便宜。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This car is ______ than that one.', hint: '中文意思：这辆车比那辆差。', options: ['smaller', 'worse', 'shorter', 'better'], answer: 1, explanation: 'This car is worse than that one.（这辆车比那辆差。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This book is ______ than that one.', hint: '中文意思：这本书比那本好。', options: ['better', 'smaller', 'worse', 'shorter'], answer: 0, explanation: 'This book is better than that one.（这本书比那本好。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这本书比那本好。', options: ['than better book This is one. that', 'This book is better than that one.', 'that This better than book one. is', 'This better book that than is one.'], answer: 1, explanation: '正确语序：This book is better than that one.（这本书比那本好。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个和那个一样好。', options: ['as that good one as This one. is', 'is This one one. as that as good', 'This one is as good as that one.', 'that as This good as one is one.'], answer: 2, explanation: '正确语序：This one is as good as that one.（这个和那个一样好。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这辆车比那辆差。', options: ['worse car that This is than one.', 'This car is worse than that one.', 'one. than is car worse that This', 'car than worse is This that one.'], answer: 1, explanation: '正确语序：This car is worse than that one.（这辆车比那辆差。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This car is ______ than that one.', hint: '中文意思：这辆车比那辆差。', options: ['worse', 'smaller', 'cheaper', 'better'], answer: 0, explanation: 'This car is worse than that one.（这辆车比那辆差。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This book is ______ than that one.', hint: '中文意思：这本书比那本好。', options: ['smaller', 'better', 'worse', 'bigger'], answer: 1, explanation: 'This book is better than that one.（这本书比那本好。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This dress is ______ than that one.', hint: '中文意思：这件连衣裙比那件便宜。', options: ['bigger', 'better', 'cheaper', 'worse'], answer: 2, explanation: 'This dress is cheaper than that one.（这件连衣裙比那件便宜。）' },
   ],
 
   // Lesson 109: Lesson 109: A good idea 好主意
   109: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你要牛奶吗？', options: ['any want Do milk? you', 'milk? want Do any you', 'Do any you milk? want', 'Do you want any milk?'], answer: 3, explanation: '正确语序：Do you want any milk?（你要牛奶吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你还要再来点吗？', options: ['Would you like some more?', 'like some Would you more?', 'like you more? Would some', 'like you more? some Would'], answer: 0, explanation: '正确语序：Would you like some more?（你还要再来点吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我也想来支香烟。', options: ['I\'d like a cigarette, too.', 'cigarette, like I\'d too. a', 'like I\'d too. cigarette, a', 'like cigarette, too. I\'d a'], answer: 0, explanation: '正确语序：I\'d like a cigarette, too.（我也想来支香烟。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：That\'s a good ______ Bob.', hint: '中文意思：好主意，鲍勃。', options: ['most', 'least', 'advice', 'idea'], answer: 3, explanation: 'That\'s a good idea, Bob.（好主意，鲍勃。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Just a ______ please.', hint: '中文意思：只要一点，谢谢。', options: ['less', 'pity', 'little', 'most'], answer: 2, explanation: 'Just a little, please.（只要一点，谢谢。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你还要再来点吗？', options: ['more? Would like you some', 'you like some more? Would', 'some you like Would more?', 'Would you like some more?'], answer: 3, explanation: '正确语序：Would you like some more?（你还要再来点吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '加些糖怎么样？', options: ['What about some sugar?', 'sugar? some about What', 'some sugar? about What', 'sugar? What some about'], answer: 0, explanation: '正确语序：What about some sugar?（加些糖怎么样？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以来一支吗？', options: ['I one? have May', 'May have I one?', 'May I have one?', 'one? I have May'], answer: 2, explanation: '正确语序：May I have one?（我可以来一支吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：That\'s a good ______ Bob.', hint: '中文意思：好主意，鲍勃。', options: ['alittle', 'most', 'idea', 'best'], answer: 2, explanation: 'That\'s a good idea, Bob.（好主意，鲍勃。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Just a ______ please.', hint: '中文意思：只要一点，谢谢。', options: ['instead', 'little', 'idea', 'worse'], answer: 1, explanation: 'Just a little, please.（只要一点，谢谢。）' },
   ],
 
   // Lesson 110: Lesson 110: 情态动词复习
   110: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能开门吗？', options: ['you Could the please? door, open', 'Could you open the door, please?', 'please? Could you door, open the', 'Could please? door, open you the'], answer: 1, explanation: '正确语序：Could you open the door, please?（你能开门吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以用你的电话吗？', options: ['use phone? I May your', 'May use phone? I your', 'May I use your phone?', 'your use May I phone?'], answer: 2, explanation: '正确语序：May I use your phone?（我可以用你的电话吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我现在该走了吗？', options: ['Should go I now?', 'Should I now? go', 'Should I go now?', 'I Should go now?'], answer: 2, explanation: '正确语序：Should I go now?（我现在该走了吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ I use your phone?', hint: '中文意思：我可以用你的电话吗？', options: ['could', 'might', 'may', 'would'], answer: 2, explanation: 'May I use your phone?（我可以用你的电话吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ you open the door, please?', hint: '中文意思：你能开门吗？', options: ['may', 'could', 'would', 'should'], answer: 1, explanation: 'Could you open the door, please?（你能开门吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Yes, you ______', hint: '中文意思：是的，你该走了。', options: ['might', 'may', 'could', 'should'], answer: 3, explanation: 'Yes, you should.（是的，你该走了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你想要一些茶吗？', options: ['some like you Would tea?', 'Would you like some tea?', 'like you some tea? Would', 'Would like you tea? some'], answer: 1, explanation: '正确语序：Would you like some tea?（你想要一些茶吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我可以用你的电话吗？', options: ['I May use phone? your', 'I use your phone? May', 'May I use your phone?', 'use your I May phone?'], answer: 2, explanation: '正确语序：May I use your phone?（我可以用你的电话吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能开门吗？', options: ['Could the you open please? door,', 'Could you open the door, please?', 'the you open door, Could please?', 'Could door, please? open you the'], answer: 1, explanation: '正确语序：Could you open the door, please?（你能开门吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ you open the door, please?', hint: '中文意思：你能开门吗？', options: ['would', 'might', 'should', 'could'], answer: 3, explanation: 'Could you open the door, please?（你能开门吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ you like some tea?', hint: '中文意思：你想要一些茶吗？', options: ['would', 'might', 'should', 'may'], answer: 0, explanation: 'Would you like some tea?（你想要一些茶吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Yes, you ______', hint: '中文意思：是的，你该走了。', options: ['could', 'would', 'might', 'should'], answer: 3, explanation: 'Yes, you should.（是的，你该走了。）' },
   ],
 
   // Lesson 111: Lesson 111: The most expensive model 最贵的型号
   111: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它多少钱？', options: ['does cost? much it How', 'How much does it cost?', 'it does cost? How much', 'How does much it cost?'], answer: 1, explanation: '正确语序：How much does it cost?（它多少钱？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '它值五百英镑。', options: ['pounds. costs hundred five It', 'It costs five hundred pounds.', 'costs five It hundred pounds.', 'pounds. hundred It five costs'], answer: 1, explanation: '正确语序：It costs five hundred pounds.（它值五百英镑。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个型号比那个便宜。', options: ['than less model\'s one. This that expensive', 'This model\'s less expensive than that one.', 'one. less model\'s that expensive This than', 'expensive model\'s than that less This one.'], answer: 1, explanation: '正确语序：This model\'s less expensive than that one.（这个型号比那个便宜。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This is the cheapest ______ in the shop.', hint: '中文意思：这是店里最便宜的型号。', options: ['model', 'afraid', 'pay', 'price'], answer: 0, explanation: 'This is the cheapest model in the shop.（这是店里最便宜的型号。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It\'s the most expensive ______ in the shop.', hint: '中文意思：这是店里最贵的型号。', options: ['millionaire', 'deposit', 'instalment', 'model'], answer: 3, explanation: 'It\'s the most expensive model in the shop.（这是店里最贵的型号。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Have you got a cheaper ______', hint: '中文意思：你们有更便宜的型号吗？', options: ['afraid', 'billionaire', 'payment', 'model'], answer: 3, explanation: 'Have you got a cheaper model?（你们有更便宜的型号吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我非常喜欢这台电视机。', options: ['much. like I television very this', 'I this very like much. television', 'like television I much. this very', 'I like this television very much.'], answer: 3, explanation: '正确语序：I like this television very much.（我非常喜欢这台电视机。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这个型号比那个便宜。', options: ['less expensive This that model\'s one. than', 'This that one. than expensive model\'s less', 'This model\'s less expensive than that one.', 'one. This model\'s than expensive that less'], answer: 2, explanation: '正确语序：This model\'s less expensive than that one.（这个型号比那个便宜。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是店里最便宜的型号。', options: ['shop. the in model the cheapest This is', 'This is the cheapest model in the shop.', 'the shop. model cheapest This in is the', 'This is the in shop. the model cheapest'], answer: 1, explanation: '正确语序：This is the cheapest model in the shop.（这是店里最便宜的型号。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It\'s the most expensive ______ in the shop.', hint: '中文意思：这是店里最贵的型号。', options: ['model', 'billionaire', 'price', 'afford'], answer: 0, explanation: 'It\'s the most expensive model in the shop.（这是店里最贵的型号。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Have you got a cheaper ______', hint: '中文意思：你们有更便宜的型号吗？', options: ['afford', 'deposit', 'instalment', 'model'], answer: 3, explanation: 'Have you got a cheaper model?（你们有更便宜的型号吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：You can ______ a deposit of thirty pounds.', hint: '中文意思：你可以先付三十英镑的押金。', options: ['instalment', 'payment', 'pay', 'billionaire'], answer: 2, explanation: 'You can pay a deposit of thirty pounds.（你可以先付三十英镑的押金。）' },
   ],
 
   // Lesson 112: Lesson 112: 形容词最高级复习
   112: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是店里最便宜的车。', options: ['This in shop. is the cheapest car the', 'This is the cheapest car in the shop.', 'This shop. the cheapest in is the car', 'is cheapest in This the shop. the car'], answer: 1, explanation: '正确语序：This is the cheapest car in the shop.（这是店里最便宜的车。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是市场上最低的价格。', options: ['This is the lowest price in the market.', 'the is in market. the This lowest price', 'is the This lowest price market. in the', 'market. price in This lowest the is the'], answer: 0, explanation: '正确语序：This is the lowest price in the market.（这是市场上最低的价格。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是店里最好的书。', options: ['the in is shop. the book This best', 'best in This shop. the is the book', 'the is This the in book best shop.', 'This is the best book in the shop.'], answer: 3, explanation: '正确语序：This is the best book in the shop.（这是店里最好的书。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This is the ______ book in the shop.', hint: '中文意思：这是店里最好的书。', options: ['cheapest', 'lowest', 'mostexpensive', 'best'], answer: 3, explanation: 'This is the best book in the shop.（这是店里最好的书。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This is the ______ film I have ever seen.', hint: '中文意思：这是我看过的最差的电影。', options: ['mostexpensive', 'best', 'worst', 'cheapest'], answer: 2, explanation: 'This is the worst film I have ever seen.（这是我看过的最差的电影。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：This is the ______ mountain in the world.', hint: '中文意思：这是世界上最高的山。', options: ['highest', 'cheapest', 'best', 'lowest'], answer: 0, explanation: 'This is the highest mountain in the world.（这是世界上最高的山。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是市场上最低的价格。', options: ['is lowest market. the price in the This', 'the price lowest market. This is the in', 'lowest This in is the market. the price', 'This is the lowest price in the market.'], answer: 3, explanation: '正确语序：This is the lowest price in the market.（这是市场上最低的价格。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是店里最好的书。', options: ['book best the the shop. in This is', 'in This book the is shop. the best', 'This is the best book in the shop.', 'the is best This book the in shop.'], answer: 2, explanation: '正确语序：This is the best book in the shop.（这是店里最好的书。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这是店里最便宜的车。', options: ['the shop. the cheapest in is car This', 'This is the cheapest car in the shop.', 'in the cheapest is the This car shop.', 'car the the is cheapest This in shop.'], answer: 1, explanation: '正确语序：This is the cheapest car in the shop.（这是店里最便宜的车。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This is the ______ book in the shop.', hint: '中文意思：这是店里最好的书。', options: ['best', 'lowest', 'mostexpensive', 'cheapest'], answer: 0, explanation: 'This is the best book in the shop.（这是店里最好的书。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This is the ______ car in the shop.', hint: '中文意思：这是店里最便宜的车。', options: ['cheapest', 'highest', 'worst', 'lowest'], answer: 0, explanation: 'This is the cheapest car in the shop.（这是店里最便宜的车。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：This is the ______ film I have ever seen.', hint: '中文意思：这是我看过的最差的电影。', options: ['best', 'worst', 'mostexpensive', 'highest'], answer: 1, explanation: 'This is the worst film I have ever seen.（这是我看过的最差的电影。）' },
   ],
 
   // Lesson 113: Lesson 113: Small change 零钱
   113: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我口袋里什么都没有。', options: ['got my pocket. nothing I\'ve in', 'nothing pocket. my got I\'ve in', 'I\'ve got nothing in my pocket.', 'nothing my pocket. I\'ve in got'], answer: 2, explanation: '正确语序：I\'ve got nothing in my pocket.（我口袋里什么都没有。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你可以以后付我。', options: ['me pay can You later.', 'pay You can later. me', 'You can pay me later.', 'pay me can later. You'], answer: 2, explanation: '正确语序：You can pay me later.（你可以以后付我。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '恐怕我不能。', options: ['I\'m I can\'t. afraid', 'I can\'t. afraid I\'m', 'I\'m afraid I can\'t.', 'I I\'m afraid can\'t.'], answer: 2, explanation: '正确语序：I\'m afraid I can\'t.（恐怕我不能。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I\'m sorry, I haven\'t got any small ______', hint: '中文意思：对不起，我没有零钱。', options: ['change', 'conductor', 'passenger', 'note'], answer: 0, explanation: 'I\'m sorry, I haven\'t got any small change.（对不起，我没有零钱。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ can I.', hint: '中文意思：我也不能。', options: ['getoff', 'fare', 'vagrant', 'neither'], answer: 3, explanation: 'Neither can I.（我也不能。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ this ten-pound note?', hint: '中文意思：你能换开这张十英镑的纸币吗？', options: ['change', 'fare', 'none', 'conductor'], answer: 0, explanation: 'Can you change this ten-pound note?（你能换开这张十英镑的纸币吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我口袋里什么都没有。', options: ['nothing got my I\'ve pocket. in', 'nothing pocket. got my in I\'ve', 'in I\'ve my pocket. got nothing', 'I\'ve got nothing in my pocket.'], answer: 3, explanation: '正确语序：I\'ve got nothing in my pocket.（我口袋里什么都没有。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '对不起，我没有零钱。', options: ['small sorry, any haven\'t I got I\'m change.', 'got small I haven\'t sorry, any I\'m change.', 'I\'m sorry, I haven\'t got any small change.', 'any change. haven\'t I small got I\'m sorry,'], answer: 2, explanation: '正确语序：I\'m sorry, I haven\'t got any small change.（对不起，我没有零钱。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我要去城市广场。', options: ['the square. go city to I want to', 'I want to go to the city square.', 'the go to want I city square. to', 'to city want to go the I square.'], answer: 1, explanation: '正确语序：I want to go to the city square.（我要去城市广场。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'m sorry, I haven\'t got any small ______', hint: '中文意思：对不起，我没有零钱。', options: ['penny', 'conductor', 'neither', 'change'], answer: 3, explanation: 'I\'m sorry, I haven\'t got any small change.（对不起，我没有零钱。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ can I.', hint: '中文意思：我也不能。', options: ['neither', 'getoff', 'except', 'fare'], answer: 0, explanation: 'Neither can I.（我也不能。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Can you ______ this ten-pound note?', hint: '中文意思：你能换开这张十英镑的纸币吗？', options: ['penny', 'note', 'neither', 'change'], answer: 3, explanation: 'Can you change this ten-pound note?（你能换开这张十英镑的纸币吗？）' },
   ],
 
   // Lesson 114: Lesson 114: So 和 Neither 复习
   114: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我不累。', options: ['tired. not I am', 'tired. I am not', 'I am not tired.', 'tired. I not am'], answer: 2, explanation: '正确语序：I am not tired.（我不累。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我不喜欢茶。', options: ['I tea. don\'t like', 'don\'t tea. like I', 'don\'t like tea. I', 'I don\'t like tea.'], answer: 3, explanation: '正确语序：I don\'t like tea.（我不喜欢茶。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我会说英语。', options: ['English. speak can I', 'I can speak English.', 'speak English. can I', 'can I speak English.'], answer: 1, explanation: '正确语序：I can speak English.（我会说英语。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我会说英语。', options: ['I speak English. can', 'English. I can speak', 'English. speak I can', 'I can speak English.'], answer: 3, explanation: '正确语序：I can speak English.（我会说英语。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我不累。', options: ['I am not tired.', 'am tired. not I', 'tired. not I am', 'am I tired. not'], answer: 0, explanation: '正确语序：I am not tired.（我不累。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我不会说法语。', options: ['I can\'t French. speak', 'I French. speak can\'t', 'I can\'t speak French.', 'French. speak can\'t I'], answer: 2, explanation: '正确语序：I can\'t speak French.（我不会说法语。）' },
   ],
 
   // Lesson 115: Lesson 115: Knock, knock! 敲敲门！
   115: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '看！大家都在花园里。', options: ['Look! the garden. Everyone\'s in', 'Everyone\'s in Look! garden. the', 'Look! Everyone\'s in the garden.', 'in Look! garden. Everyone\'s the'], answer: 2, explanation: '正确语序：Look! Everyone\'s in the garden.（看！大家都在花园里。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '来喝点什么吧。', options: ['something have and drink. to Come', 'drink. and something have Come to', 'Come and have something to drink.', 'to and something drink. Come have'], answer: 2, explanation: '正确语序：Come and have something to drink.（来喝点什么吧。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '透过窗户看看。', options: ['window. through Look the', 'Look the through window.', 'through Look window. the', 'Look through the window.'], answer: 3, explanation: '正确语序：Look through the window.（透过窗户看看。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ wants to have lunch in the garden.', hint: '中文意思：大家都想在花园里吃午饭。', options: ['somebody', 'someone', 'everybody', 'anything'], answer: 2, explanation: 'Everybody wants to have lunch in the garden.（大家都想在花园里吃午饭。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Everything\'s very ______', hint: '中文意思：一切都很安静。', options: ['quiet', 'everyone', 'everybody', 'lemonade'], answer: 0, explanation: 'Everything\'s very quiet.（一切都很安静。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Isn\'t there ______ at home?', hint: '中文意思：家里没有人吗？', options: ['anyone', 'lookthrough', 'everywhere', 'some'], answer: 0, explanation: 'Isn\'t there anyone at home?（家里没有人吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我再敲一次，海伦。', options: ['again, Helen. I\'ll knock', 'knock Helen. I\'ll again,', 'I\'ll knock Helen. again,', 'I\'ll knock again, Helen.'], answer: 3, explanation: '正确语序：I\'ll knock again, Helen.（我再敲一次，海伦。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '外面这里又好又暖和。', options: ['It\'s out here. warm and nice', 'here. warm nice It\'s out and', 'It\'s nice and warm out here.', 'out It\'s nice here. warm and'], answer: 2, explanation: '正确语序：It\'s nice and warm out here.（外面这里又好又暖和。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们试试后门。', options: ['the try door. Let\'s back', 'Let\'s door. the back try', 'Let\'s back door. try the', 'Let\'s try the back door.'], answer: 3, explanation: '正确语序：Let\'s try the back door.（我们试试后门。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ wants to have lunch in the garden.', hint: '中文意思：大家都想在花园里吃午饭。', options: ['everybody', 'noone', 'door', 'lemonade'], answer: 0, explanation: 'Everybody wants to have lunch in the garden.（大家都想在花园里吃午饭。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Come and have ______ to drink.', hint: '中文意思：来喝点什么吧。', options: ['alive', 'knock', 'something', 'some'], answer: 2, explanation: 'Come and have something to drink.（来喝点什么吧。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I\'ll ______ again, Helen.', hint: '中文意思：我再敲一次，海伦。', options: ['some', 'knock', 'somewhere', 'everything'], answer: 1, explanation: 'I\'ll knock again, Helen.（我再敲一次，海伦。）' },
   ],
 
   // Lesson 116: Lesson 116: 现在完成时复习
   116: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他去伦敦了。', options: ['London. gone has He to', 'He has gone to London.', 'He to London. gone has', 'London. He has to gone'], answer: 1, explanation: '正确语序：He has gone to London.（他去伦敦了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我刚吃过午饭。', options: ['had just lunch. have I', 'I have just had lunch.', 'had lunch. just I have', 'just have had lunch. I'], answer: 1, explanation: '正确语序：I have just had lunch.（我刚吃过午饭。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我从未去过那里。', options: ['never No, there. been I have', 'No, there. never been have I', 'No, I have never been there.', 'have there. been No, I never'], answer: 2, explanation: '正确语序：No, I have never been there.（不，我从未去过那里。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I have ______ had lunch.', hint: '中文意思：我刚吃过午饭。', options: ['has', 'just', 'have', 'yet'], answer: 1, explanation: 'I have just had lunch.（我刚吃过午饭。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ you finished yet?', hint: '中文意思：你完成了吗？', options: ['ever', 'never', 'have', 'has'], answer: 2, explanation: 'Have you finished yet?（你完成了吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He ______ gone to London.', hint: '中文意思：他去伦敦了。', options: ['yet', 'never', 'already', 'has'], answer: 3, explanation: 'He has gone to London.（他去伦敦了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我已经完成了作业。', options: ['have finished my I homework.', 'I have finished my homework.', 'my homework. I have finished', 'my have I finished homework.'], answer: 1, explanation: '正确语序：I have finished my homework.（我已经完成了作业。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我刚吃过午饭。', options: ['I have just had lunch.', 'just had lunch. I have', 'had just I lunch. have', 'have had just lunch. I'], answer: 0, explanation: '正确语序：I have just had lunch.（我刚吃过午饭。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你完成了吗？', options: ['Have you finished yet?', 'yet? finished you Have', 'yet? Have finished you', 'Have finished yet? you'], answer: 0, explanation: '正确语序：Have you finished yet?（你完成了吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Have you finished ______', hint: '中文意思：你完成了吗？', options: ['have', 'just', 'yet', 'ever'], answer: 2, explanation: 'Have you finished yet?（你完成了吗？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I ______ finished my homework.', hint: '中文意思：我已经完成了作业。', options: ['yet', 'have', 'has', 'ever'], answer: 1, explanation: 'I have finished my homework.（我已经完成了作业。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He ______ gone to London.', hint: '中文意思：他去伦敦了。', options: ['already', 'have', 'has', 'yet'], answer: 2, explanation: 'He has gone to London.（他去伦敦了。）' },
   ],
 
   // Lesson 117: Lesson 117: Tommy's breakfast 汤米的早餐
   117: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '……我在汤米的裤子口袋里发现了两枚硬币。', options: ['...I found two coins in Tommy\'s trousers pocket.', 'pocket. Tommy\'s in trousers found coins two ...I', '...I coins in two pocket. trousers Tommy\'s found', 'trousers in pocket. two Tommy\'s found coins ...I'], answer: 0, explanation: '正确语序：...I found two coins in Tommy\'s trousers pocket.（……我在汤米的裤子口袋里发现了两枚硬币。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '汤米已经把它们吞下去了！', options: ['them! Tommy had swallowed already', 'already swallowed them! Tommy had', 'already Tommy had them! swallowed', 'Tommy had already swallowed them!'], answer: 3, explanation: '正确语序：Tommy had already swallowed them!（汤米已经把它们吞下去了！）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '汤米已经把它们拿出来了！', options: ['already Tommy out! taken had them', 'Tommy had already taken them out!', 'already taken Tommy had out! them', 'them Tommy had out! already taken'], answer: 1, explanation: '正确语序：Tommy had already taken them out!（汤米已经把它们拿出来了！）' },
-    { type: 'choice', question: '选出填入空格的正确单词：______ that morning, when I was washing the clothes...', hint: '中文意思：那天早上晚些时候，当我在洗衣服时……', options: ['restroom', 'mensroom', 'mouth', 'later'], answer: 3, explanation: 'Later that morning, when I was washing the clothes...（那天早上晚些时候，当我在洗衣服时……）' },
-    { type: 'choice', question: '选出填入空格的正确单词：He put them both into his ______', hint: '中文意思：他把它们都放进了嘴里。', options: ['ladiesroom', 'restroom', 'bathroom', 'mouth'], answer: 3, explanation: 'He put them both into his mouth.（他把它们都放进了嘴里。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '……他把一些硬币掉在了地上。', options: ['some floor. ...he the on dropped coins', 'on dropped some the floor. ...he coins', '...he dropped some coins on the floor.', 'floor. the on coins ...he some dropped'], answer: 2, explanation: '正确语序：...he dropped some coins on the floor.（……他把一些硬币掉在了地上。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '汤米已经把它们拿出来了！', options: ['had them taken out! Tommy already', 'already them out! had Tommy taken', 'had Tommy taken out! them already', 'Tommy had already taken them out!'], answer: 3, explanation: '正确语序：Tommy had already taken them out!（汤米已经把它们拿出来了！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '……我在汤米的裤子口袋里发现了两枚硬币。', options: ['trousers Tommy\'s in two found ...I pocket. coins', 'coins in two ...I pocket. trousers found Tommy\'s', 'trousers Tommy\'s coins ...I found pocket. in two', '...I found two coins in Tommy\'s trousers pocket.'], answer: 3, explanation: '正确语序：...I found two coins in Tommy\'s trousers pocket.（……我在汤米的裤子口袋里发现了两枚硬币。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：He put them both into his ______', hint: '中文意思：他把它们都放进了嘴里。', options: ['later', 'restroom', 'mouth', 'ring'], answer: 2, explanation: 'He put them both into his mouth.（他把它们都放进了嘴里。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：______ that morning, when I was washing the clothes...', hint: '中文意思：那天早上晚些时候，当我在洗衣服时……', options: ['restroom', 'washroom', 'coin', 'later'], answer: 3, explanation: 'Later that morning, when I was washing the clothes...（那天早上晚些时候，当我在洗衣服时……）' },
   ],
 
   // Lesson 118: Lesson 118: 过去进行时复习
   118: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打电话时我正在读书。', options: ['I was reading when you called.', 'called. I you reading when was', 'I reading when you was called.', 'you reading called. was I when'], answer: 0, explanation: '正确语序：I was reading when you called.（你打电话时我正在读书。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在看电视。', options: ['was I TV. watching', 'TV. was I watching', 'TV. I watching was', 'I was watching TV.'], answer: 3, explanation: '正确语序：I was watching TV.（我在看电视。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她在做饭时他在读书。', options: ['he She cooking was reading. while was', 'She he while was cooking was reading.', 'was he She cooking was reading. while', 'She was cooking while he was reading.'], answer: 3, explanation: '正确语序：She was cooking while he was reading.（她在做饭时他在读书。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：She ______ cooking while he was reading.', hint: '中文意思：她在做饭时他在读书。', options: ['while', 'were', 'when', 'was'], answer: 3, explanation: 'She was cooking while he was reading.（她在做饭时他在读书。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：While I ______ walking, I saw an old friend.', hint: '中文意思：我走路时看见了一位老朋友。', options: ['when', 'were', 'was', 'while'], answer: 2, explanation: 'While I was walking, I saw an old friend.（我走路时看见了一位老朋友。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：They were playing football ______ it started to rain.', hint: '中文意思：他们踢足球时开始下雨了。', options: ['when', 'was', 'while', 'were'], answer: 0, explanation: 'They were playing football when it started to rain.（他们踢足球时开始下雨了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你打电话时我正在读书。', options: ['I was you called. reading when', 'I was reading when you called.', 'when called. you was reading I', 'I you when reading called. was'], answer: 1, explanation: '正确语序：I was reading when you called.（你打电话时我正在读书。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在看电视。', options: ['watching I was TV.', 'I was watching TV.', 'watching TV. was I', 'watching I TV. was'], answer: 1, explanation: '正确语序：I was watching TV.（我在看电视。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她在做饭时他在读书。', options: ['She he was while was reading. cooking', 'was cooking was She he while reading.', 'She was cooking while he was reading.', 'he reading. was while was She cooking'], answer: 2, explanation: '正确语序：She was cooking while he was reading.（她在做饭时他在读书。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I was reading ______ you called.', hint: '中文意思：你打电话时我正在读书。', options: ['were', 'while', 'was', 'when'], answer: 3, explanation: 'I was reading when you called.（你打电话时我正在读书。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They were playing football ______ it started to rain.', hint: '中文意思：他们踢足球时开始下雨了。', options: ['were', 'when', 'while', 'was'], answer: 1, explanation: 'They were playing football when it started to rain.（他们踢足球时开始下雨了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I ______ watching TV.', hint: '中文意思：我在看电视。', options: ['was', 'were', 'when', 'while'], answer: 0, explanation: 'I was watching TV.（我在看电视。）' },
   ],
 
   // Lesson 119: Lesson 119: A true story 一个真实的故事
   119: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '狗坐在后座上。', options: ['The the seat. on was back dog sitting', 'dog The sitting back seat. on the was', 'seat. back was on dog sitting the The', 'The dog was sitting on the back seat.'], answer: 3, explanation: '正确语序：The dog was sitting on the back seat.（狗坐在后座上。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但他没开多远。', options: ['he get not But far. very did', 'But he did not get very far.', 'very did not But get far. he', 'did far. get very not But he'], answer: 1, explanation: '正确语序：But he did not get very far.（但他没开多远。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '车很快就停了。', options: ['stopped. soon The car', 'The car soon stopped.', 'soon car The stopped.', 'stopped. The soon car'], answer: 1, explanation: '正确语序：The car soon stopped.（车很快就停了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The ______ could not start it again.', hint: '中文意思：小偷无法再次启动它。', options: ['parrot', 'thief', 'happen', 'dark'], answer: 1, explanation: 'The thief could not start it again.（小偷无法再次启动它。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：...a ______ tried to steal his car.', hint: '中文意思：……一个小偷试图偷他的车。', options: ['thief', 'parrot', 'voice', 'happen'], answer: 0, explanation: '...a thief tried to steal his car.（……一个小偷试图偷他的车。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I want to tell you a true ______', hint: '中文意思：我想给你讲一个真实的故事。', options: ['story', 'exercise', 'dark', 'parrot'], answer: 0, explanation: 'I want to tell you a true story.（我想给你讲一个真实的故事。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '车很快就停了。', options: ['stopped. car The soon', 'soon stopped. The car', 'The car soon stopped.', 'soon car The stopped.'], answer: 2, explanation: '正确语序：The car soon stopped.（车很快就停了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '狗坐在后座上。', options: ['sitting back dog the seat. was on The', 'was seat. back The on the dog sitting', 'The dog was sitting on the back seat.', 'sitting seat. The was back the dog on'], answer: 2, explanation: '正确语序：The dog was sitting on the back seat.（狗坐在后座上。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但他没开多远。', options: ['far. he did But get very not', 'far. very he But get not did', 'But he did not get very far.', 'did not But very far. he get'], answer: 2, explanation: '正确语序：But he did not get very far.（但他没开多远。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I want to tell you a true ______', hint: '中文意思：我想给你讲一个真实的故事。', options: ['torch', 'thief', 'story', 'dark'], answer: 2, explanation: 'I want to tell you a true story.（我想给你讲一个真实的故事。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The ______ could not start it again.', hint: '中文意思：小偷无法再次启动它。', options: ['thief', 'parrot', 'exercise', 'enter'], answer: 0, explanation: 'The thief could not start it again.（小偷无法再次启动它。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The ______ got into the car and drove off.', hint: '中文意思：小偷上了车开走了。', options: ['story', 'thief', 'parrot', 'happen'], answer: 1, explanation: 'The thief got into the car and drove off.（小偷上了车开走了。）' },
   ],
 
   // Lesson 120: Lesson 120: 过去进行时复习
   120: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她过去留长发。', options: ['have used long to She hair.', 'used long She have to hair.', 'have hair. long to She used', 'She used to have long hair.'], answer: 3, explanation: '正确语序：She used to have long hair.（她过去留长发。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在读书。', options: ['I was reading a book.', 'reading a was book. I', 'a I was reading book.', 'reading was book. a I'], answer: 0, explanation: '正确语序：I was reading a book.（我在读书。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在做饭时，电话响了。', options: ['While I was cooking, the phone rang.', 'the phone cooking, I was While rang.', 'phone I was rang. cooking, While the', 'was I While cooking, phone rang. the'], answer: 0, explanation: '正确语序：While I was cooking, the phone rang.（我在做饭时，电话响了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在读书。', options: ['book. was reading a I', 'book. a reading I was', 'book. reading was a I', 'I was reading a book.'], answer: 3, explanation: '正确语序：I was reading a book.（我在读书。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我在做饭时，电话响了。', options: ['rang. cooking, While I the phone was', 'While I was cooking, the phone rang.', 'cooking, the was I rang. phone While', 'was cooking, the I rang. phone While'], answer: 1, explanation: '正确语序：While I was cooking, the phone rang.（我在做饭时，电话响了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他过去抽烟，但现在不抽了。', options: ['used doesn\'t he but He now. to smoke,', 'doesn\'t smoke, now. he to used but He', 'to used doesn\'t he smoke, but He now.', 'He used to smoke, but he doesn\'t now.'], answer: 3, explanation: '正确语序：He used to smoke, but he doesn\'t now.（他过去抽烟，但现在不抽了。）' },
   ],
 
   // Lesson 121: Lesson 121: The man in the hat 戴帽子的男人
   121: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但我忘记带走它们了。', options: ['But me. with I to forgot them take', 'me. to forgot take I with them But', 'me. take them forgot But to with I', 'But I forgot to take them with me.'], answer: 3, explanation: '正确语序：But I forgot to take them with me.（但我忘记带走它们了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是的，就是那个人。', options: ['Yes, is the that man.', 'the is Yes, that man.', 'Yes, man. the that is', 'Yes, that is the man.'], answer: 3, explanation: '正确语序：Yes, that is the man.（是的，就是那个人。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '站在柜台后面的那位女士。', options: ['The lady who is standing behind the counter.', 'who The the counter. behind standing lady is', 'counter. the lady is who The behind standing', 'counter. The standing behind is the lady who'], answer: 0, explanation: '正确语序：The lady who is standing behind the counter.（站在柜台后面的那位女士。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Did you serve this ______ half an hour ago?', hint: '中文意思：半小时前您为这位先生服务过吗？', options: ['manager', 'serve', 'gentleman', 'street'], answer: 2, explanation: 'Did you serve this gentleman half an hour ago?（半小时前您为这位先生服务过吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The lady who is standing behind the ______', hint: '中文意思：站在柜台后面的那位女士。', options: ['road', 'customer', 'counter', 'manager'], answer: 2, explanation: 'The lady who is standing behind the counter.（站在柜台后面的那位女士。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The books which are on the ______', hint: '中文意思：柜台上的那些书。', options: ['forget', 'manager', 'counter', 'street'], answer: 2, explanation: 'The books which are on the counter.（柜台上的那些书。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '站在柜台后面的那位女士。', options: ['who the lady counter. is The standing behind', 'lady counter. who the The is standing behind', 'is who counter. standing the lady behind The', 'The lady who is standing behind the counter.'], answer: 3, explanation: '正确语序：The lady who is standing behind the counter.（站在柜台后面的那位女士。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但我忘记带走它们了。', options: ['them with take me. forgot But to I', 'I forgot them me. with take But to', 'But I forgot to take them with me.', 'to them I But with forgot me. take'], answer: 2, explanation: '正确语序：But I forgot to take them with me.（但我忘记带走它们了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '柜台上的那些书。', options: ['on books The counter. which are the', 'are on the which counter. books The', 'books the The which are on counter.', 'The books which are on the counter.'], answer: 3, explanation: '正确语序：The books which are on the counter.（柜台上的那些书。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The lady who is standing behind the ______', hint: '中文意思：站在柜台后面的那位女士。', options: ['counter', 'serve', 'recognize', 'customer'], answer: 0, explanation: 'The lady who is standing behind the counter.（站在柜台后面的那位女士。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The books which are on the ______', hint: '中文意思：柜台上的那些书。', options: ['serve', 'counter', 'street', 'road'], answer: 1, explanation: 'The books which are on the counter.（柜台上的那些书。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Did you serve this ______ half an hour ago?', hint: '中文意思：半小时前您为这位先生服务过吗？', options: ['gentleman', 'road', 'customer', 'manager'], answer: 0, explanation: 'Did you serve this gentleman half an hour ago?（半小时前您为这位先生服务过吗？）' },
   ],
 
   // Lesson 122: Lesson 122: Who whom and that 关系从句复习
   122: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我看到的那个人是个医生。', options: ['The man whom I saw is a doctor.', 'I doctor. whom is a saw The man', 'I saw doctor. man The is a whom', 'a man The I whom doctor. is saw'], answer: 0, explanation: '正确语序：The man whom I saw is a doctor.（我看到的那个人是个医生。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The book ______ is on the table is mine.', hint: '中文意思：桌子上的那本书是我的。', options: ['that', 'which', 'who', 'whom'], answer: 1, explanation: 'The book which is on the table is mine.（桌子上的那本书是我的。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The man ______ I saw is a doctor.', hint: '中文意思：我看到的那个人是个医生。', options: ['whom', 'that', 'who', 'which'], answer: 0, explanation: 'The man whom I saw is a doctor.（我看到的那个人是个医生。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The man ______ is wearing a hat is my uncle.', hint: '中文意思：戴着帽子的那个人是我叔叔。', options: ['whom', 'which', 'that', 'who'], answer: 2, explanation: 'The man that is wearing a hat is my uncle.（戴着帽子的那个人是我叔叔。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我看到的那个人是个医生。', options: ['The whom is man a saw doctor. I', 'I whom man saw doctor. is The a', 'The man whom I saw is a doctor.', 'doctor. man whom is The I a saw'], answer: 2, explanation: '正确语序：The man whom I saw is a doctor.（我看到的那个人是个医生。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The man ______ is standing there is my brother.', hint: '中文意思：站在那里的那个人是我哥哥。', options: ['who', 'that', 'whom', 'which'], answer: 0, explanation: 'The man who is standing there is my brother.（站在那里的那个人是我哥哥。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The man ______ is wearing a hat is my uncle.', hint: '中文意思：戴着帽子的那个人是我叔叔。', options: ['who', 'that', 'which', 'whom'], answer: 1, explanation: 'The man that is wearing a hat is my uncle.（戴着帽子的那个人是我叔叔。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：The man ______ I saw is a doctor.', hint: '中文意思：我看到的那个人是个医生。', options: ['whom', 'that', 'which', 'who'], answer: 0, explanation: 'The man whom I saw is a doctor.（我看到的那个人是个医生。）' },
   ],
 
   // Lesson 123: Lesson 123: A trip to Australia 澳大利亚之旅
   123: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '让我看看，比尔。', options: ['see it, Let me Bill.', 'me Let it, Bill. see', 'Let me see it, Bill.', 'Bill. Let it, see me'], answer: 2, explanation: '正确语序：Let me see it, Bill.（让我看看，比尔。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那是我们乘坐的船。', options: ['on. That\'s travelled we the ship', 'we the travelled on. That\'s ship', 'That\'s the ship we travelled on.', 'That\'s on. the ship we travelled'], answer: 2, explanation: '正确语序：That\'s the ship we travelled on.（那是我们乘坐的船。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们是我在旅行中遇到的人。', options: ['I people met during the They\'re trip.', 'They\'re people I met during the trip.', 'They\'re I met people trip. during the', 'the They\'re I trip. met during people'], answer: 1, explanation: '正确语序：They\'re people I met during the trip.（他们是我在旅行中遇到的人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：They\'re people I met ______ the trip.', hint: '中文意思：他们是我在旅行中遇到的人。', options: ['grow', 'during', 'photo', 'offer'], answer: 1, explanation: 'They\'re people I met during the trip.（他们是我在旅行中遇到的人。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Look, Bob. This is a photograph I took during my ______ to Australia.', hint: '中文意思：看，鲍勃。这是我在澳大利亚旅行时拍的照片。', options: ['photo', 'abroad', 'trip', 'travel'], answer: 2, explanation: 'Look, Bob. This is a photograph I took during my trip to Australia.（看，鲍勃。这是我在澳大利亚旅行时拍的照片。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那就是我跟你说过的那个人。', options: ['That\'s about. the man told I you', 'That\'s the man I told you about.', 'man I told about. you That\'s the', 'you man That\'s the I told about.'], answer: 1, explanation: '正确语序：That\'s the man I told you about.（那就是我跟你说过的那个人。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们是我在旅行中遇到的人。', options: ['people the met during I They\'re trip.', 'They\'re people I met during the trip.', 'trip. people They\'re during met I the', 'met They\'re I the during trip. people'], answer: 1, explanation: '正确语序：They\'re people I met during the trip.（他们是我在旅行中遇到的人。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那是我们乘坐的船。', options: ['the on. ship travelled That\'s we', 'travelled ship we on. the That\'s', 'That\'s the ship we travelled on.', 'travelled That\'s ship on. the we'], answer: 2, explanation: '正确语序：That\'s the ship we travelled on.（那是我们乘坐的船。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They\'re people I met during the ______', hint: '中文意思：他们是我在旅行中遇到的人。', options: ['trip', 'job', 'grow', 'offer'], answer: 0, explanation: 'They\'re people I met during the trip.（他们是我在旅行中遇到的人。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Look, Bob. This is a photograph I took during my trip to ______', hint: '中文意思：看，鲍勃。这是我在澳大利亚旅行时拍的照片。', options: ['photo', 'kitten', 'grow', 'australia'], answer: 3, explanation: 'Look, Bob. This is a photograph I took during my trip to Australia.（看，鲍勃。这是我在澳大利亚旅行时拍的照片。）' },
   ],
 
   // Lesson 124: Lesson 124: 现在完成时复习
   124: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她去图书馆了。', options: ['She has gone to the library.', 'She library. has gone to the', 'library. has gone She to the', 'to has the She gone library.'], answer: 0, explanation: '正确语序：She has gone to the library.（她去图书馆了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我去过巴黎两次。', options: ['I have been to Paris twice.', 'twice. Paris have I been to', 'have Paris I twice. been to', 'have been to I twice. Paris'], answer: 0, explanation: '正确语序：I have been to Paris twice.（我去过巴黎两次。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你去过日本吗？', options: ['you to been Have ever Japan?', 'Have you ever been to Japan?', 'been Japan? to ever you Have', 'you been ever Japan? to Have'], answer: 1, explanation: '正确语序：Have you ever been to Japan?（你去过日本吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你去过日本吗？', options: ['to you been Have ever Japan?', 'Have you ever been to Japan?', 'Have Japan? to been you ever', 'Japan? been ever you Have to'], answer: 1, explanation: '正确语序：Have you ever been to Japan?（你去过日本吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她去哪儿了？', options: ['she has Where gone?', 'Where gone? has she', 'she has gone? Where', 'Where has she gone?'], answer: 3, explanation: '正确语序：Where has she gone?（她去哪儿了？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我去过巴黎两次。', options: ['I have been to Paris twice.', 'I Paris have been to twice.', 'I to have been Paris twice.', 'to been Paris have twice. I'], answer: 0, explanation: '正确语序：I have been to Paris twice.（我去过巴黎两次。）' },
   ],
 
   // Lesson 125: Lesson 125: Tea for two 两人喝茶
   125: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '好主意。', options: ['idea. That\'s good a', 'That\'s a good idea.', 'good idea. a That\'s', 'That\'s a idea. good'], answer: 1, explanation: '正确语序：That\'s a good idea.（好主意。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '苏珊，我在泡茶。', options: ['Susan, I\'m making some tea.', 'some I\'m making tea. Susan,', 'some tea. making Susan, I\'m', 'making some tea. Susan, I\'m'], answer: 0, explanation: '正确语序：Susan, I\'m making some tea.（苏珊，我在泡茶。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我稍后再喝。', options: ['I\'ll have some later.', 'have later. I\'ll some', 'I\'ll some have later.', 'I\'ll later. have some'], answer: 0, explanation: '正确语序：I\'ll have some later.（我稍后再喝。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：What a ______', hint: '中文意思：真讨厌！', options: ['mean', 'nuisance', 'immediately', 'dry'], answer: 1, explanation: 'What a nuisance!（真讨厌！）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '明天这个时候你会在做什么？', options: ['What will you be doing this time tomorrow?', 'tomorrow? What will be time doing this you', 'will you be this time What doing tomorrow?', 'What doing will time you this tomorrow? be'], answer: 0, explanation: '正确语序：What will you be doing this time tomorrow?（明天这个时候你会在做什么？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '好主意。', options: ['a good idea. That\'s', 'idea. a That\'s good', 'idea. a good That\'s', 'That\'s a good idea.'], answer: 3, explanation: '正确语序：That\'s a good idea.（好主意。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我稍后再喝。', options: ['some later. have I\'ll', 'some later. I\'ll have', 'I\'ll have later. some', 'I\'ll have some later.'], answer: 3, explanation: '正确语序：I\'ll have some later.（我稍后再喝。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：What a ______', hint: '中文意思：真讨厌！', options: ['nuisance', 'immediately', 'terribly', 'water'], answer: 0, explanation: 'What a nuisance!（真讨厌！）' },
   ],
 
   // Lesson 126: Lesson 126: 将来进行时复习
   126: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '明天这个时候我会在工作。', options: ['will tomorrow. working this time be I', 'I this will working tomorrow. time be', 'I will be working this time tomorrow.', 'working will time be tomorrow. I this'], answer: 2, explanation: '正确语序：I will be working this time tomorrow.（明天这个时候我会在工作。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '下周你会做什么？', options: ['What will you be doing next week?', 'will be you doing next week? What', 'week? be What next doing you will', 'week? next you doing be will What'], answer: 0, explanation: '正确语序：What will you be doing next week?（下周你会做什么？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '今晚十点她会在睡觉。', options: ['She will be sleeping at 10 o\'clock tonight.', 'will o\'clock be at She 10 sleeping tonight.', 'sleeping She 10 will tonight. be at o\'clock', 'at o\'clock be 10 sleeping tonight. She will'], answer: 0, explanation: '正确语序：She will be sleeping at 10 o\'clock tonight.（今晚十点她会在睡觉。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '明天这个时候我会在工作。', options: ['tomorrow. will I be this working time', 'time working be tomorrow. I will this', 'I will be working this time tomorrow.', 'I tomorrow. time will be this working'], answer: 2, explanation: '正确语序：I will be working this time tomorrow.（明天这个时候我会在工作。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '今晚十点她会在睡觉。', options: ['tonight. 10 be sleeping at will o\'clock She', 'She o\'clock at will 10 sleeping be tonight.', 'She will be sleeping at 10 o\'clock tonight.', 'o\'clock sleeping tonight. be 10 at will She'], answer: 2, explanation: '正确语序：She will be sleeping at 10 o\'clock tonight.（今晚十点她会在睡觉。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我会在去伦敦的路上。', options: ['to will I be London. travelling', 'to travelling I will be London.', 'travelling to London. I be will', 'I will be travelling to London.'], answer: 3, explanation: '正确语序：I will be travelling to London.（我会在去伦敦的路上。）' },
   ],
 
   // Lesson 127: Lesson 127: A famous actress 一位著名的女演员
   127: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能认出那个女人吗，莉兹？', options: ['Can you recognize that woman, Liz?', 'Can you Liz? woman, that recognize', 'recognize woman, Liz? Can you that', 'woman, Liz? recognize that Can you'], answer: 0, explanation: '正确语序：Can you recognize that woman, Liz?（你能认出那个女人吗，莉兹？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我想我能，凯特。', options: ['can, Kate. I think I', 'I I can, Kate. think', 'I think I can, Kate.', 'can, I I think Kate.'], answer: 2, explanation: '正确语序：I think I can, Kate.（我想我能，凯特。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那是很久以前的事了，是吗？', options: ['wasn\'t ago, a long was it? time That', 'wasn\'t it? ago, That was long time a', 'ago, a it? long That was time wasn\'t', 'That was a long time ago, wasn\'t it?'], answer: 3, explanation: '正确语序：That was a long time ago, wasn\'t it?（那是很久以前的事了，是吗？）' },
-    { type: 'choice', question: '选出填入空格的正确单词：She was a famous ______ when I was still at school.', hint: '中文意思：当我还是学生时，她就是一位著名的女演员。', options: ['famous', 'read', 'newspaper', 'actress'], answer: 3, explanation: 'She was a famous actress when I was still at school.（当我还是学生时，她就是一位著名的女演员。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I ______ in the newspaper that she is thirty-five.', hint: '中文意思：我在报纸上读到她三十五岁了。', options: ['read', 'atleast', 'actress', 'newspaper'], answer: 0, explanation: 'I read in the newspaper that she is thirty-five.（我在报纸上读到她三十五岁了。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：It must be Karen Marsh, the ______', hint: '中文意思：那一定是卡伦·马什，那个女演员。', options: ['read', 'actress', 'famous', 'atleast'], answer: 1, explanation: 'It must be Karen Marsh, the actress.（那一定是卡伦·马什，那个女演员。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我想我能，凯特。', options: ['think I can, I Kate.', 'I think I can, Kate.', 'think can, I Kate. I', 'I think can, I Kate.'], answer: 1, explanation: '正确语序：I think I can, Kate.（我想我能，凯特。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那一定是卡伦·马什，那个女演员。', options: ['actress. be must It Karen the Marsh,', 'It must be Karen Marsh, the actress.', 'Marsh, must It the be Karen actress.', 'actress. It be the Karen Marsh, must'], answer: 1, explanation: '正确语序：It must be Karen Marsh, the actress.（那一定是卡伦·马什，那个女演员。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你能认出那个女人吗，莉兹？', options: ['recognize woman, you Liz? Can that', 'you that recognize woman, Liz? Can', 'you that recognize Liz? woman, Can', 'Can you recognize that woman, Liz?'], answer: 3, explanation: '正确语序：Can you recognize that woman, Liz?（你能认出那个女人吗，莉兹？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：She was a famous ______ when I was still at school.', hint: '中文意思：当我还是学生时，她就是一位著名的女演员。', options: ['actor', 'famous', 'actress', 'newspaper'], answer: 2, explanation: 'She was a famous actress when I was still at school.（当我还是学生时，她就是一位著名的女演员。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I read in the ______ that she is thirty-five.', hint: '中文意思：我在报纸上读到她三十五岁了。', options: ['actor', 'actress', 'newspaper', 'atleast'], answer: 2, explanation: 'I read in the newspaper that she is thirty-five.（我在报纸上读到她三十五岁了。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It must be Karen Marsh, the ______', hint: '中文意思：那一定是卡伦·马什，那个女演员。', options: ['actor', 'famous', 'actress', 'atleast'], answer: 2, explanation: 'It must be Karen Marsh, the actress.（那一定是卡伦·马什，那个女演员。）' },
   ],
 
   // Lesson 128: Lesson 128: 过去完成时复习
   128: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我到达时她已经离开了。', options: ['left already when had I She arrived.', 'She arrived. left I already had when', 'She had already left when I arrived.', 'already when arrived. had left She I'], answer: 2, explanation: '正确语序：She had already left when I arrived.（我到达时她已经离开了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '晚饭前我已经完成了作业。', options: ['before my dinner. homework I had finished', 'I before had my finished dinner. homework', 'before my homework I dinner. had finished', 'I had finished my homework before dinner.'], answer: 3, explanation: '正确语序：I had finished my homework before dinner.（晚饭前我已经完成了作业。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们以前从未见过雪。', options: ['They had never seen snow before.', 'seen had They before. never snow', 'before. had They snow seen never', 'had never seen snow They before.'], answer: 0, explanation: '正确语序：They had never seen snow before.（他们以前从未见过雪。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我到达时她已经离开了。', options: ['already She arrived. left when I had', 'had already I when She arrived. left', 'She already had I when left arrived.', 'She had already left when I arrived.'], answer: 3, explanation: '正确语序：She had already left when I arrived.（我到达时她已经离开了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '晚饭前我已经完成了作业。', options: ['before dinner. finished my homework I had', 'I finished homework dinner. had my before', 'my dinner. before I finished homework had', 'I had finished my homework before dinner.'], answer: 3, explanation: '正确语序：I had finished my homework before dinner.（晚饭前我已经完成了作业。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们以前从未见过雪。', options: ['before. never had They seen snow', 'had seen before. snow never They', 'They had never seen snow before.', 'They seen had before. never snow'], answer: 2, explanation: '正确语序：They had never seen snow before.（他们以前从未见过雪。）' },
   ],
 
   // Lesson 129: Lesson 129: Seventy miles an hour 每小时七十英里
   129: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我超过你时车速是八十。', options: ['I was doing eighty when I overtook you.', 'you. when I overtook was I doing eighty', 'overtook when I was you. I doing eighty', 'you. I doing was when I eighty overtook'], answer: 0, explanation: '正确语序：I was doing eighty when I overtook you.（我超过你时车速是八十。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我一定是在做梦。', options: ['I must have been dreaming.', 'I been must have dreaming.', 'must dreaming. been have I', 'dreaming. been must I have'], answer: 0, explanation: '正确语序：I must have been dreaming.（我一定是在做梦。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他想让你停下来。', options: ['to He stop. wants you', 'He wants you to stop.', 'you wants He stop. to', 'He to you stop. wants'], answer: 1, explanation: '正确语序：He wants you to stop.（他想让你停下来。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：Didn\'t you see the ______ limit?', hint: '中文意思：你没看到限速标志吗？', options: ['speed', 'wave', 'darling', 'track'], answer: 0, explanation: 'Didn\'t you see the speed limit?（你没看到限速标志吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他想让你停下来。', options: ['He wants you to stop.', 'to He wants you stop.', 'you stop. to wants He', 'stop. wants He you to'], answer: 0, explanation: '正确语序：He wants you to stop.（他想让你停下来。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '你没看到限速标志吗？', options: ['speed limit? Didn\'t the see you', 'Didn\'t you see the speed limit?', 'speed Didn\'t limit? see the you', 'the you see limit? Didn\'t speed'], answer: 1, explanation: '正确语序：Didn\'t you see the speed limit?（你没看到限速标志吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我车速是七十。', options: ['seventy. was I doing', 'I was doing seventy.', 'doing was I seventy.', 'doing seventy. was I'], answer: 1, explanation: '正确语序：I was doing seventy.（我车速是七十。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Didn\'t you see the ______ limit?', hint: '中文意思：你没看到限速标志吗？', options: ['speed', 'darling', 'charge', 'sign'], answer: 0, explanation: 'Didn\'t you see the speed limit?（你没看到限速标志吗？）' },
   ],
 
   // Lesson 130: Lesson 130: 现在时表将来复习
   130: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他现在一定在家。', options: ['now. must home be He at', 'He must be at home now.', 'now. at be must He home', 'be He at now. must home'], answer: 1, explanation: '正确语序：He must be at home now.（他现在一定在家。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我明天离开。', options: ['tomorrow. am I leaving', 'tomorrow. I leaving am', 'I am leaving tomorrow.', 'leaving I tomorrow. am'], answer: 2, explanation: '正确语序：I am leaving tomorrow.（我明天离开。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他一定已经完成了工作。', options: ['work. have finished the He must', 'He the finished must work. have', 'He must have finished the work.', 'must work. the finished He have'], answer: 2, explanation: '正确语序：He must have finished the work.（他一定已经完成了工作。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他现在一定在家。', options: ['at He home be must now.', 'be at must home He now.', 'must at He home now. be', 'He must be at home now.'], answer: 3, explanation: '正确语序：He must be at home now.（他现在一定在家。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我明天离开。', options: ['I am leaving tomorrow.', 'am I leaving tomorrow.', 'leaving am tomorrow. I', 'am tomorrow. I leaving'], answer: 0, explanation: '正确语序：I am leaving tomorrow.（我明天离开。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他一定已经完成了工作。', options: ['must He the have work. finished', 'must work. the have He finished', 'work. must have finished the He', 'He must have finished the work.'], answer: 3, explanation: '正确语序：He must have finished the work.（他一定已经完成了工作。）' },
   ],
 
   // Lesson 131: Lesson 131: Don't be so sure! 别那么肯定！
   131: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '别那么肯定！', options: ['be Don\'t sure! so', 'so be sure! Don\'t', 'Don\'t be so sure!', 'so be Don\'t sure!'], answer: 2, explanation: '正确语序：Don\'t be so sure!（别那么肯定！）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们可能坐船旅行。', options: ['We may travel by sea.', 'We travel sea. may by', 'We travel by may sea.', 'sea. We travel by may'], answer: 0, explanation: '正确语序：We may travel by sea.（我们可能坐船旅行。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们可能哪里都不去。', options: ['We might not go anywhere.', 'might We anywhere. go not', 'might We go anywhere. not', 'might go not We anywhere.'], answer: 0, explanation: '正确语序：We might not go anywhere.（我们可能哪里都不去。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：My wife wants to go to ______', hint: '中文意思：我妻子想去埃及。', options: ['depend', 'stay', 'egypt', 'egyptian'], answer: 2, explanation: 'My wife wants to go to Egypt.（我妻子想去埃及。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：We may go ______', hint: '中文意思：我们可能出国。', options: ['worry', 'egyptian', 'abroad', 'problem'], answer: 2, explanation: 'We may go abroad.（我们可能出国。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们可能哪里都不去。', options: ['We might not go anywhere.', 'not might go anywhere. We', 'We might anywhere. go not', 'We go anywhere. might not'], answer: 0, explanation: '正确语序：We might not go anywhere.（我们可能哪里都不去。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我妻子想去埃及。', options: ['to wants Egypt. wife go My to', 'go wife Egypt. to My to wants', 'wants to to wife Egypt. My go', 'My wife wants to go to Egypt.'], answer: 3, explanation: '正确语序：My wife wants to go to Egypt.（我妻子想去埃及。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我们可能坐船旅行。', options: ['We may travel by sea.', 'We travel by sea. may', 'by may We travel sea.', 'by sea. may travel We'], answer: 0, explanation: '正确语序：We may travel by sea.（我们可能坐船旅行。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：We may go ______', hint: '中文意思：我们可能出国。', options: ['lucky', 'egypt', 'worry', 'abroad'], answer: 3, explanation: 'We may go abroad.（我们可能出国。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：My wife wants to go to ______', hint: '中文意思：我妻子想去埃及。', options: ['lucky', 'problem', 'depend', 'egypt'], answer: 3, explanation: 'My wife wants to go to Egypt.（我妻子想去埃及。）' },
   ],
 
   // Lesson 132: Lesson 132: 将来时复习
   132: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算明天离开。', options: ['going I am to tomorrow. leave', 'I tomorrow. leave going am to', 'I am going to leave tomorrow.', 'am going I tomorrow. to leave'], answer: 2, explanation: '正确语序：I am going to leave tomorrow.（我打算明天离开。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她可能在家。', options: ['She might be at home.', 'She home. at be might', 'be She at home. might', 'at She home. might be'], answer: 0, explanation: '正确语序：She might be at home.（她可能在家。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们下周会到达。', options: ['will next They arrive week.', 'They will arrive next week.', 'arrive will next They week.', 'week. arrive They next will'], answer: 1, explanation: '正确语序：They will arrive next week.（他们下周会到达。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我打算明天离开。', options: ['going am I tomorrow. to leave', 'I am going to leave tomorrow.', 'leave going tomorrow. to I am', 'I tomorrow. leave going am to'], answer: 1, explanation: '正确语序：I am going to leave tomorrow.（我打算明天离开。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他明天可能来。', options: ['He may come tomorrow.', 'tomorrow. come He may', 'He tomorrow. may come', 'may come He tomorrow.'], answer: 0, explanation: '正确语序：He may come tomorrow.（他明天可能来。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她可能在家。', options: ['She might be at home.', 'be might at She home.', 'might be at She home.', 'at be She might home.'], answer: 0, explanation: '正确语序：She might be at home.（她可能在家。）' },
   ],
 
   // Lesson 133: Lesson 133: Sensational news! 轰动的新闻！
   133: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我不能再拍电影了。', options: ['can\'t I films. any make more', 'I can\'t make any more films.', 'can\'t more make any films. I', 'can\'t films. I make any more'], answer: 1, explanation: '正确语序：I can\'t make any more films.（我不能再拍电影了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '您打算再拍一部吗？', options: ['going to you make another? Are', 'Are to make another? going you', 'Are you going to make another?', 'Are you to another? going make'], answer: 2, explanation: '正确语序：Are you going to make another?（您打算再拍一部吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她说她觉得很累。', options: ['She tired. very said felt she', 'tired. She said felt she very', 'She said she felt very tired.', 'very felt said tired. She she'], answer: 2, explanation: '正确语序：She said she felt very tired.（她说她觉得很累。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：No, I\'m not. I\'m going to ______', hint: '中文意思：不，我不打算了。我打算退休。', options: ['interview', 'sensational', 'mink', 'retire'], answer: 3, explanation: 'No, I\'m not. I\'m going to retire.（不，我不打算了。我打算退休。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她说她觉得很累。', options: ['She said she felt very tired.', 'tired. said she felt very She', 'felt said she very She tired.', 'felt tired. she very She said'], answer: 0, explanation: '正确语序：She said she felt very tired.（她说她觉得很累。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我不能再拍电影了。', options: ['can\'t any films. I more make', 'I can\'t make any more films.', 'films. make I can\'t more any', 'make can\'t any more films. I'], answer: 1, explanation: '正确语序：I can\'t make any more films.（我不能再拍电影了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '不，我不打算了。我打算退休。', options: ['No, I\'m not. I\'m going to retire.', 'I\'m going I\'m No, retire. not. to', 'to I\'m No, not. retire. I\'m going', 'to not. going I\'m retire. I\'m No,'], answer: 0, explanation: '正确语序：No, I\'m not. I\'m going to retire.（不，我不打算了。我打算退休。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：No, I\'m not. I\'m going to ______', hint: '中文意思：不，我不打算了。我打算退休。', options: ['retire', 'sensational', 'interview', 'reporter'], answer: 0, explanation: 'No, I\'m not. I\'m going to retire.（不，我不打算了。我打算退休。）' },
   ],
 
   // Lesson 134: Lesson 134: 间接引语复习
   134: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他问我是否很忙。', options: ['if was He I busy. asked', 'busy. I He if asked was', 'busy. if asked He was I', 'He asked if I was busy.'], answer: 3, explanation: '正确语序：He asked if I was busy.（他问我是否很忙。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他告诉我他能帮忙。', options: ['he help. could told He me', 'he could help. told me He', 'He told me he could help.', 'me told help. could He he'], answer: 2, explanation: '正确语序：He told me he could help.（他告诉我他能帮忙。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她告诉我她会来。', options: ['would She me come. told she', 'she told come. She would me', 'She would me she told come.', 'She told me she would come.'], answer: 3, explanation: '正确语序：She told me she would come.（她告诉我她会来。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他累了。', options: ['tired. he said He was', 'He was he tired. said', 'said he He was tired.', 'He said he was tired.'], answer: 3, explanation: '正确语序：He said he was tired.（他说他累了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她说她已经完成了。', options: ['finished. had said She she', 'said she She had finished.', 'finished. had said she She', 'She said she had finished.'], answer: 3, explanation: '正确语序：She said she had finished.（她说她已经完成了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他告诉我他能帮忙。', options: ['help. he could told me He', 'He told me he could help.', 'help. me could told He he', 'help. He told he me could'], answer: 1, explanation: '正确语序：He told me he could help.（他告诉我他能帮忙。）' },
   ],
 
   // Lesson 135: Lesson 135: The latest report 最新报道
   135: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '您真的要退休吗，马什小姐？', options: ['you really retire, going to Marsh? Are Miss', 'Are you really going to retire, Miss Marsh?', 'to really Marsh? retire, going Miss you Are', 'retire, Miss going to Marsh? Are really you'], answer: 1, explanation: '正确语序：Are you really going to retire, Miss Marsh?（您真的要退休吗，马什小姐？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但我得问问我的未婚夫。', options: ['ask future husband. to have my But I\'ll', 'But I\'ll have to ask my future husband.', 'But husband. I\'ll ask future to my have', 'But to ask my I\'ll husband. future have'], answer: 1, explanation: '正确语序：But I\'ll have to ask my future husband.（但我得问问我的未婚夫。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '对我来说这是一个艰难的决定。', options: ['me. be decision a difficult will It for', 'decision a It be difficult will me. for', 'It will be a difficult decision for me.', 'me. for a be It difficult will decision'], answer: 2, explanation: '正确语序：It will be a difficult decision for me.（对我来说这是一个艰难的决定。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：She said she would have to ask her future ______', hint: '中文意思：她说她得问问她的未婚夫。', options: ['latest', 'husband', 'future', 'hotel'], answer: 1, explanation: 'She said she would have to ask her future husband.（她说她得问问她的未婚夫。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：But I\'ll have to ask my future ______', hint: '中文意思：但我得问问我的未婚夫。', options: ['feature', 'marry', 'husband', 'future'], answer: 2, explanation: 'But I\'ll have to ask my future husband.（但我得问问我的未婚夫。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '您真的要退休吗，马什小姐？', options: ['Are Marsh? retire, going really to you Miss', 'really Marsh? Miss Are you retire, going to', 'Are you really going to retire, Miss Marsh?', 'to going really you Are Miss Marsh? retire,'], answer: 2, explanation: '正确语序：Are you really going to retire, Miss Marsh?（您真的要退休吗，马什小姐？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但我得问问我的未婚夫。', options: ['my husband. future ask to have I\'ll But', 'But I\'ll have to ask my future husband.', 'to husband. But my I\'ll future ask have', 'future But ask have I\'ll husband. my to'], answer: 1, explanation: '正确语序：But I\'ll have to ask my future husband.（但我得问问我的未婚夫。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '对我来说这是一个艰难的决定。', options: ['for difficult me. decision be It a will', 'It will be a difficult decision for me.', 'decision difficult a be me. It will for', 'decision a difficult It will for be me.'], answer: 1, explanation: '正确语序：It will be a difficult decision for me.（对我来说这是一个艰难的决定。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：But I\'ll have to ask my ______ husband.', hint: '中文意思：但我得问问我的未婚夫。', options: ['future', 'feature', 'getmarried', 'married'], answer: 0, explanation: 'But I\'ll have to ask my future husband.（但我得问问我的未婚夫。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：She said she would have to ask her future ______', hint: '中文意思：她说她得问问她的未婚夫。', options: ['latest', 'getmarried', 'hotel', 'husband'], answer: 3, explanation: 'She said she would have to ask her future husband.（她说她得问问她的未婚夫。）' },
   ],
 
   // Lesson 136: Lesson 136: 间接引语复习
   136: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他明天会来。', options: ['would come he said He tomorrow.', 'He tomorrow. come would said he', 'He said he would come tomorrow.', 'he He come said would tomorrow.'], answer: 2, explanation: '正确语序：He said he would come tomorrow.（他说他明天会来。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他可能会迟到。', options: ['be might said He late. he', 'He late. said might be he', 'He he might said be late.', 'He said he might be late.'], answer: 3, explanation: '正确语序：He said he might be late.（他说他可能会迟到。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她说她已经完成了。', options: ['had she finished. She said', 'finished. she She said had', 'she had She said finished.', 'She said she had finished.'], answer: 3, explanation: '正确语序：She said she had finished.（她说她已经完成了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他可能会迟到。', options: ['He said he might be late.', 'He might late. said be he', 'might he He be said late.', 'He said be he might late.'], answer: 0, explanation: '正确语序：He said he might be late.（他说他可能会迟到。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她说她已经完成了。', options: ['finished. had She she said', 'said she had finished. She', 'finished. she said had She', 'She said she had finished.'], answer: 3, explanation: '正确语序：She said she had finished.（她说她已经完成了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他说他明天会来。', options: ['said He he would come tomorrow.', 'would he said tomorrow. come He', 'He said he would come tomorrow.', 'would said tomorrow. come he He'], answer: 2, explanation: '正确语序：He said he would come tomorrow.（他说他明天会来。）' },
   ],
 
   // Lesson 137: Lesson 137: A pleasant dream 美好的梦
   137: [
-    { type: 'choice', question: '选出填入空格的正确单词：If I ______ the football pool, I\'ll buy a big house.', hint: '中文意思：如果我赢了足球彩票，我就买一座大房子。', options: ['soccer', 'pool', 'winner', 'win'], answer: 3, explanation: 'If I win the football pool, I\'ll buy a big house.（如果我赢了足球彩票，我就买一座大房子。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：If we spend all the money, we\'ll be ______ again.', hint: '中文意思：如果我们花光了所有的钱，我们又会变穷。', options: ['depend', 'poor', 'pleasant', 'soccer'], answer: 1, explanation: 'If we spend all the money, we\'ll be poor again.（如果我们花光了所有的钱，我们又会变穷。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：If we ______ a lot of money, we\'ll travel round the world.', hint: '中文意思：如果我们赢了很多钱，我们就环游世界。', options: ['depend', 'pool', 'world', 'win'], answer: 3, explanation: 'If we win a lot of money, we\'ll travel round the world.（如果我们赢了很多钱，我们就环游世界。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It\'s a ______ dream, but everything depends on "if".', hint: '中文意思：这是一个美好的梦，但一切都取决于"如果"。', options: ['win', 'football', 'world', 'pleasant'], answer: 3, explanation: 'It\'s a pleasant dream, but everything depends on "if".（这是一个美好的梦，但一切都取决于"如果"。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：If we spend all the money, we\'ll be ______ again.', hint: '中文意思：如果我们花光了所有的钱，我们又会变穷。', options: ['depend', 'poor', 'word', 'pleasant'], answer: 1, explanation: 'If we spend all the money, we\'ll be poor again.（如果我们花光了所有的钱，我们又会变穷。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：If I ______ the football pool, I\'ll buy a big house.', hint: '中文意思：如果我赢了足球彩票，我就买一座大房子。', options: ['pool', 'depend', 'football', 'win'], answer: 3, explanation: 'If I win the football pool, I\'ll buy a big house.（如果我赢了足球彩票，我就买一座大房子。）' },
   ],
 
   // Lesson 138: Lesson 138: 条件句复习
   138: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '如果我有时间，我就去。', options: ['If have time, go. I I will', 'will go. have I I time, If', 'If I have time, I will go.', 'I If will I time, go. have'], answer: 2, explanation: '正确语序：If I have time, I will go.（如果我有时间，我就去。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '如果她来，我们会很高兴。', options: ['we happy. will comes, she be If', 'comes, happy. we she will be If', 'If she comes, we will be happy.', 'comes, will we she happy. be If'], answer: 2, explanation: '正确语序：If she comes, we will be happy.（如果她来，我们会很高兴。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '如果下雨，我就待在家里。', options: ['at will If home. rains, I stay it', 'home. it at I If will stay rains,', 'at it home. I will stay rains, If', 'If it rains, I will stay at home.'], answer: 3, explanation: '正确语序：If it rains, I will stay at home.（如果下雨，我就待在家里。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '如果下雨，我就待在家里。', options: ['it will rains, stay If home. I at', 'If it rains, I will stay at home.', 'stay at will rains, I home. If it', 'stay If will at I home. rains, it'], answer: 1, explanation: '正确语序：If it rains, I will stay at home.（如果下雨，我就待在家里。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '如果她来，我们会很高兴。', options: ['If she comes, we will be happy.', 'happy. we will she be If comes,', 'will comes, happy. be we she If', 'If she be happy. we will comes,'], answer: 0, explanation: '正确语序：If she comes, we will be happy.（如果她来，我们会很高兴。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '如果我有时间，我就去。', options: ['I If I time, have go. will', 'will go. I time, have I If', 'I will I have go. If time,', 'If I have time, I will go.'], answer: 3, explanation: '正确语序：If I have time, I will go.（如果我有时间，我就去。）' },
   ],
 
   // Lesson 139: Lesson 139: Is that you, John? 是你吗，约翰？
   139: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是你吗，约翰？', options: ['that Is John? you,', 'you, Is that John?', 'you, John? that Is', 'Is that you, John?'], answer: 3, explanation: '正确语序：Is that you, John?（是你吗，约翰？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '玛丽没告诉你吗？', options: ['told Mary Hasn\'t you?', 'Hasn\'t you? told Mary', 'told Hasn\'t Mary you?', 'Hasn\'t Mary told you?'], answer: 3, explanation: '正确语序：Hasn\'t Mary told you?（玛丽没告诉你吗？）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '恐怕我不明白。', options: ['don\'t understand. afraid I\'m I', 'I\'m afraid I don\'t understand.', 'don\'t understand. I\'m I afraid', 'afraid I\'m I understand. don\'t'], answer: 1, explanation: '正确语序：I\'m afraid I don\'t understand.（恐怕我不明白。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：But I have to do some ______ work at the office.', hint: '中文意思：但我得在办公室做一些额外的工作。', options: ['company', 'extra', 'overseas', 'engineer'], answer: 1, explanation: 'But I have to do some extra work at the office.（但我得在办公室做一些额外的工作。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '玛丽没告诉你吗？', options: ['Mary told you? Hasn\'t', 'told you? Mary Hasn\'t', 'you? Mary told Hasn\'t', 'Hasn\'t Mary told you?'], answer: 3, explanation: '正确语序：Hasn\'t Mary told you?（玛丽没告诉你吗？）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '恐怕我不明白。', options: ['I I\'m understand. afraid don\'t', 'I\'m afraid I don\'t understand.', 'I\'m don\'t understand. afraid I', 'afraid I\'m don\'t I understand.'], answer: 1, explanation: '正确语序：I\'m afraid I don\'t understand.（恐怕我不明白。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '是你吗，约翰？', options: ['you, John? Is that', 'John? Is that you,', 'Is that you, John?', 'that you, Is John?'], answer: 2, explanation: '正确语序：Is that you, John?（是你吗，约翰？）' },
+    { type: 'choice', question: '选出填入空格的正确单词：But I have to do some ______ work at the office.', hint: '中文意思：但我得在办公室做一些额外的工作。', options: ['company', 'engineer', 'line', 'extra'], answer: 3, explanation: 'But I have to do some extra work at the office.（但我得在办公室做一些额外的工作。）' },
   ],
 
   // Lesson 140: Lesson 140: 间接疑问句复习
   140: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他问我是否很忙。', options: ['He asked me if I was busy.', 'me busy. He was if I asked', 'if busy. me asked was He I', 'me I He asked was busy. if'], answer: 0, explanation: '正确语序：He asked me if I was busy.（他问我是否很忙。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她问我什么时候来。', options: ['She asked me when I would come.', 'would when me I come. She asked', 'I She come. me when asked would', 'I come. She when asked would me'], answer: 0, explanation: '正确语序：She asked me when I would come.（她问我什么时候来。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他问我在做什么。', options: ['doing. me He what I was asked', 'I doing. what He was asked me', 'what was I He asked me doing.', 'He asked me what I was doing.'], answer: 3, explanation: '正确语序：He asked me what I was doing.（他问我在做什么。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她问我要去哪里。', options: ['I was me where She going. asked', 'going. me I She was asked where', 'She I was me where asked going.', 'She asked me where I was going.'], answer: 3, explanation: '正确语序：She asked me where I was going.（她问我要去哪里。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他问我是否很忙。', options: ['me if busy. He I was asked', 'He asked me if I was busy.', 'He if busy. was I me asked', 'me busy. I He asked was if'], answer: 1, explanation: '正确语序：He asked me if I was busy.（他问我是否很忙。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她问我什么时候来。', options: ['She asked me when I would come.', 'She I me come. would asked when', 'come. I would me She asked when', 'She asked I when me would come.'], answer: 0, explanation: '正确语序：She asked me when I would come.（她问我什么时候来。）' },
   ],
 
   // Lesson 141: Lesson 141: Sally's first train ride 萨莉第一次乘火车
   141: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '她收起粉盒，和蔼地笑了笑。', options: ['put away smiled her compact She kindly. and', 'her smiled and put She away compact kindly.', 'put kindly. her smiled She compact away and', 'She put away her compact and smiled kindly.'], answer: 3, explanation: '正确语序：She put away her compact and smiled kindly.（她收起粉盒，和蔼地笑了笑。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '然后她开始化妆。', options: ['She her to make up face. then began', 'then She began make to up her face.', 'her then to up began She make face.', 'She then began to make up her face.'], answer: 3, explanation: '正确语序：She then began to make up her face.（然后她开始化妆。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '我决定带她坐火车去。', options: ['train. her to decided by I take', 'I decided to take her by train.', 'take decided to by train. I her', 'her train. by I to take decided'], answer: 1, explanation: '正确语序：I decided to take her by train.（我决定带她坐火车去。）' },
-    { type: 'choice', question: '选出填入空格的正确单词："But you are still ______ Sally said.', hint: '中文意思："但你还是很丑，"萨莉说。', options: ['ugly', 'amused', 'opposite', 'embarrassed'], answer: 0, explanation: '"But you are still ugly," Sally said.（"但你还是很丑，"萨莉说。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：The lady was dressed in a blue coat and a large, ______ hat.', hint: '中文意思：那位女士穿着蓝色外套，戴着一顶又大又滑稽的帽子。', options: ['ugly', 'middleaged', 'geton', 'funny'], answer: 3, explanation: 'The lady was dressed in a blue coat and a large, funny hat.（那位女士穿着蓝色外套，戴着一顶又大又滑稽的帽子。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：After the train had left the station, the lady opened her handbag and took out her powder ______', hint: '中文意思：火车离开车站后，那位女士打开手提包，拿出粉盒。', options: ['embarrassed', 'compact', 'opposite', 'regularly'], answer: 1, explanation: 'After the train had left the station, the lady opened her handbag and took out her powder compact.（火车离开车站后，那位女士打开手提包，拿出粉盒。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '"但你还是很丑，"萨莉说。', options: ['ugly," said. you "But Sally are still', 'are said. "But ugly," Sally you still', '"But you are still ugly," Sally said.', '"But still ugly," Sally you said. are'], answer: 2, explanation: '正确语序："But you are still ugly," Sally said.（"但你还是很丑，"萨莉说。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '"为了让自己变漂亮，"那位女士回答。', options: ['lady beautiful," answered. the "To myself make', 'lady answered. make myself the beautiful," "To', '"To make myself beautiful," the lady answered.', '"To myself beautiful," make lady the answered.'], answer: 2, explanation: '正确语序："To make myself beautiful," the lady answered.（"为了让自己变漂亮，"那位女士回答。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '"你为什么要那样做？"萨莉问。', options: ['doing Sally that?" "Why are you asked.', 'asked. "Why you that?" Sally doing are', 'Sally are you doing asked. "Why that?"', '"Why are you doing that?" Sally asked.'], answer: 3, explanation: '正确语序："Why are you doing that?" Sally asked.（"你为什么要那样做？"萨莉问。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：Suddenly, a middle-aged lady got on the train and sat ______ Sally.', hint: '中文意思：突然，一位中年女士上了火车，坐在萨莉对面。', options: ['middleaged', 'opposite', 'excited', 'regularly'], answer: 1, explanation: 'Suddenly, a middle-aged lady got on the train and sat opposite Sally.（突然，一位中年女士上了火车，坐在萨莉对面。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：She put away her compact and smiled ______', hint: '中文意思：她收起粉盒，和蔼地笑了笑。', options: ['opposite', 'middleaged', 'worried', 'kindly'], answer: 3, explanation: 'She put away her compact and smiled kindly.（她收起粉盒，和蔼地笑了笑。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：After the train had left the station, the lady opened her handbag and took out her powder ______', hint: '中文意思：火车离开车站后，那位女士打开手提包，拿出粉盒。', options: ['amused', 'compact', 'ugly', 'funny'], answer: 1, explanation: 'After the train had left the station, the lady opened her handbag and took out her powder compact.（火车离开车站后，那位女士打开手提包，拿出粉盒。）' },
   ],
 
   // Lesson 142: Lesson 142: 被动语态复习
   142: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '这本书是她写的。', options: ['written her. was by book The', 'was written her. book by The', 'The book was written by her.', 'her. by was The book written'], answer: 2, explanation: '正确语序：The book was written by her.（这本书是她写的。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '信是昨天寄出的。', options: ['letter sent was yesterday. The', 'yesterday. The was sent letter', 'letter sent yesterday. The was', 'The letter was sent yesterday.'], answer: 3, explanation: '正确语序：The letter was sent yesterday.（信是昨天寄出的。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '房子已经建好了。', options: ['has The built. house been', 'The house has been built.', 'built. been has house The', 'house built. been has The'], answer: 1, explanation: '正确语序：The house has been built.（房子已经建好了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '工作是由他完成的。', options: ['is him. done The work by', 'work is The done by him.', 'The work is done by him.', 'work The by is done him.'], answer: 2, explanation: '正确语序：The work is done by him.（工作是由他完成的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '房子已经建好了。', options: ['built. been The house has', 'The house has built. been', 'has been The built. house', 'The house has been built.'], answer: 3, explanation: '正确语序：The house has been built.（房子已经建好了。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '蛋糕正在被制作。', options: ['is being made. cake The', 'cake being is The made.', 'is being cake made. The', 'The cake is being made.'], answer: 3, explanation: '正确语序：The cake is being made.（蛋糕正在被制作。）' },
   ],
 
   // Lesson 143: Lesson 143: A walk through the woods 林中漫步
   143: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '树下已经放置了垃圾筐。', options: ['placed been trees. under have Litter the baskets', 'under have Litter trees. placed baskets been the', 'been Litter the trees. have under placed baskets', 'Litter baskets have been placed under the trees.'], answer: 3, explanation: '正确语序：Litter baskets have been placed under the trees.（树下已经放置了垃圾筐。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但人们仍然到处乱扔垃圾。', options: ['But people still throw their rubbish everywhere.', 'rubbish their But throw everywhere. still people', 'everywhere. people rubbish their throw But still', 'But everywhere. still rubbish throw their people'], answer: 0, explanation: '正确语序：But people still throw their rubbish everywhere.（但人们仍然到处乱扔垃圾。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '上周，我买了一个新牌子。', options: ['Last week, I bought a new sign.', 'a I sign. Last week, new bought', 'a sign. bought week, Last new I', 'a bought sign. Last new I week,'], answer: 0, explanation: '正确语序：Last week, I bought a new sign.（上周，我买了一个新牌子。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：On Sundays, hundreds of people come from the ______ to see our town.', hint: '中文意思：周日，成百上千的人从城市来参观我们的城镇。', options: ['city', 'round', 'forest', 'spot'], answer: 0, explanation: 'On Sundays, hundreds of people come from the city to see our town.（周日，成百上千的人从城市来参观我们的城镇。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：I have been a regular ______ for the last twenty years.', hint: '中文意思：过去二十年来，我一直是这里的常客。', options: ['among', 'visitor', 'beautyspot', 'city'], answer: 1, explanation: 'I have been a regular visitor for the last twenty years.（过去二十年来，我一直是这里的常客。）' },
-    { type: 'choice', question: '选出填入空格的正确单词：But people still throw their ______ everywhere.', hint: '中文意思：但人们仍然到处乱扔垃圾。', options: ['jungle', 'rubbish', 'among', 'tidy'], answer: 1, explanation: 'But people still throw their rubbish everywhere.（但人们仍然到处乱扔垃圾。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '上周，我买了一个新牌子。', options: ['bought I Last sign. a new week,', 'week, bought a sign. I new Last', 'bought new Last a week, sign. I', 'Last week, I bought a new sign.'], answer: 3, explanation: '正确语序：Last week, I bought a new sign.（上周，我买了一个新牌子。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '但人们仍然到处乱扔垃圾。', options: ['rubbish people everywhere. still throw their But', 'people throw their But everywhere. rubbish still', 'But people still throw their rubbish everywhere.', 'everywhere. rubbish people still But their throw'], answer: 2, explanation: '正确语序：But people still throw their rubbish everywhere.（但人们仍然到处乱扔垃圾。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '他们到处乱扔垃圾。', options: ['left have rubbish everywhere. They', 'have left everywhere. They rubbish', 'left have everywhere. They rubbish', 'They have left rubbish everywhere.'], answer: 3, explanation: '正确语序：They have left rubbish everywhere.（他们到处乱扔垃圾。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：It says: "Anyone who leaves ______ in these woods will be prosecuted!"', hint: '中文意思：上面写着："任何在树林里乱扔垃圾的人将被起诉！"', options: ['litter', 'cover', 'surround', 'tidy'], answer: 0, explanation: 'It says: "Anyone who leaves litter in these woods will be prosecuted!"（上面写着："任何在树林里乱扔垃圾的人将被起诉！"）' },
+    { type: 'choice', question: '选出填入空格的正确单词：They have left ______ everywhere.', hint: '中文意思：他们到处乱扔垃圾。', options: ['spot', 'tidy', 'rubbish', 'forest'], answer: 2, explanation: 'They have left rubbish everywhere.（他们到处乱扔垃圾。）' },
+    { type: 'choice', question: '选出填入空格的正确单词：I live in a very old town which is surrounded by beautiful ______', hint: '中文意思：我住在一个很古老的城镇，周围环绕着美丽的树林。', options: ['cover', 'garbage', 'woods', 'surround'], answer: 2, explanation: 'I live in a very old town which is surrounded by beautiful woods.（我住在一个很古老的城镇，周围环绕着美丽的树林。）' },
   ],
 
   // Lesson 144: Lesson 144: 被动语态复习
   144: [
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '垃圾筐已经被放置在树下了。', options: ['trees. Litter baskets under have the been placed', 'under trees. been Litter have placed baskets the', 'Litter baskets have been placed under the trees.', 'Litter been have under the placed baskets trees.'], answer: 2, explanation: '正确语序：Litter baskets have been placed under the trees.（垃圾筐已经被放置在树下了。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '任何乱扔垃圾的人将被起诉。', options: ['who Anyone leaves litter prosecuted. be will', 'will who prosecuted. leaves Anyone be litter', 'Anyone who leaves litter will be prosecuted.', 'Anyone litter prosecuted. who leaves be will'], answer: 2, explanation: '正确语序：Anyone who leaves litter will be prosecuted.（任何乱扔垃圾的人将被起诉。）' },
-    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那个牌子是上周买的。', options: ['The week. last sign was bought', 'The sign was bought last week.', 'bought sign was The last week.', 'was last week. sign bought The'], answer: 1, explanation: '正确语序：The sign was bought last week.（那个牌子是上周买的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '人们仍然到处乱扔垃圾。', options: ['People still throw their rubbish everywhere.', 'throw rubbish everywhere. still People their', 'People everywhere. still rubbish throw their', 'still throw everywhere. rubbish People their'], answer: 0, explanation: '正确语序：People still throw their rubbish everywhere.（人们仍然到处乱扔垃圾。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '那个牌子是上周买的。', options: ['bought week. The was last sign', 'The bought week. sign last was', 'The sign was bought last week.', 'was bought last sign The week.'], answer: 2, explanation: '正确语序：The sign was bought last week.（那个牌子是上周买的。）' },
+    { type: 'choice', question: '选出排列正确的一项（注意句首大写和单词顺序）：', hint: '任何乱扔垃圾的人将被起诉。', options: ['Anyone who leaves litter will be prosecuted.', 'who will prosecuted. litter leaves be Anyone', 'prosecuted. Anyone will be who litter leaves', 'Anyone be who leaves litter prosecuted. will'], answer: 0, explanation: '正确语序：Anyone who leaves litter will be prosecuted.（任何乱扔垃圾的人将被起诉。）' },
   ],
 
 };

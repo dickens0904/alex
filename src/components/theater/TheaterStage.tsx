@@ -25,6 +25,19 @@ interface StageProps {
   speakerKey: string | null;
   /** 画风主题 */
   theme?: StyleId;
+  /** 当前句朗读进度 0-1（1=读完；气泡逐词点亮用，缺省 1 全亮） */
+  lineProgress?: number;
+}
+
+/* ---------- 氛围光照：按背景类别给场景垫光（纯视觉，极轻不抢戏） ---------- */
+
+type AmbientKind = 'night' | 'stage' | 'outdoor' | 'indoor';
+
+function ambientKindOf(bg: string): AmbientKind {
+  if (bg === 'night') return 'night';
+  if (bg === 'stage') return 'stage';
+  if (bg === 'river' || bg === 'park' || bg === 'street') return 'outdoor';
+  return 'indoor';
 }
 
 /* ---------- 背景部件 ---------- */
@@ -453,7 +466,15 @@ function Backdrop({ bg }: { bg: string }) {
 
 /* ---------- 主舞台 ---------- */
 
-const TheaterStage: React.FC<StageProps> = ({ config, curIdx, curActions, bubbleText, speakerKey, theme = 'paper' }) => {
+const TheaterStage: React.FC<StageProps> = ({
+  config,
+  curIdx,
+  curActions,
+  bubbleText,
+  speakerKey,
+  theme = 'paper',
+  lineProgress = 1,
+}) => {
   const { roles, keyToRole } = config;
   const th = STYLE_THEMES[theme] ?? STYLE_THEMES.paper;
   // 当前场：随 curIdx 落在哪个分场区间（curIdx=-1 未开始按首场）
@@ -507,8 +528,12 @@ const TheaterStage: React.FC<StageProps> = ({ config, curIdx, curActions, bubble
           : { x: 0, y: 0, w: 1600, h: 900 };
     const tick = () => {
       const vb = vbRef.current;
-      vb.x += (target.x - vb.x) * 0.09;
-      vb.y += (target.y - vb.y) * 0.09;
+      // wide 全景 Ken Burns：正弦缓漂让空镜"活"起来（幅度 ±14px，足够慢不晕镜）
+      const now = performance.now();
+      const dx = shot === 'wide' ? Math.sin(now * 0.00012) * 14 : 0;
+      const dy = shot === 'wide' ? Math.cos(now * 0.00009) * 8 : 0;
+      vb.x += (target.x + dx - vb.x) * 0.09;
+      vb.y += (target.y + dy - vb.y) * 0.09;
       vb.w += (target.w - vb.w) * 0.09;
       vb.h += (target.h - vb.h) * 0.09;
       svgRef.current?.setAttribute('viewBox', `${vb.x.toFixed(1)} ${vb.y.toFixed(1)} ${vb.w.toFixed(1)} ${vb.h.toFixed(1)}`);
@@ -651,6 +676,24 @@ const TheaterStage: React.FC<StageProps> = ({ config, curIdx, curActions, bubble
         <pattern id="tf-grid" width={22} height={22} patternUnits="userSpaceOnUse">
           <path d="M22 0 H0 V22" fill="none" stroke="#000000" strokeWidth={1.4} opacity={0.12} />
         </pattern>
+        {/* 氛围光渐变：台灯暖晕 / 追光聚亮 / 四角压暗 / 天光 */}
+        <radialGradient id="tf-glow-warm">
+          <stop offset="0%" stopColor="#f7c860" stopOpacity={0.85} />
+          <stop offset="100%" stopColor="#f7c860" stopOpacity={0} />
+        </radialGradient>
+        <radialGradient id="tf-glow-spot">
+          <stop offset="0%" stopColor="#fff6d8" stopOpacity={0.5} />
+          <stop offset="100%" stopColor="#fff6d8" stopOpacity={0} />
+        </radialGradient>
+        <radialGradient id="tf-vignette">
+          <stop offset="0%" stopColor="#000000" stopOpacity={0} />
+          <stop offset="76%" stopColor="#000000" stopOpacity={0} />
+          <stop offset="100%" stopColor="#000000" stopOpacity={0.15} />
+        </radialGradient>
+        <linearGradient id="tf-sunlight" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fff7d0" stopOpacity={0.4} />
+          <stop offset="100%" stopColor="#fff7d0" stopOpacity={0} />
+        </linearGradient>
       </defs>
       {/* 背景：整体按主题滤镜（角色自身配色已变换，不再叠加）；跨场时旧景交叉淡出 */}
       <g filter={th.stageFilter !== 'none' ? th.stageFilter : undefined}>
@@ -677,6 +720,93 @@ const TheaterStage: React.FC<StageProps> = ({ config, curIdx, curActions, bubble
           style={{ mixBlendMode: 'multiply' }}
         />
       )}
+
+      {/* 氛围光照层：夜场台灯暖晕+冷色压暗 / 舞台追光聚亮 / 户外天光 / 室内窗光；四角 vignette 通用 */}
+      {(() => {
+        const amb = ambientKindOf(bgLayer.cur);
+        return (
+          <g pointerEvents="none">
+            {amb === 'night' && (
+              <>
+                <rect x={0} y={0} width={1600} height={900} fill="#2a3450" opacity={0.2} style={{ mixBlendMode: 'multiply' }} />
+                <ellipse cx={1190} cy={510} rx={320} ry={230} fill="url(#tf-glow-warm)" opacity={0.4} style={{ mixBlendMode: 'screen' }} />
+                <ellipse cx={330} cy={270} rx={190} ry={160} fill="url(#tf-glow-spot)" opacity={0.28} style={{ mixBlendMode: 'screen' }} />
+              </>
+            )}
+            {amb === 'stage' && (
+              <>
+                <ellipse cx={800} cy={560} rx={560} ry={330} fill="url(#tf-glow-spot)" opacity={0.5} style={{ mixBlendMode: 'screen' }} />
+                <rect x={0} y={0} width={1600} height={900} fill="#1a2233" opacity={0.16} style={{ mixBlendMode: 'multiply' }} />
+              </>
+            )}
+            {amb === 'outdoor' && (
+              <rect x={0} y={0} width={1600} height={330} fill="url(#tf-sunlight)" style={{ mixBlendMode: 'screen' }} />
+            )}
+            {amb === 'indoor' && (
+              <ellipse cx={300} cy={260} rx={340} ry={260} fill="url(#tf-glow-spot)" opacity={0.3} style={{ mixBlendMode: 'screen' }} />
+            )}
+            <rect x={0} y={0} width={1600} height={900} fill="url(#tf-vignette)" />
+          </g>
+        );
+      })()}
+
+      {/* 氛围粒子：夜场萤火虫 / 舞台星光闪烁 / 户外柳絮尘埃（位置用稳定散列，不随渲染跳动） */}
+      {(() => {
+        const amb = ambientKindOf(bgLayer.cur);
+        if (amb === 'indoor') return null;
+        const px = (i: number, m: number) => ((i * 211) % m) + 50;
+        const py = (i: number, m: number, base: number) => base + ((i * 97) % m);
+        if (amb === 'night') {
+          return (
+            <g pointerEvents="none">
+              {Array.from({ length: 7 }).map((_, i) => (
+                <circle
+                  key={i}
+                  className="tf-firefly"
+                  style={{ animationDelay: `${(i * 0.9) % 5}s` }}
+                  cx={px(i + 1, 1400)}
+                  cy={py(i + 1, 420, 430)}
+                  r={3.6}
+                  fill="#ffe97a"
+                />
+              ))}
+            </g>
+          );
+        }
+        if (amb === 'stage') {
+          return (
+            <g pointerEvents="none">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <circle
+                  key={i}
+                  className="tf-star"
+                  style={{ animationDelay: `${(i * 0.37) % 2.4}s` }}
+                  cx={px(i + 3, 1500)}
+                  cy={py(i + 3, 240, 40)}
+                  r={i % 2 ? 3 : 4.4}
+                  fill="#ffffff"
+                />
+              ))}
+            </g>
+          );
+        }
+        return (
+          <g pointerEvents="none" opacity={0.7}>
+            {Array.from({ length: 6 }).map((_, i) => (
+              <ellipse
+                key={i}
+                className="tf-dust"
+                style={{ animationDelay: `${(i * 1.7) % 9}s` }}
+                cx={px(i + 2, 1500)}
+                cy={py(i + 2, 380, 320)}
+                rx={5}
+                ry={3.4}
+                fill="#ffffff"
+              />
+            ))}
+          </g>
+        );
+      })()}
 
       {/* 天气层：rain 雨丝 / wind 风线飘叶 / thunder 乌云闪电 / sun 暖阳（配雨/风/雷声） */}
       {weather === 'rain' && (
@@ -808,7 +938,10 @@ const TheaterStage: React.FC<StageProps> = ({ config, curIdx, curActions, bubble
               filter={th.sticker > 0 ? 'url(#tf-sticker)' : undefined}
               transform={`translate(${r.x - 110}, 395)`}
             >
-              <PaperFigure spec={r.figure} state={st} width={220} theme={theme} />
+              {/* 情绪姿态：独立包装层做 CSS 身体语言（不覆盖上层 SVG 定位 transform） */}
+              <g className={st.emotion !== 'none' ? `tf-emo-${st.emotion}` : undefined}>
+                <PaperFigure spec={r.figure} state={st} width={220} theme={theme} />
+              </g>
             </g>
             <g ref={(el) => { nametagRefs.current[vi] = el; }}>
               <rect
@@ -848,7 +981,8 @@ const TheaterStage: React.FC<StageProps> = ({ config, curIdx, curActions, bubble
         <rect key={dimKey} x={-100} y={-100} width={1800} height={1100} fill="#1a1512" className="tf-dim" />
       )}
 
-      {/* 台词气泡（旁白句用顶部灰条区分；长句按单词折行+字号降档，底边锚定往上生长） */}
+      {/* 台词气泡（旁白句用顶部灰条区分；长句按单词折行+字号降档，底边锚定往上生长；
+          逐词卡拉OK：按朗读进度 lineProgress 把已读词点亮为暖橙） */}
       {speakerKey && bubbleText && activeSpeakerRole && (
         <g className="tf-bubble">
           {(() => {
@@ -863,6 +997,11 @@ const TheaterStage: React.FC<StageProps> = ({ config, curIdx, curActions, bubble
             const tailX = r.x;
             const bottomY = by + bh;
             const textX = bx + bw / 2;
+            // 全局词序：行内词按行序累计，已读数量 = round(progress × 总词数)
+            const rowWords = lines.map((ln) => ln.split(/\s+/).filter(Boolean));
+            const totalWords = rowWords.reduce((n, ws) => n + ws.length, 0);
+            const readCount = Math.round(Math.max(0, Math.min(1, lineProgress)) * totalWords);
+            let gIndex = 0;
             return (
               <g>
                 {!narr && (
@@ -891,11 +1030,28 @@ const TheaterStage: React.FC<StageProps> = ({ config, curIdx, curActions, bubble
                   fontWeight={700}
                   fill={narr ? '#8a6d3b' : '#2c3e50'}
                 >
-                  {lines.map((ln, i) => (
-                    <tspan key={i} x={textX} dy={i === 0 ? 0 : lineH}>
-                      {ln}
-                    </tspan>
-                  ))}
+                  {rowWords.map((ws, i) => {
+                    const rowStart = gIndex;
+                    gIndex += ws.length;
+                    return (
+                      <tspan key={i} x={textX} dy={i === 0 ? 0 : lineH}>
+                        {ws.map((w, j) => {
+                          const gi = rowStart + j;
+                          const read = gi < readCount;
+                          // 当前正在读的词（未完句时）用更亮的琥珀色
+                          const active = !read && gi === readCount && lineProgress < 1;
+                          return (
+                            <tspan
+                              key={j}
+                              fill={read ? '#d97730' : active ? '#f5a623' : undefined}
+                            >
+                              {j < ws.length - 1 ? `${w} ` : w}
+                            </tspan>
+                          );
+                        })}
+                      </tspan>
+                    );
+                  })}
                 </text>
               </g>
             );

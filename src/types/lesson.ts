@@ -34,7 +34,8 @@ export interface ExerciseContent {
   meaning?: string;
   example?: string;
   passage?: string;
-  /** speaking 题子模式：'word'=单词跟读 / 'zh2en'=看中文学英文（未出分前隐藏英文） */
+  /** speaking 题子模式：'word'=单词跟读 / 'zh2en'=看中文学英文（未出分前隐藏英文）
+   *  / 'qa'=对话问答（显示 question，答案句未出分前隐藏）/ 'makeSentence'=用目标词自由造句 */
   mode?: string;
 }
 

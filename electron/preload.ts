@@ -36,6 +36,35 @@ contextBridge.exposeInMainWorld('electronAPI', {
   addAchievement: (achievement: { type: string; name: string }) =>
     ipcRenderer.invoke('add-achievement', achievement),
 
+  // 错题本（间隔重复）
+  reviewAll: () => ipcRenderer.invoke('review-all'),
+  reviewSave: (item: {
+    key: string;
+    lesson_id: number;
+    practice_type: string;
+    exercise: string;
+    level: number;
+    hits: number;
+    misses: number;
+    due_at: number;
+  }) => ipcRenderer.invoke('review-save', item),
+  reviewDelete: (key: string) => ipcRenderer.invoke('review-delete', key),
+  reviewStats: () => ipcRenderer.invoke('review-stats'),
+
+  // 练习记录 / 学习报告
+  logPractice: (record: {
+    lesson_id: number;
+    practice_type: string;
+    score: number;
+    total_score: number;
+    correct_count: number;
+    total_count: number;
+    duration_sec: number;
+  }) => ipcRenderer.invoke('log-practice', record),
+  getPracticeReport: () => ipcRenderer.invoke('get-practice-report'),
+  // 学习报告导出（PDF / PNG 长图），保存位置由用户在对话框中选择
+  exportReport: (format: 'pdf' | 'png') => ipcRenderer.invoke('export-report', format),
+
   // Edge TTS 相关
   edgeTtsSpeak: (options: { text: string; voice?: string; rate?: number; pitch?: number }) =>
     ipcRenderer.invoke('edge-tts-speak', options),

@@ -21,6 +21,8 @@ interface TextDisplayProps {
   autoPlay?: boolean;
   /** 课程 id：配置了剧场场景的课显示"情景剧场"入口 */
   lessonId?: number;
+  /** 本课词汇表：剧场跟读评分用它构建音素字典（真人注音优先） */
+  vocabulary?: Array<{ word: string; phonetic?: string }>;
 }
 
 /** 获取有效的 speaker 标识，空的也返回一个默认值 */
@@ -28,7 +30,13 @@ function getEffectiveSpeaker(speaker?: string): string {
   return speaker && speaker.trim() ? speaker.trim() : 'N';
 }
 
-const TextDisplay: React.FC<TextDisplayProps> = ({ text, illustration, autoPlay, lessonId }) => {
+const TextDisplay: React.FC<TextDisplayProps> = ({
+  text,
+  illustration,
+  autoPlay,
+  lessonId,
+  vocabulary,
+}) => {
   // 用于触发声音变更后的刷新
   const [, setRefreshKey] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
@@ -149,6 +157,7 @@ const TextDisplay: React.FC<TextDisplayProps> = ({ text, illustration, autoPlay,
         <StoryTheater
           lessonId={lessonId!}
           text={{ title: text.title, paragraphs: text.paragraphs, translation: text.translation }}
+          vocabulary={vocabulary}
           onClose={() => {
             setTheaterOpen(false);
             setRefreshKey((k) => k + 1);

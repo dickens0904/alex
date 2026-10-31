@@ -96,6 +96,36 @@ function createTables(): void {
     )
   `);
 
+  // 错题本（间隔重复调度）：key = 课程ID:练习类型:题干指纹
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS review_items (
+      key TEXT PRIMARY KEY,
+      lesson_id INTEGER,
+      practice_type TEXT NOT NULL,
+      exercise TEXT NOT NULL,
+      level INTEGER DEFAULT 0,
+      hits INTEGER DEFAULT 0,
+      misses INTEGER DEFAULT 0,
+      due_at INTEGER,
+      updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
+  // 练习记录（每次练习一条，供学习报告统计）
+  db.exec(`
+    CREATE TABLE IF NOT EXISTS practice_records (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      lesson_id INTEGER,
+      practice_type TEXT NOT NULL,
+      score INTEGER DEFAULT 0,
+      total_score INTEGER DEFAULT 0,
+      correct_count INTEGER DEFAULT 0,
+      total_count INTEGER DEFAULT 0,
+      duration_sec INTEGER DEFAULT 0,
+      created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+  `);
+
   // 迁移：progress 表的外键指向从未灌数据的 lessons 表，导致 saveProgress 永远
   // 因 FOREIGN KEY constraint failed 而丢进度（练习进度从未存成功）。
   // 检测到 lessons 外键时重建为无外键版本（本应用单用户，lesson_id/user_id 仅作记录字段）。

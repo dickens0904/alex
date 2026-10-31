@@ -1,8 +1,9 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { speakWord, speakSentence } from '../../services/tts';
 import { playCorrectSound, playWrongSound, playStreakSound } from '../../services/soundEffects';
-import { startSpeechEvaluation } from '../../services/speechRecognition';
+import { startSpeechEvaluation, diffWords } from '../../services/speechRecognition';
 import type { SpeechEvalResult, SpeechEvaluationSession } from '../../services/speechRecognition';
+import type { PronunciationReport } from '../../services/phoneme';
 import { logger } from '../../utils/logger';
 import type { PracticeType } from './PracticeMenu';
 import type { Exercise } from '../../types/lesson';
@@ -14,6 +15,10 @@ export interface PracticeFinishData {
   practiceType: PracticeType;
   maxStreak: number;
   correctCount: number;
+  /** 本次练习题目总数 */
+  totalCount: number;
+  /** 错题重练会话（跨题型混排） */
+  isReview?: boolean;
 }
 
 function getEncouragement(streak: number, isCorrect: boolean): string {
@@ -33,6 +38,14 @@ interface PracticeEngineProps {
   practiceType: PracticeType;
   onFinish: (data: PracticeFinishData) => void;
   onBack: () => void;
+  /** 每题作答结果回调（用于错题本登记/间隔重复升级） */
+  onRecord?: (exercise: Exercise, correct: boolean) => void;
+  /** 每题按自身 type 渲染（错题重练为跨题型混排时使用） */
+  mixedTypes?: boolean;
+  /** 是否为错题重练会话 */
+  isReviewMode?: boolean;
+  /** 本课词汇表：口语评测用它构建音素字典（真人注音优先），支撑音素级诊断 */
+  vocabulary?: Array<{ word: string; phonetic?: string }>;
 }
 
 const PracticeEngine: React.FC<PracticeEngineProps> = ({
@@ -40,6 +53,10 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
   practiceType,
   onFinish,
   onBack,
+  onRecord,
+  mixedTypes = false,
+  isReviewMode = false,
+  vocabulary,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
@@ -115,13 +132,21 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
   const isLastQuestion = currentIndex >= exercises.length - 1;
   const nextButtonLabel = isLastQuestion ? '查看结果' : '下一题';
 
+  // 每题实际题型：常规练习统一为 practiceType；错题重练按题目自身 type 混排
+  const typeOf = useCallback(
+    (exercise: Exercise | undefined): PracticeType =>
+      mixedTypes && exercise ? (exercise.type as PracticeType) : practiceType,
+    [mixedTypes, practiceType]
+  );
+  const activeType = typeOf(currentExercise);
+
   // ---- Answer submission ----
 
   const handleSubmitAnswer = useCallback(() => {
     const exercise = exercises[currentIndex];
     let correct = false;
 
-    if (practiceType === 'spelling') {
+    if (typeOf(exercise) === 'spelling') {
       correct = userAnswer.toLowerCase().trim() === exercise.answer.toLowerCase();
     } else {
       correct = userAnswer === exercise.answer;
@@ -145,8 +170,9 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
       setEncouragement(getEncouragement(0, false));
     }
     updateTotalScore(exercise.score);
+    onRecord?.(exercise, correct);
     setShowResult(true);
-  }, [currentIndex, exercises, practiceType, userAnswer, streak]);
+  }, [currentIndex, exercises, typeOf, userAnswer, streak, onRecord]);
 
   // ---- Speaking: 一次录音完成采集+波形+评分 ----
 
@@ -188,10 +214,11 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
         '口语评分',
         `第${currentIndex + 1}题 | 模式: ${result.mode} | 得分: ${result.score} | 计分: ${newAwarded}/${exercise.score}`
       );
+      onRecord?.(exercise, correct);
       setIsCorrect(correct);
       setShowResult(true);
     },
-    [currentIndex, streak]
+    [currentIndex, streak, onRecord]
   );
 
   const startRecording = useCallback(() => {
@@ -204,12 +231,17 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
 
     // 会话代数：先置 null 再挂新会话，避免旧回调误判
     evalSessionRef.current = null;
-    const session = startSpeechEvaluation(targetText, 10000, (level) => {
-      const levels = waveLevelsRef.current;
-      levels.push(level);
-      if (levels.length > 48) levels.shift();
-      drawWave();
-    });
+    const session = startSpeechEvaluation(
+      targetText,
+      10000,
+      (level) => {
+        const levels = waveLevelsRef.current;
+        levels.push(level);
+        if (levels.length > 48) levels.shift();
+        drawWave();
+      },
+      vocabulary
+    );
     evalSessionRef.current = session;
     setIsRecording(true);
     logger.info('PracticeEngine', '开始录音', `第${currentIndex + 1}题`);
@@ -221,7 +253,7 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
       setIsRecording(false);
       handleEvalResult(exercise, result);
     });
-  }, [currentIndex, exercises, drawWave, handleEvalResult]);
+  }, [currentIndex, exercises, drawWave, handleEvalResult, vocabulary]);
 
   const stopRecording = useCallback(() => {
     evalSessionRef.current?.stop();
@@ -244,6 +276,8 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
         practiceType,
         maxStreak: maxStreakRef.current,
         correctCount: correctCountRef.current,
+        totalCount: exercises.length,
+        isReview: isReviewMode,
       });
     } else {
       setCurrentIndex((prev) => prev + 1);
@@ -251,7 +285,7 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
       setShowResult(false);
       setSpeechFeedback(null);
     }
-  }, [isLastQuestion, onFinish, practiceType]);
+  }, [isLastQuestion, onFinish, practiceType, isReviewMode, exercises.length]);
 
   // ---- Shared: option button renderer ----
 
@@ -329,12 +363,91 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
     </div>
   );
 
+  /** 口语评分：音素级诊断报告（summary / 问题清单 / 逐词音素 chips） */
+  const renderPronunciationReport = (report: PronunciationReport) => {
+    const issueCount = report.issues.filter((i) => i.level !== 'info').length;
+    const wordChipClass = (w: PronunciationReport['words'][number]) =>
+      w.missed
+        ? 'missed'
+        : w.alignment.ratio >= 0.9
+          ? 'good'
+          : w.alignment.ratio >= 0.6
+            ? 'fair'
+            : 'poor';
+    return (
+      <div className="pronunciation-report">
+        <div className="pron-summary">
+          <span className="pron-summary-text">{report.summary}</span>
+          <span className="pron-metrics">
+            <span className="pron-metric">音素 {Math.round(report.phonemeAccuracy * 100)}%</span>
+            <span className="pron-metric">流利度 {report.fluencyScore} 分</span>
+            {report.fluency.wordsPerMinute > 0 && (
+              <span className="pron-metric">语速 {Math.round(report.fluency.wordsPerMinute)} 词/分</span>
+            )}
+            {report.fluency.pauses > 0 && (
+              <span className="pron-metric">
+                停顿 {report.fluency.pauses} 次
+              </span>
+            )}
+          </span>
+        </div>
+        {report.issues.length > 0 && (
+          <div className="pron-issues">
+            {report.issues.map((issue, i) => (
+              <div key={`${issue.word}-${i}`} className={`pron-issue ${issue.level}`}>
+                {issue.kind === 'missing-word' && (
+                  <span className="pron-issue-word">「{issue.word}」没读到</span>
+                )}
+                {issue.kind === 'extra-word' && (
+                  <span className="pron-issue-word">多读了「{issue.word}」</span>
+                )}
+                {issue.kind === 'phoneme' && (
+                  <span className="pron-issue-word">「{issue.word}」</span>
+                )}
+                <span className="pron-issue-msg">{issue.message}</span>
+              </div>
+            ))}
+          </div>
+        )}
+        {issueCount === 0 && report.summary && (
+          <div className="pron-all-good">🎉 每个音素都读到位了！</div>
+        )}
+        <div className="pron-words">
+          {report.words.map((w, i) => (
+            <span
+              key={`${w.word}-${i}`}
+              className={`pron-word ${wordChipClass(w)}`}
+              title={
+                w.missed
+                  ? `${w.word}：整词没识别到`
+                  : [
+                      `目标: /${w.target.join(' ')}/`,
+                      `实际: /${w.spoken.join(' ')}/`,
+                      w.alignment.ratio < 0.9
+                        ? `命中率 ${Math.round(w.alignment.ratio * 100)}%`
+                        : '全部命中',
+                    ].join('\n')
+              }
+            >
+              {w.word}
+            </span>
+          ))}
+        </div>
+      </div>
+    );
+  };
+
   const renderSpeaking = () => {
     const feedback = speechFeedback;
-    const isZh2En = currentExercise.content.mode === 'zh2en';
-    const isWord = currentExercise.content.mode === 'word';
-    // 出分后才揭示英文（中译英模式）
-    const revealEnglish = !isZh2En || showResult;
+    const mode = currentExercise.content.mode;
+    const isZh2En = mode === 'zh2en';
+    const isWord = mode === 'word';
+    // 问答：出分前只显示 A 的原话（question），B 的答案句（sentence）隐藏
+    const isQA = mode === 'qa';
+    // 造句：目标词直接可见，孩子自己造句
+    const isMakeSentence = mode === 'makeSentence';
+    // 出分后才揭示英文目标句（中译英 / 问答模式）
+    const revealEnglish = !isZh2En && !isQA ? true : showResult;
     const speakDemo = () =>
       isWord
         ? speakWord(currentExercise.content.sentence ?? '')
@@ -342,13 +455,18 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
     return (
       <div className="exercise-content">
         <div className="instruction">{currentExercise.content.instruction}</div>
+        {isQA && currentExercise.content.question && (
+          <div className="question">{currentExercise.content.question}</div>
+        )}
         {revealEnglish && (
-          <div className="sentence-to-speak">{currentExercise.content.sentence}</div>
+          <div className={`sentence-to-speak ${isMakeSentence ? 'make-sentence-word' : ''}`}>
+            {currentExercise.content.sentence}
+          </div>
         )}
         {currentExercise.content.translation && (
           <div className="sentence-translation">
-            {isZh2En && !showResult
-              ? `中文：${currentExercise.content.translation}`
+            {(isZh2En || isQA) && !showResult
+              ? `中文提示：${currentExercise.content.translation}`
               : currentExercise.content.translation}
           </div>
         )}
@@ -416,6 +534,28 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
             {feedback.transcript && (
               <div className="speech-transcript">识别结果：{feedback.transcript}</div>
             )}
+            {(feedback.mode === 'vosk' || feedback.mode === 'recognized') &&
+              feedback.transcript &&
+              (() => {
+                const diff = diffWords(
+                  feedback.transcript,
+                  currentExercise.content.sentence ?? ''
+                );
+                if (diff.missed.length === 0) return null;
+                return (
+                  <div className="speech-word-hint">
+                    <span className="word-hint-label">🙉 这几个词没听清，重点练一下：</span>
+                    <span className="word-chips">
+                      {diff.missed.map((word, i) => (
+                        <span key={`${word}-${i}`} className="word-chip">
+                          {word}
+                        </span>
+                      ))}
+                    </span>
+                  </div>
+                );
+              })()}
+            {feedback.pronunciation && renderPronunciationReport(feedback.pronunciation)}
             <div className={`result ${isCorrect ? 'correct' : 'wrong'}`}>
               {feedback.mode === 'silent'
                 ? '🎙️ 没听到你的声音，再试一次吧！'
@@ -592,9 +732,11 @@ const PracticeEngine: React.FC<PracticeEngineProps> = ({
         <div className="exercise-score">得分: {score}</div>
       </div>
 
-      <div className="exercise-type-label">{TYPE_LABELS[practiceType]}</div>
+      <div className="exercise-type-label">
+        {isReviewMode ? '🔁 错题重练' : TYPE_LABELS[activeType]}
+      </div>
 
-      {RENDERERS[practiceType]()}
+      {(RENDERERS[activeType] ?? renderListening)()}
     </div>
   );
 };

@@ -8,6 +8,18 @@
  * 4. silent —— 完全没检测到声音 / 麦克风不可用
  */
 import { logger } from '../utils/logger';
+import {
+  diagnosePronunciation,
+  buildPhonemeDict,
+  type PhonemeDict,
+  type PronunciationReport,
+} from './phoneme';
+import {
+  analyzeAcoustics,
+  withWordRate,
+  computeSpectralFrame,
+  type LevelFrame,
+} from './acoustics';
 
 const MODULE = 'speechRecognition';
 
@@ -174,6 +186,69 @@ export function compareTexts(spoken: string, target: string): number {
 }
 
 // ---------------------------------------------------------------------------
+// 词级差异（发音反馈：告诉孩子哪几个词没读对）
+// ---------------------------------------------------------------------------
+
+export interface WordDiff {
+  /** 读对了的词（按目标顺序） */
+  matched: string[];
+  /** 目标句里没被识别到的词 */
+  missed: string[];
+  /** 多读出来的词 */
+  extra: string[];
+  /** 命中率 0-1 */
+  matchedRatio: number;
+}
+
+/**
+ * 词级 LCS 对比，输出漏读/多读词。
+ * 与 compareTexts 共用同一套归一化规则，避免"分数高但提示词不对"的不一致。
+ */
+export function diffWords(spoken: string, target: string): WordDiff {
+  const spokenWords = normalizeText(spoken).split(' ').filter(Boolean);
+  const targetWords = normalizeText(target).split(' ').filter(Boolean);
+  const m = spokenWords.length;
+  const n = targetWords.length;
+
+  const dp: number[][] = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));
+  for (let i = 1; i <= m; i++) {
+    for (let j = 1; j <= n; j++) {
+      dp[i][j] =
+        spokenWords[i - 1] === targetWords[j - 1]
+          ? dp[i - 1][j - 1] + 1
+          : Math.max(dp[i - 1][j], dp[i][j - 1]);
+    }
+  }
+
+  // 回溯得到匹配词集合
+  const matchedSet = new Set<string>();
+  let i = m;
+  let j = n;
+  while (i > 0 && j > 0) {
+    if (spokenWords[i - 1] === targetWords[j - 1]) {
+      matchedSet.add(targetWords[j - 1]);
+      i--;
+      j--;
+    } else if (dp[i - 1][j] >= dp[i][j - 1]) {
+      i--;
+    } else {
+      j--;
+    }
+  }
+
+  const matched = targetWords.filter((w) => matchedSet.has(w));
+  const missed = targetWords.filter((w) => !matchedSet.has(w));
+  const extra = spokenWords.filter((w) => !matchedSet.has(w));
+
+  return {
+    matched,
+    missed,
+    extra,
+    matchedRatio: n > 0 ? matched.length / n : 0,
+  };
+}
+
+// ---------------------------------------------------------------------------
 // 口语评测（一次录音完成采集 + 波形 + 评分）
 // ---------------------------------------------------------------------------
 
@@ -191,6 +266,12 @@ export interface SpeechEvalResult {
   micError?: boolean;
   /** 本次录音（webm/opus，可直接播放）——供"听自己的发音"回放；无声/无录音时缺省 */
   recording?: Blob;
+  /**
+   * 音素级发音诊断。
+   * 仅在识别出文本时生成（vosk/recognized 模式）；energy/silent 模式缺省。
+   * UI 据此展示"哪个词、哪个音素没读对"，而不是只给一个分数。
+   */
+  pronunciation?: PronunciationReport;
 }
 
 /** 进行中的口语评测会话 */
@@ -212,12 +293,22 @@ const VOICED_LEVEL_THRESHOLD = 0.1;
  * - vosk 可用时把 16kHz Int16 PCM 经 IPC 流式喂给主进程识别（离线，出真实词级比分）
  * - vosk 不可用时尝试 Web Speech（Electron 里云端服务通常不可达，8 秒无结果自动放弃）
  * - 全部失败则按音量评估出"开口练习分"
+ *
+ * @param targetText 目标文本（孩子要读的句子）
+ * @param maxRecordMs 最长录音时长
+ * @param onLevel 实时音量回调（供波形绘制）
+ * @param dictSource 本课词汇表，用于构建音素字典——目标句里的生词用数据中真人注音
+ *                    的 IPA 做音素基准，未收录的词走规则 G2P。不传则全部走规则。
  */
 export function startSpeechEvaluation(
   targetText: string,
   maxRecordMs: number = 10000,
-  onLevel?: (level: number) => void
+  onLevel?: (level: number) => void,
+  dictSource?: Array<{ word: string; phonetic?: string }>
 ): SpeechEvaluationSession {
+  const dict: PhonemeDict | undefined = dictSource?.length
+    ? buildPhonemeDict(dictSource)
+    : undefined;
   let settled = false;
   let resolvePromise!: (r: SpeechEvalResult) => void;
   const promise = new Promise<SpeechEvalResult>((res) => {
@@ -238,6 +329,9 @@ export function startSpeechEvaluation(
   let maxLevel = 0;
   let voicedFrames = 0;
   let totalFrames = 0;
+  // 逐帧音量留存：供流利度分析（停顿/语速/音量稳定性）。
+  // 60fps × 12s ≈ 720 帧，内存无压力；超过 12000 帧截断（200 秒录音，远超使用上限）。
+  const levelFrames: LevelFrame[] = [];
   let voskSessionOk = false; // 主进程 vosk 识别会话是否建立
   // MediaRecorder 采集（ScriptProcessorNode 在本机 Electron 里 onaudioprocess 首帧
   // 分发死锁主线程导致白屏，故弃用；MediaRecorder 是旧版已验证稳定路径）
@@ -245,6 +339,14 @@ export function startSpeechEvaluation(
   let mediaChunks: Blob[] = [];
   let recordedBlob: Blob | null = null; // 本次录音（回放用）
   const startedAt = Date.now();
+
+  /** 生成音素级诊断（仅在有识别文本时） */
+  const buildDiagnosis = (text: string): PronunciationReport => {
+    const wordCount = normalizeText(text).split(' ').filter(Boolean).length;
+    // 流利度只依赖录音帧，识别文本只用来算语速（词/分钟）
+    const fluency = withWordRate(analyzeAcoustics(levelFrames), wordCount);
+    return diagnosePronunciation(text, targetText, dict, fluency);
+  };
 
   /** 出最终结果（vosk 文本优先） */
   const settle = (voskText: string) => {
@@ -260,6 +362,7 @@ export function startSpeechEvaluation(
         mode: 'vosk',
         transcript: voskText,
         maxLevel,
+        pronunciation: buildDiagnosis(voskText),
       });
     } else if (recognitionDone && transcript.trim()) {
       result = withRecording({
@@ -267,6 +370,7 @@ export function startSpeechEvaluation(
         mode: 'recognized',
         transcript,
         maxLevel,
+        pronunciation: buildDiagnosis(transcript),
       });
     } else {
       const voicedRatio = totalFrames > 0 ? voicedFrames / totalFrames : 0;
@@ -422,9 +526,11 @@ export function startSpeechEvaluation(
       }
 
       const buf = new Uint8Array(analyser.fftSize);
+      const freqBuf = new Uint8Array(analyser.frequencyBinCount);
       const tick = () => {
         if (settled) return;
         analyser.getByteTimeDomainData(buf);
+        analyser.getByteFrequencyData(freqBuf);
         let sum = 0;
         for (let i = 0; i < buf.length; i++) {
           const v = (buf[i] - 128) / 128;
@@ -435,6 +541,8 @@ export function startSpeechEvaluation(
         totalFrames++;
         if (level > VOICED_LEVEL_THRESHOLD) voicedFrames++;
         if (level > maxLevel) maxLevel = level;
+        const spectral = computeSpectralFrame(freqBuf);
+        if (levelFrames.length < 12000) levelFrames.push({ i: totalFrames, level, spectral });
         onLevel?.(level);
         rafId = requestAnimationFrame(tick);
       };
@@ -463,12 +571,22 @@ export function startSpeechEvaluation(
 
     recognition.onresult = (event: SpeechRecognitionEvent) => {
       const results: string[] = [];
+      let bestConfidence = 0;
       for (let i = event.resultIndex; i < event.results.length; i++) {
-        if (event.results[i].isFinal) results.push(event.results[i][0].transcript);
+        if (event.results[i].isFinal) {
+          results.push(event.results[i][0].transcript);
+          // 取最高置信度作为本次识别的整体置信度
+          const c = event.results[i][0].confidence;
+          if (c > bestConfidence) bestConfidence = c;
+        }
       }
       if (results.length > 0) {
         transcript = results.join(' ');
         recognitionDone = true;
+        // 置信度低于 0.4 时，识别结果不可靠——仍出分但标记低置信
+        if (bestConfidence < 0.4) {
+          console.warn(`[speechRecognition] 识别置信度偏低: ${bestConfidence.toFixed(2)}，文本: "${transcript}"`);
+        }
         if (recognitionWatchdog) clearTimeout(recognitionWatchdog);
       }
     };

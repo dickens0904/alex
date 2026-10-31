@@ -89,6 +89,11 @@ const Home: React.FC = () => {
             <span className="btn-text">学习进度</span>
           </button>
 
+          <button className="btn btn-secondary btn-large" onClick={() => navigate('/report')}>
+            <span className="btn-icon">📈</span>
+            <span className="btn-text">学习报告</span>
+          </button>
+
           <button
             className="btn btn-accent btn-large"
             onClick={() => navigate('/lessons', { state: { intent: 'games' } })}

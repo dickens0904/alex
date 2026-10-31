@@ -5,6 +5,7 @@ import * as fs from 'fs';
 import { pathToFileURL as _pathToFileURL } from 'url';
 import { webcrypto } from 'crypto';
 import { initDatabase, getDatabase, isDatabaseAvailable } from './database/init';
+import { buildReportHtml, ReportExportData } from './reportHtml';
 import {
   voskAvailability,
   voskStart,
@@ -403,6 +404,301 @@ if (!gotTheLock) {
     } catch (error) {
       console.error('添加成就失败:', error);
       return { success: false, error: String(error) };
+    }
+  });
+
+  // ==================== 错题本（间隔重复）IPC ====================
+
+  // 读取全部错题条目
+  ipcMain.handle('review-all', async () => {
+    try {
+      const db = getDatabase();
+      return db.prepare('SELECT * FROM review_items ORDER BY due_at ASC').all();
+    } catch (error) {
+      console.error('读取错题本失败:', error);
+      return [];
+    }
+  });
+
+  // 新增/更新一条错题（按 key upsert）
+  ipcMain.handle(
+    'review-save',
+    async (
+      _event,
+      item: {
+        key: string;
+        lesson_id: number;
+        practice_type: string;
+        exercise: string;
+        level: number;
+        hits: number;
+        misses: number;
+        due_at: number;
+      }
+    ) => {
+      try {
+        const db = getDatabase();
+        db.prepare(
+          `INSERT INTO review_items (key, lesson_id, practice_type, exercise, level, hits, misses, due_at, updated_at)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+           ON CONFLICT(key) DO UPDATE SET
+             level = excluded.level,
+             hits = excluded.hits,
+             misses = excluded.misses,
+             due_at = excluded.due_at,
+             updated_at = CURRENT_TIMESTAMP`
+        ).run(
+          item.key,
+          item.lesson_id,
+          item.practice_type,
+          item.exercise,
+          item.level,
+          item.hits,
+          item.misses,
+          item.due_at
+        );
+        return { success: true };
+      } catch (error) {
+        console.error('保存错题失败:', error);
+        return { success: false, error: String(error) };
+      }
+    }
+  );
+
+  // 删除一条错题（已掌握）
+  ipcMain.handle('review-delete', async (_event, key: string) => {
+    try {
+      const db = getDatabase();
+      db.prepare('DELETE FROM review_items WHERE key = ?').run(key);
+      return { success: true };
+    } catch (error) {
+      console.error('删除错题失败:', error);
+      return { success: false, error: String(error) };
+    }
+  });
+
+  // 错题概况：总数 + 今日到期数
+  ipcMain.handle('review-stats', async () => {
+    try {
+      const db = getDatabase();
+      const total = db.prepare('SELECT COUNT(*) as count FROM review_items').get() as {
+        count: number;
+      };
+      const due = db
+        .prepare('SELECT COUNT(*) as count FROM review_items WHERE due_at <= ?')
+        .get(Date.now()) as { count: number };
+      return { total: total.count, due: due.count };
+    } catch (error) {
+      console.error('读取错题统计失败:', error);
+      return { total: 0, due: 0 };
+    }
+  });
+
+  // ==================== 练习记录 / 学习报告 IPC ====================
+
+  ipcMain.handle(
+    'log-practice',
+    async (
+      _event,
+      record: {
+        lesson_id: number;
+        practice_type: string;
+        score: number;
+        total_score: number;
+        correct_count: number;
+        total_count: number;
+        duration_sec: number;
+      }
+    ) => {
+      try {
+        const db = getDatabase();
+        db.prepare(
+          `INSERT INTO practice_records
+             (lesson_id, practice_type, score, total_score, correct_count, total_count, duration_sec)
+           VALUES (?, ?, ?, ?, ?, ?, ?)`
+        ).run(
+          record.lesson_id,
+          record.practice_type,
+          record.score,
+          record.total_score,
+          record.correct_count,
+          record.total_count,
+          record.duration_sec
+        );
+        return { success: true };
+      } catch (error) {
+        console.error('保存练习记录失败:', error);
+        return { success: false, error: String(error) };
+      }
+    }
+  );
+
+  // 报告聚合（get-practice-report 与 export-report 共用）
+  const buildPracticeReport = (): ReportExportData | null => {
+    if (!isDatabaseAvailable()) return null;
+    const db = getDatabase();
+      const rows = db
+        .prepare('SELECT * FROM practice_records ORDER BY created_at DESC')
+        .all() as {
+        lesson_id: number;
+        practice_type: string;
+        score: number;
+        total_score: number;
+        correct_count: number;
+        total_count: number;
+        duration_sec: number;
+        created_at: string;
+      }[];
+
+      // 总览
+      const overview = rows.reduce(
+        (acc, r) => {
+          acc.sessions += 1;
+          acc.score += r.score;
+          acc.totalScore += r.total_score;
+          acc.correct += r.correct_count;
+          acc.totalCount += r.total_count;
+          acc.timeSpent += r.duration_sec;
+          return acc;
+        },
+        { sessions: 0, score: 0, totalScore: 0, correct: 0, totalCount: 0, timeSpent: 0 }
+      );
+
+      // 分技能
+      const byType: Record<string, { sessions: number; correct: number; totalCount: number }> = {};
+      for (const r of rows) {
+        const t = (byType[r.practice_type] ??= { sessions: 0, correct: 0, totalCount: 0 });
+        t.sessions += 1;
+        t.correct += r.correct_count;
+        t.totalCount += r.total_count;
+      }
+      const skills = Object.entries(byType).map(([type, v]) => ({
+        type,
+        sessions: v.sessions,
+        correct: v.correct,
+        totalCount: v.totalCount,
+        accuracy: v.totalCount > 0 ? Math.round((v.correct / v.totalCount) * 100) : 0,
+      }));
+
+      // 近 7 天（按本地日期）
+      const days: { date: string; sessions: number; score: number; totalScore: number }[] = [];
+      for (let i = 6; i >= 0; i--) {
+        const d = new Date();
+        d.setHours(0, 0, 0, 0);
+        d.setDate(d.getDate() - i);
+        const key = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(
+          d.getDate()
+        ).padStart(2, '0')}`;
+        const hit = rows.filter((r) => {
+          const rd = new Date(r.created_at);
+          const rk = `${rd.getFullYear()}-${String(rd.getMonth() + 1).padStart(2, '0')}-${String(
+            rd.getDate()
+          ).padStart(2, '0')}`;
+          return rk === key;
+        });
+        days.push({
+          date: key,
+          sessions: hit.length,
+          score: hit.reduce((s, r) => s + r.score, 0),
+          totalScore: hit.reduce((s, r) => s + r.total_score, 0),
+        });
+      }
+
+      const reviewTotal = db.prepare('SELECT COUNT(*) as count FROM review_items').get() as {
+        count: number;
+      };
+      const reviewDue = db
+        .prepare('SELECT COUNT(*) as count FROM review_items WHERE due_at <= ?')
+        .get(Date.now()) as { count: number };
+
+      return {
+        overview,
+        skills,
+        days,
+        review: { total: reviewTotal.count, due: reviewDue.count },
+      };
+  };
+
+  ipcMain.handle('get-practice-report', async () => {
+    try {
+      return buildPracticeReport();
+    } catch (error) {
+      console.error('生成学习报告失败:', error);
+      return null;
+    }
+  });
+
+  // 一键导出学习报告：离屏窗口渲染报告 HTML，PDF 走 printToPDF，图片走 capturePage 长图
+  ipcMain.handle('export-report', async (_event, format: 'pdf' | 'png') => {
+    let exportWin: BrowserWindow | null = null;
+    try {
+      if (format !== 'pdf' && format !== 'png') {
+        return { success: false, error: '不支持的导出格式' };
+      }
+      const report = buildPracticeReport();
+      if (!report || report.overview.sessions === 0) {
+        return { success: false, error: '还没有练习记录，先完成一次练习再来导出吧' };
+      }
+      const now = new Date();
+      const dateStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(
+        now.getDate()
+      ).padStart(2, '0')}`;
+      const html = buildReportHtml(report, {
+        appVersion: app.getVersion(),
+        generatedAt: now.toLocaleString('zh-CN', { hour12: false }),
+      });
+
+      // 离屏渲染：不显示窗口也能出画面；关闭后台节流保证截图内容完整
+      exportWin = new BrowserWindow({
+        show: false,
+        width: 820,
+        height: 1200,
+        useContentSize: true,
+        webPreferences: { offscreen: true, backgroundThrottling: false },
+      });
+      await exportWin.loadURL('data:text/html;charset=utf-8,' + encodeURIComponent(html));
+      // 等样式与字体渲染稳定
+      await new Promise((resolve) => setTimeout(resolve, 200));
+
+      const pickTarget = (ext: string, filterName: string) => {
+        const opts = {
+          title: `导出学习报告（${filterName}）`,
+          defaultPath: path.join(app.getPath('documents'), `学习报告-${dateStr}.${ext}`),
+          filters: [{ name: filterName, extensions: [ext] }],
+        };
+        return mainWindow && !mainWindow.isDestroyed()
+          ? dialog.showSaveDialog(mainWindow, opts)
+          : dialog.showSaveDialog(opts);
+      };
+
+      if (format === 'pdf') {
+        const pdfBuf = await exportWin.webContents.printToPDF({
+          printBackground: true,
+          pageSize: 'A4',
+        });
+        const { canceled, filePath } = await pickTarget('pdf', 'PDF 文档');
+        if (canceled || !filePath) return { success: false, canceled: true };
+        await fs.promises.writeFile(filePath, pdfBuf);
+        return { success: true, path: filePath };
+      }
+
+      // PNG：按内容实际高度截取完整长图
+      const scrollH = await exportWin.webContents.executeJavaScript(
+        'document.documentElement.scrollHeight'
+      );
+      exportWin.setContentSize(820, Math.min(Math.max(Number(scrollH) || 1200, 600), 8000));
+      exportWin.webContents.invalidate();
+      await new Promise((resolve) => setTimeout(resolve, 200));
+      const image = await exportWin.webContents.capturePage();
+      const { canceled, filePath } = await pickTarget('png', 'PNG 图片');
+      if (canceled || !filePath) return { success: false, canceled: true };
+      await fs.promises.writeFile(filePath, image.toPNG());
+      return { success: true, path: filePath };
+    } catch (error) {
+      console.error('导出学习报告失败:', error);
+      return { success: false, error: String(error) };
+    } finally {
+      if (exportWin && !exportWin.isDestroyed()) exportWin.destroy();
     }
   });
 

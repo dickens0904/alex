@@ -455,6 +455,28 @@
   margin-bottom: 16px;
 }
 
+/* 练习卡片头部：图标 + 掌握度星级同行排布 */
+.practice-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.practice-card .practice-icon {
+  margin-bottom: 16px;
+}
+
+.mastery-badge {
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #f9a825;
+  white-space: nowrap;
+}
+
+.mastery-badge .mastery-badge-dim {
+  color: #e0e0e0;
+}
+
 .practice-card h3 {
   font-size: 24px;
   color: var(--primary-color);
@@ -707,6 +729,243 @@
   margin-top: 8px;
   font-size: 14px;
   color: var(--text-secondary);
+}
+
+/* 词级发音反馈：没听清的词逐颗展示，方便孩子针对练习 */
+.speech-word-hint {
+  margin-top: 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #fff7e6;
+  border: 1px dashed #ffb74d;
+  font-size: 14px;
+  color: #8d5b00;
+  line-height: 1.8;
+}
+
+.speech-word-hint .word-hint-label {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.speech-word-hint .word-chips {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.speech-word-hint .word-chip {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #ffe0b2;
+  color: #e65100;
+  font-weight: 600;
+  font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+}
+
+/* 音素级发音诊断报告：总体结论 + 指标 + 问题清单 + 逐词 chips */
+.pronunciation-report {
+  margin-top: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: #f5f9ff;
+  border: 1px solid #bbdefb;
+  font-size: 14px;
+  color: #37474f;
+}
+
+.pronunciation-report .pron-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.pronunciation-report .pron-summary-text {
+  font-weight: 700;
+  color: #1565c0;
+}
+
+.pronunciation-report .pron-metrics {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pronunciation-report .pron-metric {
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #e3f2fd;
+  color: #1565c0;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* 问题清单：按严重程度着色（info 弱提示，serious 最醒目） */
+.pronunciation-report .pron-issues {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pronunciation-report .pron-issue {
+  display: flex;
+  gap: 6px;
+  align-items: baseline;
+  padding: 4px 10px;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.pronunciation-report .pron-issue.info {
+  background: #f1f8e9;
+  color: #558b2f;
+}
+
+.pronunciation-report .pron-issue.minor {
+  background: #fffde7;
+  color: #9e9d24;
+}
+
+.pronunciation-report .pron-issue.moderate {
+  background: #fff3e0;
+  color: #ef6c00;
+}
+
+.pronunciation-report .pron-issue.serious {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.pronunciation-report .pron-issue-word {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.pronunciation-report .pron-all-good {
+  margin-top: 8px;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+/* 逐词 chips：good=全中 / fair=部分 / poor=偏差大 / missed=整词没识别 */
+.pronunciation-report .pron-words {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pronunciation-report .pron-word {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+  cursor: help;
+}
+
+.pronunciation-report .pron-word.good {
+  background: #e8f5e9;
+  color: #2e7d32;
+}
+
+.pronunciation-report .pron-word.fair {
+  background: #fffde7;
+  color: #9e9d24;
+}
+
+.pronunciation-report .pron-word.poor {
+  background: #ffebee;
+  color: #c62828;
+}
+
+.pronunciation-report .pron-word.missed {
+  background: #eceff1;
+  color: #90a4ae;
+  text-decoration: line-through;
+}
+
+/* 造句题：目标词放大展示 */
+.sentence-to-speak.make-sentence-word {
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* 错题重练入口（练习页签顶部） */
+.review-entry {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  margin-bottom: 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  border: 2px dashed #ffb74d;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.review-entry:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
+}
+
+.review-entry.empty {
+  cursor: default;
+  background: #fafafa;
+  border-color: #e0e0e0;
+  opacity: 0.85;
+}
+
+.review-entry.empty:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.review-entry-icon {
+  font-size: 32px;
+}
+
+.review-entry-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #e65100;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.review-entry.empty .review-entry-title {
+  color: var(--text-secondary);
+}
+
+.review-entry-count {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #ffe0b2;
+  color: #e65100;
+}
+
+.review-entry.empty .review-entry-count {
+  background: #eeeeee;
+  color: var(--text-secondary);
+}
+
+.review-entry-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.review-entry-go {
+  margin-left: auto;
+  font-size: 14px;
+  font-weight: 600;
+  color: #e65100;
 }
 
 /* 口语结果页操作按钮（限定容器，避免污染其他 .retry-btn） */
